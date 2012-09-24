@@ -1,12 +1,22 @@
 !!!
-%html
+%html{lang: 'en'}
   %head
-    %title BoxScore
-    = stylesheet_link_tag    'application', media: 'all'
+    %meta{charset: 'utf-8'}/
+    %meta{content: 'width=device-width, initial-scale=1.0', name: 'viewport'}/
+    %title= content_for?(:title) ? yield(:title) : '[BOX]SCORE'
+    = stylesheet_link_tag    'application'
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    %p.notice
-    %p.alert
+    .row
+      .six.columns.centered
+        %p.notice
+        %p.alert
+
+    .row
+      #branding.six.columns
+      .six.columns
+        %nav.global
+          = render partial: 'devise/menu/admin_login'
 
     = yield
