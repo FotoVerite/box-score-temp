@@ -1,0 +1,6 @@
+- if admin_signed_in?
+  %li
+    = link_to('Logout', destroy_admin_session_path, method: :delete, id: 'logout')
+- else
+  %li
+    = link_to('Login', new_admin_session_path, id: 'login')
