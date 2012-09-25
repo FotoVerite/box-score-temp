@@ -29,5 +29,6 @@ end
 group :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'poltergeist'
+  gem 'shoulda-matchers'
   gem 'turnip'
 end
