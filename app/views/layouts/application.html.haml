@@ -17,6 +17,14 @@
       #branding.six.columns
       .six.columns
         %nav.global
-          = render partial: 'devise/menu/admin_login'
+          - if admin_signed_in?
+            %p
+              Welcome, #{current_admin.first_name}
+              |
+              %span#registration-links
+                = link_to 'Log out', destroy_admin_session_path, method: :delete
+          - else
+            #registration-links
+              = link_to 'Log in', new_admin_session_path
 
     = yield
