@@ -7,4 +7,6 @@ class Admin < ActiveRecord::Base
 
   attr_accessible :email, :first_name, :last_name, :password,
                   :password_confirmation, :remember_me, :school_id
+
+  belongs_to :school
 end
