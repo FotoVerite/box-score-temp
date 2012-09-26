@@ -3,5 +3,5 @@ BoxScore::Application.routes.draw do
 
   root to: 'home#index'
 
-  resource :school, only: [:show]
+  resource :school, only: [:show, :edit, :update]
 end
