@@ -14,12 +14,13 @@
         %p.alert
 
     .row
-      #branding.six.columns
-      .six.columns
+      #branding.four.columns
+        = image_tag 'school-branding-placeholder.png'
+      .four.columns
         %nav.global
           - if admin_signed_in?
             %p
-              Welcome, #{current_admin.first_name}
+              Welcome, #{current_admin.first_name} #{current_admin.last_name}
               |
               %span#registration-links
                 = link_to 'Log out', destroy_admin_session_path, method: :delete
@@ -27,4 +28,6 @@
             #registration-links
               = link_to 'Log in', new_admin_session_path
 
-    = yield
+    .row
+      #content.twelve.columns
+        = yield

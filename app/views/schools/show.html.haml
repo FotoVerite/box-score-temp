@@ -1,1 +1,10 @@
-%h1 Schools#show
+%h1= @school.name
+-unless @school.mascot.blank?
+  %p
+    %strong School mascot:
+    #{@school.mascot}
+%p
+  %strong Organization type:
+  #{@school.organization_type}
+- if signed_in? && @school.id == current_admin.school_id
+  %p= link_to 'Edit this school profile', edit_school_path(@school)
