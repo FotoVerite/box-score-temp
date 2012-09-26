@@ -4,6 +4,6 @@ FactoryGirl.define do
     sequence(:mascot) { |n| "mascot-#{n}" }
     sequence(:city) { |n| "city-#{n}" }
     sequence(:state) { |n| "state-#{n}" }
-    sequence(:type) { |n| "type-#{n}" }
+    sequence(:organization_type) { |n| "type-#{n}" }
   end
 end
