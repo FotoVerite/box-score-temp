@@ -1,32 +1,33 @@
 !!!
 %html{lang: 'en'}
   %head
-    %meta{charset: 'utf-8'}/
-    %meta{content: 'width=device-width, initial-scale=1.0', name: 'viewport'}/
+    %meta{ charset: 'utf-8' }/
+    %meta{ content: 'width=device-width, initial-scale=1.0', name: 'viewport' }/
     %title= content_for?(:title) ? yield(:title) : '[BOX]SCORE'
     = stylesheet_link_tag    'application'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-  %body
+  %body{ body_attributes }
     .row
       .six.columns.centered
         %p.notice
         %p.alert
 
     .row
-      -##branding.four.columns
-        = image_tag 'school-branding-placeholder.png'
-      .twelve.columns
+      #branding.six.columns
+        %p
+          %strong [BOX]SCORE
+      .six.columns
         %nav.global
           - if admin_signed_in?
             %p
               Welcome, #{current_admin.first_name} #{current_admin.last_name}
               |
               %span#registration-links
-                = link_to 'Log out', destroy_admin_session_path, method: :delete
+                = link_to 'Log out', destroy_admin_session_path, method: :delete, id: 'logout'
           - else
             #registration-links
-              = link_to 'Log in', new_admin_session_path
+              = link_to 'Log in', new_admin_session_path, id: 'login'
 
     .row
       #content.twelve.columns

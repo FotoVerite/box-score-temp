@@ -6,6 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+SCHOOL_NAMES = ['Trinity', 'Southville', 'Lexington', 'Eastern Catholic', 'Westminster',
+               'Northern', 'Lakeland', 'Bishop Kelly', 'Rexburg', 'Southern']
+ORGANIZATION_TYPES = ['PSAL', 'CHSAA', 'NYSAISAA']
+CITY_NAMES = ['Brooklyn', 'Manhattan', 'Queens', 'Staten Island', 'Bronx']
+LEAGUE_NAMES = ['League LL', 'League MM', 'League OO']
+
 def create_admin(school, name)
   first_name = name
   last_name = 'Admin'
@@ -16,23 +22,31 @@ def create_admin(school, name)
                          school_id: school_id
 end
 
-def create_school(str)
-  name = "#{str} High School"
-  city = ['Brooklyn', 'Manhattan', 'Queens', 'Staten Island', 'Bronx'].sample
+def create_school(name, city, org_type)
+  name = "#{name} High School"
   state = 'New York'
-  organization_type = ['PSAL', 'CHSAA', 'NYSAISAA'].sample
   schools = School.create! name: name, city: city, state: state,
-                           organization_type: organization_type
+                           organization_type: org_type
+end
+
+def create_league(name)
+  leagues = League.create! name: name
 end
 
 Admin.delete_all
 School.delete_all
-
-names = ['Trinity', 'Southville', 'Lexington', 'Eastern Catholic', 'Westminster']
+League.delete_all
 
 (1..5).each do |n|
-  name = names[n-1]
+  name = SCHOOL_NAMES[n-1]
+  city = CITY_NAMES.sample
+  org_type = ORGANIZATION_TYPES.sample
 
-  school = create_school name
+  school = create_school name, city, org_type
   create_admin school, name
+end
+
+(1..3).each do |n|
+  name = LEAGUE_NAMES[n-1]
+  create_league name
 end

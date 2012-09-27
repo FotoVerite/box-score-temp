@@ -1,1 +1,13 @@
 %h1 #{@school.name} - Edit Profile
+.five.columns.centered
+  = form_for @school do |f|
+    = f.label :name
+    = f.text_field :name
+    = f.label :mascot
+    = f.text_field :mascot
+    = f.label :organization_type
+    = f.select :organization_type, organization_types
+    = f.label :city
+    = f.text_field :city
+
+    = f.submit 'Submit', class: 'medium secondary button'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120926142532) do
+ActiveRecord::Schema.define(:version => 20120927181057) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -34,6 +34,12 @@ ActiveRecord::Schema.define(:version => 20120926142532) do
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
 
+  create_table "leagues", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "schools", :force => true do |t|
     t.string   "name"
     t.string   "mascot"
@@ -42,6 +48,16 @@ ActiveRecord::Schema.define(:version => 20120926142532) do
     t.string   "state"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+  end
+
+  create_table "teams", :force => true do |t|
+    t.string   "gender"
+    t.string   "sport"
+    t.string   "level"
+    t.integer  "school_id"
+    t.integer  "league_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
