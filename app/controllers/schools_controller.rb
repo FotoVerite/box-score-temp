@@ -1,5 +1,7 @@
 class SchoolsController < ApplicationController
-  before_filter :authenticate_admin!
+  def index
+    @schools = School.all
+  end
 
   def show
     @school = School.find(params[:id])
