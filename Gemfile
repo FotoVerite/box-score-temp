@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
+
 gem 'rails', '3.2.8'
 
 #gem 'activeadmin'
@@ -11,14 +13,14 @@ gem 'modernizr-rails'
 gem 'pg'
 gem 'simple_form'
 gem 'stamp'
-gem 'zurb-foundation'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'compass-rails'
   gem 'sass'
-  gem 'sass-rails', '~> 3.2.3'
+  gem 'sass-rails'
   gem 'uglifier', '>= 1.0.3'
+  gem 'zurb-foundation', '~> 3.0.9'
 end
 
 group :development, :test do
