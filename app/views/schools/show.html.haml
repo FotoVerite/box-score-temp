@@ -4,7 +4,7 @@
     %strong School mascot:
     #{@school.mascot}
 %p
-  %strong Organization type:
-  #{@school.organization_type}
+  %strong Association:
+  #{@school.association}
 - if signed_in? && @school.id == current_admin.school_id
   %p= link_to 'Edit this school profile', edit_school_path(@school)

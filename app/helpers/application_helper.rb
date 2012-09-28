@@ -5,7 +5,7 @@ module ApplicationHelper
     }
   end
 
-  def organization_types
-    School.all.map { |s| s.organization_type }.uniq
+  def associations
+    School.all.map { |s| s.association }.uniq
   end
 end

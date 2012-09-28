@@ -1,16 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
 SCHOOL_NAMES = ['Trinity', 'Southville', 'Lexington', 'Eastern Catholic', 'Westminster',
                'Northern', 'Lakeland', 'Bishop Kelly', 'Rexburg', 'Southern']
-ORGANIZATION_TYPES = ['PSAL', 'CHSAA', 'NYSAISAA']
-CITY_NAMES = ['Brooklyn', 'Manhattan', 'Queens', 'Staten Island', 'Bronx']
-LEAGUE_NAMES = ['League LL', 'League MM', 'League OO']
+ASSOCIATIONS = ['PSAL', 'CHSAA', 'NYSAISAA']
+LEAGUE_NAMES = ['Brooklyn AA', 'Queens AAA', 'Long Island AA']
 
 def create_admin(school, name)
   first_name = name
@@ -22,11 +13,9 @@ def create_admin(school, name)
                          school_id: school_id
 end
 
-def create_school(name, city, org_type)
+def create_school(name, association)
   name = "#{name} High School"
-  state = 'New York'
-  schools = School.create! name: name, city: city, state: state,
-                           organization_type: org_type
+  schools = School.create! name: name, association: association
 end
 
 def create_league(name)
@@ -39,10 +28,9 @@ League.delete_all
 
 (1..5).each do |n|
   name = SCHOOL_NAMES[n-1]
-  city = CITY_NAMES.sample
-  org_type = ORGANIZATION_TYPES.sample
+  association = ASSOCIATIONS.sample
 
-  school = create_school name, city, org_type
+  school = create_school name, association
   create_admin school, name
 end
 

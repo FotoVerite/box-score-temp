@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
     redirect_to :back, alert: exception.message
   end
 
+  def after_sign_in_path_for(admin)
+    school_path(admin.school_id)
+  end
+
   def current_ability
     @current_ability ||= AdminAbility.new(current_admin)
   end
