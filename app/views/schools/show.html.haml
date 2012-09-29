@@ -5,6 +5,6 @@
     #{@school.mascot}
 %p
   %strong Association:
-  #{@school.association}
+  #{@school.assn}
 - if signed_in? && @school.id == current_admin.school_id
   %p= link_to 'Edit this school profile', edit_school_path(@school)

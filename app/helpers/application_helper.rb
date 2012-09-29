@@ -6,6 +6,6 @@ module ApplicationHelper
   end
 
   def associations
-    School.all.map { |s| s.association }.uniq
+    School.all.map { |s| s.assn }.uniq
   end
 end

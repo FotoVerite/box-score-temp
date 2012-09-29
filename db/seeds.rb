@@ -13,9 +13,9 @@ def create_admin(school, name)
                          school_id: school_id
 end
 
-def create_school(name, association)
+def create_school(name, assn)
   name = "#{name} High School"
-  schools = School.create! name: name, association: association
+  schools = School.create! name: name, assn: assn
 end
 
 def create_league(name)
@@ -28,9 +28,9 @@ League.delete_all
 
 (1..5).each do |n|
   name = SCHOOL_NAMES[n-1]
-  association = ASSOCIATIONS.sample
+  assn = ASSOCIATIONS.sample
 
-  school = create_school name, association
+  school = create_school name, assn
   create_admin school, name
 end
 
