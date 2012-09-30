@@ -1,4 +1,6 @@
 class SchoolsController < ApplicationController
+  respond_to :html
+
   def index
     @schools = School.all
   end

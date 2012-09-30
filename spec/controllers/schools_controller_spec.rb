@@ -28,7 +28,7 @@ describe SchoolsController do
 
     describe "GET 'edit' with another school id" do
       before { get :edit, id: other_school.id }
-      it { should respond_with :redirect }
+      it { should respond_with :unauthorized }
     end
 
     describe "PUT 'update'" do
@@ -59,7 +59,7 @@ describe SchoolsController do
 
     describe "GET 'edit'" do
       before { get :edit, id: school.id }
-      it { should respond_with :redirect }
+      it { should respond_with :unauthorized }
     end
   end
 end
