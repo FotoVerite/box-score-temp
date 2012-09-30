@@ -5,8 +5,14 @@ class Admin < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :rememberable,
          :trackable, :validatable
 
-  attr_accessible :email, :first_name, :last_name, :password,
-                  :password_confirmation, :remember_me, :school_id
+  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation,
+                  :remember_me, :school_id
 
   belongs_to :school
+
+  def name
+    if first_name && last_name
+      "#{first_name} #{last_name}"
+    end
+  end
 end

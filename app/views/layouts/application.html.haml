@@ -21,7 +21,7 @@
         %nav.global
           - if admin_signed_in?
             %p
-              Welcome, #{current_admin.first_name} #{current_admin.last_name}
+              Welcome, #{current_admin.name}
               |
               %span#registration-links
                 = link_to 'Log out', destroy_admin_session_path, method: :delete, id: 'logout'
