@@ -1,8 +1,11 @@
-%h1 #{@school.name} - Edit Profile
-.five.columns.centered
+.nine.columns
+  %h1 #{@school.name} - Edit Profile
   = simple_form_for @school do |f|
     = f.input :name
     = f.input :mascot
-    = f.input :league_id, collection: League.uniq.map{ |league| ["#{league.name} (#{league.assn.name})", league.id] }, label: 'League/Division', include_blank: false
-
+    = f.input :league_id, collection: league_assns, label: 'League/Division', include_blank: false
     = f.button :submit, class: 'medium secondary button'
+
+-if admin_signed_in? && current_admin.school_id == @school.id
+  .three.columns.admin-menu
+    = render partial: 'shared/admin_menu'

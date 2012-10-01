@@ -1,13 +1,16 @@
-%h1= @school.name
--unless @school.mascot.blank?
+.nine.columns
+  %h1= @school.name
+  -unless @school.mascot.blank?
+    %p
+      %strong School mascot:
+      #{@school.mascot}
   %p
-    %strong School mascot:
-    #{@school.mascot}
-%p
-  %strong Association:
-  #{@school.league.assn.name}
-%p
-  %strong League/Division:
-  #{@school.league.name}
-- if signed_in? && @school.id == current_admin.school_id
-  %p= link_to 'Edit this school profile', edit_school_path(@school)
+    %strong Association:
+    #{@school.league.assn.name}
+  %p
+    %strong League/Division:
+    #{@school.league.name}
+
+-if admin_signed_in? && current_admin.school_id == @school.id
+  .three.columns.admin-menu
+    = render partial: 'shared/admin_menu'

@@ -1,3 +1,20 @@
+h1, h2, h3, h4, h5 {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+header.global {
+  border-bottom: 1px solid #333;
+}
+
 #branding {
   img {
     float: left;
@@ -10,4 +27,8 @@ nav.global {
 
 #registration-links {
   display: inline-block;
+}
+
+#content {
+  margin-top: 20px;
 }
