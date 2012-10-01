@@ -7,7 +7,7 @@
   %strong Association:
   #{@school.assn.name}
 %p
-  %strong League:
+  %strong League/Division:
   #{@school.league.name}
 - if signed_in? && @school.id == current_admin.school_id
   %p= link_to 'Edit this school profile', edit_school_path(@school)

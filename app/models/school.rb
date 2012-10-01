@@ -1,7 +1,7 @@
 class School < ActiveRecord::Base
   attr_accessible :mascot, :name, :assn, :league_id, :league, :assn_id, :assn
 
-  validates_presence_of :name
+  validates :name, presence: true, uniqueness: true
 
   belongs_to :league
   belongs_to :assn
