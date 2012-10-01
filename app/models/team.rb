@@ -1,7 +1,7 @@
 class Team < ActiveRecord::Base
-  attr_accessible :gender, :level, :school_id, :sport
+  attr_accessible :level, :school_id, :sport
 
-  validates_presence_of [:gender, :sport]
+  validates_presence_of :sport
 
   belongs_to :school
 

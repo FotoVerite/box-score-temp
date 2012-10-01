@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121001183829) do
+ActiveRecord::Schema.define(:version => 20121001213915) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -83,7 +83,6 @@ ActiveRecord::Schema.define(:version => 20121001183829) do
   end
 
   create_table "teams", :force => true do |t|
-    t.string   "gender"
     t.string   "sport"
     t.string   "level"
     t.integer  "school_id"
