@@ -1,6 +1,6 @@
 SCHOOL_NAMES = ['Trinity', 'Southville', 'Lexington', 'Eastern Catholic', 'Westminster',
                'Northern', 'Lakeland', 'Bishop Kelly', 'Rexburg', 'Southern']
-ASSOCIATIONS = ['PSAL', 'CHSAA', 'NYSAISAA']
+ASSOCIATION_NAMES = ['PSAL', 'CHSAA', 'NYSAISAA']
 LEAGUE_NAMES = ['Brooklyn AA', 'Queens AAA', 'Long Island AA']
 
 def create_admin(school, name)
@@ -13,28 +13,39 @@ def create_admin(school, name)
                          school_id: school_id
 end
 
-def create_school(name, assn)
+def create_school(name, assn_id, league_id)
   name = "#{name} High School"
-  schools = School.create! name: name, assn: assn
+  schools = School.create! name: name, assn_id: assn_id, league_id: league_id
 end
 
 def create_league(name)
-  leagues = League.create! name: name
+  league = League.create! name: name
+end
+
+def create_assn(name)
+  assn = Assn.create! name: name
 end
 
 Admin.delete_all
 School.delete_all
 League.delete_all
-
-(1..5).each do |n|
-  name = SCHOOL_NAMES[n-1]
-  assn = ASSOCIATIONS.sample
-
-  school = create_school name, assn
-  create_admin school, name
-end
+Assn.delete_all
 
 (1..3).each do |n|
   name = LEAGUE_NAMES[n-1]
   create_league name
+end
+
+(1..3).each do |n|
+  name = ASSOCIATION_NAMES[n-1]
+  create_assn name
+end
+
+(1..5).each do |n|
+  name = SCHOOL_NAMES[n-1]
+  assn_id = Assn.all.sample.id
+  league_id = League.all.sample.id
+
+  school = create_school name, assn_id, league_id
+  create_admin school, name
 end

@@ -3,6 +3,7 @@
   = simple_form_for @school do |f|
     = f.input :name
     = f.input :mascot
-    = f.input :assn, collection: @school.assns, label: 'Association'
+    = f.input :assn_id, collection: Assn.uniq, label: 'Association', include_blank: false
+    = f.input :league_id, collection: League.uniq, label: 'League', include_blank: false
 
     = f.button :submit, class: 'medium secondary button'
