@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe SchoolsController do
-  before { request.env["HTTP_REFERER"] = request.fullpath }
-
   context 'Authenticated' do
     let(:admin) { create :admin }
     let(:school) { admin.school }
