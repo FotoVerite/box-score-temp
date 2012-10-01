@@ -3,5 +3,5 @@ class Assn < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
 
-  has_many :schools
+  has_many :leagues
 end
