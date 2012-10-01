@@ -39,12 +39,12 @@ describe SchoolsController do
 
       context 'with valid data' do
         before { put :update, id: school.id, school: { name: 'New Name' } }
-        it { should redirect_to school_path(school) }
+        it { should render_template :show }
       end
 
       context 'with invalid data' do
         before { put :update, id: school.id, school: { name: '' } }
-        it { should redirect_to edit_school_path(school) }
+        it { should render_template :edit }
       end
     end
   end

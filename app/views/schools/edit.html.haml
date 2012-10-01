@@ -6,6 +6,6 @@
     = f.label :mascot
     = f.text_field :mascot
     = f.label :assn
-    = f.select :assn, associations
+    = f.select :assn, @school.assns
 
     = f.submit 'Submit', class: 'medium secondary button'
