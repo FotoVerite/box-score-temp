@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121001145427) do
+ActiveRecord::Schema.define(:version => 20121001173142) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -46,6 +46,20 @@ ActiveRecord::Schema.define(:version => 20121001145427) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "player_stats", :force => true do |t|
+    t.integer  "team_id"
+    t.integer  "game_id"
+    t.integer  "player_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "players", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "schools", :force => true do |t|
     t.string   "name"
     t.string   "mascot"
@@ -56,6 +70,16 @@ ActiveRecord::Schema.define(:version => 20121001145427) do
   end
 
   add_index "schools", ["league_id"], :name => "index_schools_on_league_id"
+
+  create_table "seasons", :force => true do |t|
+    t.string   "name"
+    t.integer  "league_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "sport"
+  end
 
   create_table "teams", :force => true do |t|
     t.string   "gender"

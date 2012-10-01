@@ -30,6 +30,7 @@ Admin.delete_all
 School.delete_all
 League.delete_all
 Assn.delete_all
+Season.delete_all
 
 (1..3).each do |n|
   name = LEAGUE_NAMES[n-1]
@@ -49,3 +50,8 @@ end
   school = create_school name, assn_id, league_id
   create_admin school, name
 end
+
+Season.create!(start_date: Date.new(2011, 9, 9), end_date: Date.new(2012, 2, 2), league_id: League.all.sample.id, name: '2011-2012', sport: 'Boys Baseball')
+Season.create!(start_date: Date.new(2011, 9, 9), end_date: Date.new(2012, 2, 2), league_id: League.all.sample.id, name: '2011-2012', sport: 'Girls Softball')
+Season.create!(start_date: Date.new(2010, 9, 9), end_date: Date.new(2011, 2, 2), league_id: League.all.sample.id, name: '2010-2011', sport: 'Girls Baseball')
+Season.create!(start_date: Date.new(2010, 9, 9), end_date: Date.new(2011, 2, 2), league_id: League.all.sample.id, name: '2010-2011', sport: 'Boys Softball')
