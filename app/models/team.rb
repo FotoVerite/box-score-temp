@@ -4,4 +4,6 @@ class Team < ActiveRecord::Base
   validates_presence_of [:gender, :sport]
 
   belongs_to :school
+
+  has_many :player_stats
 end
