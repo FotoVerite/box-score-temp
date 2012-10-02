@@ -5,5 +5,5 @@ class Season < ActiveRecord::Base
 
   belongs_to :league
 
-  validates_uniqueness_of :name, scope: :sport
+  validates_uniqueness_of :name, scope: [:sport, :league_id]
 end

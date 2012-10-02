@@ -52,7 +52,14 @@ end
   create_admin school, name
 end
 
-Season.create!(start_date: Date.new(2011, 9, 9), end_date: Date.new(2012, 2, 2), league_id: League.all.sample.id, name: '2011-2012', sport: 'Boys Baseball')
-Season.create!(start_date: Date.new(2011, 9, 9), end_date: Date.new(2012, 2, 2), league_id: League.all.sample.id, name: '2011-2012', sport: 'Girls Softball')
-Season.create!(start_date: Date.new(2010, 9, 9), end_date: Date.new(2011, 2, 2), league_id: League.all.sample.id, name: '2010-2011', sport: 'Girls Baseball')
-Season.create!(start_date: Date.new(2010, 9, 9), end_date: Date.new(2011, 2, 2), league_id: League.all.sample.id, name: '2010-2011', sport: 'Boys Softball')
+League.all.each do |league|
+  Season.create!(start_date: Date.new(2011, 9, 9), end_date: Date.new(2012, 2, 2), league_id: league.id, name: '2011-2012', sport: 'Boys Baseball')
+  Season.create!(start_date: Date.new(2011, 9, 9), end_date: Date.new(2012, 2, 2), league_id: league.id, name: '2011-2012', sport: 'Girls Softball')
+  Season.create!(start_date: Date.new(2011, 9, 9), end_date: Date.new(2012, 2, 2), league_id: league.id, name: '2011-2012', sport: 'Boys Basketball')
+  Season.create!(start_date: Date.new(2011, 9, 9), end_date: Date.new(2012, 2, 2), league_id: league.id, name: '2011-2012', sport: 'Girls Basketball')
+
+  Season.create!(start_date: Date.new(2010, 9, 9), end_date: Date.new(2011, 2, 2), league_id: league.id, name: '2010-2011', sport: 'Boys Baseball')
+  Season.create!(start_date: Date.new(2010, 9, 9), end_date: Date.new(2011, 2, 2), league_id: league.id, name: '2010-2011', sport: 'Girls Softball')
+  Season.create!(start_date: Date.new(2010, 9, 9), end_date: Date.new(2011, 2, 2), league_id: league.id, name: '2010-2011', sport: 'Boys Basketball')
+  Season.create!(start_date: Date.new(2010, 9, 9), end_date: Date.new(2011, 2, 2), league_id: league.id, name: '2010-2011', sport: 'Girls Basketball')
+end

@@ -8,5 +8,5 @@ describe Season do
 
   it { should belong_to :league }
 
-  it { should validate_uniqueness_of(:name), scope: :sport }
+  it { should validate_uniqueness_of(:name), scope: [:sport, :league_id] }
 end

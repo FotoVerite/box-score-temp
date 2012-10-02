@@ -1,1 +1,11 @@
-%h1 Teams#index
+%h1 #{current_admin.school.name} Teams
+%table
+  - if @teams.length
+    - @teams.each do |team|
+      %tr
+        %td= team.sport
+        %td
+        %td
+  - else
+    %tr
+      %td{ colspan: '3' } No teams currently exist for #{current_admin.school.name}.
