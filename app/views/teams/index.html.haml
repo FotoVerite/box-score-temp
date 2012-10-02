@@ -1,11 +1,16 @@
-%h1 #{current_admin.school.name} Teams
-%table
-  - if @teams.length
-    - @teams.each do |team|
-      %tr
-        %td= team.sport
-        %td
-        %td
-  - else
-    %tr
-      %td{ colspan: '3' } No teams currently exist for #{current_admin.school.name}.
+.nine.columns
+  %h1 #{current_admin.school.name} Teams
+
+  = link_to 'Create New Team', new_team_path, class: 'tiny button new-team'
+
+  #teams-list
+    %table
+      - if @teams.length > 0
+        - @teams.each do |team|
+          %tr
+            %td= team.sport
+            %td= team.season.name
+            %td= link_to 'Edit', edit_team_path(team)
+      - else
+        %tr
+          %td{ colspan: '3' } No teams currently exist for #{current_admin.school.name}.

@@ -1,5 +1,5 @@
 class League < ActiveRecord::Base
-  attr_accessible :name, :assn_id
+  attr_accessible :name, :classification, :assn_id
 
   validates :name, presence: true, uniqueness: true
 

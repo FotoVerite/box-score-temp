@@ -31,6 +31,7 @@ School.delete_all
 Assn.delete_all
 League.delete_all
 Season.delete_all
+Player.delete_all
 
 (1..3).each do |n|
   name = ASSOCIATION_NAMES[n-1]
@@ -62,4 +63,10 @@ League.all.each do |league|
   Season.create!(start_date: Date.new(2010, 9, 9), end_date: Date.new(2011, 2, 2), league_id: league.id, name: '2010-2011', sport: 'Girls Softball')
   Season.create!(start_date: Date.new(2010, 9, 9), end_date: Date.new(2011, 2, 2), league_id: league.id, name: '2010-2011', sport: 'Boys Basketball')
   Season.create!(start_date: Date.new(2010, 9, 9), end_date: Date.new(2011, 2, 2), league_id: league.id, name: '2010-2011', sport: 'Girls Basketball')
+end
+
+('A'..'Z').each do |first_letter|
+  ('A'..'Z').each do |second_letter|
+    player = Player.create! first_name: "#{first_letter}rmathy", last_name: "#{second_letter}mith"
+  end
 end

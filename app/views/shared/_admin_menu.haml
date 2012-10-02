@@ -1,6 +1,8 @@
-%h2 Admin Menu
+%hgroup
+  %h2 Admin Menu
+  %h3= current_admin.school.name
 %nav
   %ul
-    %li= link_to 'School Profile', edit_school_path(@school)
-    %li= link_to 'My Teams', school_teams_path(@school)
+    %li= link_to 'School Profile', edit_school_path(current_admin.school)
+    %li= link_to 'My Teams', teams_path
     %li= link_to 'My Scores', '#'

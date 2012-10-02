@@ -1,0 +1,4 @@
+$('table.roster')
+  .append('<%=escape_javascript render('teams/team_member', team_member: @player, mode: 'remove') %>')
+  .find('tr:last').css('backgroundColor', '#FFFFD0');
+$('#new_player')[0].reset();

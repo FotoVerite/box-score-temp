@@ -10,7 +10,3 @@
   %p
     %strong League/Division:
     #{@school.league.name}
-
--if admin_signed_in? && current_admin.school_id == @school.id
-  .three.columns.admin-menu
-    = render partial: 'shared/admin_menu'

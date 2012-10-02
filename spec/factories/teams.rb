@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :team do
-    sequence(:level) { ['Varsity'].sample }
-    sequence(:sport) { |n| "sport-#{n}" }
+    level { 'Varsity' }
+    season { create :season }
+    sport { season.sport }
     school
   end
 end

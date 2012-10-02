@@ -1,0 +1,36 @@
+body.teams {
+
+  #teams-list {
+    margin-top: 20px;
+  }
+
+  table.roster {
+    width: 100%;
+
+    th {
+      padding-left: 10px;
+      text-align: left;
+      line-height: 24px;
+    }
+  }
+
+  a.delete-team {
+    display: block;
+    float: right;
+  }
+
+  .player-results {
+    max-height: 300px;
+    margin-top: 10px;
+    overflow: auto;
+
+    table {
+      width: 100%;
+    }
+
+    td {
+      font-size: 12px;
+      line-height: 12px;
+    }
+  }
+}

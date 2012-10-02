@@ -32,3 +32,7 @@
     .row
       #content.twelve.columns
         = yield
+
+        -if admin_signed_in?
+          .three.columns.admin-menu
+            = render partial: 'shared/admin_menu'
