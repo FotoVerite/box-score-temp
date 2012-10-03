@@ -14,7 +14,6 @@ def create_admin(school, name)
 end
 
 def create_school(name, league_id)
-  name = "#{name} High School"
   schools = School.create! name: name, league_id: league_id
 end
 

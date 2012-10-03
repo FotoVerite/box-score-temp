@@ -6,13 +6,4 @@ class School < ActiveRecord::Base
   belongs_to :league
 
   has_many :teams
-
-  #def assn_ids
-    #School.uniq.pluck(:assn_id)
-  #end
-
-  #def league_ids
-    #School.uniq.pluck(:league_id)
-  #end
-
 end
