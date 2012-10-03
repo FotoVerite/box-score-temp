@@ -9,4 +9,8 @@ class Team < ActiveRecord::Base
   has_many :player_stats
 
   has_and_belongs_to_many :players
+
+  def team_with_school_name
+    "#{school.name} #{sport}"
+  end
 end

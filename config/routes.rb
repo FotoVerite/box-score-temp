@@ -6,4 +6,5 @@ BoxScore::Application.routes.draw do
   resources :schools, only: [:index, :show, :edit, :update]
   resources :teams
   resources :players
+  resources :games
 end

@@ -4,4 +4,6 @@ class League < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
 
   belongs_to :assn
+
+  has_many :schools
 end
