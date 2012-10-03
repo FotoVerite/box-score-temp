@@ -8,6 +8,7 @@ $ ->
       .removeClass('add')
       .addClass('remove')
       .text('Remove')
+      .prepend('<i class="icon-trash">&nbsp;')
       .end().css('backgroundColor', '#FFFFD0')
     $('table.roster').append row
     $('.player-results').empty()

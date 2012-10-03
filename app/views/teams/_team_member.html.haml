@@ -4,5 +4,11 @@
     = team_member.first_name
   %td
     = team_member.last_name
-  %td
-    = link_to mode.capitalize, '#', class: mode
+  %td.action
+    %a{ href: '#', class: mode }
+      - if mode == 'remove'
+        %i.icon-trash
+      - elsif mode == 'add'
+        %i.icon-plus
+      = mode.capitalize
+

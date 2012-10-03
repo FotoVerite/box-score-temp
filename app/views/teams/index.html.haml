@@ -10,7 +10,10 @@
           %tr
             %td= team.sport
             %td= team.season.name
-            %td= link_to 'Edit', edit_team_path(team)
+            %td
+              %a{ href: edit_team_path(team) }
+                %i.icon-edit
+                Edit
       - else
         %tr
           %td{ colspan: '3' } No teams currently exist for #{current_admin.school.name}.

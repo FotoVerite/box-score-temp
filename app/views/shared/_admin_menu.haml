@@ -3,6 +3,15 @@
   %h3= current_admin.school.name
 %nav
   %ul
-    %li= link_to 'School Profile', edit_school_path(current_admin.school)
-    %li= link_to 'My Teams', teams_path
-    %li= link_to 'My Scores', '#'
+    %li
+      %a{ href: edit_school_path(current_admin.school) }
+        %i.icon-caret-right
+        School Profile
+    %li
+      %a{ href: teams_path }
+        %i.icon-caret-right
+        My Teams
+    %li
+      %a{ href: '#' }
+        %i.icon-caret-right
+        My Scores
