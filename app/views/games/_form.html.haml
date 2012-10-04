@@ -1,0 +1,10 @@
+= simple_form_for @game do |f|
+  = f.input :opponent_id, collection: @game.team.potential_opponents,
+                          label_method: :school_name, include_blank: false,
+                          required: false
+  = f.input :site, collection: Site::NAMES, include_blank: false, required: false
+  = f.collection_radio_buttons :home_away, [['home', 'Home'], ['away', 'Away']], :first, :last,
+                                           required: false, label: false
+  = f.input :date, as: :string
+
+  = f.submit 'Save Game Data', class: 'medium button'

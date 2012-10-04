@@ -18,6 +18,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'compass-rails'
   gem 'font-awesome-rails'
+  gem 'jquery-ui-rails'
   gem 'sass'
   gem 'sass-rails'
   gem 'uglifier', '>= 1.0.3'

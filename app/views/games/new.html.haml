@@ -1,10 +1,3 @@
 .nine.columns
-  %h1 Create New Game
-  = simple_form_for @game do |f|
-    = f.input :sport, collection: Sport::NAMES, include_blank: false
-    = f.input :team_id, collection: current_admin.school.teams, label_method: :sport,
-                        include_blank: false
-    = f.input :competition_id, collection: teams_in_league,
-                               label_method: :team_with_school_name, include_blank: false
-    = f.input :site, collection: Site::NAMES, include_blank: false
-    = f.input :home_away, collection: ['Home', 'Away'], as: :radio_buttons, include_blank: false
+  %h1 Create New Game for #{@game.team.school.name} #{@game.team.sport}
+  = render partial: 'form'
