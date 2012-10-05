@@ -1,10 +1,35 @@
-= simple_form_for @game do |f|
-  = f.input :opponent_id, collection: @game.team.potential_opponents,
-                          label_method: :school_name, include_blank: false,
-                          required: false
-  = f.input :site, collection: Site::NAMES, include_blank: false, required: false
-  = f.collection_radio_buttons :home_away, [['home', 'Home'], ['away', 'Away']], :first, :last,
-                                           required: false, label: false
-  = f.input :date, as: :string
+= simple_form_for @game, html: { class: 'game' } do |f|
+  = field_set_tag 'Game Information' do
+    = f.input :opponent_id, collection: @game.team.potential_opponents,
+                            label_method: :school_name, include_blank: false,
+                            required: false
+    = f.input :site, collection: Site::NAMES, include_blank: false, required: false
+    = f.collection_radio_buttons :home_away, [['home', 'Home'], ['away', 'Away']], :first, :last,
+                                            required: false, label: false
+    = f.input :date, as: :string
+  = field_set_tag 'Game Stats' do
+    %table.game-stats
+      %tr
+        %th Team
+        %th Q1
+        %th Q2
+        %th Q3
+        %th Q4
+        %th Final
+      = f.fields_for :game_stats do |stat|
+        %tr
+          %td= @game.team.school.name
+          %td= stat.input :q1_points, required: false, label: false
+          %td= stat.input :q2_points, required: false, label: false
+          %td= stat.input :q3_points, required: false, label: false
+          %td= stat.input :q4_points, required: false, label: false
+          %td= stat.input :final_points, required: false, label: false
+        %tr
+          %td.opponent Opponent
+          %td= stat.input :opponent_q1_points, required: false, label: false
+          %td= stat.input :opponent_q2_points, required: false, label: false
+          %td= stat.input :opponent_q3_points, required: false, label: false
+          %td= stat.input :opponent_q4_points, required: false, label: false
+          %td= stat.input :opponent_final_points, required: false, label: false
 
   = f.submit 'Save Game Data', class: 'medium button'
