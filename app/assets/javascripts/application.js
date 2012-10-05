@@ -4,3 +4,4 @@
 //= require foundation
 //= require global
 //= require teams
+//= require games
