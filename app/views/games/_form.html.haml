@@ -1,12 +1,12 @@
 = simple_form_for @game, html: { class: 'game' } do |f|
   = field_set_tag 'Game Information' do
     = f.input :opponent_id, collection: @game.team.potential_opponents,
-                            label_method: :school_name, include_blank: false,
-                            required: false
+                            label_method: :school_name, include_blank: false, required: false
     = f.input :site, collection: Site::NAMES, include_blank: false, required: false
     = f.collection_radio_buttons :home_away, [['home', 'Home'], ['away', 'Away']], :first, :last,
-                                            required: false, label: false
-    = f.input :date, as: :string
+                                             required: false, label: false
+    = f.input :date, as: :string, required: false
+
   = field_set_tag 'Game Stats' do
     %table.game-stats
       %tr

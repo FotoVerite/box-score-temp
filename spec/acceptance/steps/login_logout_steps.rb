@@ -1,8 +1,15 @@
 step 'there is an admin user in the database' do
-  @admin = create(:admin, email: 'admin@example.com', password: 'testing')
+  @admin = create :admin, email: 'admin@example.com', password: 'testing'
 end
 
 step 'I am not logged in' do
+end
+
+step 'I am logged in' do
+  step "there is an admin user in the database"
+  step "I visit the home page"
+  step "I click on the \"Log in\" link"
+  step "I enter a valid email address and password into the login form"
 end
 
 step 'I visit the home page' do
