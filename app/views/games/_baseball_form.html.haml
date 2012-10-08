@@ -1,0 +1,47 @@
+= simple_form_for @game, html: { class: 'game' } do |f|
+  = field_set_tag 'Game Information' do
+    = f.input :opponent_id, collection: @game.team.potential_opponents,
+      label_method: :school_name, include_blank: false, required: false
+    = f.input :site, collection: Site::NAMES, include_blank: false, required: false
+    .inline-radio
+      = f.collection_radio_buttons :home_away, [['home', 'Home'], ['away', 'Away']], :first, :last,
+        required: false, label: false
+    = f.input :date, as: :string, required: false
+
+  = field_set_tag 'Game Stats' do
+    = hidden_field_tag :team_id, @game.team_id
+    %table.game-stats
+      %tr
+        %th Team
+        %th 1
+        %th 2
+        %th 3
+        %th 4
+        %th 5
+        %th 6
+        %th 7
+        %th Final
+      = f.fields_for :game_stats do |stat|
+        %tr.team-game-stats
+          %td.team-name= @game.team.school.name
+          %td= stat.input :inning_01_runs, required: false, label: false
+          %td= stat.input :inning_02_runs, required: false, label: false
+          %td= stat.input :inning_03_runs, required: false, label: false
+          %td= stat.input :inning_04_runs, required: false, label: false
+          %td= stat.input :inning_05_runs, required: false, label: false
+          %td= stat.input :inning_06_runs, required: false, label: false
+          %td= stat.input :inning_07_runs, required: false, label: false
+          %td.final-points= stat.input :total_runs, required: false, label: false
+
+        %tr.team-game-stats
+          %td.opponent Opponent
+          %td= stat.input :opponent_inning_01_runs, required: false, label: false
+          %td= stat.input :opponent_inning_02_runs, required: false, label: false
+          %td= stat.input :opponent_inning_03_runs, required: false, label: false
+          %td= stat.input :opponent_inning_04_runs, required: false, label: false
+          %td= stat.input :opponent_inning_05_runs, required: false, label: false
+          %td= stat.input :opponent_inning_06_runs, required: false, label: false
+          %td= stat.input :opponent_inning_07_runs, required: false, label: false
+          %td.final-points= stat.input :opponent_total_runs, required: false, label: false
+
+  = f.submit 'Save Game Data', class: 'medium button'

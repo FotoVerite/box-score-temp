@@ -18,4 +18,12 @@ class Team < ActiveRecord::Base
   def potential_opponents
     Team.for_sport(sport).where("id != :me", me: id)
   end
+
+  def sport_type
+    if ['Boys Basketball', 'Girls Basketball'].include? sport
+      'basketball'
+    elsif ['Boys Basball', 'Girls Softball'].include? sport
+      'baseball'
+    end
+  end
 end

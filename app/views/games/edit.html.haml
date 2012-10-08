@@ -1,4 +1,3 @@
 .nine.columns
   %h1 Edit Game Score for #{@game.team.school.name} #{@game.team.sport}
-  = render partial: 'form'
-
+  = render partial: "#{@game.team.sport_type}_form"

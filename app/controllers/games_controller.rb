@@ -12,6 +12,7 @@ class GamesController < ApplicationController
   def new
     if params[:team_id]
       @game = current_admin.school.teams.find(params[:team_id]).games.build(home_away: 'home')
+      render 'new'
     else
       render 'choose_team'
     end
@@ -27,7 +28,7 @@ class GamesController < ApplicationController
 
   def create
     @game = current_admin.school.teams.find(params[:team_id]).games.build(params[:game])
-    if @game.save
+    if @game.update_attributes(params[:game])
       render action: 'index'
     else
       render action: 'edit'
