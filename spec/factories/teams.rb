@@ -6,4 +6,3 @@ FactoryGirl.define do
     school
   end
 end
-

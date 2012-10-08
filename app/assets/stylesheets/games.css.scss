@@ -1,0 +1,13 @@
+table.game-stats {
+  width: 100%;
+  td {
+    input {
+      width: 50px;
+    }
+    &.final-points {
+      input {
+        width: 75px;
+      }
+    }
+  }
+}

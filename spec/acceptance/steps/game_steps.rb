@@ -3,6 +3,8 @@ step "I have a team already created" do
 end
 
 step "I click on my team link" do
+  pending
+  save_and_open_page
   click_link "#{@team.school.name} #{@team.sport}"
 end
 
@@ -15,9 +17,13 @@ step "I visit the new game page" do
 end
 
 step "I enter a point value for a quarter" do
-  fill_in('Q1', with: '15')
-  find('#game_game_stats_q1_points').trigger('blur')
+  pending
+  fill_in 'game_game_stats_q1_points', with: '15'
+  fill_in 'game_game_stats_q2_points', with: '15'
+  fill_in 'game_game_stats_q3_points', with: '15'
+  fill_in 'game_game_stats_q4_points', with: '15'
 end
 
 step "the team's total score field should update" do
+  find('#game_game_stats_final_points').should have_content '60'
 end

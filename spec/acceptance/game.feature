@@ -1,11 +1,12 @@
+@javascript
 Feature: Entering game data
   Background:
     Given I am logged in
+    And I have a team already created
+    And I visit the new game page
 
   Scenario: selecting a team
-    Given I have a team already created
-    When I visit the new game page
-    And I click on my team link
+    When I click on my team link
     Then I should be taken to the new team form
 
   Scenario: tallying basketball game scores
