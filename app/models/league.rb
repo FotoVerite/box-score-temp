@@ -14,6 +14,6 @@ class League < ActiveRecord::Base
       names_with_assns << ["#{league.name} (#{league.assn.name})", league.id]
     end
 
-    names_with_assns
+    names_with_assns.sort
   end
 end
