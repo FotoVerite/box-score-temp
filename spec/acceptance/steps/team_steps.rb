@@ -1,11 +1,16 @@
+step "a season exists in the database" do
+  pending
+  @season = create :season
+end
+
 step "I visit my teams page" do
   visit teams_path
 end
 
 step "I enter data in the required fields" do
-  pending
   page.select 'Boys Basketball', from: 'Sport'
-  page.select 'Girls Softball 2011-2012', from: 'Season'
+  save_and_open_page
+  page.select 'Boys Basketball 2011-2012', from: 'Season'
 end
 
 step "I click on the 'Create team' button" do

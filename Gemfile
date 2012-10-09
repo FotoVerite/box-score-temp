@@ -28,11 +28,13 @@ end
 group :development, :test do
   gem 'debugger'
   gem 'guard-rspec'
+  gem 'launchy'
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'rspec-rails'
 end
 
 group :test do
+  gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'poltergeist'
   gem 'shoulda-matchers'

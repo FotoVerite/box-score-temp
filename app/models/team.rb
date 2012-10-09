@@ -22,7 +22,7 @@ class Team < ActiveRecord::Base
   def sport_type
     if ['Boys Basketball', 'Girls Basketball'].include? sport
       'basketball'
-    elsif ['Boys Basball', 'Girls Softball'].include? sport
+    elsif ['Boys Baseball', 'Girls Softball'].include? sport
       'baseball'
     end
   end

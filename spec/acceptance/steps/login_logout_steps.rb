@@ -7,8 +7,7 @@ end
 
 step 'I am logged in' do
   step "there is an admin user in the database"
-  step "I visit the home page"
-  step "I click on the \"Log in\" link"
+  step "I visit the login page"
   step "I enter a valid email address and password into the login form"
 end
 

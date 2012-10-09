@@ -6,7 +6,6 @@ class Game < ActiveRecord::Base
   validates_presence_of :opponent_id
   validates_presence_of :site
   validates_presence_of :home_away
-  validates_presence_of :game_stats
 
   belongs_to :team
   belongs_to :season

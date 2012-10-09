@@ -3,25 +3,23 @@ step "I have a team already created" do
 end
 
 step "I click on my team link" do
-  pending
-  save_and_open_page
   click_link "#{@team.school.name} #{@team.sport}"
 end
 
-step "I should be taken to the new team form" do
-  page.should have_content 'Create New Game'
+step "I should be taken to the new box score form" do
+  page.should have_content 'Report a new box score'
 end
 
 step "I visit the new game page" do
   visit new_game_path
 end
 
-step "I enter a point value for a quarter" do
+step "I enter a point value for each quarter" do
   pending
-  fill_in 'game_game_stats_q1_points', with: '15'
-  fill_in 'game_game_stats_q2_points', with: '15'
-  fill_in 'game_game_stats_q3_points', with: '15'
-  fill_in 'game_game_stats_q4_points', with: '15'
+  #fill_in 'game_game_stats_q1_points', with: '15'
+  #fill_in 'game_game_stats_q2_points', with: '11'
+  #fill_in 'game_game_stats_q3_points', with: '17'
+  #fill_in 'game_game_stats_q4_points', with: '14'
 end
 
 step "the team's total score field should update" do
