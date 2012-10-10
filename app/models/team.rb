@@ -1,5 +1,5 @@
 class Team < ActiveRecord::Base
-  attr_accessible :level, :season_id, :player_ids, :sport
+  attr_accessible :season_id, :sport
 
   delegate :name, to: :school, prefix: true
 
@@ -8,10 +8,10 @@ class Team < ActiveRecord::Base
   belongs_to :school
   belongs_to :season
 
-  has_many :player_stats
   has_many :games
+  has_many :team_players
 
-  has_and_belongs_to_many :players
+  has_many :players, through: :team_players
 
   scope :for_sport, lambda { |sport| where sport: sport }
 

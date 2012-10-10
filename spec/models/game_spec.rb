@@ -9,5 +9,7 @@ describe Game do
   it { should belong_to :team }
   it { should belong_to :season }
 
+  it { should have_many :player_game_stats }
+
   it { should serialize :game_stats }
 end

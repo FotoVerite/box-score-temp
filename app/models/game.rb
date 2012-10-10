@@ -10,5 +10,7 @@ class Game < ActiveRecord::Base
   belongs_to :team
   belongs_to :season
 
+  has_many :player_game_stats
+
   serialize :game_stats
 end

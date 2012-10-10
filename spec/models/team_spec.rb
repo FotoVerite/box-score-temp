@@ -5,9 +5,10 @@ describe Team do
   it { should validate_presence_of :season }
   it { should belong_to :school }
   it { should belong_to :season }
-  it { should have_many :player_stats }
   it { should have_many :games }
-  it { should have_and_belong_to_many :players }
+  it { should have_many :team_players }
+
+  it { should have_many(:players).through(:team_players) }
 
   describe '#potential_opponents' do
     let(:team_01) { create :team, sport: 'Girls Softball' }

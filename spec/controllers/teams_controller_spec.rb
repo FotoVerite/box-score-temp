@@ -30,7 +30,7 @@ describe TeamsController do
         let(:season) { create :season }
         let(:player_01) { create :player }
         let(:player_02) { create :player }
-        before { post :create, team: { season_id: season.id, sport: season.sport, player_ids: [player_01.id, player_02.id] } }
+        before { post :create, team: { season_id: season.id, sport: season.sport } }
 
         it "creates a team for the admin's school" do
           assigns(:team).school_id.should == admin.school_id
@@ -42,10 +42,6 @@ describe TeamsController do
 
         it "creates a team for the provided sport" do
           assigns(:team).sport.should == season.sport
-        end
-
-        it "assigns players to the created team" do
-          assigns(:team).players.should =~ [player_01, player_02]
         end
 
         it "redirects to the show page" do
