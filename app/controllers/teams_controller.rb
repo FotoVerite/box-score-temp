@@ -17,18 +17,18 @@ class TeamsController < ApplicationController
   end
 
   def edit
-    @team = current_admin.school.teams.find(params[:id])
+    @team = current_admin.school.teams.find params[:id]
   end
 
   def update
-    @team = current_admin.school.teams.find(params[:id])
+    @team = current_admin.school.teams.find params[:id]
     if @team.update_attributes params[:team]
       redirect_to [:edit, @team]
     end
   end
 
   def destroy
-    @team = current_admin.school.teams.find(params[:id])
+    @team = current_admin.school.teams.find params[:id]
     if @team.destroy
       redirect_to teams_path
     end

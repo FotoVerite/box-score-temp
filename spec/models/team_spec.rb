@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Team do
   it { should validate_presence_of :sport }
-  it { should validate_presence_of :season }
+  it { should validate_presence_of :season_id }
+  it { should validate_presence_of :school_id }
   it { should belong_to :school }
   it { should belong_to :season }
   it { should have_many :games }

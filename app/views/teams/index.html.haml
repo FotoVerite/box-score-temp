@@ -9,7 +9,7 @@
         - @teams.each do |team|
           %tr
             %td= team.sport
-            %td= team.season.name
+            %td= team.season.year
             %td
               %a{ href: edit_team_path(team) }
                 %i.icon-edit

@@ -8,6 +8,36 @@
         required: false, label: false
     = f.input :date, as: :string, required: false
 
+  %h2= @game.team.school.name
+  %table.player-stats
+    %tr
+      %th Player
+      %th Pos
+      %th Pts
+      %th FG
+      %th FGA
+      %th 3pt FG
+      %th 3pt FGA
+      %th FT
+      %th FTA
+      %th Reb
+      %th A
+
+  %h2 Opponent
+  %table.player-stats
+    %tr
+      %th Player
+      %th Pos
+      %th Pts
+      %th FG
+      %th FGA
+      %th 3pt FG
+      %th 3pt FGA
+      %th FT
+      %th FTA
+      %th Reb
+      %th A
+
   = field_set_tag 'Game Stats' do
     = hidden_field_tag :team_id, @game.team_id
     %table.game-stats

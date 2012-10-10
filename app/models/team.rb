@@ -1,9 +1,9 @@
 class Team < ActiveRecord::Base
-  attr_accessible :season_id, :sport
+  attr_accessible :season_id, :sport, :player_ids, :school_id
 
   delegate :name, to: :school, prefix: true
 
-  validates_presence_of :sport, :season
+  validates_presence_of :sport, :season_id, :school_id
 
   belongs_to :school
   belongs_to :season

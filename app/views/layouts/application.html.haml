@@ -9,10 +9,10 @@
     = csrf_meta_tags
   %body{ body_attributes }
     .row
-      .six.columns.centered
-        = flash.inspect
+      .three.columns.centered
         %p.notice
-        %p.alert
+        - if flash.alert
+          %p= flash.alert
 
     %header.global.twelve.columns
       .row
