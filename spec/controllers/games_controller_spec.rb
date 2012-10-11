@@ -7,17 +7,7 @@ describe GamesController do
     before { sign_in admin }
 
     describe "GET 'new'" do
-      context 'without a team' do
-        before { get :new }
-        it { should render_template('choose_team')}
-      end
-
-      context 'with a team' do
-        let(:team) { create :team, school_id: admin.school_id }
-        before { get :new, team_id: team.id }
-
-        it { should render_template 'new' }
-      end
+      it { should render_template 'new' }
     end
 
     describe "POST 'create'" do
