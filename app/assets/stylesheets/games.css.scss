@@ -8,9 +8,10 @@ table.game-stats {
       width: 50px;
     }
     &.final-points {
-      input {
-        width: 75px;
-      }
+      width: 75px;
+      text-align: right;
+      font-weight: bold;
+      font-size: 18px;
     }
   }
 }

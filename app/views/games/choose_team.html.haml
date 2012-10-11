@@ -1,8 +1,0 @@
-.nine.columns
-  %h1 Choose Your Team
-  - if current_admin.school.teams.length > 0
-    %ul
-      - current_admin.school.teams.each do |team|
-        %li= link_to "#{team.school_name} #{team.sport}", new_game_path(team_id: team.id)
-  - else
-    = link_to 'Create a new team', new_team_path

@@ -4,7 +4,9 @@ BoxScore::Application.routes.draw do
   root to: 'home#index'
 
   resources :schools, only: [:index, :show, :edit, :update]
-  resources :teams
+  resources :teams do
+    resources :opponents, only: [:index]
+  end
   resources :players
   resources :games
 end

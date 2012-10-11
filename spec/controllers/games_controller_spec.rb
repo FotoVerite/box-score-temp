@@ -7,7 +7,22 @@ describe GamesController do
     before { sign_in admin }
 
     describe "GET 'new'" do
+      before do
+        get :new
+      end
+
       it { should render_template 'new' }
+
+      it 'assigns teams' do
+        assigns(:teams).should_not be_nil
+      end
+
+      it 'builds a new game' do
+        assigns(:game).team_id.should be_nil
+        assigns(:game).opponent_id.should be_nil
+        assigns(:game).date.should == Date.current
+        assigns(:game).home_away.should == 'home'
+      end
     end
 
     describe "POST 'create'" do

@@ -15,6 +15,10 @@ class Team < ActiveRecord::Base
 
   scope :for_sport, lambda { |sport| where sport: sport }
 
+  def display_name
+    [school.name, sport].join(' ')
+  end
+
   def potential_opponents
     Team.for_sport(sport).where("id != :me", me: id)
   end
@@ -25,5 +29,11 @@ class Team < ActiveRecord::Base
     elsif ['Boys Baseball', 'Girls Softball'].include? sport
       'baseball'
     end
+  end
+
+  def as_json(options=nil)
+    options ||= {}
+    options = options.merge(methods: [:school_name, :display_name])
+    super(options)
   end
 end

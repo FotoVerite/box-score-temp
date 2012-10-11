@@ -10,4 +10,8 @@ class Player < ActiveRecord::Base
   has_many :teams, through: :team_players
 
   scope :matching, lambda { |name| where("first_name ilike :name or last_name ilike :name", name: "%#{name}%") }
+
+  def name
+    [last_name, first_name].reject(&:blank?).join(', ')
+  end
 end

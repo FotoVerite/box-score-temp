@@ -31,6 +31,7 @@ group :development, :test do
   gem 'launchy'
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'rspec-rails'
+  gem 'quiet_assets'
 end
 
 group :test do

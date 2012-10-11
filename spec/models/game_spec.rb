@@ -7,6 +7,7 @@ describe Game do
   it { should validate_presence_of :home_away }
 
   it { should belong_to :team }
+  it { should belong_to :opponent }
   it { should belong_to :season }
 
   it { should have_many :player_game_stats }

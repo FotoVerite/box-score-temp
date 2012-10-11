@@ -2,35 +2,44 @@ class GamesController < ApplicationController
   before_filter :authenticate_admin!
 
   def index
-    @games = current_admin.school.teams
   end
 
   def show
-    @game = Game.find_by_id(params[:id])
+    @game = Game.find(params[:id])
   end
 
   def new
-    if params[:team_id]
-      @game = current_admin.school.teams.find(params[:team_id]).games.build(home_away: 'home')
-    else
-      render 'choose_team'
-    end
-  end
+    respond_to do |format|
+      format.html do
+        @game = Game.new(date: Date.current, home_away: Game::HOME)
+      end
 
-  def edit
-    if params[:team_id]
-      @game = current_admin.school.teams.find(params[:team_id]).games.build(home_away: 'home')
-    else
-      render 'choose_team'
+      format.json do
+        team     = teams.find(params[:team_id])
+        opponent = team.potential_opponents.find(params[:opponent_id])
+
+        game = team.games.build(opponent_id: opponent.id)
+
+        render json: {
+          form_content: render_to_string(partial: "#{team.sport_type}_form.html.haml", locals: { game: game })
+        }
+      end
     end
   end
 
   def create
-    @game = current_admin.school.teams.find(params[:team_id]).games.build(params[:game])
+    team = teams.find(params[:game].delete(:team_id))
+    @game = team.games.build(params[:game])
+
     if @game.save
       redirect_to games_path
     else
       render action: 'new'
     end
   end
+
+  def teams
+    @teams = current_admin.school.teams
+  end
+  helper_method :teams
 end
