@@ -1,8 +1,6 @@
 class Games
   constructor: (@form)->
 
-    # @form.find('select#game_team_id').chosen()
-
     @form
       .on('change', 'select#game_team_id', @teamSelected)
       .on('change', 'select#game_opponent_id', @opponentSelected)

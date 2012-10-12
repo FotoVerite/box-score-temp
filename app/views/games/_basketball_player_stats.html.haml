@@ -1,0 +1,41 @@
+%table.player-stats
+  %thead
+    %tr
+      %th Player
+      %th Pos
+      %th Pts
+      %th FG
+      %th FGA
+      %th 3pt FG
+      %th 3pt FGA
+      %th FT
+      %th FTA
+      %th Reb
+      %th A
+
+  %tbody
+    - game.team.players.each do |player|
+      %tr
+        %td
+          = player.name
+          %input{ name: 'game[player_game_stats][][player_id]', type: 'hidden', value: player.id }
+        %td
+          %input{ name: 'game[player_game_stats][][stats][position]', type: 'text', value: '' }
+        %td
+          %input{ name: 'game[player_game_stats][][stats][points]', type: 'text', value: '' }
+        %td
+          %input{ name: 'game[player_game_stats][][stats][fg]', type: 'text', value: '' }
+        %td
+          %input{ name: 'game[player_game_stats][][stats][fga]', type: 'text', value: '' }
+        %td
+          %input{ name: 'game[player_game_stats][][stats][3pt_fg]', type: 'text', value: '' }
+        %td
+          %input{ name: 'game[player_game_stats][][stats][3pt_fga]', type: 'text', value: '' }
+        %td
+          %input{ name: 'game[player_game_stats][][stats][ft]', type: 'text', value: '' }
+        %td
+          %input{ name: 'game[player_game_stats][][stats][fta]', type: 'text', value: '' }
+        %td
+          %input{ name: 'game[player_game_stats][][stats][rebounds]', type: 'text', value: '' }
+        %td
+          %input{ name: 'game[player_game_stats][][stats][assists]', type: 'text', value: '' }

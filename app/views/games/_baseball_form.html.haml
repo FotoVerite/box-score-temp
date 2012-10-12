@@ -1,6 +1,13 @@
+= field_set_tag 'Player Stats' do
+  %h2= game.team.school.name
+  = render partial: 'baseball_player_stats.html.haml', locals: { game: game }
+
+  %h2= game.opponent.school.name
+  = render partial: 'baseball_player_stats.html.haml', locals: { game: game }
+
 = field_set_tag 'Game Stats' do
-  = form.fields_for :game_stats do |stat|
-    %table.game-stats
+  %table.game-stats
+    %thead
       %tr
         %th Team
         %th 1
@@ -12,24 +19,23 @@
         %th 7
         %th Final
 
-      %tr.team-game-stats
-        %td.team-name= @game.team.school.name
-        %td= stat.input :inning_01_runs, required: false, label: false
-        %td= stat.input :inning_02_runs, required: false, label: false
-        %td= stat.input :inning_03_runs, required: false, label: false
-        %td= stat.input :inning_04_runs, required: false, label: false
-        %td= stat.input :inning_05_runs, required: false, label: false
-        %td= stat.input :inning_06_runs, required: false, label: false
-        %td= stat.input :inning_07_runs, required: false, label: false
-        %td.final-points= stat.input :total_runs, required: false, label: false
+    %tbody
+      %tr
+        %td.team-name= game.team.school.name
 
-      %tr.team-game-stats
-        %td.opponent Opponent
-        %td= stat.input :opponent_inning_01_runs, required: false, label: false
-        %td= stat.input :opponent_inning_02_runs, required: false, label: false
-        %td= stat.input :opponent_inning_03_runs, required: false, label: false
-        %td= stat.input :opponent_inning_04_runs, required: false, label: false
-        %td= stat.input :opponent_inning_05_runs, required: false, label: false
-        %td= stat.input :opponent_inning_06_runs, required: false, label: false
-        %td= stat.input :opponent_inning_07_runs, required: false, label: false
-        %td.final-points= stat.input :opponent_total_runs, required: false, label: false
+        - %w{1 2 3 4 5 6 7}.each do |period|
+          %td{ class: period.to_s.downcase }
+            %input{ name: game_stats_period_field(game.team, period), type: 'text', value: game.stats.team_stats(game.team_id).points(period) }
+
+        %td.final-points
+          = game.stats.team_stats(game.team_id).final
+
+      %tr
+        %td.opponent= game.opponent.school.name
+
+        - %w{1 2 3 4 5 6 7}.each do |period|
+          %td{ class: period.to_s.downcase }
+            %input{ name: game_stats_period_field(game.opponent, period), type: 'text', value: game.stats.team_stats(game.opponent_id).points(period) }
+
+        %td.final-points
+          = game.stats.team_stats(game.opponent_id).final

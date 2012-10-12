@@ -1,63 +1,9 @@
 = field_set_tag 'Player Stats' do
-  %table.player-stats
-    %thead
-      %tr
-        %th Player
-        %th Pos
-        %th Pts
-        %th FG
-        %th FGA
-        %th 3pt FG
-        %th 3pt FGA
-        %th FT
-        %th FTA
-        %th Reb
-        %th A
+  %h2= game.team.school.name
+  = render partial: 'basketball_player_stats.html.haml', locals: { game: game }
 
-    %tbody
-      / = fields_for game do |game_form|
-      /   = game_form.fields_for :player_game_stats do |player_stats_form|
-  
-      - game.team.players.each do |player|
-        %tr
-          %td
-            = player.name
-            %input{ name: 'game[player_game_stats][][player_id]', type: 'hidden', value: player.id }
-          %td
-            %input{ name: 'game[player_game_stats][][stats][position]', type: 'text', value: '' }
-          %td
-            %input{ name: 'game[player_game_stats][][stats][points]', type: 'text', value: '' }
-          %td
-            %input{ name: 'game[player_game_stats][][stats][fg]', type: 'text', value: '' }
-          %td
-            %input{ name: 'game[player_game_stats][][stats][fga]', type: 'text', value: '' }
-          %td
-            %input{ name: 'game[player_game_stats][][stats][3pt_fg]', type: 'text', value: '' }
-          %td
-            %input{ name: 'game[player_game_stats][][stats][3pt_fga]', type: 'text', value: '' }
-          %td
-            %input{ name: 'game[player_game_stats][][stats][ft]', type: 'text', value: '' }
-          %td
-            %input{ name: 'game[player_game_stats][][stats][fta]', type: 'text', value: '' }
-          %td
-            %input{ name: 'game[player_game_stats][][stats][rebounds]', type: 'text', value: '' }
-          %td
-            %input{ name: 'game[player_game_stats][][stats][assists]', type: 'text', value: '' }
-
-  %h2 Opponent
-  %table.player-stats
-    %tr
-      %th Player
-      %th Pos
-      %th Pts
-      %th FG
-      %th FGA
-      %th 3pt FG
-      %th 3pt FGA
-      %th FT
-      %th FTA
-      %th Reb
-      %th A
+  %h2= game.opponent.school.name
+  = render partial: 'basketball_player_stats.html.haml', locals: { game: game }
 
 = field_set_tag 'Game Stats' do
   %table.game-stats
@@ -74,7 +20,7 @@
 
     %tbody
       %tr
-        %td.team-name= game.team.display_name
+        %td.team-name= game.team.school.name
 
         - %w{1 2 3 4 OT1 OT2}.each do |period|
           %td{ class: period.to_s.downcase }
@@ -84,7 +30,7 @@
           = game.stats.team_stats(game.team_id).final
 
       %tr
-        %td.opponent= game.opponent.display_name
+        %td.opponent= game.opponent.school.name
 
         - %w{1 2 3 4 OT1 OT2}.each do |period|
           %td{ class: period.to_s.downcase }
@@ -93,7 +39,7 @@
         %td.final-points
           = game.stats.team_stats(game.opponent_id).final
 
-/ 
+/
 / games_stats: {
 /   team_id: {
 /     q1: 25,
@@ -103,7 +49,7 @@
 /     final: 100
 /   }
 / }
-/ 
+/
 / games_stats: {
 /   team_id: {
 /     quarters: {
@@ -115,7 +61,7 @@
 /     final: 100
 /   }
 / }
-/ 
+/
 / games_stats: {
 /   team_id: {
 /     innings: {
@@ -128,5 +74,5 @@
 /     final: 3
 /   }
 / }
-/ 
+/
 / games_stats[team_id][:innings][19]
