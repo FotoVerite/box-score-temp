@@ -7,15 +7,9 @@ describe GamesController do
     before { sign_in admin }
 
     describe "GET 'new'" do
-      before do
-        get :new
-      end
+      before { get :new }
 
       it { should render_template 'new' }
-
-      it 'assigns teams' do
-        assigns(:teams).should_not be_nil
-      end
 
       it 'builds a new game' do
         assigns(:game).team_id.should be_nil
@@ -32,8 +26,8 @@ describe GamesController do
 
       context 'with invalid data' do
         before do
-          post :create, team_id: team.id,
-                        game: {
+          post :create, game: {
+                          team_id: team.id,
                           opponent_id: opponent.id,
                           date: '',
                           site: 'home',
@@ -47,8 +41,8 @@ describe GamesController do
 
       context 'with valid data' do
         before do
-          post :create, team_id: team.id,
-                        game: {
+          post :create, game: {
+                          team_id: team.id,
                           opponent_id: opponent.id,
                           date: Date.today,
                           site: 'home',

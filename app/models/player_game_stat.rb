@@ -1,5 +1,5 @@
 class PlayerGameStat < ActiveRecord::Base
-  attr_accessible :game_id, :player_id, :stats
+  attr_accessible :stats
 
   belongs_to :player
   belongs_to :game

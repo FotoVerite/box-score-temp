@@ -12,5 +12,7 @@ describe Game do
 
   it { should have_many :player_game_stats }
 
+  it { should accept_nested_attributes_for :player_game_stats }
+
   it { should serialize :game_stats }
 end
