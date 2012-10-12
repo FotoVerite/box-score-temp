@@ -17,7 +17,9 @@
         %th 5
         %th 6
         %th 7
-        %th Final
+        %th R
+        %th H
+        %th E
 
     %tbody
       %tr
@@ -30,6 +32,12 @@
         %td.final-points
           = game.stats.team_stats(game.team_id).final
 
+        %td.hits
+          %input{ name: 'hits', type: 'text', value: game.stats.team_stats(game.team_id).hits }
+
+        %td.errors
+          %input{ name: 'errors', type: 'text', value: game.stats.team_stats(game.team_id).errors }
+
       %tr
         %td.opponent= game.opponent.school.name
 
@@ -39,3 +47,9 @@
 
         %td.final-points
           = game.stats.team_stats(game.opponent_id).final
+
+        %td.hits
+          %input{ name: 'hits', type: 'text', value: game.stats.team_stats(game.opponent_id).hits }
+
+        %td.errors
+          %input{ name: 'errors', type: 'text', value: game.stats.team_stats(game.opponent_id).errors }

@@ -21,7 +21,9 @@
     = form_tag players_path, method: :get, remote: true do |f|
       = field_set_tag 'Search players by first or last name' do
         %input{ type: 'text', name: 'name' }
+
         = submit_tag 'Search', class: 'tiny secondary button'
+
         .player-results
 
     = simple_form_for Player.new, remote: true do |f|
@@ -34,5 +36,3 @@
         .row
           .twelve.columns
             = f.button :submit, 'Create and Add to Roster', class: 'tiny button add-player'
-
-    = link_to 'Create a new game for this team', new_game_path(team_id: @team.id)

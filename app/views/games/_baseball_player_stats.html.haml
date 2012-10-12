@@ -1,4 +1,4 @@
-%table.player-stats.position-players
+%table.player-stats.batters
   %thead
     %tr
       %th Player
@@ -18,12 +18,42 @@
         %td
           %input{ name: 'game[player_game_stats][][stats][position]', type: 'text', value: '' }
         %td
-          %input{ name: 'game[player_game_stats][][stats][ab]', type: 'text', value: '' }
+          %input{ name: 'game[player_game_stats][][stats][batting][ab]', type: 'text', value: '' }
         %td
-          %input{ name: 'game[player_game_stats][][stats][h]', type: 'text', value: '' }
+          %input{ name: 'game[player_game_stats][][stats][batting][h]', type: 'text', value: '' }
         %td
-          %input{ name: 'game[player_game_stats][][stats][hr]', type: 'text', value: '' }
+          %input{ name: 'game[player_game_stats][][stats][batting][hr]', type: 'text', value: '' }
         %td
-          %input{ name: 'game[player_game_stats][][stats][rbi]', type: 'text', value: '' }
+          %input{ name: 'game[player_game_stats][][stats][batting][rbi]', type: 'text', value: '' }
         %td
-          %input{ name: 'game[player_game_stats][][stats][e]', type: 'text', value: '' }
+          %input{ name: 'game[player_game_stats][][stats][batting][e]', type: 'text', value: '' }
+
+%table.player-stats.pitchers
+  %thead
+    %tr
+      %th Player
+      %th IP
+      %th H
+      %th R
+      %th ER
+      %th BB
+      %th SO
+
+  %tbody
+    - game.team.players.each do |player|
+      %tr
+        %td
+          = player.name
+          %input{ name: 'game[player_game_stats][][player_id]', type: 'hidden', value: player.id }
+        %td
+          %input{ name: 'game[player_game_stats][][stats][pitching][ip]', type: 'text', value: '' }
+        %td
+          %input{ name: 'game[player_game_stats][][stats][pitching][h]', type: 'text', value: '' }
+        %td
+          %input{ name: 'game[player_game_stats][][stats][pitching][r]', type: 'text', value: '' }
+        %td
+          %input{ name: 'game[player_game_stats][][stats][pitching][er]', type: 'text', value: '' }
+        %td
+          %input{ name: 'game[player_game_stats][][stats][pitching][bb]', type: 'text', value: '' }
+        %td
+          %input{ name: 'game[player_game_stats][][stats][pitching][so]', type: 'text', value: '' }

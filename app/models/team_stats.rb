@@ -14,4 +14,12 @@ class TeamStats
   def final
     @hash[:periods].values.map(&:to_i).sum
   end
+
+  def hits
+    @hash[:hits]
+  end
+
+  def errors
+    @hash[:errors]
+  end
 end
