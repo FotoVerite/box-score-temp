@@ -19,7 +19,7 @@
           required: false, label: false
 
     #sport_fields
-      = render "#{@game.team.sport_type}_form", game: @game if @game.team
+      = render "#{@game.team.sport_type}_form", game: @game if @game.team && @game.opponent
 
     = f.submit 'Add Box Score', class: 'medium button'
 

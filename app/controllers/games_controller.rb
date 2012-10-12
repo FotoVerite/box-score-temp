@@ -11,7 +11,7 @@ class GamesController < ApplicationController
   def new
     respond_to do |format|
       format.html do
-        @game = Game.new(date: Date.current, home_away: Game::HOME)
+        @game = Game.new(date: Date.current, home_away: Game::HOME, team_id: params[:team_id])
       end
 
       format.json do
