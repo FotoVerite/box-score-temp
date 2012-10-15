@@ -8,6 +8,7 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body{ body_attributes }
+    = link_to 'Home', root_path, id: 'branding'
     .row
       .three.columns.centered
         %p.notice
@@ -16,22 +17,30 @@
 
     %header.global.twelve.columns
       .row
-        #branding.six.columns
-          %h5 [BOX]SCORE
-        .six.columns
+        .six.columns.offset-by-six
           %nav.global
-            - if admin_signed_in?
-              %p
+            %p
+              - if admin_signed_in?
                 Welcome, #{current_admin.name}
-                |
                 %span#registration-links
                   = link_to 'Log out', destroy_admin_session_path, method: :delete, id: 'logout'
-            - else
-              #registration-links
-                = link_to 'Log in', new_admin_session_path, id: 'login'
+              - else
+                %span#registration-links
+                  = link_to 'Log in', new_admin_session_path, id: 'login'
 
     .row
       #content.twelve.columns
+        .row
+          %nav#scores-nav.twelve.columns
+            %dl.six.columns
+              %dt Boys:
+              %dd= link_to 'Basketball', '/boys-basketball-scores', class: 'first'
+              %dd= link_to 'Baseball', '/boys-baseball-scores'
+            %dl.six.columns
+              %dt Girls:
+              %dd= link_to 'Basketball', '/girls-basketball-scores', class: 'first'
+              %dd= link_to 'Softball', '/girls-softball-scores'
+
         = yield
 
         -if admin_signed_in?

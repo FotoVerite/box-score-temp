@@ -1,3 +1,6 @@
+@import 'compass/css3/border-radius';
+@import 'compass/css3/box-shadow';
+@import 'compass/typography';
 @import 'base';
 
 h1, h2, h3, h4, h5 {
@@ -42,26 +45,102 @@ label.collection_radio_buttons {
   color: $alert-color;
 }
 
-header.global {
-  border-bottom: 1px solid #333;
+body {
+  background: #4d85a1;
 }
 
-#branding {
-  img {
-    float: left;
+a#branding {
+  position: absolute;
+  z-index: 2;
+  left: 10px;
+  top: 10px;
+  display: block;
+  width: 564px;
+  height: 250px;
+  background: image_url('hsboxscore-logo.png') no-repeat;
+  text-indent: -999em;
+}
+
+
+header.global {
+  a {
+    display: inline-block;
+    padding: 5px 20px;
+    border: 1px solid #486271;
+    border-bottom-color: #c3dde9;
+    @include border-radius(20px);
+    background: rgba(0, 0, 0, 0.1);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
   }
 }
 
 nav.global {
   text-align: right;
+
+  p {
+    font-size: 11px;
+    font-weight: 700;
+  }
 }
 
 #registration-links {
   display: inline-block;
+  margin-left: 10px;
 }
 
 #content {
   margin-top: 20px;
+}
+
+#scores-nav {
+  position: relative;
+  z-index: 3;
+  margin-top: 80px;
+  padding: 3px;
+  border: 1px solid #377393;
+  @include single-box-shadow(rgba(#333, 0.3), 0, 3px, 3px);
+  color: #676965;
+  background: #EFEFEF;
+  font-weight: 700;
+  font-size: 11px;
+
+  dl {
+    display: inline-block;
+    @include inline-block-list-container;
+
+    dt, dd {
+      @include inline-block-list-item;
+      text-transform: uppercase;
+    }
+
+    dt {
+      width: 20%;
+      text-align: center;
+    }
+
+    dd {
+      width: 40%;
+      margin-right: -4px;
+    }
+
+    dd a {
+      display: block;
+      height: 40px;
+      border: 1px solid $black;
+      border-left: 1px solid #707070;
+      padding: 13px 0;
+      color: #84D1DA;
+      background: image_url('gradient-gray-nav.png') repeat-x;
+      text-align: center;
+
+      &.first {
+        border-left-color: #393939;
+      }
+    }
+  }
 }
 
 .admin-menu {
