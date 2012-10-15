@@ -41,8 +41,10 @@
               %dd= link_to 'Basketball', '/girls-basketball-scores', class: 'first'
               %dd= link_to 'Softball', '/girls-softball-scores'
 
-        = yield
+        .row
+          .twelve.columns
+            = yield
 
-        -if admin_signed_in?
-          .three.columns.admin-menu
-            = render partial: 'shared/admin_menu'
+            -#-if admin_signed_in?
+              .three.columns.admin-menu
+                = render partial: 'shared/admin_menu'

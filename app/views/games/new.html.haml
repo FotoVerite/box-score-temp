@@ -1,27 +1,26 @@
-.nine.columns
-  %h1 Report a new box score
+%h1 Report a new box score
 
-  = simple_form_for @game do |f|
-    - if @game.errors.any?
-      %ul.errors
-        = list_of @game.errors.full_messages do |e|
-          = e
+= simple_form_for @game do |f|
+  - if @game.errors.any?
+    %ul.errors
+      = list_of @game.errors.full_messages do |e|
+        = e
 
-    = field_set_tag 'Game Information' do
-      = f.input :team_id, collection: teams, label_method: :display_name, include_blank: true
-      = f.input :opponent_id, collection: @game.team.try(:potential_opponents) || [], label_method: :display_name
+  = field_set_tag 'Game Information' do
+    = f.input :team_id, collection: teams, label_method: :display_name, include_blank: true
+    = f.input :opponent_id, collection: @game.team.try(:potential_opponents) || [], label_method: :display_name
 
-      = f.input :date, as: :string, required: false
-      = f.input :site, collection: Site::NAMES, include_blank: false, required: false
+    = f.input :date, as: :string, required: false
+    = f.input :site, collection: Site::NAMES, include_blank: false, required: false
 
-      .inline-radio
-        = f.collection_radio_buttons :home_away, [['home', 'Home'], ['away', 'Away']], :first, :last,
-          required: false, label: false
+    .inline-radio
+      = f.collection_radio_buttons :home_away, [['home', 'Home'], ['away', 'Away']], :first, :last,
+        required: false, label: false
 
-    #sport_fields
-      = render "#{@game.team.sport_type}_form", game: @game if @game.team && @game.opponent
+  #sport_fields
+    = render "#{@game.team.sport_type}_form", game: @game if @game.team && @game.opponent
 
-    = f.submit 'Add Box Score', class: 'medium button'
+  = f.submit 'Add Box Score', class: 'medium button'
 
 
 :javascript

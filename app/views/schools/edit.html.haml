@@ -1,7 +1,6 @@
-.nine.columns
-  %h1 #{@school.name} - Edit Profile
-  = simple_form_for @school do |f|
-    = f.input :name
-    = f.input :mascot
-    = f.input :league_id, collection: League.names_with_assns_for_select, label: 'League/Division', include_blank: false
-    = f.button :submit, class: 'medium secondary button'
+%h1 #{@school.name} - Edit Profile
+= simple_form_for @school do |f|
+  = f.input :name
+  = f.input :mascot
+  = f.input :league_id, collection: League.names_with_assns_for_select, label: 'League/Division', include_blank: false
+  = f.button :submit, class: 'medium secondary button'
