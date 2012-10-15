@@ -1,0 +1,26 @@
+%table.player-stats
+  %caption= team.display_name
+
+  %thead
+    %tr
+      %th Player
+      %th Pos
+      %th Pts
+      %th FG
+      %th FGA
+      %th 3pt FG
+      %th 3pt FGA
+      %th FT
+      %th FTA
+      %th Reb
+      %th A
+
+  %tbody
+    = simple_fields_for game do |game_fields|
+      - (team.player_game_stats(game) + [PlayerGameStat.new]).each do |player_game_stat|
+        = game_fields.fields_for :player_game_stats, player_game_stat, child_index: child_index(player_game_stat) do |player_game_stat_fields|
+          = player_game_stat_fields.fields_for :stats, player_game_stat do |stats|
+            = render 'games/basketball/player_game_stat_fields',
+                player_game_stat_fields: player_game_stat_fields,
+                stats_fields: stats,
+                team: team

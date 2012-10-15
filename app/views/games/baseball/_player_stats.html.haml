@@ -13,7 +13,7 @@
   %tbody
     - game.team.players.each do |player|
       %tr
-        %td
+        %th{ scope: 'row' }
           = player.name
           %input{ name: 'game[player_game_stats][][player_id]', type: 'hidden', value: player.id }
         %td
@@ -44,7 +44,7 @@
   %tbody
     - game.team.players.each do |player|
       %tr
-        %td
+        %th{ scope: 'row' }
           = player.name
           %input{ name: 'game[player_game_stats][][player_id]', type: 'hidden', value: player.id }
         %td

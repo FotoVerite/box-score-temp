@@ -31,6 +31,10 @@ class Team < ActiveRecord::Base
     end
   end
 
+  def player_game_stats(game)
+    game.player_game_stats.select { |s| s.player.team_ids.include? self.id }
+  end
+
   def as_json(options=nil)
     options ||= {}
     options = options.merge(methods: [:school_name, :display_name])

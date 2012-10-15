@@ -1,11 +1,27 @@
 class Games
   constructor: (@form)->
-
     @form
       .on('change', 'select#game_team_id', @teamSelected)
       .on('change', 'select#game_opponent_id', @opponentSelected)
       .on('change', 'tbody input', @updateGameStats)
       .on('click', 'th.add-period a', @addPeriod)
+      .on('change', 'select.player', @playerSelected)
+
+
+  playerSelected: (e) =>
+    select = $(e.currentTarget)
+    row = select.closest('tr')
+    tbody = row.closest('tbody')
+
+    if row[0] is tbody.find('tr:last-child')[0]
+      newIndex = new Date().getTime()
+      clone = row.clone()
+
+      # give the row a unique index
+      row.html(row.html().replace(/CHILD/g, newIndex))
+      row.find('select.player').val(select.val())
+
+      tbody.append(clone)
 
 
   opponentSelected: (e) =>
@@ -58,12 +74,12 @@ class Games
 
 
   loadGameStatsForm: (teamId, opponentId, callback) =>
-    $.ajax "/games/new.json"
+    $.ajax "/game_stats/new"
       data:
         team_id: teamId
         opponent_id: opponentId
-      success: (json, textStatus, jqXHR) ->
-        callback(json.form_content)
+      success: (form_content, textStatus, jqXHR) ->
+        callback(form_content)
 
   addPeriod: (e) ->
     e.preventDefault()
@@ -74,12 +90,11 @@ class Games
     new_header_cell = $("<th>#{last_period + 1}</th>")
     $(table.find('th').get(last_period)).after(new_header_cell)
 
-    score_rows = table.find('tr.period-scores')
-    score_rows.each ->
-      last_score_cell = $(this).find('td').get(last_period)
+    table.find('tbody tr').each ->
+      last_score_cell       = $(this).find('td.period').get(last_period - 1)
       last_score_input_name = $(last_score_cell).find('input').attr('name')
-      new_score_input_name = last_score_input_name.replace("[periods][#{last_period}]", "[periods][#{last_period + 1 }]")
-      new_cell = $("<td class='#{last_period + 1}'><input name='#{new_score_input_name}' type='text' /></td>")
+      new_score_input_name  = last_score_input_name.replace("[periods][#{last_period}]", "[periods][#{last_period + 1 }]")
+      new_cell = $("<td class='period'><input name='#{new_score_input_name}' type='text' /></td>")
       $(last_score_cell).after new_cell
 
 

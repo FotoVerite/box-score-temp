@@ -9,4 +9,5 @@ BoxScore::Application.routes.draw do
   end
   resources :players
   resources :games
+  resources :game_stats, only: [:new]
 end

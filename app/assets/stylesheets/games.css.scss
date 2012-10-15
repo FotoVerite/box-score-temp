@@ -1,15 +1,43 @@
-table.player-stats {
-  width: 100%;
-}
+table.player-stats,
 table.game-stats {
   width: 100%;
+
+  caption {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  thead th {
+    text-align: center;
+    font-size: 14px;
+  }
+
+  tbody th {
+    text-align: left;
+    font-weight: normal;
+    width: 200px;
+    padding: 9px 10px;
+  }
+
+  input {
+    width: 100%;
+    margin: 0;
+    padding: 4px;
+    height: auto;
+    font-size: 12px;
+  }
+}
+
+table.game-stats {
   td {
+    text-align: center;
     input {
-      width: 50px;
+      width: 100%;
     }
     &.final-points {
       width: 75px;
-      text-align: right;
       font-weight: bold;
       font-size: 18px;
     }

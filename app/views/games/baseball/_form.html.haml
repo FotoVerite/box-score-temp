@@ -1,9 +1,6 @@
 = field_set_tag 'Player Stats' do
-  %h2= game.team.school.name
-  = render partial: 'baseball_player_stats.html.haml', locals: { game: game }
-
-  %h2= game.opponent.school.name
-  = render partial: 'baseball_player_stats.html.haml', locals: { game: game }
+  = render 'games/baseball/player_stats', team: game.team
+  = render 'games/baseball/player_stats', team: game.opponent
 
 = field_set_tag 'Game Stats' do
   %table.game-stats

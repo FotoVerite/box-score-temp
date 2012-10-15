@@ -3,10 +3,10 @@ class Game < ActiveRecord::Base
   AWAY = 'away'
 
   attr_accessible :home_away, :team_id, :opponent_id, :site, :date, :game_stats,
-                  :player_game_stats, :season_id
+                  :player_game_stats_attributes, :season_id
 
   validates_presence_of :date
-  validates_presence_of :opponent_id
+  validates_presence_of :team_id, :opponent_id
   validates_presence_of :site
   validates_presence_of :home_away
 
@@ -18,7 +18,9 @@ class Game < ActiveRecord::Base
 
   has_many :player_game_stats
 
-  accepts_nested_attributes_for :player_game_stats
+  accepts_nested_attributes_for :player_game_stats,
+      reject_if: proc { |s| s[:player_id].blank? },
+      allow_destroy: true
 
   serialize :game_stats
 
