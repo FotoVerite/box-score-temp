@@ -3,12 +3,12 @@ class Teams
     $('table.roster').on 'click', '.remove', ->
       $(this).closest('tr').remove()
 
-    $('.player-results').on 'click', '.add', =>
-      @movePlayerToRoster(this)
+    $('.player-results').on 'click', '.add', @movePlayerToRoster
 
 
-  movePlayerToRoster: (link) ->
-    link = $(link)
+  movePlayerToRoster: ->
+    event.preventDefault()
+    link = $(this)
     row = link.closest('tr').remove()
     row.find('a.add')
       .removeClass('add')

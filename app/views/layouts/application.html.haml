@@ -37,8 +37,3 @@
         -if admin_signed_in?
           .three.columns.admin-menu
             = render partial: 'shared/admin_menu'
-
-    :javascript
-      $(document).ready(function(){
-        new BoxScore.Teams();
-      });
