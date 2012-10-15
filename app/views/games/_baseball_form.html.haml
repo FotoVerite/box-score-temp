@@ -43,7 +43,7 @@
         %td.errors
           %input{ name: 'errors', type: 'text', value: game.stats.team_stats(game.team_id).errors }
 
-      %tr.opponent-period-scores
+      %tr.period-scores
         %td.opponent= game.opponent.school.name
 
         - %w{1 2 3 4 5 6 7}.each do |period|
