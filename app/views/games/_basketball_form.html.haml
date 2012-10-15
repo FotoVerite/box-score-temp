@@ -10,69 +10,32 @@
     %thead
       %tr
         %th Team
-        %th Q1
-        %th Q2
-        %th Q3
-        %th Q4
-        %th OT1
-        %th OT2
+        %th 1
+        %th 2
+        %th 3
+        %th 4
+        %th.add-period
+          %a{ href: '#', title: 'Add overtime period' }
+            %span.icon-plus
         %th Final
 
     %tbody
-      %tr
+      %tr.period-scores
         %td.team-name= game.team.school.name
 
-        - %w{1 2 3 4 OT1 OT2}.each do |period|
+        - %w{1 2 3 4}.each do |period|
           %td{ class: period.to_s.downcase }
             %input{ name: game_stats_period_field(game.team, period), type: 'text', value: game.stats.team_stats(game.team_id).points(period) }
 
         %td.final-points
           = game.stats.team_stats(game.team_id).final
 
-      %tr
+      %tr.opponent-period-scores
         %td.opponent= game.opponent.school.name
 
-        - %w{1 2 3 4 OT1 OT2}.each do |period|
+        - %w{1 2 3 4}.each do |period|
           %td{ class: period.to_s.downcase }
             %input{ name: game_stats_period_field(game.opponent, period), type: 'text', value: game.stats.team_stats(game.opponent_id).points(period) }
 
         %td.final-points
           = game.stats.team_stats(game.opponent_id).final
-
-/
-/ games_stats: {
-/   team_id: {
-/     q1: 25,
-/     q2: 20,
-/     q3: 22,
-/     q4: 28,
-/     final: 100
-/   }
-/ }
-/
-/ games_stats: {
-/   team_id: {
-/     quarters: {
-/       1: 25,
-/       2: 20,
-/       3: 22,
-/       4: 28
-/     },
-/     final: 100
-/   }
-/ }
-/
-/ games_stats: {
-/   team_id: {
-/     innings: {
-/       1: 2,
-/       2: 0,
-/       3: 1,
-/       4: 0,
-/       5: 0
-/     }
-/     final: 3
-/   }
-/ }
-/
-/ games_stats[team_id][:innings][19]

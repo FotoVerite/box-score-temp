@@ -5,6 +5,7 @@ class Games
       .on('change', 'select#game_team_id', @teamSelected)
       .on('change', 'select#game_opponent_id', @opponentSelected)
       .on('change', 'tbody input', @updateGameStats)
+      .on('click', 'th.add-period a', @addPeriod)
 
 
   opponentSelected: (e) =>
@@ -63,6 +64,27 @@ class Games
         opponent_id: opponentId
       success: (json, textStatus, jqXHR) ->
         callback(json.form_content)
+
+  addPeriod: (e) ->
+    e.preventDefault()
+
+    table = $(this).closest('table')
+    last_period = $(this).parent().prev('th').index()
+
+    new_header_cell = $("<th>#{last_period + 1}</th>")
+    $(table.find('th').get(last_period)).after(new_header_cell)
+
+    last_score_cell = table.find('tr.period-scores td').get(last_period)
+    last_score_input_name = $(last_score_cell).find('input').attr('name')
+    new_score_input_name = last_score_input_name.replace("[periods][#{last_period}]", "[periods][#{last_period + 1 }]")
+    new_cell = $("<td class='#{last_period + 1}'><input name='#{new_score_input_name}' type='text' /></td>")
+    $(last_score_cell).after new_cell
+
+    last_opponent_score_cell = table.find('tr.opponent-period-scores td').get(last_period)
+    last_opponent_score_input_name = $(last_opponent_score_cell).find('input').attr('name')
+    new_opponent_score_input_name = last_opponent_score_input_name.replace("[periods][#{last_period}]", "[periods][#{last_period + 1 }]")
+    new_opponent_cell = $("<td class='#{last_period + 1}'><input name='#{new_opponent_score_input_name}' type='text' /></td>")
+    $(last_opponent_score_cell).after new_opponent_cell
 
 
 @BoxScore ||= {}
