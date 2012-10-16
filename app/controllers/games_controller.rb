@@ -21,10 +21,14 @@ class GamesController < ApplicationController
     @game = team.games.build(params[:game])
 
     if @game.save
-      redirect_to games_path
+      redirect_to game_path(@game)
     else
       render action: 'new'
     end
+  end
+
+  def edit
+    @game = Game.find(params[:id])
   end
 
   def teams

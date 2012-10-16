@@ -51,8 +51,20 @@ describe GamesController do
                         }
         end
 
-        it { should redirect_to games_path }
+        it { should redirect_to game_path(assigns(:game)) }
       end
+    end
+
+    describe "GET 'edit'" do
+      let(:game) { create :game }
+
+      before { get :edit }
+
+      it { should render_template 'edit' }
+
+      #it 'retrieves the game by ID' do
+        #assigns(:game).should_not be_nil
+      #end
     end
   end
 end

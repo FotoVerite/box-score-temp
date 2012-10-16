@@ -18,9 +18,9 @@
         required: false, label: false
 
   #sport_fields
-    = render "games/#{@game.team.sport_type}/form", game: @game if @game.team && @game.opponent
+    = render "#{@game.team.sport_type}_form", game: @game if @game.team && @game.opponent
 
-  = f.submit 'Add Box Score', class: 'medium button'
+  = f.submit 'Save', class: 'medium button'
 
 
 :javascript
