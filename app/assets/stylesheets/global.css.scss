@@ -24,6 +24,7 @@ h3 {
 
 fieldset {
   padding: 20px;
+  background: $eggshell;
 }
 
 select {
@@ -104,7 +105,7 @@ nav.global {
   border: 1px solid #377393;
   @include single-box-shadow(rgba(#333, 0.3), 0, 3px, 3px);
   color: #676965;
-  background: #EFEFEF;
+  background: $eggshell;
   font-weight: 700;
   font-size: 11px;
 
