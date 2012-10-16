@@ -59,7 +59,7 @@ class Games
     input = $(e.currentTarget)
     row = input.closest('tr')
 
-    unit_scores = row.find('input').map ->
+    unit_scores = row.find('td.period input').map ->
       $(this).val()
 
     total_score = 0
