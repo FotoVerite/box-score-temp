@@ -58,13 +58,16 @@ describe GamesController do
     describe "GET 'edit'" do
       let(:game) { create :game }
 
-      before { get :edit }
+      before { get :edit, id: game.id }
 
       it { should render_template 'edit' }
 
-      #it 'retrieves the game by ID' do
-        #assigns(:game).should_not be_nil
-      #end
+      it 'retrieves the game by ID' do
+        assigns(:game).should_not be_nil
+      end
+
+      it 'should populate the fields that have data' do
+      end
     end
   end
 end

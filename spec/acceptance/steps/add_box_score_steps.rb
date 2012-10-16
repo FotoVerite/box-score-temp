@@ -1,13 +1,15 @@
 step "I have a basketball team" do
-  @basketball_team = create :team, sport: 'Boys Basketball'
+  @basketball_team = create :team
 end
 
 step "I click 'Add Box Score'" do
+  # this will fail when the admin  menu is hidden
   click_link 'Add Box Score'
 end
 
 step "I select my basketball team" do
-  select('Boys Basketball', from: 'Team')
+  pending
+  #select("#{@basketball_team.display_name}", from: 'Team')
 end
 
 step "the potential opponents list should update" do

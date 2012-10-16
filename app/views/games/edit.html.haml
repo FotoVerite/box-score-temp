@@ -18,7 +18,7 @@
         required: false, label: false
 
   #sport_fields
-    = render "#{@game.team.sport_type}_form", game: @game if @game.team && @game.opponent
+    = render partial: "games/#{@game.team.sport_type}/form", locals: { game: @game }
 
   = f.submit 'Save', class: 'medium button'
 

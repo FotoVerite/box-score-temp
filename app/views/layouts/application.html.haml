@@ -3,7 +3,7 @@
   %head
     %meta{ charset: 'utf-8' }/
     %meta{ content: 'width=device-width, initial-scale=1.0', name: 'viewport' }/
-    %title= content_for?(:title) ? yield(:title) : '[BOX]SCORE'
+    %title= content_for?(:title) ? yield(:title) : 'HSBoxScore'
     = stylesheet_link_tag    'application'
     = javascript_include_tag 'application'
     = csrf_meta_tags
@@ -42,9 +42,9 @@
               %dd= link_to 'Softball', '/girls-softball-scores'
 
         .row
-          .twelve.columns
+          #main.twelve.columns
             = yield
 
-            -if admin_signed_in?
+            -#-if admin_signed_in?
               .three.columns.admin-menu
                 = render partial: 'shared/admin_menu'

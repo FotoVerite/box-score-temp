@@ -1,0 +1,7 @@
+%tr
+  %th{ scope: 'row' }= team.school.name
+  - (1..game.stats.periods).each do |period|
+    %td= game.stats.team_stats(team).points(period.to_s)
+  %td= game.stats.team_stats(team).final
+  %td= game.stats.team_stats(team).hits
+  %td= game.stats.team_stats(team).errors
