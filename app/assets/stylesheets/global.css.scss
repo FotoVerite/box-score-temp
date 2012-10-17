@@ -50,6 +50,7 @@ label.collection_radio_buttons {
 
 body {
   background: #4d85a1;
+  color: $body-text-color;
 }
 
 a#branding {
@@ -98,7 +99,9 @@ nav.global {
 }
 
 #main {
+  margin-bottom: 30px;
   background: #fff;
+  @include single-box-shadow(rgba(#333, 0.3), 3px, 3px, 3px);
 }
 
 #scores-nav {

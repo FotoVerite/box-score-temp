@@ -4,6 +4,7 @@
         :id, :name, { include_blank: true }, class: 'player'
 
   = stats_fields.fields_for :pitcher do |pitcher_stats|
+    %td= pitcher_stats.text_field :order, maxlength: 2
     %td= pitcher_stats.text_field :ip, maxlength: 2
     %td= pitcher_stats.text_field :h, maxlength: 2
     %td= pitcher_stats.text_field :r, maxlength: 2

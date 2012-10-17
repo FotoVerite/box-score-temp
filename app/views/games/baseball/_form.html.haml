@@ -1,10 +1,10 @@
 = field_set_tag 'Player Stats' do
-  %h2 Position Players
+  %h2= game.team.school.name
   = render 'games/baseball/position_player_stats', game: game, team: game.team
-  = render 'games/baseball/position_player_stats', game: game, team: game.opponent
-
-  %h2 Pitchers
   = render 'games/baseball/pitcher_stats', game: game, team: game.team
+
+  %h2= game.opponent.school.name
+  = render 'games/baseball/position_player_stats', game: game, team: game.opponent
   = render 'games/baseball/pitcher_stats', game: game, team: game.opponent
 
 = field_set_tag 'Game Stats' do

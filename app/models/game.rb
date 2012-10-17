@@ -27,4 +27,26 @@ class Game < ActiveRecord::Base
   def stats
     stats = GameStats.new(game_stats)
   end
+
+  def player_stats_by_key(team, key)
+    player_stats(team).select { |stat| stat.stats[key] }
+  end
+
+  def winner
+    if stats.team_stats(team_id).final > stats.team_stats(opponent_id).final
+      team
+    elsif stats.team_stats(team_id).final < stats.team_stats(opponent_id).final
+      opponent
+    else
+      'tie'
+    end
+  end
+
+  private
+
+  def player_stats(team)
+    player_game_stats.select do |stat|
+      (team.players.include?(stat.player))
+    end
+  end
 end

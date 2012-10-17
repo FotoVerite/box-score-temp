@@ -8,7 +8,6 @@ class PlayerGameStat < ActiveRecord::Base
 
   serialize :stats
 
-
   def method_missing(name, *args)
     if args.empty?
       return stat(name)

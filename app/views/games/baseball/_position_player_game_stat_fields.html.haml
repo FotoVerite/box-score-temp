@@ -1,9 +1,10 @@
 %tr
   %th{ scope: 'row' }
     = player_game_stat_fields.collection_select :player_id, team.players,
-        :id, :name, { include_blank: true }, class: 'player'
+      :id, :name, { include_blank: true }, class: 'player'
 
   = stats_fields.fields_for :position_player do |position_player_stats|
+    %td= position_player_stats.text_field :batting_order, maxlength: 1
     %td= position_player_stats.text_field :position, maxlength: 3
     %td= position_player_stats.text_field :ab, maxlength: 2
     %td= position_player_stats.text_field :h, maxlength: 2

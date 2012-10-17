@@ -1,0 +1,47 @@
+%h2= team.school.name
+%h3 Position Players
+
+%table.player-stats
+  %thead
+    %tr
+      %th Player
+      %th Pos
+      %th AB
+      %th H
+      %th HR
+      %th RBI
+      %th E
+
+  %tbody
+    - game.player_stats_by_key(team, 'position_player').each do |stat|
+      %tr
+        %th{ scope: 'row' }= stat.player.name
+        %td= stat.position_player['position']
+        %td= stat.position_player['ab']
+        %td= stat.position_player['h']
+        %td= stat.position_player['hr']
+        %td= stat.position_player['rbi']
+        %td= stat.position_player['e']
+
+%h3 Pitchers
+%table.player-stats
+  %thead
+    %tr
+      %th Player
+      %th IP
+      %th H
+      %th R
+      %th ER
+      %th BB
+      %th SO
+
+  %tbody
+    - game.player_stats_by_key(team, 'pitcher').each do |stat|
+      %tr
+        %th{ scope: 'row' }= stat.player.name
+        %td= stat.pitcher['ip']
+        %td= stat.pitcher['h']
+        %td= stat.pitcher['r']
+        %td= stat.pitcher['er']
+        %td= stat.pitcher['bb']
+        %td= stat.pitcher['so']

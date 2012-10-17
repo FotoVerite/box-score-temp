@@ -1,45 +1,83 @@
-table.player-stats,
-table.game-stats {
-  width: 100%;
+@import 'base';
 
-  caption {
-    font-size: 14px;
-    font-weight: bold;
-    text-align: left;
-    margin-bottom: 10px;
+body.box-score.games {
+  h1 {
+    margin-bottom: 5px;
   }
 
-  thead th {
-    text-align: center;
-    font-size: 14px;
+  h2 {
+    color: #fff;
   }
 
-  tbody th {
-    text-align: left;
-    font-weight: normal;
-    width: 200px;
-    padding: 9px 10px;
+  #main {
+    h2, h3 {
+      color: #000;
+    }
+
+    h2 {
+      margin-top: 20px;
+      font-size: 20px;
+    }
   }
 
-  input {
+  table.player-stats,
+  table.game-stats {
+    border-collapse: collapse;
     width: 100%;
-    margin: 0;
-    padding: 4px;
-    height: auto;
-    font-size: 12px;
-  }
-}
+    border: 1px solid #000;
 
-table.game-stats {
-  td {
-    text-align: center;
+    caption {
+      font-size: 14px;
+      font-weight: bold;
+      text-align: left;
+      margin-bottom: 10px;
+    }
+
+    thead th {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
+      background: $body-text-color;
+      color: #fff;
+
+      &:first-child {
+        text-align: left;
+      }
+    }
+
+    tbody th {
+      width: 200px;
+      padding: 9px 10px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: normal;
+      background: #fff;
+    }
+
+    td {
+      text-align: center;
+      font-size: 12px;
+      background: #fff;
+    }
+
+    tr.winner td,
+    tr.winner th {
+      font-weight: 700;
+      background: $eggshell;
+    }
+
     input {
       width: 100%;
-    }
-    &.final-points {
-      width: 75px;
-      font-weight: bold;
-      font-size: 18px;
+      margin: 0;
+      padding: 4px;
+      height: auto;
+      font-size: 12px;
     }
   }
+
+  table.game-stats {
+    margin-bottom: 60px;
+  }
 }
+

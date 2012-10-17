@@ -42,9 +42,8 @@
               %dd= link_to 'Softball', '/girls-softball-scores'
 
         .row
-          #main.twelve.columns
-            = yield
+          = yield
 
-            -#-if admin_signed_in?
-              .three.columns.admin-menu
-                = render partial: 'shared/admin_menu'
+          -#-if admin_signed_in?
+            .three.columns.admin-menu
+              = render partial: 'shared/admin_menu'
