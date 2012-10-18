@@ -1,4 +1,9 @@
-%h1 #{@game.team.display_name} vs. #{@game.opponent.display_name}
+%h1
+  %strong #{@game.team.display_name}
+  vs.
+  %strong #{@game.opponent.display_name}
+
 %h2= @game.date.stamp('March 1, 1999')
+
 #main.twelve.columns
   = render "games/#{@game.team.sport_type}/box_score", game: @game

@@ -1,4 +1,4 @@
-#game-stats
+%section#game-stats
   %h2 Game Summary
 
   %table.game-stats
@@ -15,6 +15,6 @@
       = render 'games/baseball/game_stats_row', game: game, team: game.team
       = render 'games/baseball/game_stats_row', game: game, team: game.opponent
 
-#player-stats
+%section#player-stats
   = render 'games/baseball/player_stats', game: game, team: game.team
   = render 'games/baseball/player_stats', game: game, team: game.opponent

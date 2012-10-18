@@ -11,7 +11,7 @@ body.box-score.games {
 
   #main {
     h2, h3 {
-      color: #000;
+      color: $black;
     }
 
     h2 {
@@ -20,11 +20,17 @@ body.box-score.games {
     }
   }
 
+  section#player-stats {
+    > div {
+      margin-bottom: 40px;
+    }
+  }
+
   table.player-stats,
   table.game-stats {
     border-collapse: collapse;
     width: 100%;
-    border: 1px solid #000;
+    border: 1px solid $black;
 
     caption {
       font-size: 14px;
