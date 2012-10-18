@@ -4,6 +4,15 @@ class GamesController < ApplicationController
   def index
   end
 
+  def baseball
+    # all three set to 'PSAL' for testing purposes
+    @latest_PSAL = Game::Baseball.latest_by_assn('PSAL')
+    @latest_CHSAA = Game::Baseball.latest_by_assn('PSAL')
+    @latest_NYSAISAA = Game::Baseball.latest_by_assn('PSAL')
+
+    render 'games/baseball/index'
+  end
+
   def show
     @game = Game.find(params[:id])
   end

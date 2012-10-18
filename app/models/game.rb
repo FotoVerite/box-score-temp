@@ -49,4 +49,16 @@ class Game < ActiveRecord::Base
       (team.players.include?(stat.player))
     end
   end
+
+  class Baseball
+    def self.latest_by_assn(assn)
+      self.latest.select { |game| game.team.school.league.assn.name == assn || game.opponent.school.league.assn.name == assn }
+    end
+
+    private
+
+    def self.latest
+      Game.where("date > :span", span: "%#{3.days.ago}%")
+    end
+  end
 end
