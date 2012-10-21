@@ -17,18 +17,16 @@ describe Game do
 
   it { should serialize :game_stats }
 
-  describe '#team_player_stats' do
+  describe '#player_stats' do
     let(:game) { create :game }
+    let(:team) { create :team }
+    let(:player_01) { create :player }
+    let(:player_02) { create :player }
+    let(:team_player_01) { create :team_player, team: team.id, player: player_01 }
 
-    let(:team_player) { create :player }
-    let(:opponent_player) { create :player }
-
-    let(:team_player_stat) { create :player_game_stat, player: team_player }
-    let(:opponent_player_stat) { create :player_game_stat, player: opponent_player }
-
-    it 'returns only stats that belong to the host team' do
-      game.team_player_stats.should include team_player_stat
-      game.team_player_stats.should_not include opponent_player_stat
+    it 'returns player stats for the selected team' do
+      game.player_stats(team).players.should include player_01
+      game.player_stats(team).players.should_not include player_02
     end
   end
 end

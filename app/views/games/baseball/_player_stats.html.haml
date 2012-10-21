@@ -17,7 +17,7 @@
       - game.player_stats_by_key(team, 'position_player').each do |stat|
         %tr
           %th{ scope: 'row' }= stat.player.name
-          %td= stat.position_player['position']
+          %td= stat.position_player['pos']
           %td= stat.position_player['ab']
           %td= stat.position_player['h']
           %td= stat.position_player['hr']

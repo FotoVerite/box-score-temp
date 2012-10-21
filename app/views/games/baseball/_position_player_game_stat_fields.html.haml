@@ -5,7 +5,7 @@
 
   = stats_fields.fields_for :position_player do |position_player_stats|
     %td= position_player_stats.text_field :batting_order, maxlength: 1
-    %td= position_player_stats.text_field :position, maxlength: 3
+    %td= position_player_stats.text_field :pos, maxlength: 3
     %td= position_player_stats.text_field :ab, maxlength: 2
     %td= position_player_stats.text_field :h, maxlength: 2
     %td= position_player_stats.text_field :hr, maxlength: 2

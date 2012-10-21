@@ -4,6 +4,8 @@ class PlayerGameStat < ActiveRecord::Base
   belongs_to :player
   belongs_to :game
 
+  has_many :stat_records, order: 'position'
+
   validates :player_id, presence: true
 
   serialize :stats
