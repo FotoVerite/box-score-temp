@@ -1,0 +1,5 @@
+%h1 Boys Baseball
+
+#main.brief-scores.twelve.columns
+  - ['PSAL', 'CHSAA', 'NYSAISAA'].each do |assn|
+    = render 'games/boys_baseball/latest_assn_games', assn: assn, games: Game::BoysBaseball.latest_by_assn(assn)

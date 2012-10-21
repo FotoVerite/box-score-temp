@@ -1,0 +1,48 @@
+@mixin table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid $black;
+
+  caption {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  thead th {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    background: $body-text-color;
+    color: #fff;
+
+    &:first-child {
+      text-align: left;
+    }
+  }
+
+  tbody th {
+    width: 200px;
+    padding: 9px 10px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: normal;
+    background: #fff;
+  }
+
+  td {
+    text-align: center;
+    font-size: 12px;
+    background: #fff;
+  }
+
+  input {
+    width: 100%;
+    margin: 0;
+    padding: 4px;
+    height: auto;
+    font-size: 12px;
+  }
+}

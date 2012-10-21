@@ -32,6 +32,22 @@ class Game < ActiveRecord::Base
     player_stats(team).select { |stat| stat.stats[key] }
   end
 
+  def home_team
+    if home_away == HOME
+      team
+    else
+      opponent
+    end
+  end
+
+  def away_team
+    if home_away == AWAY
+      team
+    else
+      opponent
+    end
+  end
+
   def winner
     if stats.team_stats(team_id).final > stats.team_stats(opponent_id).final
       team
@@ -50,15 +66,12 @@ class Game < ActiveRecord::Base
     end
   end
 
-  class Baseball
+  class BoysBaseball
     def self.latest_by_assn(assn)
-      self.latest.select { |game| game.team.school.league.assn.name == assn || game.opponent.school.league.assn.name == assn }
-    end
-
-    private
-
-    def self.latest
-      Game.where("date > :span", span: "%#{3.days.ago}%")
+      Game.order(:date).select do |game|
+        game.team.sport == 'Boys Baseball' &&
+        (game.team.school.league.assn.name == assn || game.opponent.school.league.assn.name == assn)
+      end.first(3)
     end
   end
 end

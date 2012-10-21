@@ -1,4 +1,5 @@
-@import 'base';
+@import 'base/colors';
+@import 'base/tables';
 
 body.box-score.games {
   h1 {
@@ -18,6 +19,10 @@ body.box-score.games {
       margin-top: 20px;
       font-size: 20px;
     }
+
+    &.brief-scores h2 {
+      margin-left: 16px;
+    }
   }
 
   section#player-stats {
@@ -28,62 +33,23 @@ body.box-score.games {
 
   table.player-stats,
   table.game-stats {
-    border-collapse: collapse;
-    width: 100%;
-    border: 1px solid $black;
-
-    caption {
-      font-size: 14px;
-      font-weight: bold;
-      text-align: left;
-      margin-bottom: 10px;
-    }
-
-    thead th {
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      text-align: center;
-      background: $body-text-color;
-      color: #fff;
-
-      &:first-child {
-        text-align: left;
-      }
-    }
-
-    tbody th {
-      width: 200px;
-      padding: 9px 10px;
-      text-align: left;
-      font-size: 12px;
-      font-weight: normal;
-      background: #fff;
-    }
-
-    td {
-      text-align: center;
-      font-size: 12px;
-      background: #fff;
-    }
-
-    tr.winner td,
-    tr.winner th {
-      font-weight: 700;
-      background: $eggshell;
-    }
-
-    input {
-      width: 100%;
-      margin: 0;
-      padding: 4px;
-      height: auto;
-      font-size: 12px;
-    }
+    @include table;
   }
 
   table.game-stats {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
+
+    tr.winner td,
+    tr.winner th {
+      background: $eggshell;
+    }
+  }
+
+  a.box-score {
+    position: relative;
+    top: -30px;
+    left: 5px;
+    font-size: 12px;
   }
 }
 

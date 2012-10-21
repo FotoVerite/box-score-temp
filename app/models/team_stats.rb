@@ -16,10 +16,10 @@ class TeamStats
   end
 
   def hits
-    @hash[:hits]
+    @hash[:hits].to_i
   end
 
   def errors
-    @hash[:errors]
+    @hash[:errors].to_i
   end
 end

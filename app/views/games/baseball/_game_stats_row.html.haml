@@ -1,9 +1,10 @@
 - stats = game.stats.team_stats(team)
 
-%tr{ class: "#{winner_class(game, team)}" }
+%tr{ class: winner_class(game, team) }
   %th{ scope: 'row' }= team.school.name
-  - (1..game.stats.periods).each do |period|
-    %td= stats.points(period.to_s).to_i
+  - unless brief == true
+    - (1..game.stats.periods).each do |period|
+      %td= stats.points(period.to_s).to_i
   %td= stats.final
-  %td= stats.hits.to_i
-  %td= stats.errors.to_i
+  %td= stats.hits
+  %td= stats.errors
