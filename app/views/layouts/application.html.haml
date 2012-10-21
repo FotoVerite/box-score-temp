@@ -34,12 +34,12 @@
           %nav#scores-nav.twelve.columns
             %dl.six.columns
               %dt Boys:
-              %dd= link_to 'Basketball', '/boys-basketball-scores', class: 'first'
-              %dd= link_to 'Baseball', '/boys-baseball-scores'
+              %dd= link_to 'Basketball', boys_basketball_path, class: 'first'
+              %dd= link_to 'Baseball', boys_baseball_path
             %dl.six.columns
               %dt Girls:
-              %dd= link_to 'Basketball', '/girls-basketball-scores', class: 'first'
-              %dd= link_to 'Softball', '/girls-softball-scores'
+              %dd= link_to 'Basketball', girls_basketball_path, class: 'first'
+              %dd= link_to 'Softball', girls_softball_path
 
         .row
           = yield

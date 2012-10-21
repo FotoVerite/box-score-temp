@@ -24,6 +24,13 @@ class Game < ActiveRecord::Base
 
   serialize :game_stats
 
+  def self.latest(sport, assn)
+    Game.order(:date).select do |game|
+      game.team.sport == sport &&
+      (game.team.school.league.assn.name == assn || game.opponent.school.league.assn.name == assn)
+    end.first(3)
+  end
+
   def stats
     stats = GameStats.new(game_stats)
   end
@@ -63,15 +70,6 @@ class Game < ActiveRecord::Base
   def player_stats(team)
     player_game_stats.select do |stat|
       (team.players.include?(stat.player))
-    end
-  end
-
-  class BoysBaseball
-    def self.latest_by_assn(assn)
-      Game.order(:date).select do |game|
-        game.team.sport == 'Boys Baseball' &&
-        (game.team.school.league.assn.name == assn || game.opponent.school.league.assn.name == assn)
-      end.first(3)
     end
   end
 end
