@@ -6,5 +6,36 @@
   Check the latest scores below:
 
 #main.twelve.columns
+  %section#filter-scores
+    %h2 Search for Scores
+    = form_tag url_for(params), method: :get do
+      = select_tag 'filter[assn]', options_from_collection_for_select(@assns, :id, :name), class: 'chzn-select', include_blank: true, data: { placeholder: 'School Type' }
+      = select_tag 'filter[league]', options_from_collection_for_select(@leagues, :id, :name), class: 'chzn-select', include_blank: true, data: { placeholder: 'League/Division' }
+      = select_tag 'filter[team]', options_from_collection_for_select(@teams, :id, :display_name), class: 'chzn-select', include_blank: true, data: { placeholder: 'School/Team' }
+      = text_field_tag 'filter[start_date]', nil, class: 'date'
+      = text_field_tag 'filter[end_date]', nil, class: 'date'
+
+
   %section#recent-scores
     %h2 Recent Scores
+
+    %h3 Boys Basketball
+    .row
+      = render 'games/latest_games_basketball', games: Game.latest_by_sport('Boys Basketball')
+
+    %h3 Girls Basketball
+    .row
+      = render 'games/latest_games_basketball', games: Game.latest_by_sport('Girls Basketball')
+
+    %h3 Boys Baseball
+    .row
+      = render 'games/latest_games_baseball', games: Game.latest_by_sport('Boys Baseball')
+
+    %h3 Girls Softball
+    .row
+      = render 'games/latest_games_baseball', games: Game.latest_by_sport('Girls Softball')
+
+:javascript
+  $(document).ready(function(){
+    new BoxScore.Filters($('#filter-scores'))
+  });

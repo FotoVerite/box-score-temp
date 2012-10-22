@@ -7,6 +7,9 @@ BoxScore::Application.routes.draw do
   match 'games/girls-softball', to: 'games#girls_softball', as: 'girls_softball'
   match 'games/girls-basketball', to: 'games#girls_basketball', as: 'girls_basketball'
 
+  resources :assns, only: [:show] do
+    resources :leagues, only: [:index]
+  end
   resources :schools, only: [:index, :show, :edit, :update]
   resources :teams do
     resources :opponents, only: [:index]

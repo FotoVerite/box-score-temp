@@ -3,6 +3,7 @@
  *= require foundation_and_overrides
  *= require font-awesome
  *= require jquery.ui.datepicker
+ *= require chosen
  *= require global
  *= require schools
  *= require teams
