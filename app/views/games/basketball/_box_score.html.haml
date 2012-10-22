@@ -10,8 +10,8 @@
         %th Final
 
     %tbody
-      = render 'games/basketball/game_stats_row', game: game, team: game.away_team
-      = render 'games/basketball/game_stats_row', game: game, team: game.home_team
+      = render 'games/basketball/game_stats_row', game: game, team: game.away_team, brief: false
+      = render 'games/basketball/game_stats_row', game: game, team: game.home_team, brief: false
 
 #player-stats
   = render 'games/basketball/player_stats', game: game, team: game.away_team

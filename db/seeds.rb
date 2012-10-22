@@ -1,5 +1,5 @@
 SCHOOL_NAMES = ['Trinity', 'Southville', 'Lexington', 'Eastern Catholic', 'Westminster',
-               'Northern', 'Lakeland', 'Bishop Kelly', 'Rexburg', 'Southern']
+               'Northern', 'Lakeland', 'Bishop Kelly', 'Rexburg', 'Southern', 'Eastminster', 'Western Catholic']
 ASSOCIATION_NAMES = ['PSAL', 'CHSAA', 'NYSAISAA']
 LEAGUE_NAMES = ['Brooklyn AA', 'Queens AA', 'Long Island AA', 'Brooklyn AAA', 'Queens AAA', 'Long Island AAA']
 
@@ -44,9 +44,8 @@ end
   create_league name, assn_id
 end
 
-(1..5).each do |n|
+(1..12).each do |n|
   name = SCHOOL_NAMES[n-1]
-  assn_id = Assn.all.sample.id
   league_id = League.all.sample.id
 
   school = create_school name, league_id

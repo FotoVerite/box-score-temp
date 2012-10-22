@@ -17,12 +17,12 @@
       - game.player_stats_by_key(team, 'position_player').each do |stat|
         %tr
           %th{ scope: 'row' }= stat.player.name
-          %td= stat.position_player['pos']
-          %td= stat.position_player['ab']
-          %td= stat.position_player['h']
-          %td= stat.position_player['hr']
-          %td= stat.position_player['rbi']
-          %td= stat.position_player['e']
+          %td= stat.position_player['pos'].to_i
+          %td= stat.position_player['ab'].to_i
+          %td= stat.position_player['h'].to_i
+          %td= stat.position_player['hr'].to_i
+          %td= stat.position_player['rbi'].to_i
+          %td= stat.position_player['e'].to_i
 
   %h3 Pitchers
   %table.player-stats
@@ -40,9 +40,9 @@
       - game.player_stats_by_key(team, 'pitcher').each do |stat|
         %tr
           %th{ scope: 'row' }= stat.player.name
-          %td= stat.pitcher['ip']
-          %td= stat.pitcher['h']
-          %td= stat.pitcher['r']
-          %td= stat.pitcher['er']
-          %td= stat.pitcher['bb']
-          %td= stat.pitcher['so']
+          %td= stat.pitcher['ip'].to_i
+          %td= stat.pitcher['h'].to_i
+          %td= stat.pitcher['r'].to_i
+          %td= stat.pitcher['er'].to_i
+          %td= stat.pitcher['bb'].to_i
+          %td= stat.pitcher['so'].to_i

@@ -13,6 +13,10 @@ body.box-score.games {
   #main {
     h2, h3 {
       color: $black;
+
+      input[type='submit'].button {
+        margin: 5px;
+      }
     }
 
     h2 {

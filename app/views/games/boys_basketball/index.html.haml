@@ -1,0 +1,5 @@
+%h1 Boys Basketball
+
+#main.brief-scores.twelve.columns
+  - ['PSAL', 'CHSAA', 'NYSAISAA'].each do |assn|
+    = render 'games/latest_assn_games', assn: assn, games: Game.latest('Boys Basketball', assn)

@@ -5,7 +5,7 @@ BoxScore::Application.routes.draw do
   match 'games/boys-baseball', to: 'games#boys_baseball', as: 'boys_baseball'
   match 'games/boys-basketball', to: 'games#boys_basketball', as: 'boys_basketball'
   match 'games/girls-softball', to: 'games#girls_softball', as: 'girls_softball'
-  match 'games/girls-basketball', to: 'games#boys_baseball', as: 'boys_baseball'
+  match 'games/girls-basketball', to: 'games#girls_basketball', as: 'girls_basketball'
 
   resources :schools, only: [:index, :show, :edit, :update]
   resources :teams do

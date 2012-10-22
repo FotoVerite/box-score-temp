@@ -12,8 +12,8 @@
         %th E
 
     %tbody
-      = render 'games/baseball/game_stats_row', game: game, team: game.away_team
-      = render 'games/baseball/game_stats_row', game: game, team: game.home_team
+      = render 'games/baseball/game_stats_row', game: game, team: game.away_team, brief: false
+      = render 'games/baseball/game_stats_row', game: game, team: game.home_team, brief: false
 
 %section#player-stats
   = render 'games/baseball/player_stats', game: game, team: game.away_team

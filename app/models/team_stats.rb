@@ -8,7 +8,7 @@ class TeamStats
   end
 
   def points(period)
-    @hash[:periods][period]
+    @hash[:periods][period].to_i
   end
 
   def final
