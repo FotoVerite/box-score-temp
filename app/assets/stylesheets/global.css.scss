@@ -3,6 +3,14 @@
 @import 'compass/typography';
 @import 'base/colors';
 
+a {
+  color: $action-color;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 h1, h2, h3, h4, h5 {
   margin-top: 0;
   font-weight: normal;
@@ -49,8 +57,8 @@ label.collection_radio_buttons {
 }
 
 body {
-  background: #4d85a1;
-  color: $body-text-color;
+  border-top: 3px solid $black;
+  background: $body-background-color image_url('bg-body-gradient.png') repeat-x;
 }
 
 a#branding {
@@ -68,10 +76,9 @@ a#branding {
 header.global {
   a {
     display: inline-block;
-    padding: 5px 20px;
-    border: 1px solid #486271;
-    border-bottom-color: #c3dde9;
+    padding: 8px 25px;
     @include border-radius(20px);
+    @include single-box-shadow(transparentize(#333, 0.5), 0, 1px, 1px, 0px, true);
     background: rgba(0, 0, 0, 0.1);
     color: #fff;
     font-size: 10px;
@@ -149,6 +156,14 @@ nav.global {
 
       &.first {
         border-left-color: #393939;
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      &.current {
+        color: $action-color;
       }
     }
   }
