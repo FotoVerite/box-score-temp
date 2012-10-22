@@ -46,3 +46,24 @@
     font-size: 12px;
   }
 }
+
+table.player-stats,
+table.game-stats {
+  @include table;
+}
+
+table.game-stats {
+  margin-bottom: 40px;
+
+  tr.winner td,
+  tr.winner th {
+    background: $eggshell;
+  }
+}
+
+a.box-score {
+  position: relative;
+  top: -30px;
+  left: 5px;
+  font-size: 12px;
+}

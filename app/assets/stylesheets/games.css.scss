@@ -11,20 +11,11 @@ body.box-score.games {
   }
 
   #main {
-    h2, h3 {
-      color: $black;
-
-      input[type='submit'].button {
-        margin: 5px;
-      }
+    input[type='submit'].button {
+      margin: 5px;
     }
 
-    h2 {
-      margin-top: 20px;
-      font-size: 20px;
-    }
-
-    &.brief-scores h2 {
+    &.brief-scores h3 {
       margin-left: 16px;
     }
   }
@@ -33,27 +24,6 @@ body.box-score.games {
     > div {
       margin-bottom: 40px;
     }
-  }
-
-  table.player-stats,
-  table.game-stats {
-    @include table;
-  }
-
-  table.game-stats {
-    margin-bottom: 40px;
-
-    tr.winner td,
-    tr.winner th {
-      background: $eggshell;
-    }
-  }
-
-  a.box-score {
-    position: relative;
-    top: -30px;
-    left: 5px;
-    font-size: 12px;
   }
 }
 

@@ -1,5 +1,5 @@
 class Games
-  constructor: (@form)->
+  constructor: (@form) ->
     @form
       .on('change', 'select#game_team_id', @teamSelected)
       .on('change', 'select#game_opponent_id', @opponentSelected)
@@ -17,7 +17,6 @@ class Games
       newIndex = new Date().getTime()
       clone = row.clone()
 
-      # give the row a unique index
       row.html(row.html().replace(/CHILD/g, newIndex))
       row.find('select.player').val(select.val())
 

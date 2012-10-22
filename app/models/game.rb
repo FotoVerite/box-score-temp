@@ -24,10 +24,16 @@ class Game < ActiveRecord::Base
 
   serialize :game_stats
 
-  def self.latest(sport, assn)
+  def self.latest_by_sport_assn(sport, assn)
     Game.order(:date).select do |game|
       game.team.sport == sport &&
       (game.team.school.league.assn.name == assn || game.opponent.school.league.assn.name == assn)
+    end.first(3)
+  end
+
+  def self.latest_by_sport(sport)
+    Game.order(:date).select do |game|
+      game.team.sport == sport
     end.first(3)
   end
 

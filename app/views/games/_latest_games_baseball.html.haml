@@ -1,0 +1,19 @@
+- if games.length > 0
+  - games.each do |game|
+    .four.columns
+      %table.game-stats
+        %thead
+          %tr
+            %th Team
+            %th R
+            %th H
+            %th E
+
+        %tbody
+          = render 'games/baseball/game_stats_row', game: game, team: game.away_team, brief: true
+          = render 'games/baseball/game_stats_row', game: game, team: game.home_team, brief: true
+
+      = link_to 'Box Score', game_path(game), class: 'box-score'
+- else
+  .twelve.columns
+    %p No recent games to display.
