@@ -1,0 +1,26 @@
+%section#filter-scores
+  %h2 Filter Scores
+  = simple_form_for @filter, method: :get,
+    url: url_for(params.slice(:controller, :action)) do |f|
+
+    = f.input :assn_id, as: :select, collection: @filter.assn_options,
+      required: false, label: false,
+      input_html: { class: 'chzn-select', data: { placeholder: 'School Type' } }
+
+    = f.input :league_id, as: :select, collection: @filter.league_options,
+      required: false, label: false,
+      input_html: { class: 'chzn-select', data: { placeholder: 'League / Division' } }
+
+    = f.input :team_id, as: :select, collection: @filter.team_options,
+      label_method: :display_name, required: false, label: false,
+      input_html: { class: 'chzn-select', data: { placeholder: 'Team / School' } }
+
+    = f.input :earliest_date, as: :string, required: false,
+      label: false, input_html: { class: 'date' }
+
+    %span.to to
+
+    = f.input :latest_date, as: :string, required: false, label: false,
+      input_html: { class: 'date' }
+
+    = f.submit 'Search', class: 'button'
