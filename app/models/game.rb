@@ -24,16 +24,15 @@ class Game < ActiveRecord::Base
 
   serialize :game_stats
 
+  scope :latest, order('date DESC')
+  scope :by_sport, lambda { |sport| joins(:team).where(teams: { sport: sport }) }
+  scope :latest_by_sport, lambda { |sport| latest.by_sport(sport).limit(3) }
+
+  #TODO refactor using scopes
   def self.latest_by_sport_assn(sport, assn)
-    Game.order(:date).select do |game|
+    order(:date).select do |game|
       game.team.sport == sport &&
       (game.team.school.league.assn.name == assn || game.opponent.school.league.assn.name == assn)
-    end.first(3)
-  end
-
-  def self.latest_by_sport(sport)
-    Game.order(:date).select do |game|
-      game.team.sport == sport
     end.first(3)
   end
 

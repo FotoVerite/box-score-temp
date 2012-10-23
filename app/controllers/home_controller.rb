@@ -1,7 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @assns = Assn.order(:name)
-    @leagues = League.order(:name)
-    @teams = Team.all
+    @filter = Filter.new(params[:filter])
   end
 end

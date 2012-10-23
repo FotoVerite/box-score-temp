@@ -6,6 +6,11 @@ class League < ActiveRecord::Base
   belongs_to :assn
 
   has_many :schools
+  has_many :teams, through: :schools
+
+  def to_s
+    name
+  end
 
   def self.names_with_assns_for_select
     names_with_assns = []

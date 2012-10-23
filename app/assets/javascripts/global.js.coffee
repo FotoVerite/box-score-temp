@@ -1,8 +1,4 @@
 $ ->
-  $('#filter-scores input.date, #game_date')
-    .datepicker({
-      showOn: 'button',
-      buttonImage: '/assets/calendar.png',
-      buttonImageOnly: true
-    })
+  $('#filter-scores input.date, #game_date').datepicker()
+
   $('.chzn-select').chosen({ disable_search_threshold: 10 })
