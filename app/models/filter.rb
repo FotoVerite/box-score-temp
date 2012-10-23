@@ -19,24 +19,8 @@ class Filter
     false
   end
 
-  def assn_id
-    assn.id if assn
-  end
-
-  def assn
-    Assn.find_by_id(@assn_id)
-  end
-
   def assn_options
     Assn.all
-  end
-
-  def league_id
-    league.id if league
-  end
-
-  def league
-    League.find_by_id(@league_id)
   end
 
   def league_options
@@ -47,14 +31,6 @@ class Filter
     end
   end
 
-  def team_id
-    team.id if team
-  end
-
-  def team
-    team_options.find_by_id(@team_id)
-  end
-
   def team_options
     if league.present?
       league.teams
@@ -63,6 +39,36 @@ class Filter
     else
       Team.where('1 = 1')
     end
+  end
+
+  def games
+    Game.where('(team_id in (:teams) or opponent_id in (:teams)) and (date between (:earliest_date) and (:latest_date))', teams: teams, earliest_date: earliest_date, latest_date: latest_date)
+  end
+
+  private
+
+  def assn_id
+    assn.id if assn
+  end
+
+  def assn
+    Assn.find_by_id(@assn_id)
+  end
+
+  def league_id
+    league.id if league
+  end
+
+  def league
+    League.find_by_id(@league_id)
+  end
+
+  def team_id
+    team.id if team
+  end
+
+  def team
+    team_options.find_by_id(@team_id)
   end
 
   def teams
@@ -91,9 +97,5 @@ class Filter
     else
       Date.today
     end
-  end
-
-  def games
-    Game.where('(team_id in (:teams) or opponent_id in (:teams)) and (date between (:earliest_date) and (:latest_date))', teams: teams, earliest_date: earliest_date, latest_date: latest_date)
   end
 end
