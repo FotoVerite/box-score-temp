@@ -1,21 +1,20 @@
 - if games.length > 0
-  - games.each do |game|
-    .four.columns
-      %table.game-stats
-        %thead
-          %tr
-            %th Team
-            %th 1
-            %th 2
-            %th 3
-            %th 4
-            %th F
+  %h3= sport
+  .row
+    - games.each do |game|
+      .four.columns
+        %table.game-stats
+          %thead
+            %tr
+              %th Team
+              %th 1
+              %th 2
+              %th 3
+              %th 4
+              %th F
 
-        %tbody
-          = render 'games/basketball/game_stats_row', game: game, team: game.away_team
-          = render 'games/basketball/game_stats_row', game: game, team: game.home_team
+          %tbody
+            = render 'games/basketball/game_stats_row', game: game, team: game.away_team
+            = render 'games/basketball/game_stats_row', game: game, team: game.home_team
 
-      = link_to 'Box Score', game_path(game), class: 'box-score'
-- else
-  .twelve.columns
-    %p No recent games to display.
+        = link_to 'Box Score', game_path(game), class: 'box-score'

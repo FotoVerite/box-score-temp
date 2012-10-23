@@ -6,51 +6,16 @@
   Check the latest scores below:
 
 #main.twelve.columns
-  %section#filter-scores
-    %h2 Filter Scores
-    = simple_form_for @filter, method: :get,
-      url: url_for(params.slice(:controller, :action)) do |f|
-
-      = f.input :assn_id, as: :select, collection: @filter.assn_options,
-        required: false, label: false,
-        input_html: { class: 'chzn-select', data: { placeholder: 'School Type' } }
-
-      = f.input :league_id, as: :select, collection: @filter.league_options,
-        required: false, label: false,
-        input_html: { class: 'chzn-select', data: { placeholder: 'League / Division' } }
-
-      = f.input :team_id, as: :select, collection: @filter.team_options,
-        label_method: :display_name, required: false, label: false,
-        input_html: { class: 'chzn-select', data: { placeholder: 'Team / School' } }
-
-      = f.input :earliest_date, as: :string, required: false,
-        label: false, input_html: { class: 'date' }
-
-      %span.to to
-
-      = f.input :latest_date, as: :string, required: false, label: false,
-        input_html: { class: 'date' }
-
-      = f.submit 'Search', class: 'button'
+  = render 'filter_form'
 
   %section#recent-scores
     %h2 Recent Scores
 
-    %h3 Boys Basketball
-    .row
-      = render 'games/latest_games_basketball', games: @filter.games.latest_by_sport('Boys Basketball')
+    - ['Boys Basketball', 'Girls Basketball'].each do |sport|
+      = render 'games/latest_games_basketball', sport: sport, games: @filter.games.latest_by_sport(sport)
 
-    %h3 Girls Basketball
-    .row
-      = render 'games/latest_games_basketball', games: @filter.games.latest_by_sport('Girls Basketball')
-
-    %h3 Boys Baseball
-    .row
-      = render 'games/latest_games_baseball', games: @filter.games.latest_by_sport('Boys Baseball')
-
-    %h3 Girls Softball
-    .row
-      = render 'games/latest_games_baseball', games: @filter.games.latest_by_sport('Girls Softball')
+    - ['Boys Baseball', 'Girls Softball'].each do |sport|
+      = render 'games/latest_games_baseball', sport: sport, games: @filter.games.latest_by_sport(sport)
 
 :javascript
   $(document).ready(function(){
