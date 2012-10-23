@@ -9,8 +9,4 @@ class Assn < ActiveRecord::Base
   def to_s
     name
   end
-
-  def leagues
-    League.where(assn_id: id)
-  end
 end

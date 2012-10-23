@@ -3,6 +3,14 @@ class TeamsController < ApplicationController
 
   def index
     @teams = current_admin.school.teams
+
+    league = League.find(params[:league_id])
+
+    respond_to do |format|
+      format.json do
+        render json: league.teams
+      end
+    end
   end
 
   def new
