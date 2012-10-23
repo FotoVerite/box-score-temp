@@ -4,7 +4,13 @@ class TeamsController < ApplicationController
   def index
     @teams = current_admin.school.teams
 
-    league = League.find(params[:league_id])
+    def league
+      if params[:league_id].present?
+        League.find(params[:league_id])
+      else
+        nil
+      end
+    end
 
     respond_to do |format|
       format.json do

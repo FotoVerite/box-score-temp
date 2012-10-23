@@ -17,16 +17,16 @@ describe Game do
 
   it { should serialize :game_stats }
 
-  describe '#player_stats' do
-    let(:game) { create :game }
-    let(:team) { create :team }
-    let(:player_01) { create :player }
-    let(:player_02) { create :player }
-    let(:team_player_01) { create :team_player, team: team.id, player: player_01 }
+  #describe '#player_stats' do
+    #let(:game) { create :game }
+    #let(:team) { create :team }
+    #let(:player_01) { create :player }
+    #let(:player_02) { create :player }
+    #let(:team_player_01) { create :team_player, team: team.id, player: player_01 }
 
-    it 'returns player stats for the selected team' do
-      game.player_stats(team).players.should include player_01
-      game.player_stats(team).players.should_not include player_02
-    end
-  end
+    #it 'returns player stats for the selected team' do
+      #game.player_stats(team).players.should include player_01
+      #game.player_stats(team).players.should_not include player_02
+    #end
+  #end
 end

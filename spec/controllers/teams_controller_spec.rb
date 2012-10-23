@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe TeamsController do
   context 'Authenticated' do
-    let(:admin) { create :admin }
-    let(:school) { admin.school }
+    let(:school) { create :school }
     let(:other_school) { create :school }
+    let(:admin) { create :admin, school: school }
     let!(:team_01) { create :team, school: school }
     let!(:team_02) { create :team, school: school }
 
