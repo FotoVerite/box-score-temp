@@ -3,6 +3,7 @@
 @import 'compass/css3/box-shadow';
 @import 'compass/typography';
 @import 'base/colors';
+@import 'base/fonts';
 
 a {
   color: $action-color;
@@ -14,12 +15,17 @@ a {
 
 h1, h2, h3, h4, h5 {
   margin-top: 0;
-  font-weight: normal;
+  font-weight: 300;
+  font-family: $headline-font;
+
+  strong {
+    font-weight: 700;
+  }
 }
 
 h1 {
-  font-size: 30px;
   margin-bottom: 20px;
+  font-size: 30px;
   color: #fff;
 }
 
@@ -64,6 +70,7 @@ label.collection_radio_buttons {
 body {
   border-top: 3px solid $black;
   background: $body-background-color image_url('bg-body-gradient.png') repeat-x;
+  font-family: $body-font;
 }
 
 a#branding {
