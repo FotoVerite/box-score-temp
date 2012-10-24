@@ -13,4 +13,8 @@ module ApplicationHelper
     return 'CHILD' if player_game_stat.player_id.blank?
     player_game_stat.player_id
   end
+
+  def filter
+    @filter ||= Filter.new(params[:filter])
+  end
 end

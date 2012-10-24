@@ -2,7 +2,7 @@ class Filter
   extend ActiveModel::Naming
   include ActiveModel::Conversion
 
-  attr_writer :assn_id, :league_id, :team_id, :earliest_date, :latest_date
+  attr_writer :assn_id, :league_id, :team_id, :sports, :earliest_date, :latest_date
 
   def initialize(hash)
     if hash
@@ -20,29 +20,40 @@ class Filter
   end
 
   def assn_options
-    Assn.all
+    Assn.ordered
   end
 
   def league_options
-    if assn.present?
-      assn.leagues
-    else
-      League.where('1 = 1')
-    end
+    League.where('1 = 1')
   end
+
+  #def league_options
+    #if assn.present?
+      #assn.leagues
+    #else
+      #League.where('1 = 1')
+    #end
+  #end
 
   def team_options
-    if league.present?
-      league.teams
-    elsif assn.present?
-      assn.teams
-    else
-      Team.where('1 = 1')
-    end
+    Team.where('1 = 1')
   end
 
+  #def team_options
+    #if league.present?
+      #league.teams
+    #elsif assn.present?
+      #assn.teams
+    #else
+      #Team.where('1 = 1')
+    #end
+  #end
+
   def games
-    Game.where('(team_id in (:teams) or opponent_id in (:teams)) and (date between (:earliest_date) and (:latest_date))', teams: teams, earliest_date: earliest_date, latest_date: latest_date)
+    Game.where('(team_id in (:teams) or opponent_id in (:teams))
+      and (sport in (:sports))
+      and (date between (:earliest_date) and (:latest_date))',
+      teams: teams, sports: sports, earliest_date: earliest_date, latest_date: latest_date)
   end
 
   private
@@ -80,6 +91,14 @@ class Filter
       assn.teams
     else
       Team.all
+    end
+  end
+
+  def sports
+    if @sports
+      [@sports]
+    else
+      Sport::NAMES
     end
   end
 
