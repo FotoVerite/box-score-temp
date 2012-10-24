@@ -32,34 +32,128 @@ League.delete_all
 Season.delete_all
 Player.delete_all
 Team.delete_all
+Game.delete_all
 
 (1..3).each do |n|
   name = ASSOCIATION_NAMES[n-1]
   create_assn name
 end
 
-(1..6).each do |n|
-  name = LEAGUE_NAMES[n-1]
-  assn_id = Assn.all.sample.id
+['Brooklyn AA', 'Queens AA'].each do |name|
+  assn_id = Assn.all.to_a[0].id
   create_league name, assn_id
 end
 
-(1..12).each do |n|
-  name = SCHOOL_NAMES[n-1]
-  league_id = League.all.sample.id
+['Long Island AA', 'Brooklyn AAA'].each do |name|
+  assn_id = Assn.all.to_a[1].id
+  create_league name, assn_id
+end
 
+['Queens AAA', 'Long Island AAA'].each do |name|
+  assn_id = Assn.all.to_a[2].id
+  create_league name, assn_id
+end
+
+['Trinity', 'Southville'].each do |name|
+  league_id = League.all.to_a[0].id
   school = create_school name, league_id
   create_admin school, name
 end
 
-Season.create!(start_date: Date.new(2011, 9, 9), year: '2011-2012', sport: 'Boys Baseball')
-Season.create!(start_date: Date.new(2011, 9, 9), year: '2011-2012', sport: 'Girls Softball')
-Season.create!(start_date: Date.new(2011, 9, 9), year: '2011-2012', sport: 'Boys Basketball')
-Season.create!(start_date: Date.new(2011, 9, 9), year: '2011-2012', sport: 'Girls Basketball')
+['Lexington', 'Eastern Catholic'].each do |name|
+  league_id = League.all.to_a[1].id
+  school = create_school name, league_id
+  create_admin school, name
+end
+
+['Westminster', 'Northern'].each do |name|
+  league_id = League.all.to_a[2].id
+  school = create_school name, league_id
+  create_admin school, name
+end
+
+['Lakeland', 'Bishop Kelly'].each do |name|
+  league_id = League.all.to_a[3].id
+  school = create_school name, league_id
+  create_admin school, name
+end
+
+['Rexburg', 'Southern'].each do |name|
+  league_id = League.all.to_a[4].id
+  school = create_school name, league_id
+  create_admin school, name
+end
+
+['Eastminster', 'Western Catholic'].each do |name|
+  league_id = League.all.to_a[5].id
+  school = create_school name, league_id
+  create_admin school, name
+end
+
 Season.create!(start_date: Date.new(2012, 9, 9), year: '2012-2013', sport: 'Boys Baseball', current: true)
-Season.create!(start_date: Date.new(2012, 9, 9), year: '2012-2013', sport: 'Girls Softball', current: true)
 Season.create!(start_date: Date.new(2012, 9, 9), year: '2012-2013', sport: 'Boys Basketball', current: true)
+Season.create!(start_date: Date.new(2012, 9, 9), year: '2012-2013', sport: 'Girls Softball', current: true)
 Season.create!(start_date: Date.new(2012, 9, 9), year: '2012-2013', sport: 'Girls Basketball', current: true)
+Season.create!(start_date: Date.new(2011, 9, 9), year: '2011-2012', sport: 'Boys Baseball')
+Season.create!(start_date: Date.new(2011, 9, 9), year: '2011-2012', sport: 'Boys Basketball')
+Season.create!(start_date: Date.new(2011, 9, 9), year: '2011-2012', sport: 'Girls Softball')
+Season.create!(start_date: Date.new(2011, 9, 9), year: '2011-2012', sport: 'Girls Basketball')
+
+(0..11).each do |num|
+  Team.create!(sport: 'Boys Baseball', school_id: School.all.to_a[num].id, season_id: Season.all.to_a[0].id)
+  Team.create!(sport: 'Boys Basketball', school_id: School.all.to_a[num].id, season_id: Season.all.to_a[1].id)
+  Team.create!(sport: 'Girls Softball', school_id: School.all.to_a[num].id, season_id: Season.all.to_a[2].id)
+  Team.create!(sport: 'Girls Basketball', school_id: School.all.to_a[num].id, season_id: Season.all.to_a[3].id)
+end
+
+Team.all.each do |team|
+  other_teams = Team.where('sport = :sport and id != :id', sport: team.sport, id: team.id)
+
+  other_teams.each do |opponent|
+    random_date = Time.at(1319471760.092567 + rand * (Time.now.to_f - 1319471760.092567.to_f)).stamp('2011-11-11')
+    game = Game.create!(date: random_date, home_away: 'home', site: 'home', team_id: team.id, opponent_id: opponent.id)
+    if team.sport_type == 'baseball'
+      game.game_stats =
+        {"#{team.id}"=>
+          {"periods"=>
+            {"1"=>"0",
+            "2"=>"1",
+            "3"=>"0",
+            "4"=>"2",
+            "5"=>"0",
+            "6"=>"1",
+            "7"=>"3"},
+          "hits"=>"10",
+          "errors"=>"1"},
+        "#{opponent.id}"=>
+          {"periods"=>
+            {"1"=>"0",
+            "2"=>"1",
+            "3"=>"3",
+            "4"=>"0",
+            "5"=>"0",
+            "6"=>"0",
+            "7"=>"0"},
+          "hits"=>"5",
+          "errors"=>"0"}}
+    elsif team.sport_type == 'basketball'
+      game.game_stats =
+        {"#{team.id}"=>
+          {"periods"=>
+            {"1"=>"20",
+            "2"=>"14",
+            "3"=>"12",
+            "4"=>"18"}},
+        "#{opponent.id}"=>
+          {"periods"=>
+            {"1"=>"12",
+            "2"=>"14",
+            "3"=>"15",
+            "4"=>"17"}}}
+    end
+    game.save!
+  end
+end
 
 ('A'..'Z').each do |first_letter|
   ('A'..'Z').each do |second_letter|
