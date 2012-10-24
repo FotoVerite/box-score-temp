@@ -1,6 +1,7 @@
 @import 'compass/css3/inline-block';
 @import 'compass/css3/border-radius';
 @import 'compass/css3/box-shadow';
+@import 'compass/css3/transition';
 @import 'compass/typography';
 @import 'base/colors';
 @import 'base/fonts';
@@ -86,6 +87,37 @@ a#branding {
 }
 
 header.global {
+  position: relative;
+}
+
+a#twitter-button {
+  z-index: 4;
+  position: absolute;
+  top: 95px;
+  right: 0;
+  width: 207px;
+  height: 36px;
+  color: #fff;
+  background: image_url('twitter-button.png') no-repeat;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 36px;
+  text-indent: 43px;
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+nav.global {
+  text-align: right;
+
+  p {
+    font-size: 11px;
+    font-weight: 700;
+  }
+
   a {
     display: inline-block;
     padding: 8px 25px;
@@ -96,15 +128,12 @@ header.global {
     font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
-  }
-}
+    @include single-transition(background-color, 0.2s);
 
-nav.global {
-  text-align: right;
-
-  p {
-    font-size: 11px;
-    font-weight: 700;
+    &:hover {
+      text-decoration: none;
+      background: rgba(0, 0, 0, 0.2);
+    }
   }
 }
 

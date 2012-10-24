@@ -1,3 +1,5 @@
+@import 'compass/css3/inline-block';
+
 @mixin table {
   border-collapse: collapse;
   width: 100%;
@@ -67,3 +69,52 @@ a.box-score {
   left: 5px;
   font-size: 12px;
 }
+
+.sharing {
+  position: relative;
+  top: -45px;
+  left: 160px;
+  font-size: 12px;
+
+  span {
+    @include inline-block;
+    margin-right: 8px;
+
+    a {
+      display: block;
+      height: 16px;
+      text-indent: -999em;
+      background-position: left top;
+      background-repeat: no-repeat;
+
+      &.facebook {
+        width: 16px;
+        background-image: image_url('thumb-facebook.png');
+
+        &:hover {
+          background-position: left bottom;
+        }
+      }
+
+      &.twitter {
+        width: 22px;
+        background-image: image_url('thumb-twitter.png');
+
+        &:hover {
+          background-position: left -20px;
+        }
+      }
+
+      &.email {
+        width: 15px;
+        background-position: left 2px;
+        background-image: image_url('thumb-email.png');
+
+        &:hover {
+          background-position: left -18px;
+        }
+      }
+    }
+  }
+}
+
