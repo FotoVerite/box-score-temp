@@ -6,16 +6,16 @@
   Check the latest scores below:
 
 #main.twelve.columns
-  = render 'filter_form'
+  = render 'shared/filter_form'
 
   %section#recent-scores
     %h2 Recent Scores
 
     - ['Boys Basketball', 'Girls Basketball'].each do |sport|
-      = render 'games/latest_games_basketball', sport: sport, games: @filter.games.latest_by_sport(sport)
+      = render 'games/latest_games_basketball', sport: sport, games: filter.games.latest_by_sport(sport)
 
     - ['Boys Baseball', 'Girls Softball'].each do |sport|
-      = render 'games/latest_games_baseball', sport: sport, games: @filter.games.latest_by_sport(sport)
+      = render 'games/latest_games_baseball', sport: sport, games: filter.games.latest_by_sport(sport)
 
 :javascript
   $(document).ready(function(){

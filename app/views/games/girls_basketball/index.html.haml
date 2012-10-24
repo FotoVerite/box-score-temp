@@ -1,8 +1,30 @@
 %h1 Girls Basketball
 
 #main.brief-scores.twelve.columns
+
+  = render 'shared/filter_form'
+
   %h2 Recent Scores
   - ['PSAL', 'CHSAA', 'NYSAISAA'].each do |assn|
+    - games = Game.latest_by_sport_assn('Girls Basketball', assn)
     .row
       %h3= assn
-      = render 'games/latest_games_basketball', assn: assn, games: Game.latest_by_sport_assn('Girls Basketball', assn)
+      - if games.length > 0
+        .row
+          - games.each do |game|
+            .four.columns
+              %table.game-stats
+                %thead
+                  %tr
+                    %th Team
+                    %th 1
+                    %th 2
+                    %th 3
+                    %th 4
+                    %th F
+
+                %tbody
+                  = render 'games/basketball/game_stats_row', game: game, team: game.away_team
+                  = render 'games/basketball/game_stats_row', game: game, team: game.home_team
+
+              = link_to 'Box Score', game_path(game), class: 'box-score'
