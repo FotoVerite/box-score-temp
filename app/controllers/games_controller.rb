@@ -1,7 +1,12 @@
 class GamesController < ApplicationController
-  before_filter :authenticate_admin!
+  before_filter :authenticate_admin!, only: [:new, :create, :edit, :update]
 
   def index
+    if params[:filter].present?
+      @games = filter.games
+    else
+      @games = Game.order('date DESC')
+    end
   end
 
   def boys_baseball
@@ -51,4 +56,9 @@ class GamesController < ApplicationController
     @teams = current_admin.school.teams
   end
   helper_method :teams
+
+  def filter
+    @filter ||= Filter.new(params[:filter])
+  end
+  helper_method :filter
 end

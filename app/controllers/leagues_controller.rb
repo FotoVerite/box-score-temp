@@ -1,6 +1,4 @@
 class LeaguesController < ApplicationController
-  before_filter :authenticate_admin!
-
   def index
     assn = Assn.find(params[:assn_id])
 

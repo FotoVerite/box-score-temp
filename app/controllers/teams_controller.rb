@@ -1,8 +1,10 @@
 class TeamsController < ApplicationController
-  before_filter :authenticate_admin!
+  before_filter :authenticate_admin!, only: [:create, :edit, :update, :destroy]
 
   def index
-    @teams = current_admin.school.teams
+    if admin_signed_in?
+      @teams = current_admin.school.teams
+    end
 
     def league
       if params[:league_id].present?

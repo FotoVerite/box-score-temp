@@ -51,9 +51,8 @@ class Filter
 
   def games
     Game.where('(team_id in (:teams) or opponent_id in (:teams))
-      and (sport in (:sports))
       and (date between (:earliest_date) and (:latest_date))',
-      teams: teams, sports: sports, earliest_date: earliest_date, latest_date: latest_date)
+      teams: teams, earliest_date: earliest_date, latest_date: latest_date)
   end
 
   private
