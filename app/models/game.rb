@@ -3,7 +3,9 @@ class Game < ActiveRecord::Base
   AWAY = 'away'
 
   attr_accessible :home_away, :team_id, :opponent_id, :site, :date, :game_stats,
-                  :player_game_stats_attributes, :season_id
+                  :player_game_stats_attributes, :season_id, :sport
+
+  delegate :sport, to: :team
 
   validates_presence_of :date
   validates_presence_of :team_id, :opponent_id
@@ -66,7 +68,7 @@ class Game < ActiveRecord::Base
     elsif stats.team_stats(team_id).final < stats.team_stats(opponent_id).final
       opponent
     else
-      'tie'
+      nil
     end
   end
 

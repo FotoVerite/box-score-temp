@@ -6,6 +6,8 @@ class Assn < ActiveRecord::Base
   has_many :leagues
   has_many :teams, through: :leagues
 
+  scope :ordered, order('name')
+
   def to_s
     name
   end

@@ -15,6 +15,10 @@ class Team < ActiveRecord::Base
 
   scope :for_sport, lambda { |sport| where sport: sport }
 
+  def self.ordered
+    all.sort! { |x,y| x <=> y }
+  end
+
   def display_name
     [school.name, sport].join(' ')
   end

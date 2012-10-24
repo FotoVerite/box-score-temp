@@ -8,6 +8,8 @@ class League < ActiveRecord::Base
   has_many :schools
   has_many :teams, through: :schools
 
+  scope :ordered, order('name')
+
   def to_s
     name
   end
