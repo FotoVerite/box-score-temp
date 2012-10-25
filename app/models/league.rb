@@ -12,13 +12,13 @@ class League < ActiveRecord::Base
     name
   end
 
+  def name_with_assn
+    "#{self.name} (#{self.assn.name})"
+  end
+
   def self.names_with_assns_for_select
-    names_with_assns = []
-
-    League.all.each do |league|
-      names_with_assns << ["#{league.name} (#{league.assn.name})", league.id]
+    League.ordered.includes(:assn).map do |league|
+      [league.name_with_assn, league.id]
     end
-
-    names_with_assns.sort
   end
 end
