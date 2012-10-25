@@ -1,0 +1,18 @@
+%section#game-stats
+  %h2 Game Summary
+
+  %table.game-stats
+    %thead
+      %tr
+        %th Team
+        - (1..game.stats.periods).each do |period|
+          %th= period.to_s
+        %th Final
+
+    %tbody
+      = render 'games/game_stats', game: game, team: game.away_team
+      = render 'games/game_stats', game: game, team: game.home_team
+
+%section#player-stats
+  = render 'games/player_stats', game: game, team: game.away_team
+  = render 'games/player_stats', game: game, team: game.home_team

@@ -1,10 +1,13 @@
 class Team < ActiveRecord::Base
-  attr_accessible :season_id, :sport, :player_ids, :school_id, :league_id
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  attr_accessible :season_id, :sport_id, :player_ids, :school_id, :league_id
 
   delegate :name, to: :school, prefix: true
+  delegate :sport_type, to: :sport
 
-  validates_presence_of :sport, :season_id, :school_id, :league_id
+  validates_presence_of :sport_id, :season_id, :school_id, :league_id
 
+  belongs_to_active_hash :sport
   belongs_to :school
   belongs_to :season
   belongs_to :league
@@ -14,22 +17,12 @@ class Team < ActiveRecord::Base
 
   has_many :players, through: :team_players
 
-  scope :for_sport, lambda { |sport| where sport: sport }
-
   def display_name
-    [school.name, sport].join(' ')
+    [school.name, sport.name].join(' ')
   end
 
   def potential_opponents
-    Team.for_sport(sport).where("id != :me", me: id)
-  end
-
-  def sport_type
-    if ['Boys Basketball', 'Girls Basketball'].include? sport
-      'basketball'
-    elsif ['Boys Baseball', 'Girls Softball'].include? sport
-      'baseball'
-    end
+    Team.where(sport_id: self.sport_id).where("id != :me", me: id)
   end
 
   def player_game_stats(game)

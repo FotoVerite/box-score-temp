@@ -1,0 +1,7 @@
+%tr
+  %th{ scope: 'row' }
+    = player_game_stat_fields.collection_select :player_id, team.players,
+        :id, :name, { include_blank: true }, class: 'player'
+
+  - team.sport.player_stat_fields.each do |field, attributes|
+    %td= stats_fields.text_field(field, attributes[:input_html])

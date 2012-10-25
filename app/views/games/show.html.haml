@@ -9,4 +9,4 @@
   - if admin_signed_in?
     = link_to 'Edit this box score', edit_game_path(@game), class: 'edit-box-score small button'
 
-  = render "games/#{@game.team.sport_type}/box_score", game: @game
+  = render "games/box_score", game: @game

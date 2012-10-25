@@ -1,0 +1,14 @@
+%table.player-stats
+  %caption= team.display_name
+
+  %thead
+    %tr
+      %th Player
+      - team.sport.player_stat_fields.each do |field, attributes|
+        %th= attributes[:abbr]
+
+  %tbody
+    - team.player_game_stats(game).each do |player_game_stat|
+      = render 'games/player_game_stat',
+          player_game_stat: player_game_stat,
+          team: team

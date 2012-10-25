@@ -5,6 +5,7 @@ ruby '1.9.3'
 gem 'rails', '3.2.8'
 
 #gem 'activeadmin'
+gem 'active_hash'
 gem 'acts_as_list'
 gem 'cancan'
 gem 'chosen-rails'

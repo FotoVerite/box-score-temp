@@ -93,7 +93,7 @@ class Filter
     if @sports
       [@sports]
     else
-      Sport::NAMES
+      Sport.all.map(&:name)
     end
   end
 
