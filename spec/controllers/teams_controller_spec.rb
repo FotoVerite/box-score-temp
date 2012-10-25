@@ -26,11 +26,29 @@ describe TeamsController do
     end
 
     describe "POST 'create'" do
+      context 'with invalid data' do
+        before do
+          post :create, team: {}
+        end
+
+        it 'renders new template' do
+          response.should render_template('new')
+        end
+      end
+
       context 'with valid data' do
         let(:season) { create :season }
+        let(:league) { create :league }
         let(:player_01) { create :player }
         let(:player_02) { create :player }
-        before { post :create, team: { school_id: school.id, season_id: season.id, sport: season.sport } }
+        before do
+          post :create, team: {
+                league_id: league.id,
+                school_id: school.id,
+                season_id: season.id,
+                sport: season.sport
+              }
+        end
 
         it "creates a team for the admin's school" do
           assigns(:team).school_id.should == admin.school_id
@@ -44,7 +62,7 @@ describe TeamsController do
           assigns(:team).sport.should == season.sport
         end
 
-        it "redirects to the show page" do
+        it "redirects to the team edit page" do
           response.should redirect_to edit_team_path(assigns(:team))
         end
       end

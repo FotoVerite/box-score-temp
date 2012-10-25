@@ -29,6 +29,8 @@ class TeamsController < ApplicationController
     @team = current_admin.school.teams.build params[:team]
     if @team.save
       redirect_to [:edit, @team]
+    else
+      render action: 'new'
     end
   end
 
@@ -40,13 +42,14 @@ class TeamsController < ApplicationController
     @team = current_admin.school.teams.find params[:id]
     if @team.update_attributes params[:team]
       redirect_to [:edit, @team]
+    else
+      render action: 'edit'
     end
   end
 
   def destroy
     @team = current_admin.school.teams.find params[:id]
-    if @team.destroy
-      redirect_to teams_path
-    end
+    @team.destroy if @team
+    redirect_to teams_path
   end
 end

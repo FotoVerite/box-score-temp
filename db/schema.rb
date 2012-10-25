@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121022210109) do
+ActiveRecord::Schema.define(:version => 20121025151156) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -84,8 +84,8 @@ ActiveRecord::Schema.define(:version => 20121022210109) do
     t.string   "mascot"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "league_id"
     t.integer  "assn_id"
+    t.integer  "league_id"
   end
 
   add_index "schools", ["league_id"], :name => "index_schools_on_league_id"
@@ -112,8 +112,10 @@ ActiveRecord::Schema.define(:version => 20121022210109) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "season_id"
+    t.integer  "league_id"
   end
 
+  add_index "teams", ["league_id"], :name => "index_teams_on_league_id"
   add_index "teams", ["school_id"], :name => "index_teams_on_school_id"
 
 end

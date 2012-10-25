@@ -6,7 +6,7 @@ class League < ActiveRecord::Base
   belongs_to :assn
 
   has_many :schools
-  has_many :teams, through: :schools
+  has_many :teams
 
   scope :ordered, order('name')
 

@@ -1,12 +1,13 @@
 class Team < ActiveRecord::Base
-  attr_accessible :season_id, :sport, :player_ids, :school_id
+  attr_accessible :season_id, :sport, :player_ids, :school_id, :league_id
 
   delegate :name, to: :school, prefix: true
 
-  validates_presence_of :sport, :season_id, :school_id
+  validates_presence_of :sport, :season_id, :school_id, :league_id
 
   belongs_to :school
   belongs_to :season
+  belongs_to :league
 
   has_many :games
   has_many :team_players
@@ -14,10 +15,6 @@ class Team < ActiveRecord::Base
   has_many :players, through: :team_players
 
   scope :for_sport, lambda { |sport| where sport: sport }
-
-  def self.ordered
-    all.sort! { |x,y| x <=> y }
-  end
 
   def display_name
     [school.name, sport].join(' ')

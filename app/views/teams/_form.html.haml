@@ -4,6 +4,7 @@
       = field_set_tag 'Sport and Season' do
         = f.input :sport, collection: Sport::NAMES, include_blank: false
         = f.input :season_id, collection: Season.all, label_method: :year_and_sport, include_blank: false
+        = f.input :league_id, collection: League.names_with_assns_for_select, label: 'League/Division', include_blank: false
 
       = field_set_tag 'Roster' do
         %table.roster
