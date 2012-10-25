@@ -24,19 +24,15 @@ class Filter
   end
 
   def league_options
-    League.where('1 = 1')
+    if assn.present?
+      assn.leagues
+    else
+      League.scoped
+    end
   end
 
-  #def league_options
-    #if assn.present?
-      #assn.leagues
-    #else
-      #League.where('1 = 1')
-    #end
-  #end
-
   def team_options
-    Team.where('1 = 1')
+    Team.scoped
   end
 
   #def team_options
@@ -102,18 +98,10 @@ class Filter
   end
 
   def earliest_date
-    if @earliest_date.present?
-      @earliest_date
-    else
-      1.year.ago
-    end
+    @earliest_date || 1.year.ago.to_date
   end
 
   def latest_date
-    if @latest_date.present?
-      @latest_date
-    else
-      Date.today
-    end
+    @latest_date || Date.current
   end
 end
