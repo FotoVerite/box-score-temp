@@ -7,7 +7,6 @@ describe League do
   it { should belong_to :assn }
   it { should have_many :teams }
 
-  it { should have_many :schools }
 
   describe '.names_with_assns_for_select' do
     let(:assn) { create :assn, name: 'NYSCLSL' }
