@@ -13,4 +13,8 @@ module ApplicationHelper
     return 'CHILD' if player_game_stat.player_id.blank?
     player_game_stat.player_id
   end
+
+  def facebook_share_url(url)
+    "http://www.facebook.com/share.php?u=#{CGI.escape(url)}"
+  end
 end

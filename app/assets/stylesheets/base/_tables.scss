@@ -71,10 +71,12 @@ a.box-score {
 }
 
 .sharing {
-  position: relative;
-  top: -45px;
-  left: 160px;
-  font-size: 12px;
+  &.summary {
+    position: relative;
+    top: -45px;
+    left: 175px;
+    font-size: 12px;
+  }
 
   span {
     @include inline-block;

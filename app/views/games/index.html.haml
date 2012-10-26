@@ -45,11 +45,12 @@
 
             = link_to 'Box Score', game_path(game), class: 'box-score'
 
-            .sharing
+            .sharing.summary
               %span Share:
-              %span= link_to 'Share on Facebook', 'http://facebook.com', class: 'facebook'
-              %span= link_to 'Share on Twitter', 'http://twitter.com', class: 'twitter'
-              %span= link_to 'Share via Email', '#', class: 'email'
+              %span= link_to 'Share on Facebook', facebook_share_url(game_url(game)), class: 'facebook', target: '_blank'
+              %span= link_to 'Share on Twitter',
+                "https://twitter.com/share?url=#{CGI::escape(twitter_box_score_message(game.team, game.opponent, game.date, game_url(game)))}",
+                class: 'twitter', data: { lang: 'en' }, target: '_blank'
 
 :javascript
   $(document).ready(function(){
