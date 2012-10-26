@@ -3,6 +3,6 @@ FactoryGirl.define do
     league
     school
     season
-    sport { season.sport }
+    sport_id 'boys-basketball'
   end
 end

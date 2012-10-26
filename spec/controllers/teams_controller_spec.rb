@@ -37,8 +37,8 @@ describe TeamsController do
       end
 
       context 'with valid data' do
-        let(:season) { create :season }
         let(:league) { create :league }
+        let(:season) { create :season }
         let(:player_01) { create :player }
         let(:player_02) { create :player }
         before do
@@ -46,7 +46,7 @@ describe TeamsController do
                 league_id: league.id,
                 school_id: school.id,
                 season_id: season.id,
-                sport: season.sport
+                sport_id: 'boys-basketball'
               }
         end
 
@@ -56,10 +56,6 @@ describe TeamsController do
 
         it "creates a team for the provided season" do
           assigns(:team).season_id.should == season.id
-        end
-
-        it "creates a team for the provided sport" do
-          assigns(:team).sport.should == season.sport
         end
 
         it "redirects to the team edit page" do
