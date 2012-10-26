@@ -8,7 +8,8 @@ class TeamStats
   end
 
   def points(period)
-    @hash[:periods][period].to_i
+    p = @hash[:periods][period]
+    p.to_i unless p.blank?
   end
 
   def final
@@ -21,5 +22,14 @@ class TeamStats
 
   def errors
     @hash[:errors].to_i
+  end
+
+  def method_missing(name, *args)
+    case name
+    when /^period_(\d+)_points$/
+      points($1)
+    else
+      super(name, *args)
+    end
   end
 end

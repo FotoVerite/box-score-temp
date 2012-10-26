@@ -19,30 +19,50 @@ class Sport < ActiveHash::Base
     hits:         { abbr: 'H' },
   }
 
+  BASKETBALL_SUMMARY_STATS = {
+    period_1_points: { abbr: '1' },
+    period_2_points: { abbr: '2' },
+    period_3_points: { abbr: '3' },
+    period_4_points: { abbr: '4' },
+    final:           { abbr: 'F' }
+  }
+
+  BASEBALL_SUMMARY_STATS = {
+    final:           { abbr: 'R' },
+    hits:            { abbr: 'H' },
+    errors:          { abbr: 'E' },
+  }
+
   SPORT_TYPES = {
-    basketball: {
+    'basketball' => {
       periods: %w{1 2 3 4},
-      player_stats: BASKETBALL_PLAYER_STATS
+      player_stats: BASKETBALL_PLAYER_STATS,
+      summary_stats: BASKETBALL_SUMMARY_STATS
     },
-    baseball: {
+    'baseball' => {
       periods: %w{1 2 3 4 5 6 7},
-      player_stats: BASEBALL_PLAYER_STATS
+      player_stats: BASEBALL_PLAYER_STATS,
+      summary_stats: BASEBALL_SUMMARY_STATS
     }
   }
 
   self.data = [
-    { id: 'boys-basketball', sport_type: :basketball, name: "Boys Basketball"},
-    { id: 'girls-basketball', sport_type: :basketball, name: "Girls Basketball"},
+    { id: 'boys-basketball', sport_type: 'basketball', name: "Boys Basketball"},
+    { id: 'girls-basketball', sport_type: 'basketball', name: "Girls Basketball"},
 
-    { id: 'girls-softball', sport_type: :baseball, name: "Girls Softball"},
-    { id: 'boys-baseball', sport_type: :baseball, name: "Boys Baseball"},
-  ]
+    { id: 'girls-softball', sport_type: 'baseball', name: "Girls Softball"},
+    { id: 'boys-baseball', sport_type: 'baseball', name: "Boys Baseball"}
+  ].freeze
 
   def player_stat_fields
-    SPORT_TYPES[sport_type][:player_stats]
+    SPORT_TYPES[sport_type.to_s][:player_stats]
   end
 
   def periods
-    SPORT_TYPES[sport_type][:periods]
+    SPORT_TYPES[sport_type.to_s][:periods]
+  end
+
+  def summary_stats
+    SPORT_TYPES[sport_type.to_s][:summary_stats]
   end
 end

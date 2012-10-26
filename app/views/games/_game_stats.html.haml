@@ -1,8 +1,5 @@
 - stats = game.stats.team_stats(team)
-
 %tr{ class: winner_class(game, team) }
-  %th{ scope: 'row' }= team.display_name
-  - (1..game.stats.periods).each do |period|
-    %td= stats.points(period.to_s).to_i
-  %td
-    %strong= stats.final
+  %th{ scope: 'row' }= team.school.name
+  - game.sport.summary_stats.each do |stat, attributes|
+    %td= stats.send(stat)

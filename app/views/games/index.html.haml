@@ -15,33 +15,16 @@
       .row
         - @games.each do |game|
           .four.columns
-            - if game.team.sport_type == 'basketball'
-              %table.game-stats
-                %thead
-                  %tr
-                    %th Team
-                    %th 1
-                    %th 2
-                    %th 3
-                    %th 4
-                    %th F
+            %table.game-stats
+              %thead
+                %tr
+                  %th Team
+                  - game.sport.summary_stats.each do |stat, attributes|
+                    %th= attributes[:abbr]
 
-                %tbody
-                  = render 'games/basketball/game_stats_row', game: game, team: game.away_team
-                  = render 'games/basketball/game_stats_row', game: game, team: game.home_team
-
-            - elsif game.team.sport_type == 'baseball'
-              %table.game-stats
-                %thead
-                  %tr
-                    %th Team
-                    %th R
-                    %th H
-                    %th E
-
-                %tbody
-                  = render 'games/baseball/game_stats_row', game: game, team: game.away_team, brief: true
-                  = render 'games/baseball/game_stats_row', game: game, team: game.home_team, brief: true
+              %tbody
+                = render 'games/game_stats', game: game, team: game.away_team
+                = render 'games/game_stats', game: game, team: game.home_team
 
             = link_to 'Box Score', game_path(game), class: 'box-score'
 
@@ -56,4 +39,3 @@
   $(document).ready(function(){
     new BoxScore.Filters($('#filter-scores'))
   });
-
