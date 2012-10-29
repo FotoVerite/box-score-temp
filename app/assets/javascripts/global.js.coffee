@@ -1,4 +1,6 @@
 $ ->
   $('#filter-scores input.date, #game_date').datepicker()
 
-  $('.chzn-select').chosen({ disable_search_threshold: 10 })
+  $('.chzn-select').chosen
+    disable_search_threshold: 10
+    allow_single_deselect: true
