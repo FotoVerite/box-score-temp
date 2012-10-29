@@ -63,9 +63,12 @@ class Game < ActiveRecord::Base
   end
 
   def winner
-    if stats.team_stats(team_id).final > stats.team_stats(opponent_id).final
+    team_score = stats.team_stats(team_id).final
+    opponent_score = stats.team_stats(opponent_id).final
+
+    if team_score > opponent_score
       team
-    elsif stats.team_stats(team_id).final < stats.team_stats(opponent_id).final
+    elsif opponent_score > team_score
       opponent
     else
       nil
