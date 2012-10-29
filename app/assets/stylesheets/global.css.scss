@@ -77,11 +77,11 @@ body {
 a#branding {
   position: absolute;
   z-index: 2;
-  left: 10px;
+  left: 150px;
   top: 10px;
   display: block;
-  width: 564px;
-  height: 250px;
+  width: 335px;
+  height: 157px;
   background: image_url('hsboxscore-logo.png') no-repeat;
   text-indent: -999em;
 }
@@ -116,10 +116,12 @@ nav.global {
   p {
     font-size: 11px;
     font-weight: 700;
+    color: $black;
   }
 
   a {
     display: inline-block;
+    margin-left: 10px;
     padding: 8px 25px;
     @include border-radius(20px);
     @include single-box-shadow(transparentize(#333, 0.5), 0, 1px, 1px, 0px, true);
@@ -184,7 +186,7 @@ nav.global {
       border: 1px solid $black;
       border-left: 1px solid #707070;
       padding: 13px 0;
-      color: #84D1DA;
+      color: $alternate-link-color;
       background: image_url('gradient-gray-nav.png') repeat-x;
       text-align: center;
 
@@ -226,5 +228,36 @@ nav.global {
   h2 {
     margin: 40px 0 20px;
     font-size: 20px;
+  }
+}
+
+footer.global {
+  color: #5099c3;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  p {
+    font-size: 11px;
+  }
+
+  nav {
+    ul {
+      @include horizontal-list-container;
+    }
+
+    li {
+      @include horizontal-list-item;
+      font-size: 11px;
+      line-height: 11px;
+      padding: 0 10px 0 7px;
+
+      &:last-child {
+        border-left: 1px solid;
+      }
+
+      a {
+        color: #5099c3;
+      }
+    }
   }
 }

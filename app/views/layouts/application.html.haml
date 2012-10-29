@@ -17,19 +17,20 @@
 
     %header.global.twelve.columns
       .row
-        .six.columns.offset-by-six
+        .eight.columns.offset-by-four
 
           = link_to 'Follow us on Twitter', 'http://twitter.com', id: 'twitter-button'
 
           %nav.global
             %p
+              %span#registration-links
               - if admin_signed_in?
                 Welcome, #{current_admin.name}
-                %span#registration-links
-                  = link_to 'Log out', destroy_admin_session_path, method: :delete, id: 'logout'
+                = link_to 'Log out', destroy_admin_session_path, method: :delete, id: 'logout'
               - else
-                %span#registration-links
-                  = link_to 'Log in', new_admin_session_path, id: 'login'
+                = link_to 'Log in', new_admin_session_path, id: 'login'
+              = link_to 'About us', '/about-us'
+              = link_to 'Contact us', '/contact-us'
 
     .row
       #content.twelve.columns
@@ -50,3 +51,12 @@
           -#-if admin_signed_in?
             .three.columns.admin-menu
               = render partial: 'shared/admin_menu'
+
+    .row
+      %footer.global.twelve.columns
+        %p.eight.columns Confidential and proprietary HS Box Scores NYC LLC. All rights reserved.
+        %nav.four.columns
+          %ul
+            %li= link_to 'Terms of Service', '/terms-of-service'
+            %li= link_to 'Privacy Policy', '/privacy-policy'
+
