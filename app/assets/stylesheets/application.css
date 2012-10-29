@@ -10,5 +10,5 @@
  *= require games
  *= require filters
  *= require pages
- *= require sign_in
+ *= require users
  */
