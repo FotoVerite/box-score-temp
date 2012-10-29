@@ -98,10 +98,10 @@ class Filter
   end
 
   def earliest_date
-    @earliest_date || 1.year.ago.to_date
+    @earliest_date || 1.year.ago.to_date.stamp("01/31/1999")
   end
 
   def latest_date
-    @latest_date || Date.current
+    @latest_date || Date.current.stamp("01/31/1999")
   end
 end
