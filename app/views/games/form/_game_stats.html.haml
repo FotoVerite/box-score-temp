@@ -10,3 +10,9 @@
   %td &nbsp;
   %td.final-points
     = game.stats.team_stats(team.id).final
+
+  - team.sport.game_stats.each do |key, attributes|
+    %td
+      = text_field_tag "game[game_stats][#{team.id}][#{key}]",
+          game.stats.team_stats(team.id).send(key),
+          maxlength: 2

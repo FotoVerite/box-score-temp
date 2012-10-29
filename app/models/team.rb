@@ -5,7 +5,7 @@ class Team < ActiveRecord::Base
   delegate :name, to: :school, prefix: true
   delegate :sport_type, to: :sport
 
-  validates_presence_of :sport_id, :season_id, :school_id, :league_id
+  validates_presence_of :sport, :season, :school, :league
 
   belongs_to_active_hash :sport
   belongs_to :school

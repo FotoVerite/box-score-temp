@@ -4,24 +4,24 @@ class TeamStats
   end
 
   def periods
-    @hash[:periods].keys.map(&:to_i).max
+    @hash['periods'].keys.map(&:to_i).max
   end
 
   def points(period)
-    p = @hash[:periods][period]
+    p = @hash['periods'][period.to_s]
     p.to_i unless p.blank?
   end
 
   def final
-    @hash[:periods].values.map(&:to_i).sum
+    @hash['periods'].values.map(&:to_i).sum
   end
 
   def hits
-    @hash[:hits].to_i
+    @hash['hits'].to_i
   end
 
   def errors
-    @hash[:errors].to_i
+    @hash['errors'].to_i
   end
 
   def method_missing(name, *args)

@@ -7,14 +7,18 @@
     %thead
       %tr
         %th Team
-        %th 1
-        %th 2
-        %th 3
-        %th 4
+
+        - game.sport.periods.each do |period|
+          %th= period
+
         %th.add-period
           %a{ href: '#', title: 'Add overtime period' }
             %span.icon-plus
+
         %th Final
+
+        - game.sport.game_stats.each do |key, attributes|
+          %th= attributes[:abbr]
 
     %tbody
       = render 'games/form/game_stats', game: game, team: game.team

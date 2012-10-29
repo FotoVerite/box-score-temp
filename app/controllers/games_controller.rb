@@ -9,22 +9,6 @@ class GamesController < ApplicationController
     end
   end
 
-  def boys_baseball
-    render 'games/boys_baseball/index'
-  end
-
-  def boys_basketball
-    render 'games/boys_basketball/index'
-  end
-
-  def girls_softball
-    render 'games/girls_softball/index'
-  end
-
-  def girls_basketball
-    render 'games/girls_basketball/index'
-  end
-
   def show
     @game = Game.find(params[:id])
   end
@@ -50,6 +34,16 @@ class GamesController < ApplicationController
 
   def edit
     @game = Game.find(params[:id])
+  end
+
+  def update
+    @game = Game.find(params[:id])
+
+    if @game.update_attributes(params[:game])
+      redirect_to game_path(@game)
+    else
+      render action: 'edit'
+    end
   end
 
   def teams
