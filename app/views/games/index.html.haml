@@ -37,6 +37,6 @@
                 class: 'twitter', data: { lang: 'en' }, target: '_blank'
 
 :javascript
-  $(document).ready(function(){
-    new BoxScore.Filters($('#filter-scores'))
+  $(function() {
+    new BoxScore.Filters($('#filter-scores'), { filter: #{params[:filter].to_json} })
   });

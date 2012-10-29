@@ -1,5 +1,5 @@
 class Filters
-  constructor: (section) ->
+  constructor: (section, @filter) ->
     form = $(section).find('form#new_filter')
     form
       .on('change', '#filter_assn_id', @assnSelected)
@@ -37,7 +37,7 @@ class Filters
     team_select.html('')
 
     if league_id.length
-      $.getJSON "/leagues/#{league_id}/teams", (teams) =>
+      $.getJSON "/leagues/#{league_id}/teams", @filter, (teams) =>
         team_options = ("<option value=\"#{team.id}\">#{team.display_name}</option>" for team in teams).join('')
         team_select
           .html('<option value=\"\"></options>' + team_options)

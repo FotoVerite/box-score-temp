@@ -1,22 +1,19 @@
 class TeamsController < ApplicationController
-  before_filter :authenticate_admin!, only: [:create, :edit, :update, :destroy]
+  before_filter :authenticate_admin!, except: [:index, :show]
 
   def index
     if admin_signed_in?
       @teams = current_admin.school.teams
     end
 
-    def league
-      if params[:league_id].present?
-        League.find(params[:league_id])
-      else
-        nil
-      end
-    end
-
     respond_to do |format|
       format.json do
-        render json: league.teams
+        league = League.find(params[:league_id])
+        teams = league.teams
+
+        teams = teams.where(sport_id: params[:filter][:sport]) if params[:filter][:sport].present?
+
+        render json: teams
       end
     end
   end

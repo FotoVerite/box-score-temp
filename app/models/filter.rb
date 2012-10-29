@@ -33,18 +33,8 @@ class Filter
   end
 
   def team_options
-    Team.scoped
+    teams.includes(:school)
   end
-
-  #def team_options
-    #if league.present?
-      #league.teams
-    #elsif assn.present?
-      #assn.teams
-    #else
-      #Team.where('1 = 1')
-    #end
-  #end
 
   def games
     filtered_teams = teams
@@ -68,7 +58,7 @@ class Filter
   end
 
   def assn
-    Assn.find_by_id(@assn_id)
+    Assn.find(@assn_id) if @assn_id.present?
   end
 
   def league_id
@@ -76,7 +66,7 @@ class Filter
   end
 
   def league
-    League.find_by_id(@league_id)
+    League.find(@league_id) if @league_id.present?
   end
 
   def team_id
@@ -84,19 +74,22 @@ class Filter
   end
 
   def team
-    team_options.find_by_id(@team_id)
+    Team.find(@team_id) if @team_id.present?
   end
 
   def teams
-    if team.present?
-      Team.where(id: team_id)
-    elsif league.present?
-      league.teams
-    elsif assn.present?
-      assn.teams
-    else
-      Team.scoped
-    end
+    scope = if team.present?
+        Team.where(id: team_id)
+      elsif league.present?
+        league.teams
+      elsif assn.present?
+        assn.teams
+      else
+        Team.scoped
+      end
+
+    scope = scope.where(sport_id: @sport_id) if @sport_id.present?
+    scope
   end
 
   def sports
