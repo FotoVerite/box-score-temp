@@ -3,13 +3,8 @@ BoxScore::Application.routes.draw do
 
   root to: 'games#index'
   match '/about-us', to: 'pages#about'
-  match '/contact-us', to: 'pages#contact'
   match '/terms-of-service', to: 'pages#terms_of_service'
   match '/privacy-policy', to: 'pages#privacy_policy'
-
-  Sport.all.each do |sport|
-    match "/#{sport.id}", to: 'games#index', filter: { sport: sport.id }, as: sport.id.underscore.to_sym
-  end
 
   resources :assns, only: [:show] do
     resources :leagues, only: [:index]

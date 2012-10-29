@@ -9,5 +9,6 @@
  *= require teams
  *= require games
  *= require filters
+ *= require pages
  *= require sign_in
  */

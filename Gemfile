@@ -23,6 +23,7 @@ group :assets do
   gem 'compass-rails'
   gem 'font-awesome-rails'
   gem 'jquery-ui-rails'
+  gem 'maruku'
   gem 'sass'
   gem 'sass-rails'
   gem 'uglifier', '>= 1.0.3'
