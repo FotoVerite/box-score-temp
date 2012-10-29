@@ -5,5 +5,5 @@ class School < ActiveRecord::Base
 
   has_many :teams
   has_many :players
-  has_one :admin
+  has_many :admins
 end

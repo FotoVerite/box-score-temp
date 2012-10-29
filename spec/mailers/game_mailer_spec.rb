@@ -15,10 +15,10 @@ describe GameMailer do
       other_team_in_league = create(:team, league: game.team.league)
 
       expected_emails = [
-        game.team.school.admin.email,
-        game.opponent.school.admin.email,
+        game.team.school.admins.map(&:email),
+        game.opponent.school.admins.map(&:email),
         other_team_in_league.school.admin.email
-      ]
+      ].flatten
 
       mail.to.sort.should eq(expected_emails.sort)
     end
