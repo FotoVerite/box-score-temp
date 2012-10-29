@@ -76,3 +76,11 @@ $mainColor: #e67625;
 // $tooltipFontSizeScreenSmall: 14;
 // $tooltipBackgroundOpacityScreenSmall: 0.85;
 @import 'foundation';
+
+.input.boolean {
+  margin-bottom: 10px;
+
+  label {
+    display: inline;
+  }
+}
