@@ -1,3 +1,3 @@
-This email is to inform you that new Box Scores have been posted for the game between #{@game.team.display_name} and #{@game.opponent.display_name}.
+New Box Scores have been posted for the game between #{@game.team.school.name} and #{@game.opponent.display_name}.
 
-Catch up on the scores here: #{game_url(@game)}
+#{link_to 'Catch up on the scores!', game_url(@game)}
