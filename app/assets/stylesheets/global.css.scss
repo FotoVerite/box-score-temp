@@ -130,7 +130,6 @@ nav.global {
     font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
-    @include single-transition(background-color, 0.2s);
 
     &:hover {
       text-decoration: none;
