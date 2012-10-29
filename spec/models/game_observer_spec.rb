@@ -5,9 +5,8 @@ describe GameObserver do
     game = build(:game)
 
     mock_mailer = mock
-    mock_mailer.stub(message: mock_mailer)
     mock_mailer.should_receive(:deliver)
-    GameMailer.should_receive(:new).and_return(mock_mailer)
+    GameMailer.should_receive(:new_stats).with(game).and_return(mock_mailer)
 
     game.save!
   end

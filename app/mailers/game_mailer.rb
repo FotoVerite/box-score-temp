@@ -1,7 +1,7 @@
 class GameMailer < ActionMailer::Base
   default from: Devise.mailer_sender
 
-  def new(game)
+  def new_stats(game)
     @game = game
 
     mail to: league_emails(game),

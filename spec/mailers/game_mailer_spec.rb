@@ -3,9 +3,9 @@ require "spec_helper"
 describe GameMailer do
   include Rails.application.routes.url_helpers
 
-  describe "new" do
+  describe "new_stats" do
     let(:game) { create(:game) }
-    let(:mail) { GameMailer.new(game) }
+    let(:mail) { GameMailer.new_stats(game) }
 
     it "has the proper subject" do
       mail.subject.should eq("Game stats have been posted for #{game.team.display_name} vs #{game.opponent.display_name}")
