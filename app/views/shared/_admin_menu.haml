@@ -1,21 +1,7 @@
-%hgroup
-  %h2 Admin Menu
-  %h3= current_admin.school.name
-%nav
-  %ul
-    %li
-      %a{ href: edit_school_path(current_admin.school) }
-        %i.icon-caret-right
-        School Profile
-    %li
-      %a{ href: teams_path }
-        %i.icon-caret-right
-        My Teams
-    %li
-      %a{ href: new_game_path }
-        %i.icon-caret-right
-        Add Box Score
-    %li
-      %a{ href: games_path }
-        %i.icon-caret-right
-        Edit Box Scores
+.row
+  %nav.admin-menu.twelve.columns
+    %ul
+      %li= link_to 'Add Box Score', new_game_path, class: 'button'
+      %li= link_to 'Edit Box Scores', games_path, class: 'secondary button'
+      %li= link_to 'School Profile', edit_school_path(current_admin.school), class: 'secondary button'
+      %li= link_to 'My Teams', teams_path, class: 'secondary button'

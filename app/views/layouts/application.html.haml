@@ -45,12 +45,11 @@
               %dd= link_to 'Basketball', girls_basketball_path, class: 'first'
               %dd= link_to 'Softball', girls_softball_path
 
+        -if admin_signed_in?
+          = render partial: 'shared/admin_menu'
+
         .row
           = yield
-
-          -#-if admin_signed_in?
-            .three.columns.admin-menu
-              = render partial: 'shared/admin_menu'
 
     .row
       %footer.global.twelve.columns
