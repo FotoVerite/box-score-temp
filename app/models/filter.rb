@@ -2,11 +2,12 @@ class Filter
   extend ActiveModel::Naming
   include ActiveModel::Conversion
 
-  attr_writer :assn_id, :league_id, :team_id, :sports, :earliest_date, :latest_date
+  attr_writer :assn_id, :league_id, :team_id, :sport_id, :earliest_date, :latest_date
 
   def initialize(hash)
     if hash
       hash = hash.symbolize_keys
+      self.sport_id = hash[:sport]
       self.assn_id = hash[:assn_id]
       self.league_id = hash[:league_id]
       self.team_id = hash[:team_id]
@@ -46,9 +47,18 @@ class Filter
   #end
 
   def games
-    Game.where('(team_id in (:teams) or opponent_id in (:teams))
-      and (date between (:earliest_date) and (:latest_date))',
-      teams: teams, earliest_date: earliest_date, latest_date: latest_date)
+    filtered_teams = teams
+    filtered_teams = filtered_teams.where(sport_id: @sport_id) if @sport_id.present?
+
+    scope = Game.includes(
+        { team: :school },
+        { opponent: :school }
+      )
+
+    scope = scope.where('team_id in (:teams) or opponent_id in (:teams)', teams: filtered_teams)
+    scope = scope.where('date between :earliest and :latest', earliest: earliest_date, latest: latest_date)
+
+    scope
   end
 
   private
@@ -85,7 +95,7 @@ class Filter
     elsif assn.present?
       assn.teams
     else
-      Team.all
+      Team.scoped
     end
   end
 

@@ -3,7 +3,7 @@ class Game < ActiveRecord::Base
   AWAY = 'away'
 
   attr_accessible :home_away, :team_id, :opponent_id, :site, :date, :game_stats,
-                  :player_game_stats_attributes, :season_id, :sport
+                  :player_game_stats_attributes, :season_id
 
   delegate :sport, :sport_type, to: :team
 
@@ -27,16 +27,6 @@ class Game < ActiveRecord::Base
   serialize :game_stats
 
   scope :latest, order('date DESC')
-  scope :by_sport, lambda { |sport| joins(:team).where(teams: { sport: sport }) }
-  scope :latest_by_sport, lambda { |sport| latest.by_sport(sport).limit(3) }
-
-  #TODO refactor using scopes
-  def self.latest_by_sport_assn(sport, assn)
-    order(:date).select do |game|
-      game.team.sport == sport &&
-      (game.team.school.league.assn.name == assn || game.opponent.school.league.assn.name == assn)
-    end.first(3)
-  end
 
   def stats
     stats = GameStats.new(game_stats)
