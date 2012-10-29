@@ -41,6 +41,10 @@ describe GamesController do
 
       context 'with valid data' do
         before do
+          mock_mailer = mock
+          mock_mailer.should_receive(:deliver)
+          GameMailer.should_receive(:new_stats).and_return(mock_mailer)
+
           post :create, game: {
                           team_id: team.id,
                           opponent_id: opponent.id,

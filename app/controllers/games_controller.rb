@@ -26,6 +26,7 @@ class GamesController < ApplicationController
     @game = team.games.build(params[:game])
 
     if @game.save
+      GameMailer.new_stats(@game).deliver
       redirect_to game_path(@game)
     else
       render action: 'new'
