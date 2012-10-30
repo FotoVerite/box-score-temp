@@ -16,6 +16,8 @@
             %dt Away:
             %dd= @game.away_team.display_name
 
+          = f.input :neutral_site, as: :boolean
+
           = f.input :date, as: :string, required: false
 
         #sport_fields

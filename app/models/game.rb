@@ -2,14 +2,14 @@ class Game < ActiveRecord::Base
   HOME = 'home'
   AWAY = 'away'
 
-  attr_accessible :home_away, :team_id, :opponent_id, :site, :date, :game_stats,
-                  :player_game_stats_attributes, :season_id, :publish, :published_at
+  attr_accessible :home_away, :team_id, :opponent_id, :date, :game_stats,
+    :player_game_stats_attributes, :season_id, :publish, :published_at,
+    :neutral_site
 
   delegate :sport, :sport_type, to: :team
 
   validates_presence_of :date
   validates_presence_of :team_id, :opponent_id
-  validates_presence_of :site
   validates_presence_of :home_away
 
   validates_inclusion_of :home_away, in: [HOME, AWAY]

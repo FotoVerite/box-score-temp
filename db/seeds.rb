@@ -81,10 +81,10 @@ girls_softball_season   = Season.create!(start_date: Date.new(2012, 1, 1), year:
 girls_basketball_season = Season.create!(start_date: Date.new(2012, 1, 1), year: '2012-2013', current: true)
 
 # prior seasons
-Season.create!(start_date: Date.new(2011, 9, 9), year: '2011-2012')
-Season.create!(start_date: Date.new(2011, 9, 9), year: '2011-2012')
-Season.create!(start_date: Date.new(2011, 9, 9), year: '2011-2012')
-Season.create!(start_date: Date.new(2011, 9, 9), year: '2011-2012')
+Season.create!(start_date: Date.new(2011, 1, 1), year: '2011-2012')
+Season.create!(start_date: Date.new(2011, 1, 1), year: '2011-2012')
+Season.create!(start_date: Date.new(2011, 1, 1), year: '2011-2012')
+Season.create!(start_date: Date.new(2011, 1, 1), year: '2011-2012')
 
 School.all.each do |school|
   Team.create!(sport_id: 'boys-baseball', league_id: League.all.sample.id, school_id: school.id, season_id: boys_baseball_season.id)
@@ -124,14 +124,15 @@ Team.all.each do |team|
   team.potential_opponents.each do |opponent|
     random_date = team.season.start_date + rand(100)
 
-    Game.create!(date: random_date, home_away: 'home', site: 'home',
-      team_id: team.id, opponent_id: opponent.id, game_stats: random_game_stats(team, opponent),
+    Game.create!(date: random_date, home_away: 'home', team_id: team.id,
+      opponent_id: opponent.id, game_stats: random_game_stats(team, opponent),
       published_at: Time.now)
   end
 end
 
 ('A'..'Z').each do |first_letter|
   ('A'..'Z').each do |second_letter|
-    player = Player.create! first_name: "#{first_letter}rmathy", last_name: "#{second_letter}mith"
+    player = Player.create! first_name: "#{first_letter}rmathy",
+      last_name: "#{second_letter}mith"
   end
 end

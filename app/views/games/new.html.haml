@@ -14,11 +14,12 @@
           = f.input :opponent_id, collection: @game.team.try(:potential_opponents) || [], label_method: :display_name
 
           = f.input :date, as: :string, required: false
-          = f.input :site, collection: Site::NAMES, include_blank: false, required: false
 
           .inline-radio
             = f.collection_radio_buttons :home_away, [['home', 'Home'], ['away', 'Away']], :first, :last,
               required: false, label: false
+
+          = f.input :neutral_site, as: :boolean
 
         #sport_fields
 

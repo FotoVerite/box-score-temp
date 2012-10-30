@@ -30,7 +30,6 @@ describe GamesController do
                           team_id: team.id,
                           opponent_id: opponent.id,
                           date: '',
-                          site: 'home',
                           home_away: 'home',
                           season_id: season.id
                         }
@@ -49,7 +48,6 @@ describe GamesController do
                           team_id: team.id,
                           opponent_id: opponent.id,
                           date: Date.today,
-                          site: 'home',
                           home_away: 'home',
                           season_id: season.id
                         }
