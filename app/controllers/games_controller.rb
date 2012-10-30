@@ -2,11 +2,7 @@ class GamesController < ApplicationController
   before_filter :authenticate_admin!, only: [:new, :create, :edit, :update]
 
   def index
-    if params[:filter].present?
-      @games = filter.games
-    else
-      @games = Game.order('date DESC')
-    end
+    @games = filter.games
   end
 
   def show

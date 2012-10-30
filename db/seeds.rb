@@ -18,7 +18,7 @@ def create_admin(school, name)
   last_name = 'Admin'
   password = 'testing'
   school_id = school.id
-  admins = Admin.create! email: "#{first_name}.#{last_name}@example.com",
+  admins = Admin.create! email: "#{first_name}.#{last_name}@example.com".tr(' ', '-'),
                          first_name: first_name, last_name: last_name, password: password,
                          school_id: school_id
 end

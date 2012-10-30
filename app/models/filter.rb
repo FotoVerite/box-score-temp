@@ -39,7 +39,7 @@ class Filter
   def games
     filtered_teams = teams
 
-    scope = Game.includes(
+    scope = Game.published.latest.includes(
         { team: :school },
         { opponent: :school }
       )

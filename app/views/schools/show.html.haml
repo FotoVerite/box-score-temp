@@ -46,7 +46,8 @@
               %tbody
                 - @school.teams.each do |team|
                   %tr
-                    %th{ scope: 'row' }= team.sport.name
+                    %th{ scope: 'row' }
+                      = link_to_if can?(:manage, team), team.sport.name, [:edit, team]
                     %td= team.coach_name
                     %td= team.coach_email
                     %td= team.coach_phone
@@ -60,6 +61,13 @@
           If you are an administrator, please
           = link_to 'sign in', new_admin_session_path
           to view coach and contact information for this school.
+
+  .row
+    .twelve.columns
+      %h2 Unpublished Scores
+      %ol
+        - @unpublished_games.each do |game|
+          %li= link_to "#{game.away_team.display_name} at #{game.home_team.display_name}", [:edit, game]
 
   .row
     .games.twelve.columns

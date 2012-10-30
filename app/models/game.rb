@@ -3,7 +3,7 @@ class Game < ActiveRecord::Base
   AWAY = 'away'
 
   attr_accessible :home_away, :team_id, :opponent_id, :site, :date, :game_stats,
-                  :player_game_stats_attributes, :season_id
+                  :player_game_stats_attributes, :season_id, :publish
 
   delegate :sport, :sport_type, to: :team
 
@@ -27,6 +27,20 @@ class Game < ActiveRecord::Base
   serialize :game_stats
 
   scope :latest, order('date DESC')
+  scope :published, where('published_at is not null')
+  scope :unpublished, where('published_at is null')
+
+  def self.with_team(team)
+    where('team_id in (:teams) or opponent_id in (:teams)', teams: team)
+  end
+
+  def published?
+    published_at?
+  end
+
+  def publish=(x)
+    self.published_at = Time.now.utc
+  end
 
   def stats
     stats = GameStats.new(game_stats)
