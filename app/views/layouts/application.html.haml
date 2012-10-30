@@ -26,9 +26,9 @@
               %span#registration-links
               - if admin_signed_in?
                 Welcome, #{current_admin.name}
-                = link_to 'Log out', destroy_admin_session_path, method: :delete, id: 'logout'
+                = link_to 'Sign out', destroy_admin_session_path, method: :delete, id: 'logout'
               - else
-                = link_to 'Log in', new_admin_session_path, id: 'login'
+                = link_to 'Admin Sign In', new_admin_session_path, id: 'login'
               = link_to 'About us', '/about-us'
 
     .row
