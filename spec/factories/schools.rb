@@ -4,8 +4,8 @@ FactoryGirl.define do
     sequence(:mascot) { |n| "mascot-#{n}" }
 
     after(:build) do |school, evaluator|
-      unless school.admin.present?
-        school.admin = FactoryGirl.build(:admin, school: school)
+      unless school.admins.any?
+        school.admins << FactoryGirl.build(:admin, school: school)
       end
     end
   end
