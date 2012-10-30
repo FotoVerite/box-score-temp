@@ -62,12 +62,13 @@
           = link_to 'sign in', new_admin_session_path
           to view coach and contact information for this school.
 
-  .row
-    .twelve.columns
-      %h2 Unpublished Scores
-      %ol
-        - @unpublished_games.each do |game|
-          %li= link_to "#{game.away_team.display_name} at #{game.home_team.display_name}", [:edit, game]
+  - if can?(:manage, @school) && @unpublished_games.any?
+    .row
+      .twelve.columns
+        %h2 Unpublished Scores
+        %ol
+          - @unpublished_games.each do |game|
+            %li= link_to "#{game.away_team.display_name} at #{game.home_team.display_name}", [:edit, game]
 
   .row
     .games.twelve.columns
