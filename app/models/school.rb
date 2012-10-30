@@ -9,4 +9,8 @@ class School < ActiveRecord::Base
   has_many :teams
   has_many :players
   has_many :admins
+
+  def to_param
+    "#{self.id}-#{self.name.parameterize}"
+  end
 end

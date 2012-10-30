@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(admin)
-    school_path(admin.school_id)
+    school_path(admin.school)
   end
 
   def current_ability

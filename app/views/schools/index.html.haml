@@ -1,3 +1,4 @@
 %h1 All Schools
-- @schools.each do |school|
-  %li= link_to school.name, school_path(school.id)
+%ul
+  - @schools.each do |school|
+    %li= link_to school.name, school
