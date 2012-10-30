@@ -21,5 +21,5 @@
           %span Share:
           %span= link_to 'Share on Facebook', facebook_share_url(game_url(game)), class: 'facebook', target: '_blank'
           %span= link_to 'Share on Twitter',
-            "https://twitter.com/share?url=#{CGI::escape(twitter_box_score_message(game.team, game.opponent, game.date, game_url(game)))}",
+            "http://twitter.com/home/?status=#{CGI::escape(twitter_box_score_message(game.team, game.opponent, game.date, game_url(game)))}",
             class: 'twitter', data: { lang: 'en' }, target: '_blank'
