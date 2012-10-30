@@ -38,7 +38,6 @@ class Filter
 
   def games
     filtered_teams = teams
-    filtered_teams = filtered_teams.where(sport_id: @sport_id) if @sport_id.present?
 
     scope = Game.includes(
         { team: :school },

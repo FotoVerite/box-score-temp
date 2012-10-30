@@ -12,8 +12,8 @@
                 %th= attributes[:abbr]
 
           %tbody
-            = render 'games/game_stats', game: game, team: game.away_team
-            = render 'games/game_stats', game: game, team: game.home_team
+            = render 'games/team_summary', game: game, team: game.away_team
+            = render 'games/team_summary', game: game, team: game.home_team
 
         = link_to 'Box Score', game_path(game), class: 'box-score'
 

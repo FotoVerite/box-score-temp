@@ -16,4 +16,25 @@
       "http://twitter.com/home/?status=#{CGI::escape(twitter_box_score_message(@game.team, @game.opponent, @game.date, game_url(@game)))}",
       class: 'twitter', data: { lang: 'en' }, target: '_blank'
 
-  = render "games/box_score", game: @game
+  %section#game-stats
+    %h2 Game Summary
+
+    %table.game-stats
+      %thead
+        %tr
+          %th Team
+          - (1..@game.stats.periods).each do |period|
+            %th= period
+
+          %th Final
+
+          - @game.sport.game_stats.each do |key, attributes|
+            %th= attributes[:abbr]
+
+      %tbody
+        = render 'team_stats', game: @game, team: @game.away_team
+        = render 'team_stats', game: @game, team: @game.home_team
+
+  %section#player-stats
+    = render 'player_stats', game: @game, team: @game.away_team
+    = render 'player_stats', game: @game, team: @game.home_team
