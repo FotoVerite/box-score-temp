@@ -1,0 +1,25 @@
+%h2 Recent Scores
+
+- if @games.length > 0
+  .row
+    - @games.each do |game|
+      .four.columns
+        %table.game-stats
+          %thead
+            %tr
+              %th Team
+              - game.sport.summary_stats.each do |stat, attributes|
+                %th= attributes[:abbr]
+
+          %tbody
+            = render 'games/game_stats', game: game, team: game.away_team
+            = render 'games/game_stats', game: game, team: game.home_team
+
+        = link_to 'Box Score', game_path(game), class: 'box-score'
+
+        .sharing.summary
+          %span Share:
+          %span= link_to 'Share on Facebook', facebook_share_url(game_url(game)), class: 'facebook', target: '_blank'
+          %span= link_to 'Share on Twitter',
+            "https://twitter.com/share?url=#{CGI::escape(twitter_box_score_message(game.team, game.opponent, game.date, game_url(game)))}",
+            class: 'twitter', data: { lang: 'en' }, target: '_blank'
