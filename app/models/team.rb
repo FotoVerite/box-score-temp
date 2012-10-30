@@ -1,6 +1,7 @@
 class Team < ActiveRecord::Base
   extend ActiveHash::Associations::ActiveRecordExtensions
-  attr_accessible :season_id, :sport_id, :player_ids, :school_id, :league_id
+  attr_accessible :season_id, :sport_id, :player_ids, :school_id,
+    :league_id, :coach_name, :coach_email, :coach_phone, :competitive_class
 
   delegate :name, to: :school, prefix: true
   delegate :sport_type, to: :sport

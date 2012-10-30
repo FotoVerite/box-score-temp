@@ -15,6 +15,10 @@ class TeamsController < ApplicationController
 
         render json: teams
       end
+
+      format.html do
+        render html: @teams
+      end
     end
   end
 

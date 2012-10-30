@@ -1,5 +1,66 @@
 %h1= @school.name
--unless @school.mascot.blank?
-  %p
-    %strong School mascot:
-    #{@school.mascot}
+
+#main.twelve.columns
+  .info.twelve.columns
+    .row
+      .twelve.columns.basic-info
+        %dl
+          -unless @school.address_1.blank?
+            %div
+              %dt Address
+              %dd= @school.address_1
+              %dd= @school.address_2
+            %div
+              %dt Association
+              %dd= @school.assn
+          -unless @school.mascot.blank?
+            %div
+              %dt Mascot
+              %dd= @school.mascot
+          - if admin_signed_in?
+            -unless @school.athletic_director_name.blank?
+              %div
+                %dt Athletic Director
+                %dd= @school.athletic_director_name
+            -unless @school.athletic_director_email.blank?
+              %div
+                %dt Email
+                %dd= @school.athletic_director_email
+            -unless @school.athletic_director_phone.blank?
+              %div
+                %dt Phone
+                %dd= @school.athletic_director_phone
+
+    - if admin_signed_in?
+      .row
+        .twelve.columns.teams
+          %h2 Teams and Coaches
+          -if @school.teams.any?
+            %table
+              %thead
+                %tr
+                  %th Team
+                  %th Coach
+                  %th Email
+                  %th Phone
+              %tbody
+                - @school.teams.each do |team|
+                  %tr
+                    %th{ scope: 'row' }= team.sport.name
+                    %td= team.coach_name
+                    %td= team.coach_email
+                    %td= team.coach_phone
+
+          - else
+            %p No current teams
+
+    -else
+      .twelve.columns
+        %p
+          If you are an administrator, please
+          = link_to 'sign in', new_admin_session_path
+          to view coach and contact information for this school.
+
+  .row
+    .games.twelve.columns
+      = render 'shared/recent_scores'

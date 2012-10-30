@@ -1,5 +1,14 @@
 %h1 #{@school.name} - Edit Profile
-= simple_form_for @school do |f|
-  = f.input :name
-  = f.input :mascot
-  = f.button :submit, class: 'medium secondary button'
+
+#main
+  .row
+    .six.columns.centered
+      = simple_form_for @school do |f|
+        = f.input :name
+        = f.input :address_1, label: 'Address'
+        = f.input :address_2, label: 'City, State, Zip'
+        = f.input :mascot
+        = f.input :athletic_director_name
+        = f.input :athletic_director_email
+        = f.input :athletic_director_phone
+        = f.button :submit, class: 'medium secondary button'

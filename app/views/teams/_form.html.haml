@@ -1,10 +1,11 @@
 .row
-  .seven.columns
+  .six.columns
     = simple_form_for @team do |f|
       = field_set_tag 'Sport and Season' do
         = f.input :sport_id, collection: Sport.all, include_blank: false
         = f.input :season_id, collection: Season.all, label_method: :year_and_sport, include_blank: false
         = f.input :league_id, collection: League.names_with_assns_for_select, label: 'League/Division', include_blank: false
+        = f.input :competitive_class, label: 'Class'
 
       = field_set_tag 'Roster' do
         %table.roster
@@ -14,11 +15,16 @@
           = render partial: 'team_member', collection: @team.players, locals: { mode: 'remove' }
         = hidden_field_tag 'team[player_ids][]'
 
+      = field_set_tag 'Coach' do
+        = f.input :coach_name, label: 'Name'
+        = f.input :coach_email, label: 'Email address'
+        = f.input :coach_phone, label: 'Phone number'
+
       = f.button :submit, class: 'button', disable_with: 'Updating..'
       - unless @team.new_record?
         = link_to 'Delete Team', @team, method: :delete, class: 'tiny alert button delete-team', confirm: 'Permanently delete this team?'
 
-  .five.columns
+  .six.columns
     = form_tag players_path, method: :get, remote: true do |f|
       = field_set_tag 'Search players by first or last name' do
         %input{ type: 'text', name: 'name' }

@@ -1,8 +1,11 @@
 class School < ActiveRecord::Base
-  attr_accessible :mascot, :name
+  attr_accessible :mascot, :name, :athletic_director_name,
+    :athletic_director_email, :athletic_director_phone, :address_1,
+    :address_2, :assn_id
 
   validates :name, presence: true, uniqueness: true
 
+  belongs_to :assn
   has_many :teams
   has_many :players
   has_many :admins

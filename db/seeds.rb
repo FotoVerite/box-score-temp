@@ -23,8 +23,8 @@ def create_admin(school, name)
                          school_id: school_id
 end
 
-def create_school(name)
-  schools = School.create! name: name
+def create_school(name, assn_id)
+  schools = School.create! name: name, assn_id: assn_id
 end
 
 def create_assn(name)
@@ -40,6 +40,7 @@ end
   create_assn name
 end
 
+#LEAGUES
 ['Brooklyn AA', 'Queens AA'].each do |name|
   assn_id = Assn.all.to_a[0].id
   create_league name, assn_id
@@ -55,39 +56,22 @@ end
   create_league name, assn_id
 end
 
-['Trinity', 'Southville'].each do |name|
-  league_id = League.all.to_a[0].id
-  school = create_school name
+#SCHOOLS
+['Trinity', 'Southville', 'Lexington', 'Eastern Catholic'].each do |name|
+  assn_id = Assn.all.to_a[0].id
+  school = create_school name, assn_id
   create_admin school, name
 end
 
-['Lexington', 'Eastern Catholic'].each do |name|
-  league_id = League.all.to_a[1].id
-  school = create_school name
+['Westminster', 'Northern', 'Lakeland', 'Bishop Kelly'].each do |name|
+  assn_id = Assn.all.to_a[1].id
+  school = create_school name, assn_id
   create_admin school, name
 end
 
-['Westminster', 'Northern'].each do |name|
-  league_id = League.all.to_a[2].id
-  school = create_school name
-  create_admin school, name
-end
-
-['Lakeland', 'Bishop Kelly'].each do |name|
-  league_id = League.all.to_a[3].id
-  school = create_school name
-  create_admin school, name
-end
-
-['Rexburg', 'Southern'].each do |name|
-  league_id = League.all.to_a[4].id
-  school = create_school name
-  create_admin school, name
-end
-
-['Eastminster', 'Western Catholic'].each do |name|
-  league_id = League.all.to_a[5].id
-  school = create_school name
+['Rexburg', 'Southern', 'Eastminster', 'Western Catholic'].each do |name|
+  assn_id = Assn.all.to_a[2].id
+  school = create_school name, assn_id
   create_admin school, name
 end
 

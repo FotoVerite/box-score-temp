@@ -1,2 +1,50 @@
+@import 'base/colors';
+@import 'base/fonts';
+@import 'base/tables';
+
 body.box-score.schools {
+  #main {
+    .info {
+      padding: 0 0 20px;
+
+      .basic-info {
+        height: 100px;
+        padding-top: 20px;
+        border-bottom: 1px solid #666;
+        margin-bottom: 20px;
+        background: $eggshell;
+
+        dl {
+          height: 100%;
+
+          > div {
+            width: 140px;
+            height: 100%;
+            float: left;
+            margin: 0 10px;
+          }
+        }
+
+        dt {
+          margin: 10px 0 3px;
+          font-family: $headline-font;
+          font-size: 16px;
+          text-align: center;
+        }
+
+        dd {
+          font-size: 14px;
+          text-align: center;
+        }
+      }
+
+      h2 {
+        margin: 10px 0 3px;
+      }
+
+      table {
+        @include table;
+      }
+    }
+  }
 }

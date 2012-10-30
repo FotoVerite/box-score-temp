@@ -1,21 +1,22 @@
-.row
-  %h1 #{current_admin.school.name} Teams
+%h1 #{current_admin.school.name} Teams
 
-.row
-  = link_to 'Create New Team', new_team_path, class: 'tiny button new-team'
-
-.row
-  #teams-list.twelve.columns
-    %table
-      - if @teams.length > 0
-        - @teams.each do |team|
+#main.twelve.columns
+  .row
+    #teams-list.ten.columns
+      %table
+        - if @teams.length > 0
+          - @teams.each do |team|
+            %tr
+              %td= team.sport.name
+              %td= team.season.year
+              %td
+                %a{ href: edit_team_path(team) }
+                  %i.icon-edit
+                  Edit
+        - else
           %tr
-            %td= team.sport
-            %td= team.season.year
-            %td
-              %a{ href: edit_team_path(team) }
-                %i.icon-edit
-                Edit
-      - else
-        %tr
-          %td{ colspan: '3' } No teams currently exist for #{current_admin.school.name}.
+            %td{ colspan: '3' } No teams currently exist for #{current_admin.school.name}.
+
+    .two.columns
+      = link_to 'Create New Team', new_team_path, class: 'small button new-team'
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121025183209) do
+ActiveRecord::Schema.define(:version => 20121029233229) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -82,9 +82,14 @@ ActiveRecord::Schema.define(:version => 20121025183209) do
   create_table "schools", :force => true do |t|
     t.string   "name"
     t.string   "mascot"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
     t.integer  "assn_id"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "athletic_director_name"
+    t.string   "athletic_director_email"
+    t.string   "athletic_director_phone"
   end
 
   create_table "seasons", :force => true do |t|
@@ -105,11 +110,15 @@ ActiveRecord::Schema.define(:version => 20121025183209) do
 
   create_table "teams", :force => true do |t|
     t.integer  "school_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.integer  "season_id"
     t.integer  "league_id"
     t.string   "sport_id"
+    t.string   "coach_name"
+    t.string   "coach_email"
+    t.string   "coach_phone"
+    t.string   "competitive_class"
   end
 
   add_index "teams", ["league_id"], :name => "index_teams_on_league_id"

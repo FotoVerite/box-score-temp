@@ -8,6 +8,12 @@ class SchoolsController < ApplicationController
   def show
     @school = School.find(params[:id])
     authorize! :show, @school
+
+    school_teams = @school.teams
+    scope = Game.latest
+    scope = scope.where('team_id in (:teams) or opponent_id in (:teams)', teams: school_teams).limit(6)
+
+    @games = scope
   end
 
   def edit
