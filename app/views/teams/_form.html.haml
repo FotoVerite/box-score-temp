@@ -2,9 +2,13 @@
   .six.columns
     = simple_form_for @team do |f|
       = field_set_tag 'Sport and Season' do
-        = f.input :sport_id, collection: Sport.all, include_blank: false
-        = f.input :season_id, collection: Season.all, label_method: :year_and_sport, include_blank: false
-        = f.input :league_id, collection: League.names_with_assns_for_select, label: 'League/Division', include_blank: false
+        = f.input :sport_id, collection: Sport.all, include_blank: false,
+          input_html: { class: 'chzn-select' }
+        = f.input :season_id, collection: Season.all, label_method: :year_and_sport,
+          include_blank: false, input_html: { class: 'chzn-select' }
+        = f.input :league_id, collection: League.names_with_assns_for_select,
+          label: 'League/Division', include_blank: false,
+          input_html: { class: 'chzn-select' }
         = f.input :competitive_class, label: 'Class'
 
       = field_set_tag 'Roster' do
@@ -22,7 +26,8 @@
 
       = f.button :submit, class: 'button', disable_with: 'Updating..'
       - unless @team.new_record?
-        = link_to 'Delete Team', @team, method: :delete, class: 'tiny alert button delete-team', confirm: 'Permanently delete this team?'
+        = link_to 'Delete Team', @team, method: :delete, class: 'tiny alert button delete-team',
+          confirm: 'Permanently delete this team?'
 
   .six.columns
     = form_tag players_path, method: :get, remote: true do |f|
@@ -34,7 +39,7 @@
         .player-results
 
     = simple_form_for Player.new, remote: true do |f|
-      = field_set_tag 'Create a new player' do
+      = field_set_tag 'Add a new player' do
         .row
           .six.columns
             = f.input :first_name
