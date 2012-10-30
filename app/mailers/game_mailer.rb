@@ -11,6 +11,8 @@ class GameMailer < ActionMailer::Base
   private
 
   def league_emails(game)
-    game.team.league.teams(true).map(&:school).map(&:admins).flatten.map(&:email)
+    [game.team.league, game.opponent.league].uniq.map do |league|
+      league.teams(true).map(&:school).map(&:admins).flatten.map(&:email)
+    end.flatten.uniq
   end
 end

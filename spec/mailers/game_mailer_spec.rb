@@ -4,14 +4,17 @@ describe GameMailer do
   include Rails.application.routes.url_helpers
 
   describe "new_stats" do
-    let(:game) { create(:game) }
+    let(:opponent) { create(:team) }
+    let(:game) { create(:game, opponent: opponent) }
     let(:mail) { GameMailer.new_stats(game) }
 
     it "has the proper subject" do
       mail.subject.should eq("Game stats have been posted for #{game.team.display_name} vs #{game.opponent.display_name}")
     end
 
-    it "sends it to everyone in the league" do
+    it "sends it to everyone in both leagues" do
+      game.opponent.league.should_not eq(game.team.league)
+
       other_team_in_league = create(:team, league: game.team.league)
 
       expected_emails = [
