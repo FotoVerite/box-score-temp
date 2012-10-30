@@ -75,10 +75,10 @@ end
   create_admin school, name
 end
 
-boys_baseball_season    = Season.create!(start_date: Date.new(2012, 9, 9), year: '2012-2013', current: true)
-boys_basketball_season  = Season.create!(start_date: Date.new(2012, 9, 9), year: '2012-2013', current: true)
-girls_softball_season   = Season.create!(start_date: Date.new(2012, 9, 9), year: '2012-2013', current: true)
-girls_basketball_season = Season.create!(start_date: Date.new(2012, 9, 9), year: '2012-2013', current: true)
+boys_baseball_season    = Season.create!(start_date: Date.new(2012, 1, 1), year: '2012-2013', current: true)
+boys_basketball_season  = Season.create!(start_date: Date.new(2012, 1, 1), year: '2012-2013', current: true)
+girls_softball_season   = Season.create!(start_date: Date.new(2012, 1, 1), year: '2012-2013', current: true)
+girls_basketball_season = Season.create!(start_date: Date.new(2012, 1, 1), year: '2012-2013', current: true)
 
 # prior seasons
 Season.create!(start_date: Date.new(2011, 9, 9), year: '2011-2012')
@@ -125,7 +125,8 @@ Team.all.each do |team|
     random_date = team.season.start_date + rand(100)
 
     Game.create!(date: random_date, home_away: 'home', site: 'home',
-      team_id: team.id, opponent_id: opponent.id, game_stats: random_game_stats(team, opponent))
+      team_id: team.id, opponent_id: opponent.id, game_stats: random_game_stats(team, opponent),
+      published_at: Time.now)
   end
 end
 

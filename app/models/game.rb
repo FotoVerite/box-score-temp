@@ -3,7 +3,7 @@ class Game < ActiveRecord::Base
   AWAY = 'away'
 
   attr_accessible :home_away, :team_id, :opponent_id, :site, :date, :game_stats,
-                  :player_game_stats_attributes, :season_id, :publish
+                  :player_game_stats_attributes, :season_id, :publish, :published_at
 
   delegate :sport, :sport_type, to: :team
 
