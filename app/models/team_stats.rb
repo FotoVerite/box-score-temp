@@ -1,6 +1,6 @@
 class TeamStats
   def initialize(hash)
-    @hash = hash || { periods: {} }
+    @hash = hash || { 'periods' => {} }
   end
 
   def periods
