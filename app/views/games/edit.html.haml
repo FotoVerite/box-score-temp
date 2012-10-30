@@ -10,15 +10,13 @@
               = e
 
         = field_set_tag 'Game Information' do
-          = f.input :team_id, collection: teams, label_method: :display_name, include_blank: true
-          = f.input :opponent_id, collection: @game.team.try(:potential_opponents) || [], label_method: :display_name
+          %dl
+            %dt Home:
+            %dd= @game.home_team.display_name
+            %dt Away:
+            %dd= @game.away_team.display_name
 
           = f.input :date, as: :string, required: false
-          = f.input :site, collection: Site::NAMES, include_blank: false, required: false
-
-          .inline-radio
-            = f.collection_radio_buttons :home_away, [['home', 'Home'], ['away', 'Away']], :first, :last,
-              required: false, label: false
 
         #sport_fields
           = render partial: "games/form", locals: { game: @game }
