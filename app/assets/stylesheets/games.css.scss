@@ -1,5 +1,6 @@
 @import 'base/colors';
 @import 'base/tables';
+@import 'base/fonts';
 
 body.box-score.games {
   h1 {
@@ -17,6 +18,18 @@ body.box-score.games {
 
     &.brief-scores h3 {
       margin-left: 16px;
+    }
+  }
+
+  dl.home-away {
+    dt {
+      font-size: 16px;
+      font-family: $headline-font;
+    }
+
+    dd {
+      font-size: 14px;
+      margin-bottom: 10px;
     }
   }
 

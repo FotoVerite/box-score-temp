@@ -8,8 +8,8 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body{ body_attributes }
-    #flash
-      - if flash.alert
+    - if flash.alert
+      #flash
         %p= flash.alert
 
     = link_to 'Home', root_path, id: 'branding'
