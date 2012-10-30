@@ -1,0 +1,19 @@
+@import 'base/colors';
+
+#flash {
+  z-index: 10;
+  position: static;
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid $body-background-color;
+  text-align: center;
+  background: $alert-color;
+
+  p {
+    height: 40px;
+    font-size: 16px;
+    line-height: 40px;
+    font-weight: 700;
+    color: $eggshell;
+  }
+}

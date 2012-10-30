@@ -11,4 +11,5 @@
  *= require filters
  *= require pages
  *= require users
+ *= require flashes
  */
