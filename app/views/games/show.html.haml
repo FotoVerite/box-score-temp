@@ -38,3 +38,8 @@
   %section#player-stats
     = render 'player_stats', game: @game, team: @game.away_team
     = render 'player_stats', game: @game, team: @game.home_team
+
+:javascript
+  $(function(){
+    new BoxScore.Totals($('#player-stats'));
+  });

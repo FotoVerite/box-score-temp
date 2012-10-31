@@ -7,3 +7,4 @@
 //= require filters
 //= require teams
 //= require games
+//= require totals

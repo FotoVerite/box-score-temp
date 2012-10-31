@@ -25,7 +25,8 @@
     }
   }
 
-  tbody th {
+  tbody th,
+  tfoot th {
     width: 200px;
     padding: 9px 10px;
     text-align: left;
@@ -37,6 +38,7 @@
   td {
     text-align: center;
     font-size: 12px;
+    font-weight: 500;
     background: #fff;
   }
 

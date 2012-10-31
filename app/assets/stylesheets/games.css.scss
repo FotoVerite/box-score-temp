@@ -38,5 +38,23 @@ body.box-score.games {
       margin-bottom: 40px;
     }
   }
+
+  tr.totals {
+    border-top: 1px solid #ccc;
+
+    th {
+      text-transform: uppercase;
+    }
+  }
 }
 
+body.box-score.games.new,
+body.box-score.games.edit {
+  .inline-radio {
+    margin: 20px 0 10px;
+  }
+
+  .input.boolean {
+    margin-top: 10px;
+  }
+}
