@@ -29,11 +29,11 @@ class Filter
       assn.leagues
     else
       League.scoped
-    end
+    end.ordered
   end
 
   def team_options
-    teams.includes(:school)
+    teams.includes(:school).ordered
   end
 
   def games

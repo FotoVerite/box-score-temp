@@ -18,6 +18,8 @@ class Team < ActiveRecord::Base
 
   has_many :players, through: :team_players
 
+  scope :ordered, joins(:school).order('schools.name')
+
   def display_name
     [school.name, sport.name].join(' ')
   end
