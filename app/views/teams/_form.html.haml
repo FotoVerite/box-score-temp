@@ -24,7 +24,7 @@
         = f.input :coach_email, label: 'Email address'
         = f.input :coach_phone, label: 'Phone number'
 
-      = f.button :submit, class: 'button', disable_with: 'Updating..'
+      = f.button :submit, disable_with: 'Updating..', id: 'update-team'
       - unless @team.new_record?
         = link_to 'Delete Team', @team, method: :delete, class: 'tiny alert button delete-team',
           confirm: 'Permanently delete this team?'
@@ -34,7 +34,7 @@
       = field_set_tag 'Search players by first or last name' do
         %input{ type: 'text', name: 'name' }
 
-        = submit_tag 'Search', class: 'tiny secondary button'
+        = submit_tag 'Search', class: 'small secondary button'
 
         .player-results
 
@@ -47,7 +47,7 @@
             = f.input :last_name
         .row
           .twelve.columns
-            = f.button :submit, 'Create and Add to Roster', class: 'tiny button add-player'
+            = f.button :submit, 'Create and Add to Roster', class: 'tiny add-player'
 
 :javascript
   $(document).ready(function(){

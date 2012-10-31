@@ -13,41 +13,6 @@
     margin-top: 0;
   }
 
-  div.input, select {
-    @include inline-block;
-    margin-right: 12px;
-  }
-
-  div.input.select {
-    width: 175px;
-
-    .chzn-container {
-      width: 100%;
-    }
-
-    .chzn-single,
-    .chzn-drop {
-      @include border-radius(0);
-    }
-
-    .chzn-single {
-      height: 37px;
-      background: #fff;
-      line-height: 37px;
-    }
-
-    li.active-result {
-      width: 165px;
-      font-size: 12px;
-    }
-
-    .chzn-search {
-      input {
-        width: 165px;
-      }
-    }
-  }
-
   input.date {
     position: relative;
     top: 5px;
@@ -61,3 +26,39 @@
     margin-right: 12px;
   }
 }
+
+div.input, select {
+  @include inline-block;
+  margin-right: 12px;
+}
+
+div.input.select {
+  width: 175px;
+
+  .chzn-container {
+    width: 100%;
+  }
+
+  .chzn-single,
+  .chzn-drop {
+    @include border-radius(0);
+  }
+
+  .chzn-single {
+    height: 37px;
+    background: #fff;
+    line-height: 37px;
+  }
+
+  li.active-result {
+    width: 165px;
+    font-size: 12px;
+  }
+
+  .chzn-search {
+    input {
+      width: 165px;
+    }
+  }
+}
+

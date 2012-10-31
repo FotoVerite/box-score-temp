@@ -42,4 +42,17 @@ body.teams {
       line-height: 12px;
     }
   }
+
+  .input.select {
+    margin-bottom: 15px;
+  }
+
+  input#update-team {
+    margin-left: 20px;
+  }
+
+  a.delete-team {
+    margin-right: 20px;
+  }
 }
+
