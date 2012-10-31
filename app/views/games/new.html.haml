@@ -11,11 +11,12 @@
 
         = field_set_tag 'Game Information' do
           = f.input :team_id, collection: teams, label_method: :display_name,
-            include_blank: true, input_html: { class: 'chzn-select' }
+            include_blank: true, required: false,input_html: { class: 'chzn-select' }
           = f.input :opponent_id, collection: @game.team.try(:potential_opponents) || [],
-            label_method: :display_name, input_html: { class: 'chzn-select' }
+            label_method: :display_name, required: false, input_html: { class: 'chzn-select' }
 
-          = f.input :date, as: :string, required: false
+          .date
+            = f.input :date, as: :string, required: false
 
           .inline-radio
             = f.collection_radio_buttons :home_away, [['home', 'Home'], ['away', 'Away']], :first, :last,

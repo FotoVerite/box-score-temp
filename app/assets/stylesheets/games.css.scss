@@ -50,6 +50,14 @@ body.box-score.games {
 
 body.box-score.games.new,
 body.box-score.games.edit {
+  fieldset {
+    margin: 20px 0;
+  }
+
+  .date {
+    margin-top: 20px;
+  }
+
   .inline-radio {
     margin: 20px 0 10px;
   }
