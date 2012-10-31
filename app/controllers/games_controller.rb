@@ -22,7 +22,6 @@ class GamesController < ApplicationController
     @game = team.games.build(params[:game])
 
     if @game.save
-      GameMailer.new_stats(@game).deliver
       redirect_to game_path(@game)
     else
       render action: 'new'
@@ -37,6 +36,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
 
     if @game.update_attributes(params[:game])
+      GameMailer.new_stats(@game).deliver if @game.publishing?
       redirect_to game_path(@game)
     else
       render action: 'edit'

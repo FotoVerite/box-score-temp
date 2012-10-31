@@ -40,6 +40,11 @@ class Game < ActiveRecord::Base
 
   def publish=(x)
     self.published_at = Time.now.utc
+    @publishing = true
+  end
+
+  def publishing?
+    defined?(@publishing) && @publishing == true
   end
 
   def stats
