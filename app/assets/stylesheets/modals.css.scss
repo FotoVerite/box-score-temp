@@ -1,0 +1,43 @@
+@import 'base/colors';
+
+@mixin modal {
+  h2 {
+    color: $body-text-color;
+  }
+
+  .input {
+    margin: 7px 0;
+  }
+
+  a.close-modal {
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: $body-text-color;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+#account-request-form {
+  @include modal;
+
+  input.button[type='submit'] {
+    display: block;
+    width: inherit;
+    margin-top: 7px;
+  }
+
+  .input.text {
+    width: 100%;
+  }
+
+  textarea {
+    height: 130px;
+  }
+}

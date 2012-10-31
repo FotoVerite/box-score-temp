@@ -1,0 +1,35 @@
+#account-request-form.reveal-modal.large
+  %a.close-modal{ href: '#' }
+    %span.icon-remove
+
+  .content
+    %h2 Want to see your school's scores on HS Box Scores NYC?
+    %p Please fill out the form below. We will get in touch with you once we have verfied your information.
+    = simple_form_for AccountRequest.new(params[:account_request]), remote: true do |f|
+      .row
+        .six.columns
+          = f.input :school_name
+        .six.columns
+          = f.input :school_address
+      .row
+        .six.columns
+          = f.input :school_assn, label: 'Athletic Association'
+        .six.columns
+          = f.input :school_league, label: 'League/Division'
+      .row
+        .six.columns
+          = f.input :applicant_name, label: 'Your name'
+        .six.columns
+          = f.input :applicant_email, label: 'Your email'
+      .row
+        .six.columns
+          = f.input :applicant_phone, label: 'Your phone number'
+        .six.columns
+          = f.input :applicant_position, label: 'Your position with the school'
+      .row
+        .twelve.columns
+          = f.input :message, as: :text, label: 'Any additional information you would like to provide'
+
+      .row
+        .six.columns
+          = f.button :submit, value: 'Send Request', disable_with: 'Sending..'

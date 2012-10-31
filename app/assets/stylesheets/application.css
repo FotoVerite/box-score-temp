@@ -12,4 +12,5 @@
  *= require pages
  *= require users
  *= require flashes
+ *= require modals
  */

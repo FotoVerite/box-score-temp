@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121030220244) do
+ActiveRecord::Schema.define(:version => 20121031184122) do
+
+  create_table "account_requests", :force => true do |t|
+    t.string   "school_name"
+    t.string   "school_address"
+    t.string   "school_assn"
+    t.string   "school_league"
+    t.string   "applicant_name"
+    t.string   "applicant_email"
+    t.string   "applicant_phone"
+    t.string   "applicant_position"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.text     "message"
+  end
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
