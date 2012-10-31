@@ -51,8 +51,9 @@ class Games
     if teamId.length
       $.getJSON "/teams/#{teamId}/opponents", (teams) =>
         teamOptions = ("<option value=\"#{team.id}\">#{team.display_name}</option>" for team in teams).join('')
-        opponentSelect.html("<option value=\"\"></options>" + teamOptions)
-
+        opponentSelect
+          .html("<option value=\"\"></options>" + teamOptions)
+          .trigger('liszt:updated')
 
   updateGameStats: (e) =>
     input = $(e.currentTarget)

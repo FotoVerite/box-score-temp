@@ -10,8 +10,10 @@
               = e
 
         = field_set_tag 'Game Information' do
-          = f.input :team_id, collection: teams, label_method: :display_name, include_blank: true
-          = f.input :opponent_id, collection: @game.team.try(:potential_opponents) || [], label_method: :display_name
+          = f.input :team_id, collection: teams, label_method: :display_name,
+            include_blank: true, input_html: { class: 'chzn-select' }
+          = f.input :opponent_id, collection: @game.team.try(:potential_opponents) || [],
+            label_method: :display_name, input_html: { class: 'chzn-select' }
 
           = f.input :date, as: :string, required: false
 

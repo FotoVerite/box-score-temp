@@ -18,7 +18,8 @@
 
           = f.input :neutral_site, as: :boolean
 
-          = f.input :date, as: :string, required: false
+          %div
+            = f.input :date, as: :string, required: false
 
         #sport_fields
           = render partial: "games/form", locals: { game: @game }
