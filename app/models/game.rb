@@ -39,8 +39,9 @@ class Game < ActiveRecord::Base
   end
 
   def publish=(x)
+    @publishing = true if self.published_at.nil?
+
     self.published_at = Time.now.utc
-    @publishing = true
   end
 
   def publishing?
