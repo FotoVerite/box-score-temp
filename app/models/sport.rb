@@ -1,5 +1,19 @@
 class Sport < ActiveHash::Base
 
+  class PlayerStatGroup
+    attr_reader :id, :name, :player_stat_fields
+
+    def self.default(player_stats)
+      new(id: 'default', name: nil, player_stats: player_stats)
+    end
+
+    def initialize(options)
+      @id = options[:id]
+      @name = options[:name]
+      @player_stat_fields = options[:player_stats]
+    end
+  end
+
   BASKETBALL_PLAYER_STATS = {
     pos:          { abbr: 'Pos', input_html: { maxlength: 10 } },
     points:       { abbr: 'Pts', input_html: { maxlength: 3 } },
@@ -13,10 +27,25 @@ class Sport < ActiveHash::Base
     assists:      { abbr: 'A', input_html: { maxlength: 2 } }
   }
 
-  BASEBALL_PLAYER_STATS = {
+  BASEBALL_BATTING_PLAYER_STATS = {
     pos:          { abbr: 'Pos' },
     at_bats:      { abbr: 'AB' },
+    walks:        { abbr: 'BB' },
     hits:         { abbr: 'H' },
+    doubles:      { abbr: '2B' },
+    triples:      { abbr: '3B' },
+    homeruns:     { abbr: 'HR' },
+    rbi:          { abbr: 'RBI' },
+    runs:         { abbr: 'R' },
+  }
+
+  BASEBALL_PITCHING_PLAYER_STATS = {
+    innings:      { abbr: 'IP' },
+    hits:         { abbr: 'H' },
+    runs:         { abbr: 'R' },
+    earned_runs:  { abbr: 'ER' },
+    walks:        { abbr: 'BB' },
+    strikeouts:   { abbr: 'SO' },
   }
 
   BASKETBALL_SUMMARY_STATS = {
@@ -38,6 +67,11 @@ class Sport < ActiveHash::Base
     errors:   { abbr: 'E' }
   }
 
+  BASEBALL_PLAYER_STAT_GROUPS = [
+    PlayerStatGroup.new(id: 'batting', name: 'Batting', player_stats: BASEBALL_BATTING_PLAYER_STATS),
+    PlayerStatGroup.new(id: 'pitching', name: 'Pitching', player_stats: BASEBALL_PITCHING_PLAYER_STATS)
+  ]
+
   SPORT_TYPES = {
     'basketball' => {
       periods:       %w{1 2 3 4},
@@ -47,8 +81,8 @@ class Sport < ActiveHash::Base
     'baseball' => {
       periods:       %w{1 2 3 4 5 6 7},
       game_stats:    BASEBALL_GAME_STATS,
-      player_stats:  BASEBALL_PLAYER_STATS,
-      summary_stats: BASEBALL_SUMMARY_STATS
+      summary_stats: BASEBALL_SUMMARY_STATS,
+      player_stat_groups: BASEBALL_PLAYER_STAT_GROUPS
     }
   }
 
@@ -64,8 +98,8 @@ class Sport < ActiveHash::Base
     @_sport_type_options ||= OpenStruct.new(SPORT_TYPES[sport_type.to_s])
   end
 
-  def player_stat_fields
-    sport_type_options.player_stats
+  def player_stat_groups
+    sport_type_options.player_stat_groups || [PlayerStatGroup.default(sport_type_options.player_stats)]
   end
 
   def periods
