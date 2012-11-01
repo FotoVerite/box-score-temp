@@ -1,8 +1,8 @@
 %h2 Recent Scores
 
-- if @games.length > 0
+- if games && games.length > 0
   .row
-    - @games.each do |game|
+    - games.each do |game|
       .four.columns
         %table.game-stats
           %thead
@@ -23,3 +23,7 @@
           %span= link_to 'Share on Twitter',
             "http://twitter.com/home/?status=#{CGI::escape(twitter_box_score_message(game.team, game.opponent, game.date, game_url(game)))}",
             class: 'twitter', data: { lang: 'en' }, target: '_blank'
+- else
+  .row
+    .twelve.columns
+      %p No recent games.

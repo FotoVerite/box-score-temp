@@ -62,7 +62,7 @@
           = link_to 'sign in', new_admin_session_path
           to view coach and contact information for this school.
 
-  - if can?(:manage, @school) && @unpublished_games.any?
+  - if can?(:manage, @school) && @unpublished_games.present?
     .row
       .twelve.columns
         %h2 Unpublished Scores
@@ -72,4 +72,4 @@
 
   .row
     .games.twelve.columns
-      = render 'shared/recent_scores'
+      = render 'shared/recent_scores', games: @games

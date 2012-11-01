@@ -10,7 +10,7 @@
   = render 'shared/filter_form'
 
   %section#recent-scores
-    = render 'shared/recent_scores'
+    = render 'shared/recent_scores', games: @games
 
 :javascript
   $(function() {
