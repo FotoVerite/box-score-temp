@@ -11,8 +11,8 @@ class Filter
       self.assn_id = hash[:assn_id]
       self.league_id = hash[:league_id]
       self.team_id = hash[:team_id]
-      self.earliest_date = hash[:earliest_date]
-      self.latest_date = hash[:latest_date]
+      self.earliest_date = hash[:earliest_date].presence
+      self.latest_date = hash[:latest_date].presence
     end
   end
 
@@ -100,18 +100,10 @@ class Filter
   end
 
   def earliest_date
-    if @earlist_date.blank?
-      1.week.ago.to_date.stamp("01/31/1999")
-    else
-      @earliest_date
-    end
+    @earliest_date || 1.week.ago.to_date.stamp("01/31/1999")
   end
 
   def latest_date
-    if @latest_date.blank?
-      Date.current.stamp("01/31/1999")
-    else
-      @latest_date
-    end
+    @latest_date || Date.current.stamp("01/31/1999")
   end
 end
