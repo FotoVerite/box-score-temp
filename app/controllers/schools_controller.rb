@@ -21,7 +21,7 @@ class SchoolsController < ApplicationController
   def update
     @school = School.find(params[:id])
     if @school.update_attributes(params[:school])
-      redirect_to school_path(@school)
+      render action: 'show'
     else
       render action: 'edit'
     end
