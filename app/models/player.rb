@@ -1,5 +1,5 @@
 class Player < ActiveRecord::Base
-  attr_accessible :first_name, :last_name
+  attr_accessible :first_name, :last_name, :middle_initial
 
   validates_presence_of :first_name, :last_name
 

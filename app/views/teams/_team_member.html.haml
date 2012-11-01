@@ -1,7 +1,7 @@
 %tr
   %td
     %input{ type: 'hidden', name: 'team[player_ids][]', value: team_member.id }
-    = team_member.first_name
+    #{team_member.first_name} #{team_member.middle_initial}.
   %td
     = team_member.last_name
   %td.action

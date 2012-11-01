@@ -133,6 +133,6 @@ end
 ('A'..'Z').each do |first_letter|
   ('A'..'Z').each do |second_letter|
     player = Player.create! first_name: "#{first_letter}rmathy",
-      last_name: "#{second_letter}mith"
+      last_name: "#{second_letter}mith", middle_initial: ('A'..'Z').to_a.sample
   end
 end

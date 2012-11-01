@@ -41,9 +41,11 @@
     = simple_form_for Player.new, remote: true do |f|
       = field_set_tag 'Add a new player' do
         .row
-          .six.columns
+          .five.columns
             = f.input :first_name
-          .six.columns
+          .two.columns
+            = f.input :middle_initial, label: 'Initial'
+          .five.columns
             = f.input :last_name
         .row
           .twelve.columns
