@@ -3,5 +3,5 @@
     %ul
       %li= link_to 'Add Box Score', new_game_path, class: 'button'
       %li= link_to 'Edit Box Scores', games_path, class: 'secondary button'
-      %li= link_to 'School Profile', edit_school_path(current_admin.school), class: 'secondary button'
+      %li= link_to 'My School Profile', school_path(current_admin.school), class: 'secondary button'
       %li= link_to 'My Teams', teams_path, class: 'secondary button'

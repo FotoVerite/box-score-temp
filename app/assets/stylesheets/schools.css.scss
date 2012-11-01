@@ -4,6 +4,19 @@
 
 body.box-score.schools {
   #main {
+    position: relative;
+
+    a.edit-profile {
+      position: absolute;
+      z-index: 2;
+      right: 0;
+      top: -40px;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
     .info {
       padding: 0 0 20px;
 
