@@ -24,8 +24,11 @@
         #sport_fields
           = render partial: "games/form", locals: { game: @game }
 
-        = f.submit 'Save & Publish Scores', class: 'medium button', name: 'game[publish]'
-        = f.submit 'Save Draft', class: 'medium secondary button'
+        - if @game.published?
+          = f.submit 'Update Scores', class: 'medium button'
+        - else
+          = f.submit 'Save & Publish Scores', class: 'medium button', name: 'game[publish]'
+          = f.submit 'Save Draft', class: 'medium secondary button'
 
 
 :javascript
