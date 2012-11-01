@@ -100,7 +100,7 @@ class Filter
   end
 
   def earliest_date
-    @earliest_date || 1.year.ago.to_date.stamp("01/31/1999")
+    @earliest_date || 1.week.ago.to_date.stamp("01/31/1999")
   end
 
   def latest_date
