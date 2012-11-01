@@ -2,10 +2,6 @@ class TeamsController < ApplicationController
   before_filter :authenticate_admin!, except: [:index, :show]
 
   def index
-    if admin_signed_in?
-      @teams = current_admin.school.teams
-    end
-
     respond_to do |format|
       format.json do
         league = League.find(params[:league_id])
@@ -17,7 +13,12 @@ class TeamsController < ApplicationController
       end
 
       format.html do
-        render html: @teams
+        if admin_signed_in?
+          @teams = current_admin.school.teams
+          render html: @teams
+        else
+          redirect_to new_admin_session_path
+        end
       end
     end
   end

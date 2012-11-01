@@ -1,6 +1,16 @@
 require 'spec_helper'
 
 describe TeamsController do
+  context 'Unauthenticated' do
+    describe "GET 'index'" do
+      before { get :index }
+
+      it 'returns a sign in message' do
+        response.should redirect_to new_admin_session_path
+      end
+    end
+  end
+
   context 'Authenticated' do
     let(:school) { create :school }
     let(:other_school) { create :school }
