@@ -65,8 +65,21 @@ label.collection_radio_buttons {
   display: inline-block;
 }
 
+ul.errors {
+  li {
+    padding: 3px 5px;
+    list-style: none;
+    background: $alert-color;
+    color: $eggshell;
+    font-weight: 700;
+  }
+}
+
 .error {
-  color: $alert-color;
+  padding: 0 5px;
+  background: $alert-color;
+  color: $eggshell;
+  font-weight: 700;
 }
 
 body {
