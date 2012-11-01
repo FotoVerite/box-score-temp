@@ -100,10 +100,18 @@ class Filter
   end
 
   def earliest_date
-    @earliest_date || 1.week.ago.to_date.stamp("01/31/1999")
+    if @earlist_date.blank?
+      1.week.ago.to_date.stamp("01/31/1999")
+    else
+      @earliest_date
+    end
   end
 
   def latest_date
-    @latest_date || Date.current.stamp("01/31/1999")
+    if @latest_date.blank?
+      Date.current.stamp("01/31/1999")
+    else
+      @latest_date
+    end
   end
 end
