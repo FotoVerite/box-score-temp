@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   before_filter :authenticate_admin!, only: [:new, :create, :edit, :update]
 
   def index
-    @games = filter.games
+    @filter = filter
   end
 
   def show
@@ -49,7 +49,7 @@ class GamesController < ApplicationController
   helper_method :teams
 
   def filter
-    @filter ||= Filter.new(params[:filter])
+    @filter ||= Filter.new((params[:filter] || {}).merge(sport_id: params[:sport_id]))
   end
   helper_method :filter
 end

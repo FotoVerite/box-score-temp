@@ -7,7 +7,7 @@ BoxScore::Application.routes.draw do
   match '/privacy-policy', to: 'pages#privacy_policy'
 
   Sport.all.each do |sport|
-    match "/#{sport.id}", to: 'games#index', filter: { sport: sport.id }, as: sport.id.underscore.to_sym
+    match "/#{sport.id}", to: 'games#index', sport_id: sport.id, as: sport.id.underscore.to_sym
   end
 
   resources :teams do

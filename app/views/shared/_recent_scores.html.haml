@@ -1,4 +1,4 @@
-%h2 Recent Scores
+%h2= local_assigns[:title] || "Recent Scores"
 
 - if games && games.length > 0
   .row
