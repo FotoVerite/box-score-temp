@@ -1,4 +1,4 @@
-School,Association,League / Division,Class,Address Line 1,Address Line 2,Athletic Director,Phone Number,Ath. Dir. Email Address,Basketball Coach,Phone Number,Coach Email Address
+School,Association,League / Division,Class,Address Line 1,Address Line 2,Athletic Director,Phone Number,Ath. Dir. Email Address,Basketball Coach,Coach Phone Number,Coach Email Address
 Eagle Academy for Young Men,PSAL,Bronx AA,AA,4143 Third Avenue,"Bronx, NY 10457",Steven Leonard,(631)-747-6283 x 5092,SLeonard2@schools.nyc.gov,Rodney Plummer,(212)-336-3767,DBanks2@schools.nyc.gov
 Harry S. Truman,PSAL,Bronx AA,AA,750 Baychester Avenue,"Bronx, NY 10475",Michael DeSantis,(718)-904-5435 x 6811,MDesant2@schools.nyc.gov,Ricardo Furriel,(718)-904-5428,rfurriel@schools.nyc.gov
 Herbert H. Lehman,PSAL,Bronx AA,AA,3000 East Tremont Avenue,"Bronx, NY 10461",Diane M d Hamilton,(718)-904-4200 x 7441,DHamilt2@schools.nyc.gov,Chuck Hicks,,
@@ -11,7 +11,7 @@ Banana Kelly High School,PSAL,Bronx B1 East,B,965 Longwood Avenue,"Bronx, NY 104
 Holcombe L. Rucker School of Community Research,PSAL,Bronx B1 East,B,"965 Longwood Avenue Bronx, NY 10459",,Jose Cardoza,(718)-860-1053 x 5002,jcardoza@schools.nyc.gov,Reginald Van Howard,(917)-215-5657,rhoward4@schools.nyc.gov
 Jane Addams Campus,PSAL,Bronx B1 East,B,900 Tinton Avenue,"Bronx, NY 10456",Jose Fernandez,(718)-292-4513 x 423,jfernan3@schools.nyc.gov,Jon Ostrow,(718)-292-4513,Jostrow@schools.nyc.gov
 South Bronx,PSAL,Bronx B1 East,B,701 St. Annis Avenue,"Bronx, NY 10455",Erick Jenkins,(718)-292-0578,EJenkin4@schools.nyc.gov,Michael Lamb,(914)-874-4556,MLamb2@schools.nyc.gov
-South Bronx Prepatory,PSAL,Bronx B1 East,B,360 East 145 Street,"Bronx, NY 10454",Thomas D'Amore,(718)-292-2211 x 1361,TDamoreJr@schools.nyc.gov,Paul Campbell,(718)-292-2211,PCampbell6@schools.nyc.gov
+South Bronx Preparatory,PSAL,Bronx B1 East,B,360 East 145 Street,"Bronx, NY 10454",Thomas D'Amore,(718)-292-2211 x 1361,TDamoreJr@schools.nyc.gov,Paul Campbell,(718)-292-2211,PCampbell6@schools.nyc.gov
 Adlai Stevenson Campus,PSAL,Bronx A East,A,1980 Lafayette Avenue,"Bronx, NY 10473",Dennis Mercorelli,(718)-918-2700 x 275,dmercor@schools.nyc.gov,Howard Harrison,(718)-349-0153 x 231,HHarris6@schools.nyc.gov
 Alfred E. Smith Campus,PSAL,Bronx A East,A,333 East 151st Street,"Bronx, NY 10451",Everett Bonan,(718)-993-5000 x 3410,Ebonan@schools.nyc.gov,Ronald Woods,(718)-993-5000 x 3,RWoods3@schools.nyc.gov
 Christopher Columbus HS,PSAL,Bronx A East,A,925 Astor Avenue,"Bronx, NY 10469",Ana Tavarez,(718)-944-3529,ATavarez4@schools.nyc.gov,Roberto Perez,(718)-944-3529,RPerez7@schools.nyc.gov
@@ -81,7 +81,7 @@ Brooklyn Studio Secondary School,PSAL,Brooklyn B West,B,8310 21st Avenue,"Brookl
 Clara Barton,PSAL,Brooklyn B West,B,901 Classon Avenue,"Brooklyn, NY 11225",Matthew Meyerson,(718)-636-4901 x 363,Mmeyerson@schools.nyc.gov,Robert Sprance,(917)-562-6214,Rspranc@schools.nyc.gov
 Cobble Hill School of American  Studies,PSAL,Brooklyn B West,B,347 Baltic Street,"Brooklyn, NY 11201",Mervyn Lewis,(718)-403-9644 x 138,Mlewis18@schools.nyc.gov,Timothy Rice,(646)-334-9428,
 Leon M Goldstein HS for Science,PSAL,Brooklyn B West,B,1830 Shore Blvd.,"Brooklyn, NY 11235",Henrietta Staub,(718)-368-8511,hstaub@schools.nyc.gov,Orlando Ortiz,(718)-368-8500,OOrtiz2@schools.nyc.gov
-Medgar Evans College Preparatory School,PSAL,Brooklyn B West,B,1186 Carroll Street,"Brooklyn, NY 11225",Keisha Lewis,(718)-703-5400 x 4075,klewis6@schools.nyc.gov,Anthony Armstead,(347)-526-9012,aarmstead@schools.nyc.gov
+Medgar Evers College Preparatory School,PSAL,Brooklyn B West,B,1186 Carroll Street,"Brooklyn, NY 11225",Keisha Lewis,(718)-703-5400 x 4075,klewis6@schools.nyc.gov,Anthony Armstead,(347)-526-9012,aarmstead@schools.nyc.gov
 Tilden Educational Campus,PSAL,Brooklyn B West,B,5800 Tilden Avenue,"Brooklyn, NY 11203",Eric Eisenberg,(718)-629-4523 x 102,Eeisenb@schools.nyc.gov,Eric Eisenberg,(718)-629-4523 x 102,Eeisenb@schools.nyc.gov
 Wingate Educational Campus,PSAL,Brooklyn B West,B,600 Kingston Avenue,"Brooklyn, NY 11203",Lyle Walford,(917)-859-7995,Lwalfor@schools.nyc.gov,Steven Cavalli,(718)-771-4793,Scavall@schools.nyc.gov
 East Harlem Pride,PSAL,Manhattan A East,A,1573 Madison Avenue,"New York, NY 10029",Suzy Ort,(212)-831-1517 x 301,Stuart Smith,,,
@@ -144,7 +144,7 @@ John Adams,PSAL,Queens A East,A,101-01 Rockaway Blvd.,"Ozone Park, NY 11417",Sco
 Pathways College Prep,PSAL,Queens A East,A,109-89 204th Street,"Saint Albans, NY 11412",Jeffrey Stephenson,(718)-454-4957 x 443,,Harold Peaks,(718)-454-4957 x 1240,hpeaks@schools.nyc.gov
 Richmond Hill,PSAL,Queens A East,A,89-30 114th Street,"Richmond Hill, NY 11418",William O'Connell,(718)-846-3335 x 1856,Woconne@schools.nyc.gov,Brian Sutton,(718)-846-3335,Bsutton@schools.nyc.gov
 Springfield Gardens,PSAL,Queens A East,A,143-10 Springfield Blvd.,"Springfield Gardens, NY 11413",Christopher Tidridge,(718)-959-8405 x 287,Ctidrid@schools.nyc.gov,Angelo Buono,,
-Aviation Career & Technical Educational High School,PSAL,Queens A West,A,45-30 36th Street,"Long Island City, NY 11101",Kostas Konstantakakos,(718)-361-2032 x 1393,KKonsta3@schools.nyc.gov,Steven Hagenlocher,(718)-721-5404,Shaglenl@schools.nyc.gov
+Aviation Career & Technical Education High School,PSAL,Queens A West,A,45-30 36th Street,"Long Island City, NY 11101",Kostas Konstantakakos,(718)-361-2032 x 1393,KKonsta3@schools.nyc.gov,Steven Hagenlocher,(718)-721-5404,Shaglenl@schools.nyc.gov
 Francis Lewis,PSAL,Queens A West,A,58-20 Utopia Parkway,"Fresh Meadows, NY 11365",Annette Palomino,(718)-281-8211,Palomino@schools.nyc.gov,Gerard Ciarleglio,(718)-822-5351,gciarleglio@schools.nyc.gov
 Jamaica,PSAL,Queens A West,A,167-01 Gothic Drive,"Jamaica, NY 11432",Bonnie Hershman,(718)-739-5942 x 3561,bhershm@schools.nyc.gov,Tynique Williams,(718)-739-5942 x 5502,twilliams12@schools.nyc.gov
 John Bowne,PSAL,Queens A West,A,63-25 Main Street,"Flushing, NY 11367",Desiree Alloggiamento,(718)-263-1919 x 1211,dallogg@schools.nyc.gov,John Tsapelas,(718)-263-1919 x 1010,Jtsapel@schools.nyc.gov
@@ -203,7 +203,7 @@ Regis,CHSAA,New York A,A,55 East 84th Street,"New York, NY 10028",Kevin Cullen,,
 Xavier,CHSAA,New York A,A,30 West 16th Street,"New York, NY 10011",,,,,,
 Bishop Ford,CHSAA,Brooklyn-Queens A,A,500 Nineteenth Street,"Brooklyn, NY 11215",Peter Goyco,(718)-360-2506,pgoyco@bishopfordhs.org,Peter Goyco,(718)-360-2506,pgoyco@bishopfordhs.org
 Msgr. McClancy,CHSAA,Brooklyn-Queens A,A,71-06 31st Avenue,"East Elmhurst, NY 11370",Gerard O'Riordan,,,,,
-St. Edmund,CHSAA,Brooklyn-Queens A,A,2474 Ocean Avenue,"Brooklyn, NY 11229",Daniel Wiatre,(718)-743-6100 x 5017,dwiatre@stedmundprep.org,Daniel Wiatre,(718)-743-6100 x 5017,dwiatre@stedmundprep.org
+St. Edmund Prep,CHSAA,Brooklyn-Queens A,A,2474 Ocean Avenue,"Brooklyn, NY 11229",Daniel Wiatre,(718)-743-6100 x 5017,dwiatre@stedmundprep.org,Daniel Wiatre,(718)-743-6100 x 5017,dwiatre@stedmundprep.org
 St. John's Prep,CHSAA,Brooklyn-Queens A,A,21-21 Crescent Street,"Astoria, NY 11105",Edward Flood,(718)-721-7200 x 645,eflood@stjohnsprepschool.org,Robert Leone,(718)-721-7200 x 215,rleone@stjohnsprepschool.org
 Moore Catholic,CHSAA,Staten Island,A,100 Merrill Avenue,"Staten Island, NY 10314",,,,Anthony Rafaniello,(718)-606-7129,
 Msgr. Farrell,CHSAA,Staten Island,AA,2900 Amboy Road,"Staten Island, NY 10306",Anthony Garofalo,,,Mike Dunn,,
