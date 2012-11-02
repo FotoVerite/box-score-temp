@@ -18,7 +18,7 @@ class Game < ActiveRecord::Base
   belongs_to :opponent, class_name: 'Team'
   belongs_to :season
 
-  has_many :player_game_stats
+  has_many :player_game_stats, dependent: :destroy
 
   accepts_nested_attributes_for :player_game_stats,
       reject_if: proc { |s| s[:player_id].blank? },

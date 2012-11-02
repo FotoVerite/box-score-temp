@@ -13,7 +13,6 @@
       - (team.player_game_stats(game) + [PlayerGameStat.new]).each do |player_game_stat|
         = game_fields.fields_for :player_game_stats, player_game_stat, child_index: child_index(player_game_stat) do |player_game_stat_fields|
           = player_game_stat_fields.fields_for :stats, player_game_stat do |stats|
-            = stats.hidden_field :player_stat_group, value: player_stat_group.id
             = render 'games/form/player_game_stat_fields',
                 player_game_stat_fields: player_game_stat_fields,
                 stats_fields: stats,

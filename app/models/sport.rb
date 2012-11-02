@@ -27,27 +27,6 @@ class Sport < ActiveHash::Base
     assists:      { abbr: 'A', input_html: { maxlength: 2 } }
   }
 
-  BASEBALL_BATTING_PLAYER_STATS = {
-    pos:          { abbr: 'Pos' },
-    at_bats:      { abbr: 'AB' },
-    walks:        { abbr: 'BB' },
-    hits:         { abbr: 'H' },
-    doubles:      { abbr: '2B' },
-    triples:      { abbr: '3B' },
-    homeruns:     { abbr: 'HR' },
-    rbi:          { abbr: 'RBI' },
-    runs:         { abbr: 'R' },
-  }
-
-  BASEBALL_PITCHING_PLAYER_STATS = {
-    innings:      { abbr: 'IP' },
-    hits:         { abbr: 'H' },
-    runs:         { abbr: 'R' },
-    earned_runs:  { abbr: 'ER' },
-    walks:        { abbr: 'BB' },
-    strikeouts:   { abbr: 'SO' },
-  }
-
   BASKETBALL_SUMMARY_STATS = {
     period_1_points: { abbr: '1' },
     period_2_points: { abbr: '2' },
@@ -56,21 +35,42 @@ class Sport < ActiveHash::Base
     final:           { abbr: 'F' }
   }
 
-  BASEBALL_SUMMARY_STATS = {
-    final:           { abbr: 'R' },
-    hits:            { abbr: 'H' },
-    errors:          { abbr: 'E' },
-  }
-
-  BASEBALL_GAME_STATS = {
-    hits:     { abbr: 'H' },
-    errors:   { abbr: 'E' }
-  }
-
-  BASEBALL_PLAYER_STAT_GROUPS = [
-    PlayerStatGroup.new(id: 'batting', name: 'Batting', player_stats: BASEBALL_BATTING_PLAYER_STATS),
-    PlayerStatGroup.new(id: 'pitching', name: 'Pitching', player_stats: BASEBALL_PITCHING_PLAYER_STATS)
-  ]
+  # BASEBALL_BATTING_PLAYER_STATS = {
+  #   pos:          { abbr: 'Pos' },
+  #   at_bats:      { abbr: 'AB' },
+  #   walks:        { abbr: 'BB' },
+  #   hits:         { abbr: 'H' },
+  #   doubles:      { abbr: '2B' },
+  #   triples:      { abbr: '3B' },
+  #   homeruns:     { abbr: 'HR' },
+  #   rbi:          { abbr: 'RBI' },
+  #   runs:         { abbr: 'R' },
+  # }
+  #
+  # BASEBALL_PITCHING_PLAYER_STATS = {
+  #   innings:      { abbr: 'IP' },
+  #   hits:         { abbr: 'H' },
+  #   runs:         { abbr: 'R' },
+  #   earned_runs:  { abbr: 'ER' },
+  #   walks:        { abbr: 'BB' },
+  #   strikeouts:   { abbr: 'SO' },
+  # }
+  #
+  # BASEBALL_SUMMARY_STATS = {
+  #   final:           { abbr: 'R' },
+  #   hits:            { abbr: 'H' },
+  #   errors:          { abbr: 'E' },
+  # }
+  #
+  # BASEBALL_GAME_STATS = {
+  #   hits:     { abbr: 'H' },
+  #   errors:   { abbr: 'E' }
+  # }
+  #
+  # BASEBALL_PLAYER_STAT_GROUPS = [
+  #   PlayerStatGroup.new(id: 'batting', name: 'Batting', player_stats: BASEBALL_BATTING_PLAYER_STATS),
+  #   PlayerStatGroup.new(id: 'pitching', name: 'Pitching', player_stats: BASEBALL_PITCHING_PLAYER_STATS)
+  # ]
 
   SPORT_TYPES = {
     'basketball' => {
@@ -78,18 +78,17 @@ class Sport < ActiveHash::Base
       player_stats:  BASKETBALL_PLAYER_STATS,
       summary_stats: BASKETBALL_SUMMARY_STATS
     },
-    'baseball' => {
-      periods:       %w{1 2 3 4 5 6 7},
-      game_stats:    BASEBALL_GAME_STATS,
-      summary_stats: BASEBALL_SUMMARY_STATS,
-      player_stat_groups: BASEBALL_PLAYER_STAT_GROUPS
-    }
+    # 'baseball' => {
+    #   periods:       %w{1 2 3 4 5 6 7},
+    #   game_stats:    BASEBALL_GAME_STATS,
+    #   summary_stats: BASEBALL_SUMMARY_STATS,
+    #   player_stat_groups: BASEBALL_PLAYER_STAT_GROUPS
+    # }
   }
 
   self.data = [
     { id: 'boys-basketball', sport_type: 'basketball', name: "Boys Basketball"},
     { id: 'girls-basketball', sport_type: 'basketball', name: "Girls Basketball"},
-
     { id: 'girls-softball', sport_type: 'baseball', name: "Girls Softball"},
     { id: 'boys-baseball', sport_type: 'baseball', name: "Boys Baseball"}
   ]

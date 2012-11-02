@@ -1,5 +1,5 @@
 %tr
   %th{ scope: 'row' }= player_game_stat.player.name
 
-  - team.sport.player_stat_fields.each do |field, attributes|
+  - player_stat_group.player_stat_fields.each do |field, attributes|
     %td= player_game_stat.send(field)
