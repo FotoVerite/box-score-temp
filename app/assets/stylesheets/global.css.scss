@@ -82,6 +82,11 @@ ul.errors {
   font-weight: 700;
 }
 
+address {
+  font-style: normal;
+  line-height: 1.3em;
+}
+
 body {
   border-top: 3px solid $black;
   background: $body-background-color image_url('bg-body-gradient.png') repeat-x;

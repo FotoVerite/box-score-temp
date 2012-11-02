@@ -5,6 +5,7 @@ BoxScore::Application.routes.draw do
   match '/about-us', to: 'pages#about'
   match '/terms-of-service', to: 'pages#terms_of_service'
   match '/privacy-policy', to: 'pages#privacy_policy'
+  match '/contact-us', to: 'pages#contact'
 
   Sport.all.each do |sport|
     match "/#{sport.id}", to: 'games#index', sport_id: sport.id, as: sport.id.underscore.to_sym
