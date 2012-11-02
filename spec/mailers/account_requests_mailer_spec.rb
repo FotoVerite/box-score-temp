@@ -2,13 +2,17 @@ require "spec_helper"
 
 describe AccountRequestsMailer do
   describe 'new account request' do
-    let(:params) { 'subject' => 'Message from HSBoxScore.com' }
-    let(:account_request) { AccountRequest.new(params) }
+    let(:account_request) { create :account_request }
+    let(:mailer) { AccountRequestsMailer.account_request(account_request) }
 
     it 'has the proper subject' do
-      account_request.subject.should == 'Message from HSBoxScore.com'
+      mailer.subject.should == 'Account Request from HSBoxScoresNYC.com'
     end
 
-    it 'has the proper from address'
+    it 'has the proper from address' do
+      mailer.from.should == Devise.mailer_sender
+    end
+
+    it 'has the proper to address'
   end
 end
