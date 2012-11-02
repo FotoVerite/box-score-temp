@@ -110,23 +110,35 @@ header.global {
   margin-top: 20px;
 }
 
-a#twitter-button {
-  z-index: 4;
+#twitter-button {
   position: absolute;
-  top: 95px;
+  z-index: 4;
+  top: 85px;
   right: 0;
   width: 207px;
-  height: 36px;
-  color: #fff;
-  background: image_url('twitter-button.png') no-repeat;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 36px;
-  text-indent: 53px;
-  text-transform: uppercase;
 
-  &:hover {
-    text-decoration: none;
+  p {
+    line-height: 0em;
+    color: #fff;
+    font-family: $headline-font;
+    font-size: 18px;
+  }
+
+  a {
+    display: block;
+    width: 207px;
+    height: 36px;
+    color: #fff;
+    background: image_url('twitter-button.png') no-repeat;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 36px;
+    text-indent: 53px;
+    text-transform: uppercase;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
