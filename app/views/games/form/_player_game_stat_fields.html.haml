@@ -6,4 +6,8 @@
     = stats_fields.hidden_field :player_stat_group, value: player_stat_group.id
 
   - player_stat_group.player_stat_fields.each do |field, attributes|
-    %td= stats_fields.text_field(field, attributes[:input_html] || {})
+    %td
+      - if attributes[:type] == :checkbox
+        = stats_fields.check_box(field)
+      - else
+        = stats_fields.text_field(field, attributes[:input_html] || {})

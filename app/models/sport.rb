@@ -15,7 +15,7 @@ class Sport < ActiveHash::Base
   end
 
   BASKETBALL_PLAYER_STATS = {
-    pos:          { abbr: 'Pos', input_html: { maxlength: 10 } },
+    starter:      { abbr: 'Starter', type: :checkbox },
     points:       { abbr: 'Pts', input_html: { maxlength: 3 } },
     fg:           { abbr: 'FG', input_html: { maxlength: 2 } },
     fga:          { abbr: 'FGA', input_html: { maxlength: 2 } },
