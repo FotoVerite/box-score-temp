@@ -4,11 +4,14 @@
       = field_set_tag 'Sport and Season' do
         = f.input :sport_id, collection: Sport.all, include_blank: false,
           input_html: { class: 'chzn-select' }
-        = f.input :season_id, collection: Season.all, label_method: :year_and_sport,
-          include_blank: false, input_html: { class: 'chzn-select' }
+
+        = f.input :season_id, collection: Season.all,
+          label_method: :year, include_blank: false, input_html: { class: 'chzn-select' }
+
         = f.input :league_id, collection: League.names_with_assns_for_select,
           label: 'League/Division', include_blank: false,
           input_html: { class: 'chzn-select' }
+
         = f.input :competitive_class, label: 'Class'
 
       = field_set_tag 'Roster' do
@@ -53,5 +56,5 @@
 
 :javascript
   $(document).ready(function(){
-    new BoxScore.Teams();
+    new BoxScore.Teams('#main');
   });

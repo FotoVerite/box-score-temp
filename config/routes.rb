@@ -20,6 +20,9 @@ BoxScore::Application.routes.draw do
   resources :leagues, only: [:show] do
     resources :teams, only: [:index]
   end
+  resources :sports do
+    resources :seasons, only: [:index]
+  end
   resources :schools, only: [:index, :show, :edit, :update]
   resources :players
   resources :games

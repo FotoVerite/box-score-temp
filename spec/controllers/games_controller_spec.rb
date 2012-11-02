@@ -21,8 +21,8 @@ describe GamesController do
 
     describe "POST 'create'" do
       let(:team) { create :team, school_id: admin.school_id }
-      let(:opponent) { create :team, sport: team.sport }
-      let(:season) { create :season, sport: team.sport }
+      let(:opponent) { create :team, sport_id: team.sport_id }
+      let(:season) { create :season, sport_id: team.sport_id }
 
       context 'with invalid data' do
         before do
