@@ -4,7 +4,7 @@ class AccountRequestsMailer < ActionMailer::Base
   def account_request(account_request)
     @account_request = account_request
 
-    mail to: 'info@hsboxscoresnyc.com', from: account_request.applicant_email,
+    mail to: 'info@hsboxscoresnyc.com',
     subject: 'Account Request from HSBoxScoresNYC.com'
   end
 end
