@@ -157,6 +157,7 @@ nav.global {
     padding: 8px 25px;
     @include border-radius(20px);
     @include single-box-shadow(transparentize(#333, 0.5), 0, 1px, 1px, 0px, true);
+    background: #72B5D8;
     background: rgba(0, 0, 0, 0.1);
     color: #fff;
     font-size: 10px;

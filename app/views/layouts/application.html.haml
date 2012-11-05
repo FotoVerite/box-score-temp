@@ -40,11 +40,11 @@
             %dl.six.columns
               %dt Boys:
               %dd= link_to 'Basketball', boys_basketball_path, class: 'first'
-              %dd= link_to 'Baseball', boys_baseball_path
+              %dd= link_to 'Baseball', boys_baseball_path, class: 'disabled'
             %dl.six.columns
               %dt Girls:
               %dd= link_to 'Basketball', girls_basketball_path, class: 'first'
-              %dd= link_to 'Softball', girls_softball_path
+              %dd= link_to 'Softball', girls_softball_path, class: 'disabled'
 
         -if admin_signed_in?
           = render 'shared/admin_menu'
@@ -61,4 +61,5 @@
             %li= link_to 'Privacy Policy', '/privacy-policy'
 
   = render 'shared/request_form'
+  = render 'shared/coming_soon_message'
 
