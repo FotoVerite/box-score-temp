@@ -20,19 +20,18 @@
             %div
               %dt Mascot
               %dd= @school.mascot
-          - if admin_signed_in?
-            -unless @school.athletic_director_name.blank?
-              %div
-                %dt Athletic Director
-                %dd= @school.athletic_director_name
-            -unless @school.athletic_director_email.blank?
-              %div
-                %dt Email
-                %dd= @school.athletic_director_email
-            -unless @school.athletic_director_phone.blank?
-              %div
-                %dt Phone
-                %dd= @school.athletic_director_phone
+          -unless @school.athletic_director_name.blank?
+            %div
+              %dt Athletic Director
+              %dd= @school.athletic_director_name
+          -unless @school.athletic_director_email.blank?
+            %div
+              %dt Email
+              %dd= @school.athletic_director_email
+          -unless @school.athletic_director_phone.blank?
+            %div
+              %dt Phone
+              %dd= @school.athletic_director_phone
 
     - if admin_signed_in?
       .row

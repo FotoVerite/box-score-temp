@@ -50,14 +50,19 @@ describe SchoolsController do
   context 'Unauthenticated' do
     let(:school) { create :school }
 
+    describe "GET 'index'" do
+      before { get :index }
+      it { should respond_with :redirect }
+    end
+
     describe "GET 'show'" do
       before { get :show, id: school.id }
-      it { should respond_with :success }
+      it { should respond_with :redirect }
     end
 
     describe "GET 'edit'" do
       before { get :edit, id: school.id }
-      it { should respond_with :unauthorized }
+      it { should respond_with :redirect }
     end
   end
 end
