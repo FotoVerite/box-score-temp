@@ -18,8 +18,9 @@ class GamesController < ApplicationController
   end
 
   def create
-    team = teams.find(params[:game].delete(:team_id))
-    @game = team.games.build(params[:game])
+    # Make sure team_id is allowed for current_admin
+    teams.find params[:game][:team_id] if params[:game][:team_id].present?
+    @game = Game.new(params[:game])
 
     if @game.save
       redirect_to game_path(@game)
