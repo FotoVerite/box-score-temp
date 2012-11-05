@@ -7,7 +7,7 @@ class Filter
   def initialize(hash)
     if hash
       hash = hash.symbolize_keys
-      self.sport_id = hash[:sport]
+      self.sport_id = hash[:sport_id]
       self.assn_id = hash[:assn_id]
       self.league_id = hash[:league_id]
       self.team_id = hash[:team_id]
