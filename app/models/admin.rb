@@ -15,4 +15,8 @@ class Admin < ActiveRecord::Base
       "#{first_name} #{last_name}"
     end
   end
+
+  def superadmin?
+    self.email == 'patrick@hsboxscoresnyc.com' || Rails.env.development?
+  end
 end

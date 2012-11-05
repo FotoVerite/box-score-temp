@@ -2,6 +2,9 @@ BoxScore::Application.routes.draw do
   devise_for :admins
 
   root to: 'games#index'
+
+  ActiveAdmin.routes(self)
+
   match '/about-us', to: 'pages#about'
   match '/terms-of-service', to: 'pages#terms_of_service'
   match '/privacy-policy', to: 'pages#privacy_policy'

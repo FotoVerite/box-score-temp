@@ -12,4 +12,8 @@ class ApplicationController < ActionController::Base
   def current_ability
     @current_ability ||= AdminAbility.new(current_admin)
   end
+
+  def authenticate_admin_user!
+    redirect_to '/' unless current_admin.try(:superadmin?)
+  end
 end
