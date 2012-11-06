@@ -2,14 +2,13 @@ require 'spec_helper'
 
 describe Filter do
   describe '#league_options' do
-
     context 'with an association selected' do
       let(:assn)       { create :assn }
-      subject(:filter) { Filter.new(assn_id: assn.id) }
+      subject(:filter) { Filter.new assn_id: assn.id }
 
       before do
         @league = create :league, assn: assn
-        create :league # not in the same assn
+        create :league
       end
 
       it 'returns only leagues within the association' do
@@ -23,7 +22,7 @@ describe Filter do
 
       before do
         @league1 = create :league, assn: assn
-        @league2 = create :league # not in the same assn
+        @league2 = create :league
       end
 
       it 'returns all leagues' do
@@ -33,8 +32,27 @@ describe Filter do
   end
 
   describe '#team_options' do
-    it 'returns all teams within the league if a league is selected'
-    it 'returns all teams within the association if an association is selected'
-    it 'returns all teams if no league or association is selected'
+    context 'with a league selected' do
+      let(:league) { create :league }
+      let(:team) { create :team, league: league }
+      let(:other_team) { create :team }
+      subject(:filter) { Filter.new league: league }
+
+      it 'returns all teams within the league' do
+        filter.team_options.should == [team]
+      end
+    end
+
+    context 'with an association selected' do
+      let(:assn) { create :assn }
+      let(:league) { create :league, assn: assn }
+      let(:team) { create :team, league: league }
+      let(:other_team) { create :team }
+      subject(:filter) { Filter.new assn: assn }
+
+      it 'returns all teams within the association' do
+        filter.team_options.should == [team]
+      end
+    end
   end
 end
