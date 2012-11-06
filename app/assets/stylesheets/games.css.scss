@@ -54,6 +54,18 @@ body.box-score.games.edit {
     margin: 20px 0;
   }
 
+  .input.select {
+    width: 250px;
+
+    li.active-result {
+      width: 240px;
+    }
+
+    .chzn-search input {
+      width: 240px;
+    }
+  }
+
   .date {
     margin-top: 20px;
   }
