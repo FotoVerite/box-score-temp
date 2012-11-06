@@ -10,6 +10,8 @@ class School < ActiveRecord::Base
   has_many :players
   has_many :admins
 
+  scope :ordered, order('name ASC')
+
   def games
     Game.with_team(self.teams)
   end
