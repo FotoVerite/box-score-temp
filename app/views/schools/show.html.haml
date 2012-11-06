@@ -24,14 +24,10 @@
             %div
               %dt Athletic Director
               %dd= @school.athletic_director_name
-          -unless @school.athletic_director_email.blank?
-            %div
-              %dt Email
-              %dd= @school.athletic_director_email
-          -unless @school.athletic_director_phone.blank?
-            %div
-              %dt Phone
-              %dd= @school.athletic_director_phone
+              -unless @school.athletic_director_email.blank?
+                %dd= mail_to @school.athletic_director_email
+              -unless @school.athletic_director_phone.blank?
+                %dd= @school.athletic_director_phone
 
     - if admin_signed_in?
       .row
@@ -51,7 +47,7 @@
                     %th{ scope: 'row' }
                       = link_to_if can?(:manage, team), team.sport.name, [:edit, team]
                     %td= team.coach_name
-                    %td= team.coach_email
+                    %td= mail_to team.coach_email
                     %td= team.coach_phone
 
           - else

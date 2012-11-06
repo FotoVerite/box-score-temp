@@ -89,6 +89,11 @@ class Game < ActiveRecord::Base
     end
   end
 
+  def to_param
+    description = "#{team.display_name}-vs-#{opponent.display_name}".parameterize
+    "#{id}-#{description}"
+  end
+
   private
 
   def player_stats(team)
