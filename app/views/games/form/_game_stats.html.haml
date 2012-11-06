@@ -1,10 +1,18 @@
 %tr
   %th.team-name{ scope: 'row' }= team.school.name
 
+  - team_stats = game.stats.team_stats(team.id)
+
   - team.sport.periods.each do |period|
     %td.period
       = text_field_tag game_stats_period_field(team, period),
-          game.stats.team_stats(team.id).points(period),
+          team_stats.points(period),
+          maxlength: 3
+
+  - team.sport.overtime_periods.each do |ot_period|
+    %td.period.overtime{ data: { ot_period: ot_period } }
+      = text_field_tag game_stats_period_field(team, ot_period),
+          team_stats.points(ot_period),
           maxlength: 3
 
   %td &nbsp;

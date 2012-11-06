@@ -28,11 +28,14 @@ class Sport < ActiveHash::Base
   }
 
   BASKETBALL_SUMMARY_STATS = {
-    period_1_points: { abbr: '1' },
-    period_2_points: { abbr: '2' },
-    period_3_points: { abbr: '3' },
-    period_4_points: { abbr: '4' },
-    final:           { abbr: 'F' }
+    period_1_points:   { abbr: '1' },
+    period_2_points:   { abbr: '2' },
+    period_3_points:   { abbr: '3' },
+    period_4_points:   { abbr: '4' },
+    period_OT1_points: { abbr: 'OT1' },
+    period_OT2_points: { abbr: 'OT2' },
+    period_OT3_points: { abbr: 'OT3' },
+    final:             { abbr: 'F' }
   }
 
   # BASEBALL_BATTING_PLAYER_STATS = {
@@ -75,6 +78,7 @@ class Sport < ActiveHash::Base
   SPORT_TYPES = {
     'basketball' => {
       periods:       %w{1 2 3 4},
+      overtime_periods: %w{OT1 OT2 OT3},
       player_stats:  BASKETBALL_PLAYER_STATS,
       summary_stats: BASKETBALL_SUMMARY_STATS
     },
@@ -103,6 +107,10 @@ class Sport < ActiveHash::Base
 
   def periods
     sport_type_options.periods
+  end
+
+  def overtime_periods
+    sport_type_options.overtime_periods
   end
 
   def summary_stats

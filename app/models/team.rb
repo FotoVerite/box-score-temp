@@ -25,7 +25,7 @@ class Team < ActiveRecord::Base
   end
 
   def potential_opponents
-    Team.where(sport_id: self.sport_id).where("teams.id != :me", me: id).ordered
+    Team.where(sport_id: self.sport_id).where("teams.id != :me", me: id).includes(:school).ordered
   end
 
   def player_game_stats(game)

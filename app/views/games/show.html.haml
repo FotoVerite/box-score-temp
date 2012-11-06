@@ -23,7 +23,7 @@
       %thead
         %tr
           %th Team
-          - (1..@game.stats.periods).each do |period|
+          - @game.stats.periods.each do |period|
             %th= period
 
           %th Final

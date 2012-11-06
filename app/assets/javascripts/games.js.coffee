@@ -30,6 +30,10 @@ class Games
     if opponentId.length
       @loadGameStatsForm teamId, opponentId, (html) =>
         @form.find('#sport_fields').html(html)
+
+        $('table.game-stats .period.overtime').hide()
+
+
     else
       @removeGameStatsForm()
 
@@ -85,17 +89,10 @@ class Games
     e.preventDefault()
 
     table = $(this).closest('table')
-    last_period = $(this).parent().prev('th').index()
-
-    new_header_cell = $("<th>#{last_period + 1}</th>")
-    $(table.find('th').get(last_period)).after(new_header_cell)
-
-    table.find('tbody tr').each ->
-      last_score_cell       = $(this).find('td.period').get(last_period - 1)
-      last_score_input_name = $(last_score_cell).find('input').attr('name')
-      new_score_input_name  = last_score_input_name.replace("[periods][#{last_period}]", "[periods][#{last_period + 1 }]")
-      new_cell = $("<td class='period'><input name='#{new_score_input_name}' type='text' /></td>")
-      $(last_score_cell).after new_cell
+    nextTh = table.find('th.period:visible:last').next()
+    if nextTh and nextTh.data('ot_period')
+      period = nextTh.data('ot_period')
+      table.find(".period.overtime[data-ot_period=#{period}]").show()
 
 
 @BoxScore ||= {}

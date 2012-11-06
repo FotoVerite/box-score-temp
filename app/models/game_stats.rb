@@ -13,6 +13,6 @@ class GameStats
   end
 
   def periods
-    team_ids.map { |team_id| team_stats(team_id) }.map(&:periods).max
+    team_ids.map { |team_id| team_stats(team_id).periods }.flatten.uniq
   end
 end

@@ -49,7 +49,11 @@ class Game < ActiveRecord::Base
   end
 
   def stats
-    stats = GameStats.new(game_stats)
+    @_stats ||= GameStats.new(game_stats)
+  end
+
+  def summary_stats
+    sport.summary_stats.select { |stat, attrs| stats.team_stats(winner).send(stat).present? }
   end
 
   def player_stats_by_key(team, key)

@@ -11,7 +11,11 @@
         %th Team
 
         - game.sport.periods.each do |period|
-          %th= period
+          %th.period= period
+
+        - game.sport.overtime_periods.each do |ot_period|
+          %th.period.overtime{ data: { ot_period: ot_period } }
+            = ot_period
 
         %th.add-period
           %a{ href: '#', title: 'Add overtime period' }

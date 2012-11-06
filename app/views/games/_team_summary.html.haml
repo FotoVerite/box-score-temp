@@ -2,5 +2,6 @@
 %tr{ class: winner_class(game, team) }
   %th{ scope: 'row' }= team.school.name
 
-  - game.sport.summary_stats.each do |stat, attributes|
-    %td{ class: stat }= stats.send(stat)
+  - game.summary_stats.each do |stat, attributes|
+    %td{ class: stat }
+      = stats.send(stat)

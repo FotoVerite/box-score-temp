@@ -8,7 +8,7 @@
           %thead
             %tr
               %th Team
-              - game.sport.summary_stats.each do |stat, attributes|
+              - game.summary_stats.each do |stat, attributes|
                 %th= attributes[:abbr]
 
           %tbody
