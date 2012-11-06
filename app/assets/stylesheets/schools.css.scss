@@ -31,7 +31,7 @@ body.box-score.schools {
           height: 100%;
 
           > div {
-            width: 140px;
+            min-width: 140px;
             height: 100%;
             float: left;
             margin: 0 10px;
