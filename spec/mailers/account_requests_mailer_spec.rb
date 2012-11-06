@@ -13,6 +13,8 @@ describe AccountRequestsMailer do
       mailer.from.should == [Devise.mailer_sender]
     end
 
-    it 'has the proper to address'
+    it 'has the proper to address' do
+      mailer.to.should == ['info@hsboxscoresnyc.com']
+    end
   end
 end
