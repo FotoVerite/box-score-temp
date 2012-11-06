@@ -194,6 +194,11 @@ nav.global {
   font-weight: 700;
   font-size: 11px;
 
+  &.boys-basketball dd.boys-basketball a,
+  &.girls-basketball dd.girls-basketball a {
+    background: $black;
+  }
+
   dl {
     display: inline-block;
     @include inline-block-list-container;
