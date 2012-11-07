@@ -3,6 +3,7 @@
   %head
     %meta{ charset: 'utf-8' }/
     %meta{ content: 'width=device-width, initial-scale=1.0', name: 'viewport' }/
+
     %title= content_for?(:title) ? yield(:title) : 'HSBoxScore'
     = stylesheet_link_tag    'application'
     = javascript_include_tag 'application'
@@ -54,7 +55,7 @@
 
     .row
       %footer.global.twelve.columns
-        %p.eight.columns Property of HS Box Scores NYC, LLC. All rights reserved.
+        %p.eight.columns Copyright&copy; #{Time.current.stamp '1999'} HS Box Scores NYC, LLC. All rights reserved.
         %nav.four.columns
           %ul
             %li= link_to 'Terms of Service', '/terms-of-service'
