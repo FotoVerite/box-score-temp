@@ -44,6 +44,16 @@ class GamesController < ApplicationController
     end
   end
 
+  def destroy
+    @game = Game.find params[:id]
+    if @game
+      @game.destroy
+      redirect_to school_path(@game.team.school)
+    else
+      render action: 'edit'
+    end
+  end
+
   def teams
     @teams = current_admin.school.teams
   end

@@ -25,10 +25,12 @@
           = render partial: "games/form", locals: { game: @game }
 
         - if @game.published?
-          = f.submit 'Update Scores', class: 'medium button'
+          = f.submit 'Update Box Score', class: 'medium button'
         - else
           = f.submit 'Save & Publish Scores', class: 'medium button', name: 'game[publish]'
           = f.submit 'Save Draft', class: 'medium secondary button'
+
+        = link_to 'Delete Box Score', game_path(@game), method: :delete, class: 'medium secondary button'
 
 
 :javascript
