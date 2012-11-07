@@ -2,6 +2,6 @@
   %nav.admin-menu.twelve.columns
     %ul
       %li= link_to 'Add Box Score', new_game_path, class: 'button'
-      %li= link_to 'Edit Box Scores', games_path, class: 'secondary button'
+      %li= link_to 'Edit Box Scores', school_path(current_admin.school), class: 'secondary button'
       %li= link_to 'My School Profile', school_path(current_admin.school), class: 'secondary button'
       %li= link_to 'My Teams', teams_path, class: 'secondary button'
