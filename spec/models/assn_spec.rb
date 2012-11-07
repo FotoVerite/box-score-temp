@@ -5,4 +5,5 @@ describe Assn do
   it { should validate_uniqueness_of :name }
 
   it { should have_many :leagues }
+  it { should have_many :schools }
 end

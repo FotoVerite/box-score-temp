@@ -4,6 +4,7 @@ class Assn < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
 
   has_many :leagues
+  has_many :schools
   has_many :teams, through: :leagues
 
   scope :ordered, order('name')
