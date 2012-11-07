@@ -22,7 +22,7 @@
             = f.input :date, as: :string, required: false
 
         #sport_fields
-          = render partial: "games/form", locals: { game: @game }
+          = render partial: 'games/form', locals: { game: @game }
 
         - if @game.published?
           = f.submit 'Update Box Score', class: 'medium button'
