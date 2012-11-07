@@ -18,6 +18,7 @@
         %table.roster
           %tr
             %th First Name
+            %th MI
             %th Last Name
           = render partial: 'team_member', collection: @team.players, locals: { mode: 'remove' }
         = hidden_field_tag 'team[player_ids][]'
