@@ -27,7 +27,7 @@ describe GameMailer do
     end
 
     it "has the proper from address" do
-      mail.from.should eq([Devise.mailer_sender])
+      mail.from.should eq(['info@hsboxscoresnyc.com'])
     end
 
     it "links to the game page" do

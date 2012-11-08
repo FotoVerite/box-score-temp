@@ -10,7 +10,7 @@ describe AccountRequestsMailer do
     end
 
     it 'has the proper from address' do
-      mailer.from.should == [Devise.mailer_sender]
+      mailer.from.should == ['info@hsboxscoresnyc.com']
     end
 
     it 'has the proper to address' do
