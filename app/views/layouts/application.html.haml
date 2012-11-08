@@ -1,11 +1,17 @@
 !!!
-%html{lang: 'en'}
+/[if lt IE 7 ] <html class="ie6">
+/[if IE 7 ] <html class="ie7">
+/[if IE 8 ] <html class="ie8">
+/[if IE 9 ] <html class="ie9">
+/ [if (gt IE 9)|!(IE)]><!
+%html
+  / <![endif]
   %head
     %meta{ charset: 'utf-8' }/
     %meta{ content: 'width=device-width, initial-scale=1.0', name: 'viewport' }/
 
     %title= content_for?(:title) ? yield(:title) : 'HSBoxScore'
-    = stylesheet_link_tag    'application'
+    = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body{ body_attributes }
@@ -55,11 +61,12 @@
 
     .row
       %footer.global.twelve.columns
-        %p.eight.columns Copyright&copy; #{Time.current.stamp '1999'} HS Box Scores NYC, LLC. All rights reserved.
-        %nav.four.columns
-          %ul
-            %li= link_to 'Terms of Service', '/terms-of-service'
-            %li= link_to 'Privacy Policy', '/privacy-policy'
+        .row
+          %p.copyright.eight.columns Copyright&copy; #{Time.current.stamp '1999'} HS Box Scores NYC, LLC. All rights reserved.
+          %nav.four.columns
+            %ul
+              %li= link_to 'Terms of Service', '/terms-of-service'
+              %li= link_to 'Privacy Policy', '/privacy-policy'
 
   = render 'shared/request_form'
   = render 'shared/coming_soon_message'

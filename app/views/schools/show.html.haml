@@ -30,28 +30,27 @@
                 %dd= @school.athletic_director_phone
 
     - if admin_signed_in?
-      .row
-        .twelve.columns.teams
-          %h2 Teams and Coaches
-          -if @school.teams.any?
-            %table
-              %thead
+      .twelve.columns.teams
+        %h2 Teams and Coaches
+        -if @school.teams.any?
+          %table
+            %thead
+              %tr
+                %th Team
+                %th Coach
+                %th Email
+                %th Phone
+            %tbody
+              - @school.teams.each do |team|
                 %tr
-                  %th Team
-                  %th Coach
-                  %th Email
-                  %th Phone
-              %tbody
-                - @school.teams.each do |team|
-                  %tr
-                    %th{ scope: 'row' }
-                      = link_to_if can?(:manage, team), team.sport.name, [:edit, team]
-                    %td= team.coach_name
-                    %td= mail_to team.coach_email
-                    %td= team.coach_phone
+                  %th{ scope: 'row' }
+                    = link_to_if can?(:manage, team), team.sport.name, [:edit, team]
+                  %td= team.coach_name
+                  %td= mail_to team.coach_email
+                  %td= team.coach_phone
 
-          - else
-            %p No current teams
+        - else
+          %p No current teams
 
     -else
       .twelve.columns
@@ -61,13 +60,11 @@
           to view coach and contact information for this school.
 
   - if can?(:manage, @school) && @unpublished_games.present?
-    .row
-      .twelve.columns
-        %h2 Unpublished Scores
-        %ol
-          - @unpublished_games.each do |game|
-            %li= link_to "#{game.away_team.display_name} at #{game.home_team.display_name}", [:edit, game]
+    .twelve.columns
+      %h2 Unpublished Scores
+      %ol
+        - @unpublished_games.each do |game|
+          %li= link_to "#{game.away_team.display_name} at #{game.home_team.display_name}", [:edit, game]
 
-  .row
-    .games.twelve.columns
-      = render 'shared/recent_scores', games: @games
+  .games.twelve.columns
+    = render 'shared/recent_scores', games: @games

@@ -1,0 +1,33 @@
+html.ie7 {
+  * {
+    box-sizing: border-box;
+    *behavior: url('/assets/boxsizing.htc');
+  }
+
+  .button.dropdown > ul {
+    box-sizing: border-box;
+    *behavior: url('/assets/boxsizing.htc');
+  }
+
+  #twitter-button {
+    p {
+      line-height: 1em;
+      margin-bottom: 0em;
+    }
+  }
+
+  #filter-scores {
+    span.to {
+      position: relative;
+      top: -10px;
+    }
+  }
+
+  footer.global p.copyright {
+    width: 400px;
+  }
+
+  nav.admin-menu {
+    top: 0;
+  }
+}
