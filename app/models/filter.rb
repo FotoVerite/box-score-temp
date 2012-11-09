@@ -50,6 +50,10 @@ class Filter
     scope
   end
 
+  def sport
+    Sport.find(@sport_id) if @sport_id.present?
+  end
+
   private
 
   def assn_id

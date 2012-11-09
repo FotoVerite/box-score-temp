@@ -39,6 +39,15 @@ div.input.select {
     width: 100%;
   }
 
+  .chzn-single abbr.search-choice-close {
+    top: 12px;
+  }
+
+  .chzn-container-single .chzn-single div b {
+    position: relative;
+    top: 7px;
+  }
+
   .chzn-single,
   .chzn-drop {
     @include border-radius(0);

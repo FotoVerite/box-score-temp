@@ -117,23 +117,16 @@ header.global {
   right: 0;
   width: 207px;
 
-  p {
-    line-height: 0em;
-    color: #fff;
-    font-family: $headline-font;
-    font-size: 18px;
-  }
-
   a {
     display: block;
     width: 207px;
     height: 36px;
     color: #fff;
     background: image_url('twitter-button.png') no-repeat;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 600;
     line-height: 36px;
-    text-indent: 53px;
+    text-indent: 45px;
     text-transform: uppercase;
 
     &:hover {

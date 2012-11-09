@@ -1,10 +1,13 @@
+- if @filter.sport.present?
+  - content_for :title, @filter.sport.name
+
 - unless admin_signed_in?
-  %h1
+  %h1.welcome
     Welcome to
     %strong HS Box Scores NYC,
     your source for varsity
-    %strong high school basketball, baseball and softball scores
-    in NYC.
+    %strong high school basketball, baseball, and softball scores
+    in New York City.
 
 #main.twelve.columns
   = render 'shared/filter_form'
@@ -13,7 +16,7 @@
     %h1= sport.name
     - games_on_date.each do |date, games|
       %section#recent-scores
-        = render 'shared/recent_scores', games: games, title: date.stamp("Friday, June 29, 1981")
+        = render 'shared/recent_scores', games: games, title: date.stamp("Friday, June 1, 1981")
 
 :javascript
   $(function() {

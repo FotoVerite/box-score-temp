@@ -8,12 +8,19 @@
   / <![endif]
   %head
     %meta{ charset: 'utf-8' }/
+    %meta{ content: 'Your source for New York City high school sports scores.', name: 'description' }/
     %meta{ content: 'width=device-width, initial-scale=1.0', name: 'viewport' }/
 
-    %title= content_for?(:title) ? yield(:title) : 'HSBoxScore'
+    %title
+      - if content_for?(:title)
+        = yield(:title)
+        \-
+      NYC High School Box Scores
+
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     = csrf_meta_tags
+
   %body{ body_attributes }
     - if flash.alert
       #flash
@@ -26,8 +33,7 @@
         .eight.columns.offset-by-four
 
           #twitter-button
-            %p Follow us on Twitter
-            = link_to '@hsboxscoresnyc', 'http://twitter.com/hsboxscoresnyc'
+            = link_to 'Follow @hsboxscoresnyc', 'http://twitter.com/hsboxscoresnyc'
 
           %nav.global
             %p
@@ -62,7 +68,7 @@
     .row
       %footer.global.twelve.columns
         .row
-          %p.copyright.eight.columns Copyright&copy; #{Time.current.stamp '1999'} HS Box Scores NYC, LLC. All rights reserved.
+          %p.copyright.eight.columns Copyright &copy; #{Date.current.stamp '1999'}, HS Box Scores NYC, LLC. All rights reserved.
           %nav.four.columns
             %ul
               %li= link_to 'Terms of Service', '/terms-of-service'
