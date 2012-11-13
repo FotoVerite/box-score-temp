@@ -310,9 +310,10 @@ footer.global {
       font-size: 11px;
       line-height: 11px;
       padding: 0 10px 0 7px;
+      border-right: 1px solid;
 
       &:last-child {
-        border-left: 1px solid;
+        border: none;
       }
 
       a {
