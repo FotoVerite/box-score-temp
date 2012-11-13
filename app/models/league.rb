@@ -21,4 +21,11 @@ class League < ActiveRecord::Base
       [league.name_with_assn, league.id]
     end
   end
+
+  def genders
+    genders = []
+    genders << 'boys' if teams.any?(&:boys?)
+    genders << 'girls' if teams.any?(&:girls?)
+    genders
+  end
 end

@@ -32,7 +32,8 @@ div.input, select {
   margin-right: 12px;
 }
 
-div.input.select {
+div.input.select,
+div.input.grouped_select {
   width: 175px;
 
   .chzn-container {

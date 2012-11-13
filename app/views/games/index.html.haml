@@ -20,5 +20,5 @@
 
 :javascript
   $(function() {
-    new BoxScore.Filters($('#filter-scores'), { filter: #{params[:filter].to_json} })
+    new BoxScore.Filters($('#filter-scores'), { filter: #{@filter.params.to_json} })
   });

@@ -17,4 +17,10 @@ module ApplicationHelper
   def facebook_share_url(url)
     "http://www.facebook.com/share.php?u=#{CGI.escape(url)}"
   end
+
+  def group_by_gender(items)
+    items
+      .group_by(&:gender)
+      .map { |gender, items| OpenStruct.new(gender: gender.humanize, items: items) }
+  end
 end

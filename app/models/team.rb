@@ -4,7 +4,7 @@ class Team < ActiveRecord::Base
     :league_id, :coach_name, :coach_email, :coach_phone, :competitive_class
 
   delegate :name, to: :school, prefix: true
-  delegate :sport_type, to: :sport
+  delegate :sport_type, :gender, to: :sport
 
   validates_presence_of :sport, :season, :school, :league
 
@@ -22,6 +22,14 @@ class Team < ActiveRecord::Base
 
   def display_name
     [school.name, sport.name].join(' ')
+  end
+
+  def boys?
+    gender == 'boys'
+  end
+
+  def girls?
+    gender == 'girls'
   end
 
   def potential_opponents

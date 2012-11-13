@@ -91,10 +91,10 @@ class Sport < ActiveHash::Base
   }
 
   self.data = [
-    { id: 'boys-basketball', sport_type: 'basketball', name: "Boys Basketball"},
-    { id: 'girls-basketball', sport_type: 'basketball', name: "Girls Basketball"},
-    { id: 'girls-softball', sport_type: 'baseball', name: "Girls Softball"},
-    { id: 'boys-baseball', sport_type: 'baseball', name: "Boys Baseball"}
+    { id: 'boys-basketball', sport_type: 'basketball', name: "Boys Basketball", gender: 'boys'},
+    { id: 'girls-basketball', sport_type: 'basketball', name: "Girls Basketball", gender: 'girls'},
+    { id: 'girls-softball', sport_type: 'baseball', name: "Girls Softball", gender: 'girls'},
+    { id: 'boys-baseball', sport_type: 'baseball', name: "Boys Baseball", gender: 'boys'}
   ]
 
   def sport_type_options

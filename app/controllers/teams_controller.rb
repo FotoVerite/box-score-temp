@@ -5,14 +5,19 @@ class TeamsController < ApplicationController
     respond_to do |format|
       format.json do
         league = League.find(params[:league_id])
-        teams = league.teams
+        teams = league.teams.ordered
 
-        teams = teams.where(sport_id: params[:filter][:sport]) if params[:filter][:sport].present?
+        teams = teams.where(sport_id: params[:filter][:sport]) if params[:filter].present? && params[:filter][:sport].present?
 
         render json: teams
       end
 
       format.html do
+        if request.xhr?
+          render partial: 'select', locals: { filter: Filter.new(params) }
+          return
+        end
+
         if admin_signed_in?
           @teams = current_admin.school.teams
           render html: @teams

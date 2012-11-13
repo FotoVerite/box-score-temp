@@ -6,6 +6,10 @@ class LeaguesController < ApplicationController
       format.json do
         render json: assn.leagues
       end
+
+      format.html do
+        render partial: 'select', locals: { filter: Filter.new(params) }
+      end
     end
   end
 end

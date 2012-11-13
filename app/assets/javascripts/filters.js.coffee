@@ -10,37 +10,33 @@ class Filters
     selected_option = $(e.currentTarget)
     assn_id = selected_option.val()
 
-    @loadLeagues(assn_id)
+    @loadLeagues(assn_id) if assn_id.length
 
 
   leagueSelected: (e) =>
     selected_option = $(e.currentTarget)
     league_id = selected_option.val()
 
-    @loadTeams(league_id)
+    @loadTeams(league_id) if league_id.length
 
 
   loadLeagues: (assn_id) =>
-    league_select = $('#filter_league_id')
-    league_select.html('')
-
-    if assn_id.length
-      $.getJSON "/assns/#{assn_id}/leagues", (leagues) =>
-        league_options = ("<option value=\"#{league.id}\">#{league.name}</option>" for league in leagues).join('')
-        league_select
-          .html('<option value=\"\"></options>' + league_options)
-          .trigger('liszt:updated')
+    @updateOptions $('#filter_league_id'), "/assns/#{assn_id}/leagues"
 
 
   loadTeams: (league_id) =>
-    team_select = $('#filter_team_id')
-    team_select.html('')
+    @updateOptions $('#filter_team_id'), "/leagues/#{league_id}/teams"
 
-    if league_id.length
-      $.getJSON "/leagues/#{league_id}/teams", @filter, (teams) =>
-        team_options = ("<option value=\"#{team.id}\">#{team.display_name}</option>" for team in teams).join('')
-        team_select
-          .html('<option value=\"\"></options>' + team_options)
+
+  updateOptions: (element, url) =>
+    element.html('')
+
+    $.ajax url,
+      dataType: 'html',
+      data: @filter.filter,
+      success: (html) =>
+        element
+          .html($(html).find('select').html())
           .trigger('liszt:updated')
 
 

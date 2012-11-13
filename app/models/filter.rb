@@ -2,11 +2,13 @@ class Filter
   extend ActiveModel::Naming
   include ActiveModel::Conversion
 
+  attr_reader :params
   attr_writer :assn_id, :league_id, :team_id, :sport_id, :earliest_date, :latest_date
 
   def initialize(hash)
     if hash
       hash = hash.symbolize_keys
+      @params = hash
       self.sport_id = hash[:sport_id]
       self.assn_id = hash[:assn_id]
       self.league_id = hash[:league_id]
@@ -30,6 +32,12 @@ class Filter
     else
       League.scoped
     end.ordered
+  end
+
+  def gendered_league_options
+    league_options.map do |league|
+      league.genders.map { |gender| GenderedLeague.new(league, gender) }
+    end.flatten
   end
 
   def team_options

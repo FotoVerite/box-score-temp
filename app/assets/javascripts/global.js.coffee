@@ -3,7 +3,6 @@ $ ->
 
   $('.chzn-select').chosen
     disable_search_threshold: 10
-    allow_single_deselect: true
 
   $('header.global').on 'click', 'a.account-request', ->
     $('#account-request-form').reveal({ animation: 'none' })

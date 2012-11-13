@@ -1,0 +1,4 @@
+= simple_fields_for :filter do |f|
+  = f.input :league_id, as: :grouped_select, collection: group_by_gender(filter.gendered_league_options),
+    required: false, label: false, group_method: :items, group_label_method: :gender,
+    input_html: { class: 'chzn-select', data: { placeholder: 'League / Division' } }
