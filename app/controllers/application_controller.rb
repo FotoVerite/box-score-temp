@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_subdomain
-    unless request.subdomain == 'www' || request.host == 'localhost'
+    unless request.subdomain == 'www' || request.host == 'localhost' || request.host == 'test.host'
       redirect_to subdomain: 'www', status: :moved_permanently
     end
   end
