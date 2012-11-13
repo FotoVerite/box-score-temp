@@ -30,4 +30,30 @@ html.ie7 {
   nav.admin-menu {
     top: 0;
   }
+
+  input#game_date {
+    padding: 5px
+  }
+
+  #account-request-form {
+    .input {
+      position: relative;
+      right: 435px;
+      width: 500px;
+
+      input {
+        width: 500px;
+      }
+
+      textarea {
+        width: 500px;
+        height: 300px;
+      }
+    }
+
+    input.button {
+      position: relative;
+      right: 435px;
+    }
+  }
 }
