@@ -10,7 +10,9 @@ class Filters
     selected_option = $(e.currentTarget)
     assn_id = selected_option.val()
 
-    @loadLeagues(assn_id) if assn_id.length
+    if assn_id.length
+      @loadLeagues(assn_id)
+      @loadAssnTeams(assn_id)
 
 
   leagueSelected: (e) =>
@@ -26,6 +28,10 @@ class Filters
 
   loadTeams: (league_id) =>
     @updateOptions $('#filter_team_id'), "/leagues/#{league_id}/teams"
+
+
+  loadAssnTeams: (assn_id) =>
+    @updateOptions $('#filter_team_id'), "/assns/#{assn_id}/teams"
 
 
   updateOptions: (element, url) =>

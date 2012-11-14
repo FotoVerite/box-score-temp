@@ -4,10 +4,18 @@ class TeamsController < ApplicationController
   def index
     respond_to do |format|
       format.json do
-        league = League.find(params[:league_id])
-        teams = league.teams.ordered
+        teams = nil
 
-        teams = teams.where(sport_id: params[:filter][:sport]) if params[:filter].present? && params[:filter][:sport].present?
+        if params[:league_id]
+          league = League.find(params[:league_id])
+          teams = league.teams.ordered
+        elsif params[:assn_id]
+          assn = Assn.find(params[:assn_id])
+          teams = assn.teams.ordered
+        end
+
+        teams = teams.where(sport_id: params[:filter][:sport]) if params[:filter].present? &&
+          params[:filter][:sport].present?
 
         render json: teams
       end
