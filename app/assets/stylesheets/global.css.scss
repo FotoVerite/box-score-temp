@@ -303,6 +303,7 @@ footer.global {
   nav {
     ul {
       @include horizontal-list-container;
+      white-space: nowrap;
     }
 
     li {
