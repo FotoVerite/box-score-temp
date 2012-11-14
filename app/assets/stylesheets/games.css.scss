@@ -10,7 +10,9 @@ body.box-score.games {
   h1.welcome {
     text-align: center;
     width: 100%;
-    padding: 0 150px 25px 150px;
+    padding: 0 0 25px 0;
+    font-size: 25px;
+    font-family: $body-font;
   }
 
   h2 {
