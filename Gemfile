@@ -2,19 +2,19 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.9'
 
-gem 'activeadmin'
 gem 'active_hash'
+gem 'activeadmin'
 gem 'acts_as_list'
 gem 'cancan'
 gem 'chosen-rails'
 gem 'devise'
 gem 'haml-rails'
-gem 'newrelic_rpm'
 gem 'jquery-rails'
-gem "meta_search",    '>= 1.1.0.pre'
+gem 'meta_search',    '>= 1.1.0.pre'
 gem 'modernizr-rails'
+gem 'newrelic_rpm'
 gem 'pg'
 gem 'simple_form'
 gem 'stamp'
@@ -35,9 +35,9 @@ group :development, :test do
   gem 'debugger'
   gem 'guard-rspec'
   gem 'launchy'
+  gem 'quiet_assets'
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'rspec-rails'
-  gem 'quiet_assets'
 end
 
 group :test do
