@@ -1,7 +1,7 @@
 class Team < ActiveRecord::Base
   extend ActiveHash::Associations::ActiveRecordExtensions
-  attr_accessible :season_id, :sport_id, :player_ids, :school_id,
-    :league_id, :coach_name, :coach_email, :coach_phone, :competitive_class
+  attr_accessible :season_id, :sport_id, :player_ids, :school_id, :league_id, :coach_name,
+    :coach_email, :coach_phone, :competitive_class
 
   delegate :name, to: :school, prefix: true
   delegate :sport_type, :gender, to: :sport
@@ -22,6 +22,10 @@ class Team < ActiveRecord::Base
 
   def display_name
     [school.name, sport.name].join(' ')
+  end
+
+  def display_name_no_gender
+    display_name.sub('Boys', '').sub('Girls', '')
   end
 
   def boys?
