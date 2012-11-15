@@ -23,4 +23,10 @@ module ApplicationHelper
       .group_by(&:gender)
       .map { |gender, items| OpenStruct.new(gender: gender.humanize, items: items) }
   end
+
+  def superadmin_dashboard_link
+    if current_admin && current_admin.email == 'patrick@hsboxscoresnyc.com'
+      link_to 'SuperAdmin Dashboard', '/superadmin', class: 'superadmin-dashboard alert button'
+    end
+  end
 end

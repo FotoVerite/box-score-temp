@@ -110,6 +110,13 @@ header.global {
   margin-top: 20px;
 }
 
+a.superadmin-dashboard {
+  z-index: 4;
+  position: absolute;
+  top: 84px;
+  right: 400px;
+}
+
 #twitter-button {
   position: absolute;
   z-index: 4;
