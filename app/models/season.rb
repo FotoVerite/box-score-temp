@@ -6,7 +6,17 @@ class Season < ActiveRecord::Base
   has_many :teams
   has_many :games
 
+  scope :ordered, order('year DESC')
+
   def self.by_sport(sport)
     where sport_id: sport.id
+  end
+
+  def sport
+    Sport.find(sport_id).name
+  end
+
+  def to_s
+    "#{sport} #{year}"
   end
 end
