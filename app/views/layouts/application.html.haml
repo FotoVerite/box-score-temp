@@ -26,11 +26,12 @@
       #flash
         %p= flash.alert
 
-    = link_to 'Home', root_path, id: 'branding'
-
     %header.global.twelve.columns
       .row
-        .eight.columns.offset-by-four
+        .five.columns
+          = link_to 'Home', root_path, id: 'branding'
+
+        .seven.columns
 
           = superadmin_dashboard_link
 
