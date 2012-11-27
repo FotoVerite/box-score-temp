@@ -41,13 +41,16 @@
           %nav.global
             %p
               %span#registration-links
+              = link_to 'Home', root_path, class: 'home'
               - if admin_signed_in?
-                Welcome, #{current_admin.name}
                 = link_to 'Sign out', destroy_admin_session_path, method: :delete, id: 'logout'
               - else
                 = link_to 'Admin sign in', new_admin_session_path, id: 'login'
               = link_to 'About us', '/about-us'
               = link_to 'Add your school', '#', class: 'account-request'
+
+            - if admin_signed_in?
+              %p Welcome, #{current_admin.name}
 
     .row
       #content.twelve.columns

@@ -94,10 +94,7 @@ body {
 }
 
 a#branding {
-  //position: absolute;
   z-index: 2;
-  //left: 0;
-  //top: 10px;
   display: block;
   width: 335px;
   height: 157px;
@@ -165,9 +162,17 @@ nav.global {
     font-weight: 700;
     text-transform: uppercase;
 
+    &.home {
+      width: 16px;
+      text-indent: 999em;
+      background-image: image_url('icon-home.png');
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
     &:hover {
       text-decoration: none;
-      background: rgba(0, 0, 0, 0.2);
+      background-color: rgba(0, 0, 0, 0.2);
     }
   }
 }
