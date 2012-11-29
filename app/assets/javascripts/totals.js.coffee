@@ -7,7 +7,7 @@ class Totals
   sumStats: ->
     table = $(this)
     stat_rows = table.find('tbody tr')
-    totals_cells = table.find('tfoot tr.totals td')
+    totals_cells = table.find('tfoot tr.totals td.stat')
     totals_cells.each (index, elem) ->
       total = 0
       stat_rows.each ->

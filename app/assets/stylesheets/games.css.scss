@@ -50,6 +50,10 @@ body.box-score.games {
   tr.totals {
     border-top: 1px solid #ccc;
 
+    th, td {
+      font-weight: 700;
+    }
+
     th {
       text-transform: uppercase;
     }

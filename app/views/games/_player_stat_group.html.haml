@@ -8,6 +8,12 @@
       - player_stat_group.player_stat_fields.each do |field, attributes|
         %th= attributes[:abbr]
 
+  %tfoot
+    %tr.totals
+      %th Totals
+      - (1..player_stat_group.player_stat_fields.count).each do |i|
+        %td.stat
+
   %tbody
     - team.player_game_stats(game).each do |player_game_stat|
       = render 'games/player_game_stat',
