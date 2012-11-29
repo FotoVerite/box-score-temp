@@ -4,8 +4,9 @@ class GameMailer < ActionMailer::Base
   def new_stats(game)
     @game = game
 
-    mail to: league_emails(game),
-      subject: "Game stats have been posted for #{game.team.display_name} vs #{game.opponent.display_name}"
+    mail to: 'info@hsboxscoresnyc.com',
+      bcc: league_emails(game),
+      subject: "A final box score has been posted for #{game.team.display_name} vs #{game.opponent.display_name}"
   end
 
   private

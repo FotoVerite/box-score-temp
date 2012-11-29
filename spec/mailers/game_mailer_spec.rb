@@ -9,7 +9,7 @@ describe GameMailer do
     let(:mail) { GameMailer.new_stats(game) }
 
     it "has the proper subject" do
-      mail.subject.should eq("Game stats have been posted for #{game.team.display_name} vs #{game.opponent.display_name}")
+      mail.subject.should eq("A final box score has been posted for #{game.team.display_name} vs #{game.opponent.display_name}")
     end
 
     it "sends it to everyone in both leagues" do
@@ -23,7 +23,8 @@ describe GameMailer do
         other_team_in_league.school.admins.map(&:email)
       ].flatten
 
-      mail.to.sort.should eq(expected_emails.sort)
+      mail.to.should eq(['info@hsboxscoresnyc.com'])
+      mail.bcc.sort.should eq(expected_emails.sort)
     end
 
     it "has the proper from address" do
