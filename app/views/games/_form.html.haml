@@ -1,9 +1,3 @@
-= field_set_tag 'Player Stats' do
-  - [game.team, game.opponent].each do |team|
-    %h2= team.display_name
-    - team.sport.player_stat_groups.each do |player_stat_group|
-      = render 'games/form/player_stat_group', game: game, team: team, player_stat_group: player_stat_group
-
 = field_set_tag 'Game Stats' do
   %table.game-stats
     %thead
@@ -29,3 +23,10 @@
     %tbody
       = render 'games/form/game_stats', game: game, team: game.team
       = render 'games/form/game_stats', game: game, team: game.opponent
+
+= field_set_tag 'Player Stats' do
+  - [game.team, game.opponent].each do |team|
+    %h2= team.display_name
+    - team.sport.player_stat_groups.each do |player_stat_group|
+      = render 'games/form/player_stat_group', game: game, team: team, player_stat_group: player_stat_group
+
