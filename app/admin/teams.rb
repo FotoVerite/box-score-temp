@@ -18,5 +18,6 @@ ActiveAdmin.register Team do
       f.input :coach_phone
       f.input :competitive_class, label: 'Class'
     end
+    f.buttons
   end
 end

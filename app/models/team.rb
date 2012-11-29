@@ -6,6 +6,8 @@ class Team < ActiveRecord::Base
   delegate :name, to: :school, prefix: true
   delegate :sport_type, :gender, to: :sport
 
+  before_validation :copy_sport_from_season
+
   validates_presence_of :sport, :season, :school, :league
 
   belongs_to_active_hash :sport
@@ -48,5 +50,13 @@ class Team < ActiveRecord::Base
     options ||= {}
     options = options.merge(methods: [:school_name, :display_name])
     super(options)
+  end
+
+  private
+
+  def copy_sport_from_season
+    if season.present?
+      self.sport_id = season.sport_id
+    end
   end
 end
