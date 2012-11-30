@@ -18,7 +18,7 @@ class Games
       clone = row.clone()
 
       row.html(row.html().replace(/CHILD/g, newIndex))
-      row.find('select.player').val(select.val())
+      row.find('select.player').val(select.val()).focus()
 
       tbody.append(clone)
 
