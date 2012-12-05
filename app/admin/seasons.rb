@@ -13,7 +13,7 @@ ActiveAdmin.register Season do
   form do |f|
     f.inputs do
       f.input :year
-      f.input :sport_id
+      f.input :sport_id, collection: Sport.all
       f.input :start_date
       f.input :current
     end
