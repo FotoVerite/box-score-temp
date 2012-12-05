@@ -10,16 +10,15 @@
               = e
 
         = field_set_tag 'Game Information' do
-          %dl.home-away
-            %dt Home:
-            %dd= @game.home_team.display_name
-            %dt Away:
-            %dd= @game.away_team.display_name
-
-          = f.input :neutral_site, as: :boolean
+          %span.team-names
+            %span.team= @game.away_team.school_name
+            %span.at at
+            %span.team= @game.home_team.school_name
 
           .date
             = f.input :date, as: :string, required: false
+            = f.input :neutral_site, as: :boolean
+
 
         #sport_fields
           = render partial: 'games/form', locals: { game: @game }

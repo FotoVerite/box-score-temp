@@ -6,7 +6,7 @@ module GamesHelper
   end
 
   def twitter_box_score_message(team, opponent, date, url)
-    "Box score for #{team.display_name} vs. #{opponent.display_name}, #{date.stamp('11/11/99')} is now posted: #{url}"
+    "Box score for #{team.school.name} vs. #{opponent.school.name} #{team.sport.name} #{date.stamp('11/11/99')} #{url}"
   end
 
   def box_score_email_link(game)

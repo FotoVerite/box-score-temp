@@ -66,6 +66,19 @@ body.box-score.games.edit {
     margin: 20px 0;
   }
 
+  span.team-names {
+    text-align: center;
+    span.team {
+      font-weight: bold;
+      display: block;
+      margin: 5px 0;
+      font-size: 18px;
+    }
+    span.at {
+      display: block;
+    }
+  }
+
   .input.select {
     width: 250px;
 
@@ -94,7 +107,17 @@ body.box-score.games.edit {
   }
 }
 
-table.game-stats {
+table.game-stats,
+table.player-stats {
+  th, td {
+    padding: 9px 5px 9px 0px;
+    text-align: center;
+  }
+  td {
+    input {
+      text-align: center;
+    }
+  }
   td.final {
     font-weight: bold;
   }
