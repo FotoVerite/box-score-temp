@@ -12,10 +12,10 @@
 #main.twelve.columns
   = render 'shared/filter_form'
 
-  - GamesGrouping.new(@filter).each do |sport, games_on_date|
-    %h1= sport.name
-    - games_on_date.each do |date, games|
-      %section#recent-scores
+  %section#recent-scores
+    - GamesGrouping.new(@filter).each do |sport, games_on_date|
+      %h1= sport.name
+      - games_on_date.each do |date, games|
         = render 'shared/recent_scores', games: games, title: date.stamp("Friday, June 1, 1981")
 
 :javascript

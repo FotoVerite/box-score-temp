@@ -101,25 +101,62 @@ body.box-score.games.edit {
   .input.boolean {
     margin-top: 10px;
   }
+
+  table {
+    width: 100%;
+    input[type=text] {
+      padding: 2px;
+      border-radius: 0;
+    }
+  }
+
+  table.game-stats {
+    tbody td,
+    th.stat,
+    td.stat {
+      width: 3.5em;
+    }
+  }
+}
+
+section#recent-scores {
+  table.game-stats {
+    th,
+    tbody td {
+      padding: 9px 5px;
+    }
+    tbody td {
+      width: 2.5em;
+    }
+    &.baseball {
+      td.final {
+        border-left: none;
+      }
+    }
+  }
 }
 
 table.game-stats,
 table.player-stats {
-  width: 100%;
   th, td {
     padding: 9px 5px 9px 0px;
     text-align: center;
   }
 
+  td.final {
+    border-left: 1px solid #5a5a5a;
+  }
+
+
   th.add-period,
   td.add-period {
-    width: 1em;
+    width: 1em !important;
   }
 
   tbody td,
   th.stat,
   td.stat {
-    width: 3.5em;
+    width: 3em;
   }
 
   td {

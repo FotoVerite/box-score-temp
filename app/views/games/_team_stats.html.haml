@@ -1,13 +1,12 @@
 - stats = game.stats.team_stats(team)
 %tr{ class: winner_class(game, team) }
-  %th{ scope: 'row' }= link_to team.school.name, team.school
+  %th{ scope: 'row' }= link_to team.school.short_name, team.school
 
   - game.stats.periods.each do |period|
     %td
       = stats.points(period)
 
-  %td
-    %strong= stats.final
+  %td.final= stats.final
 
   - game.sport.game_stats.each do |stat, attributes|
     %td= stats.send(stat)

@@ -19,4 +19,8 @@ class School < ActiveRecord::Base
   def to_param
     "#{self.id}-#{self.name.parameterize}"
   end
+
+  def short_name
+    name.truncate(35)
+  end
 end

@@ -1,6 +1,6 @@
 - stats = game.stats.team_stats(team)
 %tr{ class: winner_class(game, team) }
-  %th{ scope: 'row' }= team.school.name
+  %th{ scope: 'row' }= team.school.short_name
 
   - game.summary_stats.each do |stat, attributes|
     %td{ class: stat }
