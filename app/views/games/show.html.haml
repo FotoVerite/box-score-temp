@@ -1,4 +1,5 @@
-- content_for :title, "#{@game.sport.name} - #{@game.home_team.school_name} at #{@game.away_team.school_name}"
+- content_for :title, @game.title
+
 %h1
   %strong #{@game.home_team.school_name}
   at
@@ -26,11 +27,12 @@
     %table.game-stats
       %thead
         %tr
-          %th Team
+          %th.team
+            %span Team
           - @game.stats.periods.each do |period|
             %th= period
 
-          %th Final
+          %th.score= @game.sport.score_abbr
 
           - @game.sport.game_stats.each do |key, attributes|
             %th= attributes[:abbr]
@@ -41,9 +43,10 @@
 
   %section#player-stats
     - [@game.away_team, @game.home_team].each do |team|
-      %h2= team.display_name
-      - team.sport.player_stat_groups.each do |player_stat_group|
-        = render 'games/player_stat_group', game: @game, team: team, player_stat_group: player_stat_group
+      %article[team]
+        %h2= team.display_name
+        - team.sport.player_stat_groups.each do |player_stat_group|
+          = render 'games/player_stat_group', game: @game, team: team, player_stat_group: player_stat_group
 
 :javascript
   $(function(){

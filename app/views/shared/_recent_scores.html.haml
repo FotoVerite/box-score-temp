@@ -7,7 +7,8 @@
         %table.game-stats
           %thead
             %tr
-              %th Team
+              %th.team
+                %span Team
               - game.summary_stats.each do |stat, attributes|
                 %th= attributes[:abbr]
 

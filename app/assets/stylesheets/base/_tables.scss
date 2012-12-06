@@ -2,7 +2,7 @@
 
 @mixin table {
   border-collapse: collapse;
-  width: 100%;
+  width: 60%;
   border: 1px solid $black;
 
   caption {
@@ -23,7 +23,6 @@
 
   tbody th,
   tfoot th {
-    width: 200px;
     padding: 9px 10px;
     text-align: left;
     font-size: 12px;
@@ -54,6 +53,10 @@ table.game-stats {
 
 table.game-stats {
   margin-bottom: 40px;
+
+  th.team span {
+    display: none;
+  }
 
   tr.winner td,
   tr.winner th {

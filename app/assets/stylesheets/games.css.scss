@@ -29,19 +29,11 @@ body.box-score.games {
     }
   }
 
-  dl.home-away {
-    dt {
-      font-size: 16px;
-      font-family: $headline-font;
-    }
-
-    dd {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-  }
-
   section#player-stats {
+    article.team {
+      margin-bottom: 40px;
+    }
+
     > div {
       margin-bottom: 40px;
     }
@@ -49,6 +41,10 @@ body.box-score.games {
 
   tr.totals {
     border-top: 1px solid #ccc;
+
+    td.stat {
+      width: 3em;
+    }
 
     th, td {
       font-weight: 700;
@@ -109,13 +105,29 @@ body.box-score.games.edit {
 
 table.game-stats,
 table.player-stats {
+  width: 100%;
   th, td {
     padding: 9px 5px 9px 0px;
     text-align: center;
   }
+
+  th.add-period,
+  td.add-period {
+    width: 1em;
+  }
+
+  tbody td,
+  th.stat,
+  td.stat {
+    width: 3.5em;
+  }
+
   td {
     input {
       text-align: center;
+    }
+    select {
+      min-width: 3em;
     }
   }
   td.final {

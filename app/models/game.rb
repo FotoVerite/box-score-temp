@@ -94,11 +94,15 @@ class Game < ActiveRecord::Base
     "#{id}-#{description}"
   end
 
+  def title
+    "#{sport.name} - #{home_team.school_name} at #{away_team.school_name}"
+  end
+
   private
 
   def player_stats(team)
     player_game_stats.select do |stat|
-      (team.players.include?(stat.player))
+      team.players.include?(stat.player)
     end
   end
 end

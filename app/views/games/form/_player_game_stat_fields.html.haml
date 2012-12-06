@@ -7,7 +7,10 @@
 
   - player_stat_group.player_stat_fields.each do |field, attributes|
     %td
-      - if attributes[:type] == :checkbox
+      - case attributes[:type]
+      - when :select
+        = stats_fields.select field, attributes[:collection]
+      - when :checkbox
         = stats_fields.check_box(field)
       - else
         = stats_fields.text_field(field, attributes[:input_html] || {})

@@ -6,16 +6,19 @@
     %tr
       %th Player
       - player_stat_group.player_stat_fields.each do |field, attributes|
-        %th= attributes[:abbr]
+        %th.stat= attributes[:abbr]
 
   %tfoot
     %tr.totals
       %th Totals
-      - (1..player_stat_group.player_stat_fields.count).each do |i|
-        %td.stat
+      - player_stat_group.player_stat_fields.each do |field, attributes|
+        - unless attributes[:total] == false
+          %td.stat
+        - else
+          %td
 
   %tbody
-    - team.player_game_stats(game).each do |player_game_stat|
+    - team.player_game_stats(game, player_stat_group).each do |player_game_stat|
       = render 'games/player_game_stat',
         player_stat_group: player_stat_group,
         player_game_stat: player_game_stat,

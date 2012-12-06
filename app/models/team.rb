@@ -18,7 +18,7 @@ class Team < ActiveRecord::Base
   has_many :games
   has_many :team_players
 
-  has_many :players, through: :team_players
+  has_many :players, through: :team_players, order: 'last_name, first_name'
 
   scope :ordered, joins(:school).order('schools.name')
 
@@ -42,8 +42,8 @@ class Team < ActiveRecord::Base
     Team.where(sport_id: self.sport_id).where("teams.id != :me", me: id).includes(:school).ordered
   end
 
-  def player_game_stats(game)
-    game.player_game_stats.select { |s| s.player.team_ids.include? self.id }
+  def player_game_stats(game, player_stat_group)
+    game.player_game_stats.select { |s| s.player.team_ids.include?(self.id) && s.player_stat_group == player_stat_group.id }
   end
 
   def as_json(options=nil)

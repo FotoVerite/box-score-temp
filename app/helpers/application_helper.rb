@@ -11,7 +11,7 @@ module ApplicationHelper
 
   def child_index(player_game_stat)
     return 'CHILD' if player_game_stat.player_id.blank?
-    player_game_stat.player_id
+    player_game_stat.id
   end
 
   def facebook_share_url(url)
