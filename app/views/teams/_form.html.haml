@@ -35,7 +35,7 @@
 
   .six.columns
     = form_tag players_path, method: :get, remote: true do |f|
-      = field_set_tag 'Search players by first or last name' do
+      = field_set_tag 'Search current players by first or last name' do
         %input{ type: 'text', name: 'name' }
 
         = submit_tag 'Search', class: 'small secondary button'
@@ -43,7 +43,7 @@
         .player-results
 
     = simple_form_for Player.new, remote: true do |f|
-      = field_set_tag 'Add a new player' do
+      = field_set_tag 'Create a new player' do
         .row
           .five.columns
             = f.input :first_name
