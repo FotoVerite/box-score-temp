@@ -1,7 +1,7 @@
 class School < ActiveRecord::Base
   attr_accessible :mascot, :name, :athletic_director_name,
     :athletic_director_email, :athletic_director_phone, :address_1,
-    :address_2, :assn_id
+    :address_2, :assn_id, :short_name
 
   validates :name, presence: true, uniqueness: true
 
@@ -21,6 +21,10 @@ class School < ActiveRecord::Base
   end
 
   def short_name
-    name.truncate(35)
+    if (short = read_attribute(:short_name)).present?
+      short
+    else
+      name
+    end
   end
 end

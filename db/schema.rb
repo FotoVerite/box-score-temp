@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121105164418) do
+ActiveRecord::Schema.define(:version => 20121223195418) do
 
   create_table "account_requests", :force => true do |t|
     t.string   "school_name"
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20121105164418) do
     t.string   "athletic_director_name"
     t.string   "athletic_director_email"
     t.string   "athletic_director_phone"
+    t.string   "short_name"
   end
 
   create_table "seasons", :force => true do |t|
