@@ -34,5 +34,15 @@ describe GameMailer do
     it "links to the game page" do
       mail.body.encoded.should match(game_url(game))
     end
+
+    it 'has the word "advertisement" in the body' do
+      mail.text_part.body.raw_source.downcase.should include('advertisement')
+      mail.html_part.body.raw_source.downcase.should include('advertisement')
+    end
+
+    it 'has the word "unsubscribe" in the body' do
+      mail.text_part.body.raw_source.downcase.should include('unsubscribe')
+      mail.html_part.body.raw_source.downcase.should include('unsubscribe')
+    end
   end
 end
