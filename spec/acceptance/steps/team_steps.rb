@@ -1,6 +1,9 @@
 step "a season exists in the database" do
-  pending
   @season = create :season
+end
+
+step "a league exists in the database" do
+  @league = create :league
 end
 
 step "I visit my teams page" do
@@ -9,8 +12,7 @@ end
 
 step "I enter data in the required fields" do
   page.select 'Boys Basketball', from: 'Sport'
-  save_and_open_page
-  page.select 'Boys Basketball 2011-2012', from: 'Season'
+  page.select '2012-2013', from: 'Season'
 end
 
 step "I click on the 'Create team' button" do
@@ -18,7 +20,7 @@ step "I click on the 'Create team' button" do
 end
 
 step "I am taken to the new team page" do
-  page.should have_content('Create a new team')
+  page.should have_content('Create a New Team')
 end
 
 step "I visit the new team page" do

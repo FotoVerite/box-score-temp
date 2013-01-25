@@ -2,6 +2,7 @@ Feature: Creating and editing a team
   Background:
     Given I am logged in
     And a season exists in the database
+    And a league exists in the database
     And I visit my teams page
 
   Scenario: creating a new team
