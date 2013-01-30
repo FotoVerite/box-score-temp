@@ -11,6 +11,7 @@
  *= require filters
  *= require pages
  *= require users
+ *= require accounts
  *= require flashes
  *= require modals
  *= require ie7

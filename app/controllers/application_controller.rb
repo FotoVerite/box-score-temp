@@ -8,7 +8,12 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(admin)
-    school_path(admin.school)
+    if admin.sign_in_count == 1
+      flash[:alert] = 'Please confirm your account details and change your password.'
+      edit_account_path
+    else
+      school_path(admin.school)
+    end
   end
 
   def current_ability

@@ -6,19 +6,9 @@ body.box-score.schools {
   #main {
     position: relative;
 
-    a.reset-password,
     a.edit-profile {
       position: absolute;
       z-index: 2;
-    }
-
-    a.reset-password {
-      right: 117px;
-      top: -27px;
-      font-weight: 700;
-    }
-
-    a.edit-profile {
       right: 0;
       top: -40px;
 

@@ -11,6 +11,14 @@ step 'I am logged in' do
   step "I enter a valid email address and password into the login form"
 end
 
+step "my sign in count is 0" do
+  @admin.update_attribute :sign_in_count, 0
+end
+
+step "my sign in count is greater than 1" do
+  @admin.update_attribute :sign_in_count, 2
+end
+
 step 'I visit the home page' do
   visit root_path
 end
@@ -44,3 +52,12 @@ end
 step 'I click on the "Log out" link' do
   click_link('logout')
 end
+
+step "I should be on my edit account page" do
+  page.current_path.should == edit_account_path
+end
+
+step "I should be on my school's profile page" do
+  page.current_path.should == school_path(@admin.school)
+end
+

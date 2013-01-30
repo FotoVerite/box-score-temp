@@ -1,0 +1,16 @@
+body.box-score.accounts {
+  form {
+    margin: 30px 0;
+  }
+
+  input[type='submit'] {
+    display: block;
+  }
+
+  p.error_notification,
+  .error {
+    background: transparent;
+    color: red;
+    font-weight: 700;
+  }
+}

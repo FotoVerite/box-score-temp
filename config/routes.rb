@@ -32,4 +32,5 @@ BoxScore::Application.routes.draw do
   resources :games
   resources :game_stats, only: [:new]
   resources :account_requests
+  resource :account, only: [:edit, :update]
 end
