@@ -23,7 +23,7 @@ class Team < ActiveRecord::Base
   scope :ordered, joins(:school).order('schools.name')
 
   def display_name
-    [school.name, sport.name].join(' ')
+    [school.try(:name) || '??? Missing School ???', sport.name].join(' ')
   end
 
   def display_name_no_gender
