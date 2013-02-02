@@ -176,9 +176,12 @@ nav.global {
     }
   }
 
-  a.edit-account {
+  a {
     display: inline-block;
-    padding-left: 10px;
+    margin-left: 10px;
+    color: white;
+    text-transform: uppercase;
+    font-size: 10px;
   }
 }
 
