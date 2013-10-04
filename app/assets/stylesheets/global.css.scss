@@ -114,28 +114,9 @@ a.superadmin-dashboard {
   right: 400px;
 }
 
-#twitter-button {
-  position: absolute;
-  z-index: 4;
-  top: 85px;
-  right: 0;
-  width: 207px;
-
-  a {
-    display: block;
-    width: 207px;
-    height: 36px;
-    color: #fff;
-    background: image_url('twitter-button.png') no-repeat;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 36px;
-    text-indent: 45px;
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
+iframe#twitter-widget-0 {
+  position: relative;
+  left: 34px;
 }
 
 nav.global {

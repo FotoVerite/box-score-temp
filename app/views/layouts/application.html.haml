@@ -32,11 +32,7 @@
           = link_to 'Home', root_path, id: 'branding'
 
         .seven.columns
-
           = superadmin_dashboard_link
-
-          #twitter-button
-            = link_to 'Follow @hsboxscoresnyc', 'http://twitter.com/hsboxscoresnyc'
 
           %nav.global
             %p
@@ -52,6 +48,13 @@
                 Welcome, #{current_admin.name}
                 = link_to 'Account', edit_account_path, class: 'edit-account'
                 = link_to 'Sign out', destroy_admin_session_path, method: :delete, id: 'logout'
+
+          %a.twitter-timeline{"data-widget-id" => "386209842722914304",
+            href: "https://twitter.com/hsboxscoresnyc",
+            height: 200} Tweets by @hsboxscoresnyc
+
+          :javascript
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
     .row
       #content.twelve.columns
