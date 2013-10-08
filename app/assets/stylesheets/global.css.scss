@@ -114,6 +114,16 @@ a.superadmin-dashboard {
   right: 400px;
 }
 
+a.blog {
+  position: relative;
+  left: -200px;
+  top: 100px;
+  padding: 5px;
+  border: 1px dashed #a7b1b8;
+  background: $brand-blue;
+  font-weight: 700;
+}
+
 iframe#twitter-widget-0 {
   position: relative;
   left: 34px;
@@ -141,6 +151,12 @@ nav.global {
     font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
+
+    small {
+      font-size: 8px;
+      position: relative;
+      left: -3px;
+    }
 
     &.home {
       width: 16px;
