@@ -132,6 +132,7 @@ nav.global {
   a.pill {
     display: inline-block;
     margin-left: 10px;
+    overflow: hidden;
     padding: 8px 25px;
     @include border-radius(20px);
     @include single-box-shadow(transparentize(#333, 0.5), 0, 1px, 1px, 0px, true);
@@ -150,7 +151,10 @@ nav.global {
 
     &.home {
       width: 16px;
-      text-indent: 999em;
+      text-indent: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+
       background-image: image_url('icon-home.png');
       background-position: center center;
       background-repeat: no-repeat;
@@ -169,11 +173,6 @@ nav.global {
     text-transform: uppercase;
     font-size: 10px;
   }
-}
-
-#registration-links {
-  display: inline-block;
-  margin-left: 10px;
 }
 
 #content {
