@@ -249,6 +249,15 @@ nav.admin-menu {
   border-top: none;
   background: #F1F1F1;
 
+  .current-school {
+    float: right;
+    line-height: 36px;
+    font-weight: bold;
+    a {
+      font-weight: normal;
+    }
+  }
+
   ul {
     @include horizontal-list-container;
   }

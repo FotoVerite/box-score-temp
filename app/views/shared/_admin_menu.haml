@@ -1,6 +1,11 @@
 .row
   %nav.admin-menu.twelve.columns
+    - if superadmin_signed_in?
+      .current-school
+        = current_school.name
+        = link_to 'Change', edit_current_school_path
+
     %ul
       %li= link_to 'Add Box Score', new_game_path, class: 'button'
-      %li= link_to 'My School Profile', school_path(current_admin.school), class: 'secondary button'
+      %li= link_to 'My School Profile', school_path(current_school), class: 'secondary button'
       %li= link_to 'My Teams', teams_path, class: 'secondary button'

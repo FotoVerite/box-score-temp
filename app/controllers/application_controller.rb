@@ -16,12 +16,39 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_school
+    @current_school ||= begin
+      if superadmin_signed_in?
+        if session[:current_school_id].present?
+          School.find(session[:current_school_id])
+        else
+          current_school = School.ordered.first
+        end
+      elsif admin_signed_in?
+        current_admin.school
+      else
+        nil
+      end
+    end
+  end
+  helper_method :current_school
+
+  def current_school=(school)
+    @current_school = school
+    session[:current_school_id] = school.id
+  end
+
   def current_ability
     @current_ability ||= AdminAbility.new(current_admin)
   end
 
-  def authenticate_admin_user!
-    redirect_to '/' unless current_admin.try(:superadmin?)
+  def superadmin_signed_in?
+    admin_signed_in? && current_admin.superadmin?
+  end
+  helper_method :superadmin_signed_in?
+
+  def authenticate_superadmin!
+    redirect_to '/' unless superadmin_signed_in?
   end
 
   def ensure_subdomain

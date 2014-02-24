@@ -27,7 +27,7 @@ class TeamsController < ApplicationController
         end
 
         if admin_signed_in?
-          @teams = current_admin.school.teams
+          @teams = current_school.teams
           render html: @teams
         else
           redirect_to new_admin_session_path
@@ -41,7 +41,7 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = current_admin.school.teams.build params[:team]
+    @team = current_school.teams.build params[:team]
     if @team.save
       redirect_to [:edit, @team]
     else
@@ -50,11 +50,11 @@ class TeamsController < ApplicationController
   end
 
   def edit
-    @team = current_admin.school.teams.find params[:id]
+    @team = current_school.teams.find params[:id]
   end
 
   def update
-    @team = current_admin.school.teams.find params[:id]
+    @team = current_school.teams.find params[:id]
     if @team.update_attributes params[:team]
       redirect_to [:edit, @team]
     else
@@ -63,7 +63,7 @@ class TeamsController < ApplicationController
   end
 
   def destroy
-    @team = current_admin.school.teams.find params[:id]
+    @team = current_school.teams.find params[:id]
     @team.destroy if @team
     redirect_to teams_path
   end

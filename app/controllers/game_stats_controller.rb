@@ -14,6 +14,6 @@ class GameStatsController < ApplicationController
   end
 
   def teams
-    @teams = current_admin.school.teams
+    @teams = current_school.teams
   end
 end

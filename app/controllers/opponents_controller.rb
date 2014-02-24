@@ -2,7 +2,7 @@ class OpponentsController < ApplicationController
   before_filter :authenticate_admin!
 
   def index
-    team = current_admin.school.teams.find(params[:team_id])
+    team = current_school.teams.find(params[:team_id])
 
     respond_to do |format|
       format.json do

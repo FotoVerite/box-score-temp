@@ -1,4 +1,4 @@
-%h1 #{current_admin.school.name} Teams
+%h1 #{current_school.name} Teams
 
 #main.twelve.columns
   .row
@@ -15,7 +15,7 @@
                   Edit
         - else
           %tr
-            %td{ colspan: '3' } No teams currently exist for #{current_admin.school.name}.
+            %td{ colspan: '3' } No teams currently exist for #{current_school.name}.
 
     .two.columns
       = link_to 'Create New Team', new_team_path, class: 'small button new-team'

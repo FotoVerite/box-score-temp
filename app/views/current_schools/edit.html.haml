@@ -1,0 +1,7 @@
+%h1 Change Current School
+
+= simple_form_for :current_school, url: current_school_path, method: 'PUT' do
+  %select.chzn-select{ name: 'school_id', required: true }
+    = options_from_collection_for_select(@schools, 'id', 'name', current_school.id)
+
+  %input.button{ type: 'Submit', value: 'Change School' }

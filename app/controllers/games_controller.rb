@@ -56,7 +56,7 @@ class GamesController < ApplicationController
   end
 
   def teams
-    @teams = current_admin.school.teams
+    @teams = current_school.teams
   end
   helper_method :teams
 
