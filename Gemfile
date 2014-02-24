@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3'
+ruby '2.1.0'
 
 gem 'rails', '3.2.16'
 
@@ -34,7 +34,7 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'debugger'
+  gem 'byebug'
   gem 'guard-rspec'
   gem 'launchy'
   gem 'quiet_assets'
