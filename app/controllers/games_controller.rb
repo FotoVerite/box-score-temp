@@ -12,7 +12,7 @@ class GamesController < ApplicationController
   def new
     respond_to do |format|
       format.html do
-        @game = Game.new(date: Date.current, home_away: Game::HOME, team_id: params[:team_id])
+        @game = Game.new(date: current_date, home_away: Game::HOME, team_id: params[:team_id])
       end
     end
   end
@@ -64,4 +64,12 @@ class GamesController < ApplicationController
     @filter ||= Filter.new((params[:filter] || {}).merge(sport_id: params[:sport_id]))
   end
   helper_method :filter
+
+  def current_date
+    if Time.now.hour < 12
+      Date.yesterday
+    else
+      Date.current
+    end
+  end
 end

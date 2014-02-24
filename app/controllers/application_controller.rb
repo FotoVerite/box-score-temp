@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :ensure_subdomain
+  around_filter :set_time_zone
 
   rescue_from CanCan::AccessDenied do |exception|
     render text: 'Unauthorized', status: :unauthorized
@@ -55,5 +56,13 @@ class ApplicationController < ActionController::Base
     if request.get? && request.subdomain != 'www' && request.host != 'localhost' && !Rails.env.test?
       redirect_to subdomain: 'www', status: :moved_permanently
     end
+  end
+
+  def set_time_zone
+    old_time_zone = Time.zone
+    Time.zone = 'Eastern Time (US & Canada)'
+    yield
+  ensure
+    Time.zone = old_time_zone
   end
 end
