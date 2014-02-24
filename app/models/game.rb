@@ -1,6 +1,8 @@
 class Game < ActiveRecord::Base
-  HOME = 'home'
-  AWAY = 'away'
+  HOME_AWAY = [
+    HOME = 'home',
+    AWAY = 'away'
+  ]
 
   attr_accessible :home_away, :team_id, :opponent_id, :date, :game_stats,
     :player_game_stats_attributes, :season_id, :publish, :published_at,
@@ -12,7 +14,7 @@ class Game < ActiveRecord::Base
   validates_presence_of :team_id, :opponent_id
   validates_presence_of :home_away
 
-  validates_inclusion_of :home_away, in: [HOME, AWAY]
+  validates_inclusion_of :home_away, in: HOME_AWAY
 
   belongs_to :team
   belongs_to :opponent, class_name: 'Team'
@@ -95,7 +97,7 @@ class Game < ActiveRecord::Base
   end
 
   def title
-    "#{sport.name} - #{home_team.school_name} at #{away_team.school_name}"
+    "#{sport.name} - #{away_team.school_name} at #{home_team.school_name}"
   end
 
   private

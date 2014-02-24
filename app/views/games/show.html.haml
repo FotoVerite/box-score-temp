@@ -1,9 +1,9 @@
 - content_for :title, @game.title
 
 %h1
-  %strong #{@game.home_team.school_name}
-  at
   %strong #{@game.away_team.school_name}
+  at
+  %strong #{@game.home_team.school_name}
   = @game.sport.name
 
 %h2= @game.date.stamp('March 1, 1999')
