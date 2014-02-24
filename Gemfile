@@ -43,6 +43,11 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
 group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0'
