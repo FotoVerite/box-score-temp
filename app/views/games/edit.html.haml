@@ -12,7 +12,7 @@
         = field_set_tag 'Game Information' do
           %span.team-names
             %span.team= @game.away_team.school_name
-            %span.at at
+            %span.at= @game.preposition
             %span.team= @game.home_team.school_name
 
           .row

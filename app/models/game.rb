@@ -97,7 +97,15 @@ class Game < ActiveRecord::Base
   end
 
   def title
-    "#{sport.name} - #{away_team.school_name} at #{home_team.school_name}"
+    "#{sport.name} - #{away_team.school_name} #{preposition} #{home_team.school_name}"
+  end
+
+  def preposition
+    if neutral_site?
+      'vs'
+    else
+      'at'
+    end
   end
 
   private
