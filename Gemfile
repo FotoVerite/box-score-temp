@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.0'
+ruby '2.1.1'
 
 gem 'rails', '3.2.17'
 
@@ -20,7 +20,7 @@ gem 'newrelic_rpm'
 gem 'pg'
 gem 'simple_form'
 gem 'stamp'
-gem 'thin'
+gem 'puma'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
