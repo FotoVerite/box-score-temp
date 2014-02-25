@@ -216,6 +216,7 @@ GEM
     rb-fsevent (0.9.1)
     rdoc (3.12.2)
       json (~> 1.4)
+    redcarpet (3.1.1)
     responders (0.9.3)
       railties (~> 3.1)
     rspec (2.11.0)
@@ -313,6 +314,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 3.2.17)
   rb-fsevent (~> 0.9.1)
+  redcarpet
   rspec-rails
   sass
   sass-rails
