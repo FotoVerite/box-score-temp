@@ -66,7 +66,8 @@ class GamesController < ApplicationController
   helper_method :filter
 
   def current_date
-    if Time.now.hour < 12
+    # if it's morning in my time zone, default to yesterday's date
+    if Time.current.hour < 12
       Date.yesterday
     else
       Date.current
