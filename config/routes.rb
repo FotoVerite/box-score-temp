@@ -30,7 +30,11 @@ BoxScore::Application.routes.draw do
   end
   resources :schools, only: [:index, :show, :edit, :update]
   resources :players
-  resources :games
+  resources :games do
+    collection do
+      get :drafts
+    end
+  end
   resources :game_stats, only: [:new]
   resources :account_requests
   resource :account, only: [:edit, :update]

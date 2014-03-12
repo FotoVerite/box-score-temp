@@ -60,6 +60,10 @@ class GamesController < ApplicationController
   end
   helper_method :teams
 
+  def drafts
+    @games = current_school.unpublished_games
+  end
+
   def filter
     @filter ||= Filter.new((params[:filter] || {}).merge(sport_id: params[:sport_id]))
   end

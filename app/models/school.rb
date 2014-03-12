@@ -16,6 +16,11 @@ class School < ActiveRecord::Base
     Game.with_team(self.teams)
   end
 
+  def unpublished_games
+    # only return drafts that I created (team_id is one of my teams)
+    Game.unpublished.where(team_id: teams)
+  end
+
   def to_param
     "#{self.id}-#{self.name.parameterize}"
   end

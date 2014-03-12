@@ -1,0 +1,14 @@
+- content_for :title, 'Drafts'
+
+%h1 Drafts
+
+#main
+  .row
+    .eleven.columns.centered
+      %p These box scores were saved as drafts and have not been published yet:
+
+      %ol
+        - @games.each do |game|
+          %li
+            = link_to game.title, edit_game_path(game)
+            = game.updated_at.stamp('1/1/2001 8:00 am')
