@@ -66,5 +66,8 @@ module BoxScore
     config.assets.version = '1.0'
 
     config.assets.initialize_on_precompile = false
+
+    config.rakismet.key = ENV['RAKISMET_KEY']
+    config.rakismet.url = ENV['RAKISMET_URL']
   end
 end

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.1'
+ruby '2.1.3'
 
 gem 'rails', '3.2.17'
 
@@ -22,6 +22,7 @@ gem 'redcarpet'
 gem 'simple_form'
 gem 'stamp'
 gem 'puma'
+gem 'rakismet'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
@@ -55,4 +56,6 @@ group :test do
   gem 'poltergeist'
   gem 'shoulda-matchers'
   gem 'turnip'
+  gem 'webmock'
+  gem 'vcr'
 end

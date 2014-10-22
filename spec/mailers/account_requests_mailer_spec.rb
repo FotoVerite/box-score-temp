@@ -1,6 +1,10 @@
 require "spec_helper"
 
 describe AccountRequestsMailer do
+  around do |example|
+    VCR.use_cassette('akismet not spam', record: :none) { example.run }
+  end
+
   describe 'new account request' do
     let(:account_request) { create :account_request }
     let(:mailer) { AccountRequestsMailer.account_request(account_request) }
