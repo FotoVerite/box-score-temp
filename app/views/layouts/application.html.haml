@@ -50,6 +50,12 @@
                 = link_to 'Account', edit_account_path, class: 'edit-account'
                 = link_to 'Sign out', destroy_admin_session_path, method: :delete, id: 'logout'
 
+          .social
+            -if facebook_page_url.present?
+              = link_to image_tag("social-facebook.png"), facebook_page_url, target: '_blank'
+            -if google_page_url.present?
+              = link_to image_tag("social-google-plus.png"), google_page_url, target: '_blank'
+
           %a.twitter-timeline{"data-widget-id" => "386209842722914304",
             href: "https://twitter.com/hsboxscoresnyc",
             height: 200} Tweets by @hsboxscoresnyc

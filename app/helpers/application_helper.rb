@@ -14,10 +14,6 @@ module ApplicationHelper
     player_game_stat.id
   end
 
-  def facebook_share_url(url)
-    "http://www.facebook.com/share.php?u=#{CGI.escape(url)}"
-  end
-
   def group_by_gender(items)
     items
       .group_by(&:gender)
@@ -28,5 +24,17 @@ module ApplicationHelper
     if current_admin && current_admin.email == 'patrick@hsboxscoresnyc.com'
       link_to 'SuperAdmin Dashboard', '/superadmin', class: 'superadmin-dashboard alert button'
     end
+  end
+
+  def facebook_share_url(url)
+    "http://www.facebook.com/share.php?u=#{CGI.escape(url)}"
+  end
+
+  def facebook_page_url
+    ENV["FACEBOOK"]
+  end
+
+  def google_page_url
+    ENV["GOOGLE_PLUS"]
   end
 end

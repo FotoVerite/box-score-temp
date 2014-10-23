@@ -105,6 +105,21 @@ a#branding {
 header.global {
   position: relative;
   margin-top: 20px;
+
+  .social{
+    position: static;
+    float: right;
+    background: #333333;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 2px;
+
+    a {
+      padding-top: 2px;
+      width: 35px;
+      display: -webkit-inline-box;
+    }
+  }
 }
 
 a.superadmin-dashboard {
