@@ -14,7 +14,6 @@ describe GamesController do
       it 'builds a new game' do
         assigns(:game).team_id.should be_nil
         assigns(:game).opponent_id.should be_nil
-        assigns(:game).date.should == Date.today
         assigns(:game).home_away.should == 'home'
       end
     end
@@ -27,9 +26,7 @@ describe GamesController do
       context 'with invalid data' do
         before do
           post :create, game: {
-                          team_id: team.id,
                           opponent_id: opponent.id,
-                          date: '',
                           home_away: 'home',
                           season_id: season.id
                         }
@@ -43,7 +40,6 @@ describe GamesController do
           post :create, game: {
                           team_id: team.id,
                           opponent_id: opponent.id,
-                          date: Date.today,
                           home_away: 'home',
                           season_id: season.id
                         }
