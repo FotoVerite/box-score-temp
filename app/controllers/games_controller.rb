@@ -12,7 +12,7 @@ class GamesController < ApplicationController
   def new
     respond_to do |format|
       format.html do
-        @game = Game.new(home_away: Game::HOME, team_id: params[:team_id])
+        @game = Game.new(date: current_date, home_away: Game::HOME, team_id: params[:team_id])
       end
     end
   end
@@ -21,7 +21,6 @@ class GamesController < ApplicationController
     # Make sure team_id is allowed for current_admin
     teams.find params[:game][:team_id] if params[:game][:team_id].present?
     @game = Game.new(params[:game])
-
     if @game.save
       GameMailer.new_stats(@game).deliver if @game.publishing?
       redirect_to game_path(@game)
@@ -69,4 +68,12 @@ class GamesController < ApplicationController
   end
   helper_method :filter
 
+  def current_date
+    # if it's morning in my time zone, default to yesterday's date
+    if Time.current.hour < 12
+      Date.yesterday
+    else
+      Date.current
+    end
+  end
 end

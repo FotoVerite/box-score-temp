@@ -26,7 +26,9 @@ describe GamesController do
       context 'with invalid data' do
         before do
           post :create, game: {
+                          team_id: team.id,
                           opponent_id: opponent.id,
+                          date: '',
                           home_away: 'home',
                           season_id: season.id
                         }
@@ -40,6 +42,7 @@ describe GamesController do
           post :create, game: {
                           team_id: team.id,
                           opponent_id: opponent.id,
+                          date: Date.today,
                           home_away: 'home',
                           season_id: season.id
                         }

@@ -10,9 +10,6 @@ class Game < ActiveRecord::Base
 
   delegate :sport, :sport_type, to: :team
 
-  before_validation :set_date
-  before_validation :validate_date_format
-
   validates_presence_of :date
   validates_presence_of :team_id, :opponent_id
   validates_presence_of :home_away
@@ -117,22 +114,5 @@ class Game < ActiveRecord::Base
     player_game_stats.select do |stat|
       team.players.include?(stat.player)
     end
-  end
-
-  def set_date
-    self.date ||= current_date
-  end
-
-  def current_date
-    # if it's morning in my time zone, default to yesterday's date
-    if Time.current.hour < 12
-      Date.yesterday
-    else
-      Date.current
-    end
-  end
-
-  def validate_date_format
-    date.is_a?(Date)
   end
 end
