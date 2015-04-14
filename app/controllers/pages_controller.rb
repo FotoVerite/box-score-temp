@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_filter :find_and_render_page
+
   def about
   end
 
