@@ -21,6 +21,7 @@ gem 'pg'
 gem 'redcarpet'
 gem 'simple_form'
 gem 'stamp'
+gem 'redcarpet'
 gem 'puma'
 gem 'rakismet'
 
@@ -43,6 +44,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'rspec-rails'
+  gem 'pry'
 end
 
 group :development do

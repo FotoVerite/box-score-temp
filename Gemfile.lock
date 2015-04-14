@@ -169,6 +169,7 @@ GEM
       activerecord (~> 3.1)
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
+    method_source (0.8.2)
     mime-types (1.25.1)
     modernizr-rails (2.0.6)
     modular-scale (1.0.2)
@@ -188,6 +189,10 @@ GEM
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.4)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     puma (2.7.1)
       rack (>= 1.1, < 2.0)
     quiet_assets (1.0.1)
@@ -254,6 +259,7 @@ GEM
     simple_form (2.0.2)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
+    slop (3.6.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -318,6 +324,7 @@ DEPENDENCIES
   newrelic_rpm
   pg
   poltergeist
+  pry
   puma
   quiet_assets
   rails (= 3.2.17)
