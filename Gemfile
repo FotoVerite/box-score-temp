@@ -25,6 +25,10 @@ gem 'redcarpet'
 gem 'puma'
 gem 'rakismet'
 
+group :staging, :production do
+  gem 'rails_12factor'
+end
+
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'compass-rails'
