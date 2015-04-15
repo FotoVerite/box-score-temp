@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :ensure_subdomain
   around_filter :set_time_zone
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -50,12 +49,6 @@ class ApplicationController < ActionController::Base
 
   def authenticate_superadmin!
     redirect_to '/' unless superadmin_signed_in?
-  end
-
-  def ensure_subdomain
-    if request.get? && request.subdomain != 'www' && request.host != 'localhost' && !Rails.env.test?
-      redirect_to subdomain: 'www', status: :moved_permanently
-    end
   end
 
   def set_time_zone
