@@ -21,7 +21,6 @@ class GamesController < ApplicationController
     # Make sure team_id is allowed for current_admin
     teams.find params[:game][:team_id] if params[:game][:team_id].present?
     @game = Game.new(params[:game])
-
     if @game.save
       GameMailer.new_stats(@game).deliver if @game.publishing?
       redirect_to game_path(@game)

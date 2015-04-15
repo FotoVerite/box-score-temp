@@ -14,7 +14,6 @@ describe GamesController do
       it 'builds a new game' do
         assigns(:game).team_id.should be_nil
         assigns(:game).opponent_id.should be_nil
-        assigns(:game).date.should == Date.current
         assigns(:game).home_away.should == 'home'
       end
     end
