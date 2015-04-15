@@ -21,7 +21,6 @@ gem 'pg'
 gem 'redcarpet'
 gem 'simple_form'
 gem 'stamp'
-gem 'redcarpet'
 gem 'puma'
 gem 'rakismet'
 
