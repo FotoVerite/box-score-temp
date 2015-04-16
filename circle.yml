@@ -1,5 +1,6 @@
-machine:
-  timezone: America/New_York
+notify:
+  webhooks:
+    - url: http://wizarddev-statusbot.herokuapp.com/circle
 deployment:
   staging:
     branch: master

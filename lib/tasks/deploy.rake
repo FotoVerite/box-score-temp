@@ -1,4 +1,4 @@
-deploy.rakerequire 'heroku_platform_client'
+require 'heroku_platform_client'
 
 desc 'Deploy script usage information'
 task :deploy do
