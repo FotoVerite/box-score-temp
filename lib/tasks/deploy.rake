@@ -34,12 +34,12 @@ namespace :deploy do
 
   task :push_heroku do
     puts "Pushing to Heroku production"
-    execute "git push git@heroku.com:box-score.git"
+    execute "git push git@heroku.com:box-score.git HEAD:master"
   end
 
   task :force_push_heroku do
     puts "Force pushing to Heroku staging..."
-    execute "git push git@heroku.com:hsboxscoresnyc-staging.git"
+    execute "git push git@heroku.com:hsboxscoresnyc-staging.git HEAD:master"
   end
 
   task :tag do
