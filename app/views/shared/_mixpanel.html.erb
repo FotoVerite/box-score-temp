@@ -1,0 +1,21 @@
+<script>
+  mixpanel.init(<%= mixpanel_key %>);
+  <% if current_admin %>
+    mixpanel.identify(<%= current_admin.email.to_json.html_safe %>);
+  <% end %>
+
+  mixpanel.track("Page View");
+
+  (function(){
+    var eventsToTrack = <%= events_to_track.to_json.html_safe %>;
+    $(eventsToTrack).each(function(i, tracked_event){
+      mixpanel.track(tracked_event.name, tracked_event.data);
+    });
+  })();
+
+  $(function(){
+    $('.account-request').click(function() {
+      mixpanel.track('Account Request Form Viewed');
+    });
+  });
+</script>

@@ -37,4 +37,8 @@ module ApplicationHelper
   def google_page_url
     ENV["GOOGLE_PLUS"]
   end
+
+  def mixpanel_key
+    ENV["MIXPANEL_KEY"].to_json.html_safe
+  end
 end

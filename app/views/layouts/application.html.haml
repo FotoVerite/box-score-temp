@@ -20,6 +20,7 @@
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     = csrf_meta_tags
+    = render 'shared/mixpanel'
 
   %body{ body_attributes }
     - if flash.alert
