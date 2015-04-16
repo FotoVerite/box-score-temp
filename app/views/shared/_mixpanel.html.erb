@@ -17,5 +17,17 @@
     $('.account-request').click(function() {
       mixpanel.track('Account Request Form Viewed');
     });
+
+    $('.facebook-js').click(function() {
+      mixpanel.track('Facebook Button Clicked');
+    });
+
+    $('.google-plus-js').click(function() {
+      mixpanel.track('Google+ Button Clicked');
+    });
+
+    $('.follow-button').click(function() {
+      mixpanel.track('Twitter Button Clicked');
+    });
   });
 </script>
