@@ -5,7 +5,7 @@ ActiveAdmin.register Admin do
     column :last_name
     column :email
     column 'School' do |admin|
-      admin.school.name
+      admin.school.try(:name)
     end
     column :last_sign_in_at
     default_actions
