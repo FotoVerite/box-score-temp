@@ -13,7 +13,7 @@ end
 namespace :deploy do
   opt = {
     app: nil,
-    github_repo: 'git@github.com:wizarddevelopment/bakecycle.git'
+    github_repo: 'git@github.com:wizarddevelopment/hsboxscoresnyc.git'
   }
 
   desc 'Deploy to Production'
@@ -24,7 +24,7 @@ namespace :deploy do
 
   task :set_production do
     opt[:env] = 'production'
-    opt[:app] = 'hs-box'
+    opt[:app] = 'box-score'
   end
 
   task :set_staging do
@@ -34,7 +34,7 @@ namespace :deploy do
 
   task :push_heroku do
     puts "Pushing to Heroku production"
-    execute "git push https://git.heroku.com/box-score.git"
+    execute "git push git@heroku.com:box-score.git"
   end
 
   task :force_push_heroku do
