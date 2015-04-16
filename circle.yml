@@ -1,0 +1,8 @@
+notify:
+  webhooks:
+    - url: http://wizarddev-statusbot.herokuapp.com/circle
+deployment:
+  staging:
+    branch: master
+    commands:
+      - bundle exec rake deploy:staging

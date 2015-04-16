@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  around_filter :set_time_zone
-
   rescue_from CanCan::AccessDenied do |exception|
     render text: 'Unauthorized', status: :unauthorized
   end
@@ -49,14 +47,6 @@ class ApplicationController < ActionController::Base
 
   def authenticate_superadmin!
     redirect_to '/' unless superadmin_signed_in?
-  end
-
-  def set_time_zone
-    old_time_zone = Time.zone
-    Time.zone = 'Eastern Time (US & Canada)'
-    yield
-  ensure
-    Time.zone = old_time_zone
   end
 
   def events_to_track

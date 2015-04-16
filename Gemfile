@@ -24,6 +24,11 @@ gem 'stamp'
 gem 'puma'
 gem 'rakismet'
 
+# deployment
+gem 'httparty', require: false
+gem 'netrc', require: false
+gem 'rendezvous', require: false
+
 group :staging, :production do
   gem 'rails_12factor'
 end
