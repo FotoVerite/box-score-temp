@@ -93,8 +93,6 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
-    crack (0.4.2)
-      safe_yaml (~> 1.0.0)
     database_cleaner (0.8.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
@@ -252,7 +250,6 @@ GEM
       railties (>= 3.0)
       rspec (~> 2.11.0)
     rubyzip (0.9.9)
-    safe_yaml (1.0.4)
     sass (3.2.14)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -290,12 +287,8 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    vcr (2.9.3)
     warden (1.2.1)
       rack (>= 1.0)
-    webmock (1.16.1)
-      addressable (>= 2.2.7)
-      crack (>= 0.3.2)
     xpath (0.1.4)
       nokogiri (~> 1.3)
     zurb-foundation (3.0.9)
@@ -354,6 +347,4 @@ DEPENDENCIES
   stamp
   turnip
   uglifier (>= 1.0.3)
-  vcr
-  webmock
   zurb-foundation

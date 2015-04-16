@@ -66,6 +66,4 @@ group :test do
   gem 'poltergeist'
   gem 'shoulda-matchers'
   gem 'turnip'
-  gem 'webmock'
-  gem 'vcr'
 end
