@@ -3,6 +3,7 @@ class GamesController < ApplicationController
 
   def index
     @filter = filter
+    track_event('Viewed Game Index', @filter.params)
   end
 
   def show
@@ -10,6 +11,7 @@ class GamesController < ApplicationController
   end
 
   def new
+    track_event('Visited New Box Scores', school: current_school.try(:name))
     respond_to do |format|
       format.html do
         @game = Game.new(date: current_date, home_away: Game::HOME, team_id: params[:team_id])
@@ -22,6 +24,7 @@ class GamesController < ApplicationController
     teams.find params[:game][:team_id] if params[:game][:team_id].present?
     @game = Game.new(params[:game])
     if @game.save
+      track_event('Created Game', school: current_school.try(:name))
       GameMailer.new_stats(@game).deliver if @game.publishing?
       redirect_to game_path(@game)
     else

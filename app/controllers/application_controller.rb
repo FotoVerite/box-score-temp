@@ -58,4 +58,16 @@ class ApplicationController < ActionController::Base
   ensure
     Time.zone = old_time_zone
   end
+
+  def events_to_track
+    @_events_to_track ||= []
+  end
+  helper_method :events_to_track
+
+  def track_event(name, data = {})
+    events_to_track.push(
+      name: name,
+      data: data
+    )
+  end
 end

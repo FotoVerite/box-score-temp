@@ -8,3 +8,4 @@
 //= require teams
 //= require games
 //= require totals
+//= require mixpanel
