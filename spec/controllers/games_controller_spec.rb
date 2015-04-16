@@ -71,33 +71,12 @@ describe GamesController do
       let(:game) { create :game }
       let(:a_week_ago) { 8.weeks.ago.to_date }
       let(:mailer_method) { :new_stats }
+      let(:valid_data) { {id: game.id, game: {date: a_week_ago}} }
 
-      context "with valid data" do
-        let(:valid_data) { {id: game.id, game: {date: a_week_ago}} }
+      it "updates the content" do
+        post :update, valid_data
 
-        context "when not publishing" do
-          it "does not send an email" do
-            GameMailer.should_not_receive(mailer_method)
-
-            post :update, valid_data
-          end
-
-          it "updates the content" do
-            post :update, valid_data
-
-            game.reload.date.should == a_week_ago
-          end
-        end
-
-        context "when publishing" do
-          it "sends an email" do
-            mock_mailer = mock
-            mock_mailer.should_receive(:deliver)
-            GameMailer.should_receive(:new_stats).and_return(mock_mailer)
-
-            post :update, valid_data.deep_merge(game: {publish: true})
-          end
-        end
+        game.reload.date.should == a_week_ago
       end
     end
   end
