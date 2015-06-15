@@ -1,7 +1,7 @@
 BoxScore::Application.routes.draw do
   devise_for :admins
 
-  root to: 'games#index'
+  root to: 'posts#index'
 
   ActiveAdmin.routes(self)
 
@@ -32,7 +32,7 @@ BoxScore::Application.routes.draw do
     resources :teams, only: [:index]
   end
   resources :players
-  resources :posts, only: [:show]
+  resources :posts, only: [:index, :show]
   resources :sports do
     resources :seasons, only: [:index]
   end
