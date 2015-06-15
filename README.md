@@ -16,6 +16,5 @@ Box Score App
     RAKISMET_URL=http://localhost:3000
 
     # Optional - for social media
-    GOOGLE_PLUS=https://plus.google.com/+nycgov/
     FACEBOOK=https://www.facebook.com/pages/New-York-New-York/108424279189115
     ```

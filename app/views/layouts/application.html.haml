@@ -54,11 +54,6 @@
           .social
             -if facebook_page_url.present?
               = link_to image_tag("social-facebook.png"), facebook_page_url, target: '_blank', class: 'facebook-js'
-            -if google_page_url.present?
-              .g-plusone{ data: {href: google_page_url} }
-              %span.text
-                Check us out on
-              = link_to image_tag("social-google-plus.png"), google_page_url, target: '_blank', class: 'google-plus-js'
 
           %a.twitter-timeline{"data-widget-id" => "386209842722914304",
             href: "https://twitter.com/hsboxscoresnyc",
