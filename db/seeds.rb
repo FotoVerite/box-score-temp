@@ -7,7 +7,6 @@ Player.delete_all
 Team.delete_all
 Game.delete_all
 
-
 SCHOOL_NAMES = ['Trinity', 'Southville', 'Lexington', 'Eastern Catholic', 'Westminster',
                'Northern', 'Lakeland', 'Bishop Kelly', 'Rexburg', 'Southern', 'Eastminster', 'Western Catholic']
 ASSOCIATION_NAMES = ['PSAL', 'CHSAA', 'NYSAISAA']
