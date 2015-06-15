@@ -65,10 +65,10 @@ end
   create_admin school, name
 end
 
-boys_baseball_season    = Season.create!(start_date: Date.new(2012, 1, 1), year: '2012-2013', sport_id: 'boys-baseball', current: true)
-boys_basketball_season  = Season.create!(start_date: Date.new(2012, 1, 1), year: '2012-2013', sport_id: 'boys-basketball', current: true)
-girls_softball_season   = Season.create!(start_date: Date.new(2012, 1, 1), year: '2012-2013', sport_id: 'girls-softball', current: true)
-girls_basketball_season = Season.create!(start_date: Date.new(2012, 1, 1), year: '2012-2013', sport_id: 'girls-basketball', current: true)
+boys_baseball_season    = Season.create!(start_date: Date.today, year: '2012-2013', sport_id: 'boys-baseball', current: true)
+boys_basketball_season  = Season.create!(start_date: Date.today, year: '2012-2013', sport_id: 'boys-basketball', current: true)
+girls_softball_season   = Season.create!(start_date: Date.today, year: '2012-2013', sport_id: 'girls-softball', current: true)
+girls_basketball_season = Season.create!(start_date: Date.today, year: '2012-2013', sport_id: 'girls-basketball', current: true)
 
 # prior seasons
 Season.create!(start_date: Date.new(2011, 1, 1), year: '2011-2012', sport_id: 'boys-baseball')

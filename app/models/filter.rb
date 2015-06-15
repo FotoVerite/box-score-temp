@@ -2,24 +2,28 @@ class Filter
   extend ActiveModel::Naming
   include ActiveModel::Conversion
 
-  attr_reader :params
+  attr_reader :params, :earliest_date, :latest_date
   attr_writer :assn_id, :league_id, :team_id, :sport_id, :earliest_date, :latest_date
 
   def initialize(hash)
     if hash
       hash = hash.symbolize_keys
       @params = hash
-      self.sport_id = hash[:sport_id]
-      self.assn_id = hash[:assn_id]
-      self.league_id = hash[:league_id]
-      self.team_id = hash[:team_id]
-      self.earliest_date = hash[:earliest_date].presence
-      self.latest_date = hash[:latest_date].presence
+      @sport_id = hash[:sport_id]
+      @assn_id = hash[:assn_id]
+      @league_id = hash[:league_id]
+      @team_id = hash[:team_id]
+      @earliest_date = hash[:earliest_date]
+      @latest_date = hash[:latest_date]
     end
   end
 
   def persisted?
     false
+  end
+
+  def active?
+    earliest_date.present? && latest_date.present?
   end
 
   def assn_options
@@ -53,9 +57,9 @@ class Filter
       )
 
     scope = scope.where('team_id in (:teams) or opponent_id in (:teams)', teams: filtered_teams)
-    scope = scope.where('date between :earliest and :latest', earliest: earliest_date, latest: latest_date)
+    scope = scope.where('date between :earliest and :latest', earliest: earliest_date, latest: latest_date) if earliest_date.present? && latest_date.present?
 
-    scope
+    scope.limit(100)
   end
 
   def sport
@@ -109,13 +113,5 @@ class Filter
     else
       Sport.all.map(&:name)
     end
-  end
-
-  def earliest_date
-    @earliest_date || 1.week.ago.to_date.stamp("01/31/1999")
-  end
-
-  def latest_date
-    @latest_date || Date.current.stamp("01/31/1999")
   end
 end
