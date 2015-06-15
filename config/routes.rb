@@ -15,29 +15,29 @@ BoxScore::Application.routes.draw do
     match "/#{sport.id}", to: 'games#index', sport_id: sport.id, as: sport.id.underscore.to_sym
   end
 
-  resources :teams do
-    resources :opponents, only: [:index]
-  end
+  resource :account, only: [:edit, :update]
+  resources :account_requests, only: [:create]
   resources :assns, only: [:show] do
     resources :leagues, only: [:index]
     resources :teams, only: [:index]
   end
-  resources :leagues, only: [:show] do
-    resources :teams, only: [:index]
-  end
-  resources :sports do
-    resources :seasons, only: [:index]
-  end
-  resources :schools, only: [:index, :show, :edit, :update]
-  resources :players
+  resource :current_school, only: [:edit, :update]
+  resources :game_stats, only: [:new]
   resources :games do
     collection do
       get :drafts
     end
   end
-  resources :game_stats, only: [:new]
-  resources :account_requests, only: [:create]
-  resource :account, only: [:edit, :update]
-
-  resource :current_school, only: [:edit, :update]
+  resources :leagues, only: [:show] do
+    resources :teams, only: [:index]
+  end
+  resources :players
+  resources :posts, only: [:show]
+  resources :sports do
+    resources :seasons, only: [:index]
+  end
+  resources :schools, only: [:index, :show, :edit, :update]
+  resources :teams do
+    resources :opponents, only: [:index]
+  end
 end
