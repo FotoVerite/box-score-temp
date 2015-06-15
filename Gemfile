@@ -47,6 +47,7 @@ end
 
 group :development, :test do
   gem 'byebug'
+  gem 'faker'
   gem 'guard-rspec'
   gem 'launchy'
   gem 'quiet_assets'

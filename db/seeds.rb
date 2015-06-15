@@ -1,12 +1,3 @@
-Admin.delete_all
-School.delete_all
-Assn.delete_all
-League.delete_all
-Season.delete_all
-Player.delete_all
-Team.delete_all
-Game.delete_all
-
 SCHOOL_NAMES = ['Trinity', 'Southville', 'Lexington', 'Eastern Catholic', 'Westminster',
                'Northern', 'Lakeland', 'Bishop Kelly', 'Rexburg', 'Southern', 'Eastminster', 'Western Catholic']
 ASSOCIATION_NAMES = ['PSAL', 'CHSAA', 'NYSAISAA']
@@ -134,4 +125,8 @@ end
     player = Player.create! first_name: "#{first_letter}rmathy",
       last_name: "#{second_letter}mith", middle_initial: ('A'..'Z').to_a.sample
   end
+end
+
+5.times do
+  Post.create(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraphs(10))
 end
