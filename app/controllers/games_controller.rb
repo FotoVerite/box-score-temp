@@ -58,6 +58,7 @@ class GamesController < ApplicationController
   def teams
     @teams = current_school.teams
   end
+
   helper_method :teams
 
   def drafts
@@ -67,6 +68,7 @@ class GamesController < ApplicationController
   def filter
     @filter ||= Filter.new((params[:filter] || {}).merge(sport_id: params[:sport_id]))
   end
+
   helper_method :filter
 
   def current_date
