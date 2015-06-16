@@ -1,10 +1,14 @@
 .post-body {
-  padding-bottom: 2em;
   font-size: 18px;
   line-height: 24px;
 }
 
 .post-container {
+  @media (max-width: 40em) {
+    width: 100%
+  }
+  padding-top: 3em;
+  padding-bottom: 6em;
   width: 70%;
   margin-left: auto;
   margin-right: auto;

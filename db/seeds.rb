@@ -128,5 +128,9 @@ end
 end
 
 5.times do
-  Post.create(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraphs(10))
+  Post.create(
+    title: Faker::Lorem.sentence,
+    body: Faker::Lorem.paragraphs(10),
+    excerpt: Faker::Lorem.paragraph
+  )
 end
