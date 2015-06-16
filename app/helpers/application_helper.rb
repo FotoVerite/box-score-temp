@@ -26,6 +26,12 @@ module ApplicationHelper
     end
   end
 
+  def new_post_link
+    if current_admin && current_admin.superadmin?
+      link_to 'New Post', new_post_path, class: 'pill'
+    end
+  end
+
   def facebook_share_url(url)
     "http://www.facebook.com/share.php?u=#{CGI.escape(url)}"
   end

@@ -1,4 +1,6 @@
 BoxScore::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+
   devise_for :admins
 
   root to: 'posts#index'
@@ -32,7 +34,7 @@ BoxScore::Application.routes.draw do
     resources :teams, only: [:index]
   end
   resources :players
-  resources :posts, only: [:index, :show]
+  resources :posts, only: [:index, :show, :new, :create]
   resources :sports do
     resources :seasons, only: [:index]
   end

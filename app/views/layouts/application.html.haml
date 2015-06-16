@@ -34,6 +34,7 @@
 
         %nav.seven.columns.right
           = superadmin_dashboard_link
+          = new_post_link
           - if admin_signed_in?
             = link_to 'Account', edit_account_path, class: 'edit-account pill'
             = link_to 'Sign Out', destroy_admin_session_path, method: :delete, id: 'logout', class: "pill"
