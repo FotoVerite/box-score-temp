@@ -21,8 +21,8 @@ module ApplicationHelper
   end
 
   def superadmin_dashboard_link
-    if current_admin && current_admin.email == 'patrick@hsboxscoresnyc.com'
-      link_to 'SuperAdmin Dashboard', '/superadmin', class: 'superadmin-dashboard alert button'
+    if current_admin && current_admin.superadmin?
+      link_to 'SuperAdmin Dashboard', '/superadmin', class: 'superadmin-dashboard pill'
     end
   end
 
