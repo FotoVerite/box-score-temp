@@ -3,7 +3,7 @@
     - if superadmin_signed_in?
       .current-school
         = current_school.name
-        = link_to 'Change', edit_current_school_path
+        = link_to 'Change', edit_current_school_path, class: 'button'
 
     %ul
       %li= link_to 'Add Box Score', new_game_path, class: 'button'

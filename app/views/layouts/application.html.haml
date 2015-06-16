@@ -32,65 +32,61 @@
         .five.columns
           = link_to 'Home', root_path, id: 'branding'
 
-        .seven.columns
+        %nav.seven.columns.right
           = superadmin_dashboard_link
+          - if admin_signed_in?
+            = link_to 'Account', edit_account_path, class: 'edit-account pill'
+            = link_to 'Sign Out', destroy_admin_session_path, method: :delete, id: 'logout', class: "pill"
+          - else
+            = link_to "Sign In", new_admin_session_path, class: "pill"
 
-          %nav.global
-            %p
-              = link_to 'Home', root_path, class: 'pill home'
-              = link_to 'About Us', '/about-us', class: 'pill'
-              = link_to '/faq', class: 'pill' do
-                FAQ
-                %small s
-              = link_to 'Add Your Team', '#', class: 'pill account-request' unless admin_signed_in?
-              = link_to 'Sign In', new_admin_session_path, id: 'login', class: 'pill' unless admin_signed_in?
-
-            - if admin_signed_in?
-              %p
-                Welcome, #{current_admin.name}
-                = link_to 'Account', edit_account_path, class: 'edit-account'
-                = link_to 'Sign out', destroy_admin_session_path, method: :delete, id: 'logout'
-
-          .social
-            -if facebook_page_url.present?
-              = link_to image_tag("social-facebook.png"), facebook_page_url, target: '_blank', class: 'facebook-js'
-
-          %a.twitter-timeline{"data-widget-id" => "386209842722914304",
-            href: "https://twitter.com/hsboxscoresnyc",
-            height: 200} Tweets by @hsboxscoresnyc
-
-          :javascript
-            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-
-    .row
-      #content.twelve.columns
+      %nav.global
         .row
-          %nav#scores-nav.twelve.columns{ class: params[:sport_id] }
-            %dl.six.columns
-              %dt Boys:
-              %dd.boys-basketball= link_to 'Basketball', boys_basketball_path, class: 'first'
-            %dl.six.columns
-              %dt Girls:
-              %dd.girls-basketball= link_to 'Basketball', girls_basketball_path, class: 'first'
+          = link_to 'Games', games_path, class: 'nav-item three columns'
+          = link_to 'About Us', '/about-us', class: 'nav-item three columns'
+          = link_to 'FAQ', '/faq', class: 'nav-item three columns'
+          = link_to 'Add Your Team', '#', class: 'nav-item three columns account-request'
+        .row
+          - unless admin_signed_in?
+            %h1.welcome
+              Welcome to
+              %strong HS Box Scores NYC,
+              dedicated to the display of
+              %strong high school basketball, baseball, and softball scores
+              in New York City.
 
         -if admin_signed_in?
           = render 'shared/admin_menu'
 
-        .row
-          = yield
+    .row
+      = yield
 
     .row
       %footer.global.twelve.columns
         .row
-          %p.copyright.seven.columns Copyright &copy; #{Date.current.stamp '1999'} HS Box Scores NYC, LLC. All rights reserved.
-          %nav.five.columns
-            %ul
-              %li= link_to 'Contact Us', '/contact-us'
-              %li= link_to 'Terms of Service', '/terms-of-service'
-              %li= link_to 'Privacy Policy', '/privacy-policy'
+          .six.columns
+            %nav
+              %ul
+                %li= link_to 'Contact Us', '/contact-us'
+                %li= link_to 'Terms of Service', '/terms-of-service'
+                %li= link_to 'Privacy Policy', '/privacy-policy'
+            %p.copyright Copyright &copy; #{Date.current.stamp '1999'} HS Box Scores NYC, LLC. All rights reserved.
+          .six.columns
+            %a.twitter-timeline{"data-widget-id" => "386209842722914304",
+              href: "https://twitter.com/hsboxscoresnyc",
+              height: 200} Tweets by @hsboxscoresnyc
+
+            -if facebook_page_url.present?
+              .social
+                = link_to image_tag("social-facebook.png"), facebook_page_url, target: '_blank', class: 'facebook-js'
+
 
   = render 'shared/request_form'
   = render 'shared/coming_soon_message'
 
   %script{ src: "https://apis.google.com/js/platform.js", async: true, defer: true }
+
+  :javascript
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
   = render 'shared/google_analytics'
