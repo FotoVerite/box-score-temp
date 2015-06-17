@@ -1,0 +1,6 @@
+<% if superadmin_signed_in? %>
+  <div class="post-actions">
+    <%= link_to 'Edit Post', edit_post_path(post) %>
+    <%= link_to 'Delete Post', post_path(post), method: :delete %>
+  </div>
+<% end %>

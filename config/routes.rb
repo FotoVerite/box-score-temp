@@ -34,7 +34,7 @@ BoxScore::Application.routes.draw do
     resources :teams, only: [:index]
   end
   resources :players
-  resources :posts, only: [:index, :show, :new, :create]
+  resources :posts
   resources :sports do
     resources :seasons, only: [:index]
   end
