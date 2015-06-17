@@ -31,7 +31,6 @@ feature 'creating a post' do
     click_on 'Create Post'
 
     expect(page).to have_content "Body can't be blank"
-    expect(page).to have_content "Excerpt can't be blank"
   end
 
   scenario 'editing a post from the post page' do

@@ -3,5 +3,8 @@ class Post < ActiveRecord::Base
 
   validates :body, presence: true
   validates :title, presence: true
-  validates :excerpt, presence: true
+
+  def excerpt
+    super || ActionController::Base.helpers.strip_tags(body)[0..200] + "..."
+  end
 end
