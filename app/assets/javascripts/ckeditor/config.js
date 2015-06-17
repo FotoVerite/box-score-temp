@@ -12,13 +12,15 @@ CKEDITOR.editorConfig = function( config )
   config.fontSize_defaultLabel = '18px';
   config.autoGrow_maxHeight = 400;
   config.height = '30em';
+  config.extraPlugins = 'youtube';
 
   config.toolbar = [
     { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
     { name: 'styles', items: [ 'FontSize' ] },
     { name: 'colors', items: [ 'TextColor' ] },
     { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ] },
-    { name: 'links', items: [ 'Link', 'Unlink' ] }
+    { name: 'links', items: [ 'Link', 'Unlink' ] },
+    { name: 'insert', items: ['Youtube'] }
   ];
 
   /* Filebrowser routes */
