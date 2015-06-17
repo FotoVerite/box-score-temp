@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150616172130) do
+ActiveRecord::Schema.define(:version => 20150617212524) do
 
   create_table "account_requests", :force => true do |t|
     t.string   "school_name"
@@ -140,7 +140,10 @@ ActiveRecord::Schema.define(:version => 20150616172130) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.text     "excerpt"
+    t.integer  "game_id"
   end
+
+  add_index "posts", ["game_id"], :name => "index_posts_on_game_id"
 
   create_table "schools", :force => true do |t|
     t.string   "name"

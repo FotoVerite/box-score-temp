@@ -1,0 +1,16 @@
+%table.game-stats
+  %thead
+    %tr
+      %th.team
+        %span Team
+      - game.stats.periods.each do |period|
+        %th= period
+
+      %th.score= game.sport.score_abbr
+
+      - game.sport.game_stats.each do |key, attributes|
+        %th= attributes[:abbr]
+
+  %tbody
+    = render 'games/team_stats', game: game, team: game.away_team
+    = render 'games/team_stats', game: game, team: game.home_team

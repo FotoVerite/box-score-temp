@@ -19,7 +19,6 @@ feature 'creating a post' do
       click_on 'Create Post'
 
       expect(page).to have_content 'This is my title'
-      expect(page).to have_content 'Hello world'
       expect(page).to have_content 'This is the body of my post!'
     end
 
@@ -49,7 +48,6 @@ feature 'creating a post' do
       click_on 'Update Post'
 
       expect(page).to have_content 'An edited title'
-      expect(page).to have_content 'Helllllooooo world'
       expect(page).to have_content 'This post is edited'
     end
 
@@ -103,5 +101,46 @@ feature 'creating a post' do
 
       expect(page.current_path).to eq root_path
     end
+  end
+
+  scenario 'creating a post with a box score' do
+    admin = create(:admin, :superadmin)
+    game = create(:game)
+    login_as(admin)
+
+    visit game_path(game)
+    click_on 'Write about this game'
+    fill_in 'Title', with: 'A post about this game'
+    fill_in 'Body', with: 'Hello'
+    click_on 'Create Post'
+
+    expect(page).to have_content game.team.school.name
+  end
+
+  scenario 'creating a post with a box score from the game index' do
+    admin = create(:admin, :superadmin)
+    create(:game, :published)
+    login_as(admin)
+
+    visit games_path
+    click_on 'Write about it'
+
+    expect(page).to have_content 'Post'
+  end
+
+  scenario 'not seeing the create a post links from the games' do
+    create(:game, :published)
+
+    visit games_path
+
+    expect(page).to_not have_link 'Write about it'
+  end
+
+  scenario 'not seeing the create a post link from the game show page' do
+    create(:game)
+
+    visit games_path
+
+    expect(page).to_not have_link 'Write about this game'
   end
 end

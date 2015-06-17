@@ -11,6 +11,7 @@
 #main.twelve.columns
   - if admin_signed_in?
     = link_to 'Edit this box score', edit_game_path(@game), class: 'edit-box-score small button'
+    = link_to 'Write about this game', new_post_path(game_id: @game.id), class: 'edit-box-score small button'
 
   .sharing.complete-box-score
     %span Share:
@@ -24,22 +25,7 @@
   %section#game-stats
     %h2 Game Summary
 
-    %table.game-stats
-      %thead
-        %tr
-          %th.team
-            %span Team
-          - @game.stats.periods.each do |period|
-            %th= period
-
-          %th.score= @game.sport.score_abbr
-
-          - @game.sport.game_stats.each do |key, attributes|
-            %th= attributes[:abbr]
-
-      %tbody
-        = render 'team_stats', game: @game, team: @game.away_team
-        = render 'team_stats', game: @game, team: @game.home_team
+    = render 'games/game_summary', game: @game
 
   %section#player-stats
     - [@game.away_team, @game.home_team].each do |team|

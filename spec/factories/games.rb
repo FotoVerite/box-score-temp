@@ -5,5 +5,9 @@ FactoryGirl.define do
     date { Date.today }
     home_away { 'home' }
     season
+
+    trait :published do
+      published_at Time.now
+    end
   end
 end

@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Post do
   it { should validate_presence_of(:body) }
   it { should validate_presence_of(:title) }
+  it { should belong_to(:game) }
 
   describe ".excerpt" do
     let(:post) { create(:post) }
@@ -25,8 +26,13 @@ EOT
       expect(post.excerpt).to eq <<EOT.squish
 Lorem ipsum dolor sit amet, iusto qualisque mel in, mazim invidunt intellegebat
  ne pro. Simul dissentiunt ei sed, eam partem perpetua convenire eu. Ex paulo
- omnesque usu, eos delectus singulis efficien...
+ omnesque usu, eos delectus singulis effi...
 EOT
+    end
+
+    it "returns the whole body if the body is less than 200 characters" do
+      post.update_attributes(excerpt: nil, body: '<p>Hello</p>')
+      expect(post.excerpt).to eq 'Hello'
     end
   end
 end
