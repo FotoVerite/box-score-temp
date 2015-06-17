@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    post
   end
 
   def new
@@ -20,5 +20,31 @@ class PostsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def edit
+    post
+  end
+
+  def update
+    if post.update_attributes(params[:post])
+      redirect_to post
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    if post.destroy
+      redirect_to posts_path
+    else
+      redirect_to posts_path
+    end
+  end
+
+  private
+
+  def post
+    @post ||= Post.find(params[:id])
   end
 end
