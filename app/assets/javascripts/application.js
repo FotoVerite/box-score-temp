@@ -9,3 +9,4 @@
 //= require games
 //= require totals
 //= require mixpanel
+//= require ckeditor/init

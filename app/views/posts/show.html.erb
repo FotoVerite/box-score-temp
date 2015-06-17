@@ -2,6 +2,6 @@
   <div class="post-container">
     <h1 class="post-title"><%= @post.title %></h1>
     <div class="post-excerpt"><%= @post.excerpt %></div>
-    <div class="post-body"><%= @post.body %></div>
+    <div class="post-body"><%= @post.body.html_safe %></div>
   </div>
 </div>
