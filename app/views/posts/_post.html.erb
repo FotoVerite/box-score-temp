@@ -1,3 +1,12 @@
-<h1 class="post-title"><%= link_to post.title, post %></h1>
-<div class="post-body"><p><%= post.excerpt %><p></div>
-<%= render 'admin_actions', post: post %>
+<div class="row post-container">
+  <div class="mobile-twelve three columns post-image">
+    <% if post.header_image.exists? %>
+      <%= link_to image_tag(post.header_image.url(:medium)), post_path(post) %>
+    <% end %>
+  </div>
+  <div class="mobile-twelve nine columns">
+    <h1 class="post-title"><%= link_to post.title, post %></h1>
+    <div class="post-body"><p><%= post.excerpt %><p></div>
+    <%= render 'admin_actions', post: post %>
+  </div>
+</div>

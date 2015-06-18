@@ -1,3 +1,5 @@
+require 'factory_girl_rails' #so it can run in development
+
 SCHOOL_NAMES = ['Trinity', 'Southville', 'Lexington', 'Eastern Catholic', 'Westminster',
                'Northern', 'Lakeland', 'Bishop Kelly', 'Rexburg', 'Southern', 'Eastminster', 'Western Catholic']
 ASSOCIATION_NAMES = ['PSAL', 'CHSAA', 'NYSAISAA']
@@ -128,9 +130,7 @@ end
 end
 
 5.times do
-  Post.create(
-    title: Faker::Lorem.sentence,
-    body: Faker::Lorem.paragraphs(10),
-    excerpt: Faker::Lorem.paragraph
-  )
+  FactoryGirl.create(:post)
 end
+
+FactoryGirl.create(:admin, :superadmin, email: "user@wizarddevelopment.com", password: "password")

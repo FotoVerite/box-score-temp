@@ -1,10 +1,12 @@
 class Post < ActiveRecord::Base
-  attr_accessible :body, :title, :excerpt, :game_id
-
   belongs_to :game
+  attr_accessible :body, :title, :excerpt, :header_image, :game_id
 
   validates :body, presence: true
   validates :title, presence: true
+  has_attached_file :header_image,
+    styles: { :medium => "300x300>", :thumb => "100x100>" }
+  validates_attachment_content_type :header_image, content_type: /\Aimage\/.*\Z/
 
   def excerpt
     super || stripped_body.truncate(200)
