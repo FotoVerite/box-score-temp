@@ -102,10 +102,15 @@ a#branding {
   text-indent: -999em;
 }
 
+.top-nav {
+  text-align: center;
+  width: 100%;
+}
+
 nav {
   a.pill {
     display: inline-block;
-    margin-left: 10px;
+    margin-left: 5px;
     margin-bottom: 3em;
     overflow: hidden;
     padding: 8px 25px;
@@ -166,11 +171,6 @@ header.global {
 
 a.superadmin-dashboard {
   z-index: 4;
-}
-
-.right {
-  text-align: right;
-  display: inline-block;
 }
 
 iframe#twitter-widget-0 {
