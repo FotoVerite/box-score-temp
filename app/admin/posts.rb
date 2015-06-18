@@ -5,5 +5,20 @@ ActiveAdmin.register Post do
     column :excerpt
     column :body
     column :created_at
+    default_actions
+  end
+
+  controller do
+    def new
+      redirect_to new_post_path
+    end
+
+    def edit
+      redirect_to edit_post_path(params[:id])
+    end
+
+    def show
+      redirect_to post_path(params[:id])
+    end
   end
 end

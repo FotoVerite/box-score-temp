@@ -29,12 +29,14 @@
 
     %header.global.twelve.columns
       .row
-        .five.columns
-          = link_to 'Home', root_path, id: 'branding'
-
-        %nav.seven.columns.right
+        %nav.large-eight.small-12.columns.top-nav
+          = link_to 'Posts', posts_path, class: 'pill'
+          = link_to 'Games', games_path, class: 'pill'
+          = link_to 'About Us', '/about-us', class: 'pill'
+          = link_to 'FAQ', '/faq', class: 'pill'
+          - unless admin_signed_in?
+            = link_to 'Add Your Team', '#', class: 'pill account-request'
           = superadmin_dashboard_link
-          = new_post_link
           - if admin_signed_in?
             = link_to 'Account', edit_account_path, class: 'edit-account pill'
             = link_to 'Sign Out', destroy_admin_session_path, method: :delete, id: 'logout', class: "pill"
@@ -43,12 +45,9 @@
 
       %nav.global
         .row
-          = link_to 'Games', games_path, class: 'nav-item three columns'
-          = link_to 'About Us', '/about-us', class: 'nav-item three columns'
-          = link_to 'FAQ', '/faq', class: 'nav-item three columns'
-          = link_to 'Add Your Team', '#', class: 'nav-item three columns account-request'
-        .row
-          - unless admin_signed_in?
+          .five.columns
+            = link_to 'Home', root_path, id: 'branding'
+          .seven.columns
             %h1.welcome
               Welcome to
               %strong HS Box Scores NYC,
