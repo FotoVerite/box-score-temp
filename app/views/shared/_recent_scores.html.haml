@@ -17,6 +17,8 @@
             = render 'games/team_summary', game: game, team: game.home_team
 
         = link_to 'Box Score', game_path(game), class: 'box-score'
+        - if superadmin_signed_in?
+          = link_to 'Write about it', new_post_path(game_id: game.id), class: 'box-score'
 
         .sharing.summary
           %span Share:

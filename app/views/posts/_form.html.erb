@@ -18,6 +18,10 @@
       <%= f.label :body %>
       <%= f.cktext_area :body %>
 
+      <% if params[:game_id].present? %>
+        <%= f.hidden_field :game_id, value: params[:game_id] %>
+      <% end %>
+
       <%= f.submit class: 'medium button' %>
     <% end %>
   <% end -%>
