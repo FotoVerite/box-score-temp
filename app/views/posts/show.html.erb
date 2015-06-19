@@ -1,5 +1,10 @@
 <div id="main" class="columns">
-  <div class="post-container">
+  <div class="post-image-show post-image">
+    <% if @post.header_image.exists? %>
+      <%= image_tag @post.header_image.url %>
+    <% end %>
+  </div>
+  <div class="posts-container">
     <h1 class="post-title"><%= @post.title %></h1>
     <% if @post.game.present? %>
       <%= render 'games/game_summary', game: @post.game %>
