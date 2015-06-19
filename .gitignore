@@ -17,3 +17,6 @@ pickle-email-*.html
 .rbenv-vars
 .envrc
 
+
+# Ignore application configuration
+/config/application.yml
