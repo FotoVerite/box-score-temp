@@ -6,5 +6,6 @@ if ENV['S3_SECRET_ACCESS_KEY']
       secret_access_key: ENV['S3_SECRET_ACCESS_KEY']
     }
   Paperclip::Attachment.default_options[:s3_protocol] = :https
-  Paperclip::Attachment.default_options[:url] = :s3_domain_url
+  Paperclip::Attachment.default_options[:url] = ':s3_domain_url'
+  Paperclip::Attachment.default_options[:path] = '/:class/:attachment/:id_partition/:style/:filename'
 end
