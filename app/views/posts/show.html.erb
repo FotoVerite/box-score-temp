@@ -10,6 +10,18 @@
       <%= render 'games/game_summary', game: @post.game %>
       <%= link_to 'Box Score', game_path(@post.game), class: 'box-score' %>
     <% end %>
+    <div class="sharing">
+      <span>
+        <%= link_to 'Share on Facebook', facebook_share_url(post_url(@post)),
+          class: 'facebook', target: '_blank' %>
+      </span>
+      <span>
+        <%= link_to 'Share on Twitter',
+            "http://twitter.com/home/?status=#{twitter_post_message(@post)}",
+            class: 'twitter', data: { lang: 'en' }, target: '_blank'
+          %>
+      </span>
+    </div>
     <div class="post-body"><%= @post.body.html_safe %></div>
     <%= render 'admin_actions', post: @post %>
   </div>
