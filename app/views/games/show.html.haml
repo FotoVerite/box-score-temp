@@ -17,7 +17,7 @@
     %span Share:
     %span= link_to 'Share on Facebook', facebook_share_url(game_url(@game)), class: 'facebook', target: '_blank'
     %span= link_to 'Share on Twitter',
-      "http://twitter.com/home/?status=#{CGI::escape(twitter_box_score_message(@game.team, @game.opponent, @game.date, game_url(@game)))}",
+      "http://twitter.com/home/?status=#{twitter_box_score_message(@game)}",
       class: 'twitter', data: { lang: 'en' }, target: '_blank'
     %span= link_to 'Share via email', "mailto:?subject=#{box_score_email_link(@game)}",
       class: 'email', target: '_blank'
