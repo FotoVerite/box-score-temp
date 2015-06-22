@@ -1,26 +1,32 @@
 %section#filter-scores
   %h2 Search Scores
-  = simple_form_for filter, method: :get,
-    url: url_for(params.slice(:controller, :action)) do |f|
+  .row
+    = simple_form_for filter, method: :get,
+      url: url_for(params.slice(:controller, :action)) do |f|
 
-    = f.input :assn_id, as: :select, collection: filter.assn_options,
-      required: false, label: false,
-      input_html: { class: 'chzn-select', data: { placeholder: 'Association' } }
+      .mobile-twelve.columns
+        = f.input :assn_id, as: :select, collection: filter.assn_options,
+          required: false, label: false,
+          input_html: { class: 'chzn-select', data: { placeholder: 'Association' } }
 
-    = f.input :league_id, as: :grouped_select, collection: group_by_gender(filter.gendered_league_options),
-      required: false, label: false, group_method: :items, group_label_method: :gender,
-      input_html: { class: 'chzn-select', data: { placeholder: 'League / Division' } }
+      .mobile-twelve.columns
+        = f.input :league_id, as: :grouped_select, collection: group_by_gender(filter.gendered_league_options),
+          required: false, label: false, group_method: :items, group_label_method: :gender,
+          input_html: { class: 'chzn-select', data: { placeholder: 'League / Division' } }
 
-    = f.input :team_id, as: :grouped_select, collection: group_by_gender(filter.team_options),
-      label_method: :display_name_no_gender, required: false, label: false, group_method: :items, group_label_method: :gender,
-      input_html: { class: 'chzn-select', data: { placeholder: 'Team' } }
+      .mobile-twelve.columns
+        = f.input :team_id, as: :grouped_select, collection: group_by_gender(filter.team_options),
+          label_method: :display_name_no_gender, required: false, label: false, group_method: :items, group_label_method: :gender,
+          input_html: { class: 'chzn-select', data: { placeholder: 'Team' } }
 
-    = f.input :earliest_date, as: :string, required: false, label: false,
-      input_html: { class: 'date' }
+      .mobile-twelve.columns
+        = f.input :earliest_date, as: :string, required: false, label: false,
+          input_html: { class: 'date' }
 
-    %span.to to
+        %span.to to
 
-    = f.input :latest_date, as: :string, required: false, label: false,
-      input_html: { class: 'date' }
+        = f.input :latest_date, as: :string, required: false, label: false,
+          input_html: { class: 'date' }
 
-    = f.submit 'Search', class: 'button'
+      .mobile-twelve.columns
+        = f.submit 'Search', class: 'button'

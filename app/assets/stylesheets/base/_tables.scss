@@ -45,6 +45,12 @@
   }
 }
 
+.float-left-last-column {
+  [class*="column"]:last-child {
+    float: left;
+  }
+}
+
 table.player-stats,
 table.game-stats {
   @include table;

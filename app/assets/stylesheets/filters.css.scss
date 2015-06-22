@@ -3,7 +3,6 @@
 @import 'base/colors';
 
 #filter-scores {
-  height: 150px;
   margin: 0 -15px;
   padding: 20px 15px 0;
   border-bottom: 1px solid #bdbdbd;
@@ -15,8 +14,7 @@
 
   input.date {
     position: relative;
-    top: 5px;
-    width: 90px;
+    width: 65px;
     height: 37px;
     font-size: 12px;
   }
