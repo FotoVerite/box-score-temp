@@ -10,16 +10,19 @@ feature 'creating a post' do
     let(:admin) { create(:admin, :superadmin) }
 
     scenario 'creating a post' do
+      game = create(:game)
       login_as admin
 
       visit new_post_path
       fill_in 'Title', with: 'This is my title'
       fill_in 'Excerpt', with: 'Hello world'
       fill_in 'Body', with: 'This is the body of my post!'
+      select game.title, from: 'post_game_id'
       click_on 'Create Post'
 
       expect(page).to have_content 'This is my title'
       expect(page).to have_content 'This is the body of my post!'
+      expect(page).to have_content game.team.school_name
     end
 
     scenario 'creating a bad post' do
@@ -38,6 +41,7 @@ feature 'creating a post' do
     let(:post_1) { create(:post) }
 
     scenario 'editing a post from the post page' do
+      game = create(:game)
       login_as admin
 
       visit post_path post_1
@@ -45,10 +49,12 @@ feature 'creating a post' do
       fill_in 'Title', with: 'An edited title'
       fill_in 'Excerpt', with: 'Helllllooooo world'
       fill_in 'Body', with: 'This post is edited'
+      select game.title, from: 'post_game_id'
       click_on 'Update Post'
 
       expect(page).to have_content 'An edited title'
       expect(page).to have_content 'This post is edited'
+      expect(page).to have_content game.team.school_name
     end
 
     scenario 'deleting a post from the post page' do
