@@ -1,24 +1,25 @@
 %h2= local_assigns[:title] || "Recent Scores"
 
 - if games && games.length > 0
-  .row
+  .row.float-left-last-column
     - games.each do |game|
-      .four.columns
-        %table.game-stats{ class: game.sport_type }
-          %thead
-            %tr
-              %th.team
-                %span Team
-              - game.summary_stats.each do |stat, attributes|
-                %th= attributes[:abbr]
+      .four.column
+        = link_to game_path game do
+          %table.game-stats{ class: game.sport_type }
+            %thead
+              %tr
+                %th.team
+                  %span Team
+                - game.summary_stats.each do |stat, attributes|
+                  %th= attributes[:abbr]
 
-          %tbody
-            = render 'games/team_summary', game: game, team: game.away_team
-            = render 'games/team_summary', game: game, team: game.home_team
+            %tbody
+              = render 'games/team_summary', game: game, team: game.away_team
+              = render 'games/team_summary', game: game, team: game.home_team
 
-        = link_to 'Box Score', game_path(game), class: 'box-score'
-        - if superadmin_signed_in?
-          = link_to 'Write about it', new_post_path(game_id: game.id), class: 'box-score'
+          = link_to 'Box Score', game_path(game), class: 'box-score'
+          - if superadmin_signed_in?
+            = link_to 'Write about it', new_post_path(game_id: game.id), class: 'box-score'
 
         .sharing.summary
           %span Share:

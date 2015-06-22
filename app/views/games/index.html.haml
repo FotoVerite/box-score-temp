@@ -3,15 +3,13 @@
 
 #main.twelve.columns
   .row
-    .twelve.columns
-      .row
-        %nav#scores-nav.twelve.columns{ class: params[:sport_id] }
-          %dl.six.columns
-            %dt Boys:
-            %dd.boys-basketball= link_to 'Basketball', boys_basketball_path, class: 'first'
-          %dl.six.columns
-            %dt Girls:
-            %dd.girls-basketball= link_to 'Basketball', girls_basketball_path, class: 'first'
+    %nav#scores-nav.twelve.columns{ class: params[:sport_id] }
+      .six.columns
+        .boys-basketball
+          = link_to 'Boys Basketball', boys_basketball_path, class: 'first'
+      .six.columns
+        .girls-basketball
+          = link_to 'Girls Basketball', girls_basketball_path, class: 'first'
 
   = render 'shared/filter_form'
 

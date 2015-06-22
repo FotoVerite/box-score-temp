@@ -1,14 +1,14 @@
-- content_for :title, @game.title
-
-%h1
-  %strong= @game.away_team.school_name
-  = @game.preposition
-  %strong= @game.home_team.school_name
-  = @game.sport.name
-
-%h2= @game.date.stamp('March 1, 1999')
-
 #main.twelve.columns
+  - content_for :title, @game.title
+
+  %h1
+    %strong= @game.away_team.school_name
+    = @game.preposition
+    %strong= @game.home_team.school_name
+    = @game.sport.name
+
+  %h2= @game.date.stamp('March 1, 1999')
+
   - if admin_signed_in?
     = link_to 'Edit this box score', edit_game_path(@game), class: 'edit-box-score small button'
     = link_to 'Write about this game', new_post_path(game_id: @game.id), class: 'edit-box-score small button'

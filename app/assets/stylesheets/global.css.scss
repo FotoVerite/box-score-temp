@@ -248,7 +248,6 @@ nav.global {
 #scores-nav {
   position: relative;
   z-index: 3;
-  margin-bottom: 50px;
   padding: 3px;
   border: 1px solid #377393;
   @include single-box-shadow(rgba(#333, 0.3), 0, 3px, 3px);
@@ -256,53 +255,30 @@ nav.global {
   background: $eggshell;
   font-weight: 700;
   font-size: 11px;
+  width: 100%;
 
-  &.boys-basketball dd.boys-basketball a,
-  &.girls-basketball dd.girls-basketball a {
-    background: $black;
+  a {
+    display: block;
+    height: 40px;
+    border: 1px solid $black;
+    border-left: 1px solid #707070;
+    padding: 13px 0;
+    color: #FEB254;
+    background: image_url('gradient-gray-nav.png') repeat-x;
+    text-align: center;
+    float: none !important;
   }
 
-  dl {
-    display: inline-block;
-    @include inline-block-list-container;
+  &.first {
+    border-left-color: #393939;
+  }
 
-    dt, dd {
-      @include inline-block-list-item;
-      text-transform: uppercase;
-    }
+  &:hover {
+    text-decoration: none;
+  }
 
-    dt {
-      width: 30%;
-      text-align: center;
-    }
-
-    dd {
-      width: 60%;
-      margin-right: -4px;
-    }
-
-    dd a {
-      display: block;
-      height: 40px;
-      border: 1px solid $black;
-      border-left: 1px solid #707070;
-      padding: 13px 0;
-      color: #FEB254;
-      background: image_url('gradient-gray-nav.png') repeat-x;
-      text-align: center;
-
-      &.first {
-        border-left-color: #393939;
-      }
-
-      &:hover {
-        text-decoration: none;
-      }
-
-      &.current {
-        color: $action-color;
-      }
-    }
+  &.current {
+    color: $action-color;
   }
 }
 
@@ -363,10 +339,6 @@ nav.admin-menu {
 
   h2 {
     font-size: 20px;
-  }
-
-  [class*="column"] + [class*="column"]:last-child {
-    float: left;
   }
 }
 
