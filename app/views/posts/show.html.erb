@@ -1,3 +1,9 @@
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@hsboxscoresnyc">
+<meta name="twitter:title" content="<%= @post.title %>">
+<meta name="twitter:description" content="<%= @post.excerpt %>">
+<meta name="twitter:image" content="<%= @post.header_image.url %>">
+
 <div id="main" class="columns">
   <div class="post-image-show post-image">
     <% if @post.header_image.exists? %>
