@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150618180359) do
+ActiveRecord::Schema.define(:version => 20150623185717) do
 
   create_table "account_requests", :force => true do |t|
     t.string   "school_name"
@@ -137,14 +137,15 @@ ActiveRecord::Schema.define(:version => 20150618180359) do
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.text     "excerpt"
     t.integer  "game_id"
     t.string   "header_image_file_name"
     t.string   "header_image_content_type"
     t.integer  "header_image_file_size"
     t.datetime "header_image_updated_at"
+    t.boolean  "email",                     :default => false, :null => false
   end
 
   add_index "posts", ["game_id"], :name => "index_posts_on_game_id"

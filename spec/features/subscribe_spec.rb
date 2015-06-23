@@ -5,7 +5,7 @@ feature 'subscribing to the post email list' do
     visit root_path
 
     VCR.use_cassette('mailchimp-valid-email') do
-      fill_in 'Email', with: 'validemail@email.com'
+      fill_in 'email', with: 'validemail@email.com'
       click_on 'Subscribe'
     end
 
@@ -16,7 +16,7 @@ feature 'subscribing to the post email list' do
     visit root_path
 
     VCR.use_cassette('mailchimp-invalid-email') do
-      fill_in 'Email', with: 'user@example.com'
+      fill_in 'email', with: 'user@example.com'
       click_on 'Subscribe'
     end
 
