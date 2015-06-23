@@ -353,6 +353,7 @@ DEPENDENCIES
   httparty
   jquery-rails
   jquery-ui-rails
+  kaminari
   launchy
   maruku
   meta_search (>= 1.1.0.pre)
