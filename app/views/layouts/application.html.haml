@@ -23,9 +23,7 @@
     = render 'shared/mixpanel'
 
   %body{ body_attributes }
-    - if flash.alert
-      #flash
-        %p= flash.alert
+    = render 'shared/flash_messages' if flash.any?
 
     %header
       %marquee.games.marquee.show-for-large-up
@@ -91,6 +89,13 @@
       %footer.global.twelve.columns
         .row
           .six.columns
+            %p
+              Subscribe to get the latest news on HS Basketball games
+            = form_tag subscriptions_path, method: 'post' do
+              = label_tag :email
+              = text_field_tag :email, 'user@example.com'
+              = submit_tag "Subscribe", class: 'button'
+
             %nav
               %ul
                 %li= link_to 'Contact Us', '/contact-us'
