@@ -1,7 +1,7 @@
 @import "base/colors";
 
 .post-body {
-  padding-top: 2em;
+  padding: 1em;
 
   p {
     font-size: 18px;
@@ -11,24 +11,38 @@
   }
 }
 
+.first-post {
+  h1 {
+    font-size: 34px;
+    text-align: center;
+  }
+  border-bottom: 1px solid $off-white;
+  margin: 1em;
+  padding: 1em;
+}
+
 .posts-container {
   @media (max-width: 40em) {
     width: 100%
   }
-  padding-top: 3em;
-  padding-bottom: 6em;
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
+
+  .sharing {
+    padding-left: 1em;
+  }
 }
 
 .post-container {
-  margin: 1em 2em 1em 2em;
-  padding: 1.5em 0 1.5em 0;
+  margin: 1em !important;
+  padding: 1em;
+  border-bottom: 1px $off-white solid;
+}
+
+.post-header {
+  padding: 1em;
 }
 
 .post-image-show {
-  padding: 1em 0 1em 0 !important;
+  padding: 1em !important;
 }
 
 .post-form-image {

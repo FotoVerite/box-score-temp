@@ -55,6 +55,14 @@ body.box-score.games {
   }
 }
 
+.games.marquee {
+  border: 0;
+  table {
+    margin-bottom: 0;
+    display: inline-block;
+  }
+}
+
 body.box-score.games.new,
 body.box-score.games.edit {
   fieldset {

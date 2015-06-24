@@ -20,12 +20,6 @@ module ApplicationHelper
       .map { |gender, items| OpenStruct.new(gender: gender.humanize, items: items) }
   end
 
-  def superadmin_dashboard_link
-    if current_admin && current_admin.superadmin?
-      link_to 'SuperAdmin Dashboard', '/superadmin', class: 'superadmin-dashboard pill'
-    end
-  end
-
   def new_post_link
     if current_admin && current_admin.superadmin?
       link_to 'New Post', new_post_path, class: 'pill'

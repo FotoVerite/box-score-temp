@@ -5,17 +5,21 @@
 <meta name="twitter:image" content="<%= @post.header_image.url %>">
 
 <div id="main" class="columns">
-  <div class="post-image-show post-image">
-    <% if @post.header_image.exists? %>
-      <%= image_tag @post.header_image.url %>
-    <% end %>
-  </div>
   <div class="posts-container">
-    <h1 class="post-title"><%= @post.title %></h1>
-    <% if @post.game.present? %>
-      <%= render 'games/game_summary', game: @post.game %>
-      <%= link_to 'Box Score', game_path(@post.game), class: 'box-score' %>
-    <% end %>
+    <div class="row post-header">
+      <div class="post-image-show post-image four columns">
+        <% if @post.header_image.exists? %>
+          <%= image_tag @post.header_image.url %>
+        <% end %>
+      </div>
+      <div class="eight columns">
+        <h1 class="post-title"><%= @post.title %></h1>
+        <% if @post.game.present? %>
+          <%= render 'games/game_summary', game: @post.game %>
+          <%= link_to 'Box Score', game_path(@post.game), class: 'box-score' %>
+        <% end %>
+      </div>
+    </div>
     <div class="sharing">
       <span>
         <%= link_to 'Share on Facebook', facebook_share_url(post_url(@post)),

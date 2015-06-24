@@ -2,7 +2,11 @@ class PostsController < ApplicationController
   before_filter :authenticate_superadmin!, except: [:index, :show]
 
   def index
-    @posts = Post.order('created_at desc').page params[:page]
+    if Post.any?
+      @first_post = Post.last
+      @posts = Post.where('id != ?', @first_post.id)
+        .order('created_at desc').page params[:page]
+    end
   end
 
   def show

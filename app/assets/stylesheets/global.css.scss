@@ -61,6 +61,10 @@ input.button {
   margin-bottom: 10px;
 }
 
+.inline {
+  display: inline-block;
+}
+
 label.collection_radio_buttons {
   display: inline-block;
 }
@@ -88,156 +92,110 @@ address {
 }
 
 body {
-  border-top: 3px solid $black;
-  background: $body-background-color image_url('bg-body-gradient.png') repeat-x;
+  background: #eee;
   font-family: $body-font;
 }
 
-a#branding {
-  z-index: 2;
-  display: block;
-  width: 335px;
-  height: 157px;
-  background: image_url('hsboxscore-logo.png') no-repeat;
-  text-indent: -999em;
+.mobile {
+  display: none;
+  position: relative;
+  width: 100%;
+  padding: 0;
+
+  div {
+    display: none;
+    width: 100%;
+  }
+
+  button {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    border: 0;
+    text-indent: 200%;
+    overflow: hidden;
+    background: rgba(255,255,255,.8) url('hamburger.png') center no-repeat;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-size: 80%;
+    width: 30px;
+    height: 30px;
+    outline: none;
+    transition: all 400ms ease;
+
+    &.expanded {
+      transform: rotate(90deg);
+      border: 0;
+    }
+  }
+
+  a {
+    display: block;
+    background: $off-black;
+    text-align: center;
+    padding: 20px 0;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+
+    &:hover, &:active, &:focus {
+      color: $orange;
+    }
+  }
 }
 
 .top-nav {
-  text-align: center;
-  width: 100%;
-}
+  background-color: $off-black;
+  box-shadow: 0 4px 2px -2px rgba(0,0,0,0.3);
 
-nav {
-  a.pill {
-    display: inline-block;
-    margin-left: 5px;
-    margin-bottom: 3em;
-    overflow: hidden;
-    padding: 8px 25px;
-    @include border-radius(20px);
-    @include single-box-shadow(transparentize(#333, 0.5), 0, 1px, 1px, 0px, true);
-    background: #72B5D8;
-    background: rgba(0, 0, 0, 0.1);
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-
-    small {
-      font-size: 8px;
-      position: relative;
-      left: -3px;
+  .left-nav {
+    margin-left: 15em;
+    @media only screen and (max-width: 1279px) and (min-width: 768px) {
+      margin-left: 0;
     }
-
-    &.home {
-      width: 16px;
-      text-indent: 100%;
-      white-space: nowrap;
-      overflow: hidden;
-
-      background-image: image_url('icon-home.png');
-      background-position: center center;
-      background-repeat: no-repeat;
+    @media only screen and (max-width: 767px) {
+      margin-left: 0;
     }
+  }
 
-    &:hover {
-      text-decoration: none;
-      background-color: rgba(0, 0, 0, 0.2);
+  .right-nav {
+    margin-right: 15em;
+    @media only screen and (max-width: 1279px) and (min-width: 768px) {
+      margin-right: 0;
+    }
+    @media only screen and (max-width: 767px) {
+      margin-right: 1em;
     }
   }
 }
 
-header.global {
-  position: relative;
-  margin-top: 20px;
-  padding: 0;
+ul.nav.buttons {
+  list-style-type: none;
+  top: 50%;
+  transform: translateY(50%);
 
-  .social{
-    color: #cfcfcf;
-    position: static;
-    float: right;
-    background: #333333;
-    padding: 5px;
-    border-radius: 5px;
-    margin-bottom: 2px;
+  li {
+    padding: 1em;
+    display: inline;
 
     a {
-      padding-top: 2px;
-      width: 35px;
-      display: -webkit-inline-box;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+
+      &:hover, &:active, &:focus {
+        color: $orange;
+      }
     }
   }
-}
-
-a.superadmin-dashboard {
-  z-index: 4;
 }
 
 iframe#twitter-widget-0 {
   position: relative;
   left: 34px;
-}
-
-nav.global {
-  text-align: center;
-  padding: 0;
-
-  h1.welcome {
-    text-align: center;
-    width: 100%;
-    padding: 1em 0 1em 0;
-    font-size: 25px;
-    font-family: $body-font;
-  }
-
-  p {
-    font-size: 11px;
-    font-weight: 700;
-    color: $body-text-color;
-  }
-
-  a.nav-item {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    background: #72B5D8;
-    background: rgba(0, 0, 0, 0.1);
-    display: inline-block;
-    overflow: hidden;
-    @include single-box-shadow(transparentize(#333, 0.5), 0, 1px, 1px, 0px, true);
-    color: #fff;
-    font-size: 18px;
-    font-weight: 700;
-    text-transform: uppercase;
-
-    small {
-      font-size: 8px;
-      position: relative;
-      left: -3px;
-    }
-
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.2);
-      text-decoration: none;
-    }
-
-    &.home {
-      width: 16px;
-      text-indent: 100%;
-      white-space: nowrap;
-      overflow: hidden;
-      background-image: image_url('icon-home.png');
-      background-position: center center;
-      background-repeat: no-repeat;
-    }
-
-  }
-
-  a {
-    display: inline-block;
-    color: white;
-    text-transform: uppercase;
-    font-size: 34;
-  }
 }
 
 #content {
@@ -323,11 +281,13 @@ nav.admin-menu {
 }
 
 #main {
+  margin: 1em;
   width: 100%;
-  margin-bottom: 30px;
-  border-top: 3px solid $black;
-  background: #fff;
-  @include single-box-shadow(rgba(#333, 0.3), 3px, 3px, 3px);
+  background-color: white;
+
+  @media only screen and (max-width: 767px) {
+    margin-top: 1em;
+  }
 
   h1, h2, h3 {
     color: $black;
@@ -340,6 +300,12 @@ nav.admin-menu {
   h2 {
     font-size: 20px;
   }
+}
+
+.twitter-feed {
+  width: 100%;
+  margin-top: 1em;
+  padding: 0 1em;
 }
 
 .pagination {

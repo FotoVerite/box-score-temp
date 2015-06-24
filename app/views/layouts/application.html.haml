@@ -27,39 +27,65 @@
       #flash
         %p= flash.alert
 
-    %header.global.twelve.columns
-      .row
-        %nav.twelve.columns.top-nav
-          = link_to 'Posts', posts_path, class: 'pill'
-          = link_to 'Games', games_path, class: 'pill'
-          = link_to 'About Us', '/about-us', class: 'pill'
-          = link_to 'FAQ', '/faq', class: 'pill'
-          - unless admin_signed_in?
-            = link_to 'Add Your Team', '#', class: 'pill account-request'
-          = superadmin_dashboard_link
-          - if admin_signed_in?
-            = link_to 'Account', edit_account_path, class: 'edit-account pill'
-            = link_to 'Sign Out', destroy_admin_session_path, method: :delete, id: 'logout', class: "pill"
-          - else
-            = link_to "Sign In", new_admin_session_path, class: "pill"
-
-      %nav.global
-        .row
-          .five.columns
-            = link_to 'Home', root_path, id: 'branding'
-          .seven.columns
-            %h1.welcome
-              Welcome to
-              %strong HS Box Scores NYC,
-              dedicated to the display of
-              %strong high school basketball, baseball, and softball scores
-              in New York City.
-
-        -if admin_signed_in?
-          = render 'shared/admin_menu'
+    %header
+      %marquee.games.marquee.show-for-large-up
+        = render partial: 'games/game_summary', collection: @marquee_games, as: :game
+      %nav.twelve.columns.top-nav
+        .left.mobile-twelve.left-nav.hide-for-small
+          = link_to image_tag('hsboxscore-logo-small.png'), root_path
+        .show-for-small.mobile-twelve.left-nav.left
+          = link_to image_tag('hsboxscore-logo.png'), root_path
+        .show-for-small.mobile.mobile-twelve
+          %button.toggle
+            toggle
+          %div
+            = link_to 'Posts', posts_path
+            = link_to 'Games', games_path
+            = link_to 'About Us', '/about-us'
+            = link_to 'FAQ', '/faq'
+            - unless admin_signed_in?
+              = link_to 'Add Your Team', '#', class: 'account-request'
+            - if admin_signed_in? && current_admin.superadmin?
+              = link_to 'SuperAdmin Dashboard', '/superadmin'
+            - if admin_signed_in?
+              = link_to 'Account', edit_account_path, class: 'edit-account'
+              = link_to 'Sign Out', destroy_admin_session_path, method: :delete, id: 'logout'
+            - else
+              = link_to "Sign In", new_admin_session_path
+        .right.right-nav.hide-for-small
+          %ul.nav.buttons
+            %li
+              = link_to 'Posts', posts_path
+            %li
+              = link_to 'Games', games_path
+            %li
+              = link_to 'About Us', '/about-us'
+            %li
+              = link_to 'FAQ', '/faq'
+            - unless admin_signed_in?
+              %li
+                = link_to 'Add Your Team', '#', class: 'account-request'
+            - if admin_signed_in? && current_admin.superadmin?
+              %li
+                = link_to 'SuperAdmin Dashboard', '/superadmin'
+            - if admin_signed_in?
+              %li
+                = link_to 'Account', edit_account_path, class: 'edit-account'
+              %li
+                = link_to 'Sign Out', destroy_admin_session_path, method: :delete, id: 'logout'
+            - else
+              %li
+                = link_to "Sign In", new_admin_session_path
 
     .row
-      = yield
+      -if admin_signed_in?
+        = render 'shared/admin_menu'
+      .mobile-twelve.nine.columns
+        = yield
+      .mobile-twelve.three.columns.twitter-feed.hide-for-small
+        %a.twitter-timeline{"data-widget-id" => "386209842722914304",
+          href: "https://twitter.com/hsboxscoresnyc",
+          height: "100%"} Tweets by @hsboxscoresnyc
 
     .row
       %footer.global.twelve.columns
@@ -72,10 +98,6 @@
                 %li= link_to 'Privacy Policy', '/privacy-policy'
             %p.copyright Copyright &copy; #{Date.current.stamp '1999'} HS Box Scores NYC, LLC. All rights reserved.
           .six.columns
-            %a.twitter-timeline{"data-widget-id" => "386209842722914304",
-              href: "https://twitter.com/hsboxscoresnyc",
-              height: 200} Tweets by @hsboxscoresnyc
-
             -if facebook_page_url.present?
               .social
                 = link_to image_tag("social-facebook.png"), facebook_page_url, target: '_blank', class: 'facebook-js'
