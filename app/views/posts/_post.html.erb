@@ -6,7 +6,12 @@
   </div>
   <div class="mobile-twelve nine columns">
     <h1 class="post-title"><%= link_to post.title, post %></h1>
-    <div class="post-body"><p><%= post.excerpt %><p></div>
+    <div class="post-body">
+      <p>
+        <%= post.excerpt %>
+        <%= link_to "Read more", post, class: "read-more" %>
+      <p>
+    </div>
     <%= render 'admin_actions', post: post %>
   </div>
 </div>
