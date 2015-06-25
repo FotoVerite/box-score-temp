@@ -1,20 +1,20 @@
 require 'rubygems'
 require 'devise'
+require 'webmock/rspec'
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
-require 'turnip/capybara'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 #Dir.glob('spec/acceptance/steps/*_steps.rb') { |f| load f, true }
-Dir[Rails.root.join("spec/acceptance/steps/*.rb")].each { |f| puts f; require f }
 
 RSpec.configure do |config|
+  WebMock.disable_net_connect!(:allow => "https://api.heroku.com")
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:

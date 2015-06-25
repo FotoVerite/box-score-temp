@@ -17,6 +17,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'kaminari'
+gem 'mailchimp-api', require: 'mailchimp'
 gem 'meta_search',    '>= 1.1.0.pre'
 gem 'modernizr-rails'
 gem 'newrelic_rpm'
@@ -52,6 +53,7 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'faker'
+  gem 'figaro'
   gem 'guard-rspec'
   gem 'launchy'
   gem 'quiet_assets'
@@ -61,7 +63,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'figaro'
   gem 'better_errors'
   gem 'binding_of_caller'
 end
@@ -72,4 +73,6 @@ group :test do
   gem 'poltergeist'
   gem 'shoulda-matchers'
   gem 'turnip'
+  gem 'vcr'
+  gem 'webmock'
 end
