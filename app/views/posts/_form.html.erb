@@ -24,7 +24,13 @@
       <%= f.label :body %>
       <%= f.cktext_area :body %>
 
-      <%= f.submit class: 'medium button' %>
+      <div>
+        <p>Email this post <%= f.check_box :email, {}, true, false %></p>
+      </div>
+
+      <div>
+        <%= f.submit class: 'medium button' %>
+      </div>
     <% end %>
   <% end -%>
 </div>

@@ -92,8 +92,7 @@
             %p
               Subscribe to get the latest news on HS Basketball games
             = form_tag subscriptions_path, method: 'post' do
-              = label_tag :email
-              = text_field_tag :email, 'user@example.com'
+              = text_field_tag :email, nil, placeholder: "email"
               = submit_tag "Subscribe", class: 'button'
 
             %nav

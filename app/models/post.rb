@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :game
-  attr_accessible :body, :title, :excerpt, :header_image, :game_id
+  attr_accessible :body, :title, :excerpt, :header_image, :game_id, :email
 
   validates :body, presence: true
   validates :title, presence: true
