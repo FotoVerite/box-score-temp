@@ -2,7 +2,8 @@
   %thead
     %tr
       %th.team
-        %span Team
+        %span
+          = game.sport.name
       - game.stats.periods.each do |period|
         %th= period
 
