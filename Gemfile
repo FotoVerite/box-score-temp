@@ -74,5 +74,5 @@ group :test do
   gem 'shoulda-matchers'
   gem 'turnip'
   gem 'vcr'
-  gem 'webmock'
+  gem 'webmock', require: false
 end
