@@ -4,7 +4,7 @@ $ ->
   $('.chzn-select').chosen
     disable_search_threshold: 10
 
-  $('header.global').on 'click', 'a.account-request', ->
+  $('nav.top-nav').on 'click', 'a.account-request', ->
     $('#account-request-form').reveal({ animation: 'none' })
 
   $('#account-request-form').delegate 'form', 'ajax:complete', (event, data) ->

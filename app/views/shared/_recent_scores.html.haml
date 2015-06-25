@@ -22,7 +22,6 @@
             = link_to 'Write about it', new_post_path(game_id: game.id), class: 'box-score'
 
         .sharing.summary
-          %span Share:
           %span= link_to 'Share on Facebook', facebook_share_url(game_url(game)), class: 'facebook', target: '_blank'
           %span= link_to 'Share on Twitter',
             "http://twitter.com/home/?status=#{twitter_box_score_message(game)}",
