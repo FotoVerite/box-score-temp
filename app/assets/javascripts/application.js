@@ -7,13 +7,8 @@
 //= require filters
 //= require teams
 //= require games
+//= require mobile-nav
 //= require totals
 //= require mixpanel
 //= require ckeditor/init
 //= require_tree .
-
-$(function() {
-  $('.toggle').click(function() {
-    $(this).toggleClass('expanded').siblings('div').slideToggle();
-  });
-});
