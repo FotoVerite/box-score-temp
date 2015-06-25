@@ -102,9 +102,15 @@
                 %li= link_to 'Privacy Policy', '/privacy-policy'
             %p.copyright Copyright &copy; #{Date.current.stamp '1999'} HS Box Scores NYC, LLC. All rights reserved.
           .six.columns
-            -if facebook_page_url.present?
-              .social
-                = link_to image_tag("social-facebook.png"), facebook_page_url, target: '_blank', class: 'facebook-js'
+            .social
+              - if facebook_page_url.present?
+                = link_to image_tag("facebook.png"), facebook_page_url, target: '_blank', class: 'facebook-js'
+              - if instagram_page_url.present?
+                = link_to image_tag("instagram.png"), instagram_page_url, target: '_blank', class: 'instagram-js'
+              - if twitter_page_url.present?
+                = link_to image_tag("twitter.png"), twitter_page_url, target: '_blank', class: 'twitter-js'
+              - if youtube_page_url.present?
+                = link_to image_tag("youtube.png"), youtube_page_url, target: '_blank', class: 'youtube-js'
 
 
   = render 'shared/request_form'

@@ -34,6 +34,18 @@ module ApplicationHelper
     ENV["FACEBOOK"]
   end
 
+  def instagram_page_url
+    ENV["INSTAGRAM"]
+  end
+
+  def twitter_page_url
+    ENV["TWITTER"]
+  end
+
+  def youtube_page_url
+    ENV["YOUTUBE"]
+  end
+
   def mixpanel_key
     ENV["MIXPANEL_KEY"].to_json.html_safe
   end
