@@ -96,6 +96,12 @@ body {
   font-family: $body-font;
 }
 
+.social {
+  img {
+    width: 10%;
+  }
+}
+
 .mobile {
   display: none;
   position: relative;
