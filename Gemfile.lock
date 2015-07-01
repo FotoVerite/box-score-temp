@@ -314,6 +314,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    truncate_html (0.9.3)
     turnip (1.0.0)
       gherkin (>= 2.5)
       rspec (~> 2.0)
@@ -390,6 +391,7 @@ DEPENDENCIES
   shoulda-matchers
   simple_form
   stamp
+  truncate_html
   turnip
   uglifier (>= 1.0.3)
   vcr

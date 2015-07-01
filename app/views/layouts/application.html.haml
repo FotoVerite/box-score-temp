@@ -27,6 +27,8 @@
 
     %header
       %marquee.games.marquee.show-for-large-up
+        %h1
+          SCORES, GAME HIGHLIGHTS AND RELATED NEWS CONTENT FOR HS BASKETBALL IN NYC
         = render partial: 'games/game_summary', collection: @marquee_games, as: :game
       %nav.twelve.columns.top-nav
         .left.mobile-twelve.left-nav.hide-for-small
@@ -82,15 +84,17 @@
         = yield
       .mobile-twelve.three.columns.twitter-feed.hide-for-small
         %a.twitter-timeline{"data-widget-id" => "386209842722914304",
+          "data-chrome" => "transparent",
+          "data-theme" => "light",
           href: "https://twitter.com/hsboxscoresnyc",
-          height: "100%"} Tweets by @hsboxscoresnyc
+          height: "700"} Tweets by @hsboxscoresnyc
 
     .row
       %footer.global.twelve.columns
         .row
           .six.columns
             %p
-              Subscribe to get the latest news on HS Basketball games
+              Subscribe to our newsletter
             = form_tag subscriptions_path, method: 'post' do
               = text_field_tag :email, nil, placeholder: "email"
               = submit_tag "Subscribe", class: 'button'

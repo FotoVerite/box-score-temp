@@ -26,6 +26,7 @@ gem 'pg'
 gem 'redcarpet'
 gem 'simple_form'
 gem 'stamp'
+gem 'truncate_html'
 gem 'puma'
 gem 'rakismet'
 
