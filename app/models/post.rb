@@ -8,6 +8,8 @@ class Post < ActiveRecord::Base
     styles: { :medium => "300x300>", :thumb => "100x100>" }
   validates_attachment_content_type :header_image, content_type: /\Aimage\/.*\Z/
 
+  paginates_per 5
+
   def excerpt
     super || stripped_body.truncate(200)
   end

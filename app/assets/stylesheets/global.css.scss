@@ -27,7 +27,7 @@ h1, h2, h3, h4, h5 {
 h1 {
   margin-bottom: 20px;
   font-size: 30px;
-  color: #fff;
+  color: $logo-blue;
 }
 
 h2 {
@@ -156,8 +156,17 @@ body {
   box-shadow: inset 0 0 1em rgba(0,0,0,0.3);
   padding: .3em 0;
 
+  h1 {
+    font-size: 20px;
+    display: inline-block;
+    color: $logo-blue;
+    margin-bottom: 0;
+    transform: translateY(-130%);
+    font-weight: 700;
+  }
+
   .left-nav {
-    margin-left: 15em;
+    margin-left: 3em;
     @media only screen and (max-width: 1279px) and (min-width: 768px) {
       margin-left: 0;
     }
@@ -167,7 +176,7 @@ body {
   }
 
   .right-nav {
-    margin-right: 15em;
+    margin-right: 3em;
     @media only screen and (max-width: 1279px) and (min-width: 768px) {
       margin-right: 0;
     }
