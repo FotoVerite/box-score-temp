@@ -61,6 +61,11 @@ body.box-score.games {
     margin-bottom: 0;
     display: inline-block;
   }
+
+  h1 {
+    display: inline-block;
+    color: $blue;
+  }
 }
 
 body.box-score.games.new,
