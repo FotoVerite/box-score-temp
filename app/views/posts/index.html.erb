@@ -8,7 +8,7 @@
           <% end %>
           <h1><%= link_to @first_post.title, @first_post %></h1>
           <div class="post-body">
-            <%= truncate_html(@first_post.body, length: 750, omission: " " + link_to("Read more", @first_post, class: "read-more")) %>
+            <%= truncate_html(@first_post.body, length: 500, omission: " " + link_to("Read more", @first_post, class: "read-more")) %>
           </div>
         </div>
         <%= render 'admin_actions', post: @first_post %>

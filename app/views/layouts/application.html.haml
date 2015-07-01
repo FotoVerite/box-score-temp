@@ -27,12 +27,12 @@
 
     %header
       %marquee.games.marquee.show-for-large-up
-        %h1
-          SCORES, GAME HIGHLIGHTS AND RELATED NEWS CONTENT FOR HS BASKETBALL IN NYC
         = render partial: 'games/game_summary', collection: @marquee_games, as: :game
       %nav.twelve.columns.top-nav
         .left.mobile-twelve.left-nav.hide-for-small
           = link_to image_tag('hsboxscore-logo-small.png'), root_path
+          %h1
+            &#x2605; HS BASKETBALL IN NYC &#x2605;
         .show-for-small.mobile-twelve.left-nav.left
           = link_to image_tag('hsboxscore-logo.png'), root_path
         .show-for-small.mobile.mobile-twelve
@@ -87,7 +87,7 @@
           "data-chrome" => "transparent",
           "data-theme" => "light",
           href: "https://twitter.com/hsboxscoresnyc",
-          height: "700"} Tweets by @hsboxscoresnyc
+          height: "1400"} Tweets by @hsboxscoresnyc
 
     .row
       %footer.global.twelve.columns
