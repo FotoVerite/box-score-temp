@@ -129,7 +129,7 @@ end
   end
 end
 
-5.times do
+100.times do
   FactoryGirl.create(:post)
 end
 
