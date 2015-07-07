@@ -1,18 +1,20 @@
 <div id="main" class="twelve columns">
   <% if @first_post.present? %>
     <div class="posts-container">
-      <div class="first-post">
-        <div class="row">
-          <% if @first_post.header_image.present? %>
-            <%= link_to image_tag(@first_post.header_image.url), post_path(@first_post) %>
-          <% end %>
-          <h1><%= link_to @first_post.title, @first_post %></h1>
-          <div class="post-body">
-            <%= truncate_html(@first_post.body, length: 500, omission: " " + link_to("Read more", @first_post, class: "read-more")) %>
+      <% unless params[:page].present? && params[:page].to_i > 1 %>
+        <div class="first-post">
+          <div class="row">
+            <% if @first_post.header_image.present? %>
+              <%= link_to image_tag(@first_post.header_image.url), post_path(@first_post) %>
+            <% end %>
+            <h1><%= link_to @first_post.title, @first_post %></h1>
+            <div class="post-body">
+              <%= truncate_html(@first_post.body, length: 500, omission: " " + link_to("Read more", @first_post, class: "read-more")) %>
+            </div>
           </div>
+          <%= render 'admin_actions', post: @first_post %>
         </div>
-        <%= render 'admin_actions', post: @first_post %>
-      </div>
+      <% end %>
       <%= render @posts %>
       <div class="pagination">
         <%= paginate @posts %>

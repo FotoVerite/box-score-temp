@@ -15,7 +15,7 @@ class Team < ActiveRecord::Base
   belongs_to :season
   belongs_to :league
 
-  has_many :games
+  has_many :games, dependent: :destroy
   has_many :team_players
 
   has_many :players, through: :team_players, order: 'last_name, first_name'
