@@ -4,7 +4,7 @@ class ChangeTeamSportToSportId < ActiveRecord::Migration
     add_index :teams, :sport_id
 
     Sport.all.each do |sport|
-      execute "update teams set sport_id='#{sport.id}' where sport='#{sport.name}'"
+      ActiveRecord::Base.connection.execute "UPDATE teams SET sport_id='#{sport.id}' where sport='#{sport.name}'"
     end
 
     remove_column :teams, :sport
@@ -14,7 +14,7 @@ class ChangeTeamSportToSportId < ActiveRecord::Migration
     add_column :teams, :sport, :string
 
     Sport.all.each do |sport|
-      execute "update teams set sport='#{sport.name}' where sport_id='#{sport.id}'"
+      ActiveRecord::Base.connection.execute "UPDATE teams SET sport='#{sport.name}' where sport_id='#{sport.id}'"
     end
 
     remove_column :teams, :sport_id

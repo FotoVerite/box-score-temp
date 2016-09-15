@@ -397,6 +397,3 @@ DEPENDENCIES
   vcr
   webmock
   zurb-foundation
-
-BUNDLED WITH
-   1.10.3
