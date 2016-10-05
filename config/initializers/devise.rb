@@ -243,6 +243,7 @@ Devise.setup do |config|
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
+  config.secret_key = 'd90b240634368ee3f58dc7addb65b2c455d619bf8346481829e02d6c7623bb2e7fa38a51253b4835f7f918cd63c7a7f65bd04ebda5a392c55209bc8250af3e5b'
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
@@ -271,5 +272,4 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
-  config.secret_key = 'd90b240634368ee3f58dc7addb65b2c455d619bf8346481829e02d6c7623bb2e7fa38a51253b4835f7f918cd63c7a7f65bd04ebda5a392c55209bc8250af3e5b's
 end
