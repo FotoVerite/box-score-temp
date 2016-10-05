@@ -1,7 +1,6 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe AccountRequestsMailer do
-
   describe 'new account request' do
     let(:account_request) { create :account_request }
     let(:mailer) { AccountRequestsMailer.account_request(account_request) }

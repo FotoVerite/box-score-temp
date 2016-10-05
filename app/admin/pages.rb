@@ -7,7 +7,7 @@ ActiveAdmin.register Page do
       truncate(page.content, length: 100)
     end
     column :updated_at
-    default_actions
+    actions
   end
 
   show do
@@ -18,6 +18,12 @@ ActiveAdmin.register Page do
       row :content do
         markdown_content(page.content)
       end
+    end
+  end
+
+  controller do
+    def permitted_params
+      params.permit(page: [:content, :title, :slug])
     end
   end
 end

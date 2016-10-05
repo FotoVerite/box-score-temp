@@ -1,5 +1,4 @@
 class Sport < ActiveHash::Base
-
   class PlayerStatGroup
     attr_reader :id, :name, :player_stat_fields
 
@@ -25,7 +24,7 @@ class Sport < ActiveHash::Base
     fta:          { abbr: 'FTA', input_html: { maxlength: 2 } },
     rebounds:     { abbr: 'Reb', input_html: { maxlength: 2 } },
     assists:      { abbr: 'A', input_html: { maxlength: 2 } }
-  }
+  }.freeze
 
   BASKETBALL_SUMMARY_STATS = {
     period_1_points:   { abbr: '1' },
@@ -36,17 +35,17 @@ class Sport < ActiveHash::Base
     period_OT2_points: { abbr: 'OT2' },
     period_OT3_points: { abbr: 'OT3' },
     final:             { abbr: 'F' }
-  }
+  }.freeze
 
   BASEBALL_BATTING_PLAYER_STATS = {
-    pos:          { abbr: 'Pos', total: false, type: :select, collection: %w{P C 1B 2B 3B SS LF CF RF} },
+    pos:          { abbr: 'Pos', total: false, type: :select, collection: %w(P C 1B 2B 3B SS LF CF RF) },
     at_bats:      { abbr: 'AB' },
     hits:         { abbr: 'H' },
     homeruns:     { abbr: 'HR' },
     rbi:          { abbr: 'RBI' },
     runs:         { abbr: 'R' },
-    errs:         { abbr: 'E' },
-  }
+    errs:         { abbr: 'E' }
+  }.freeze
 
   BASEBALL_PITCHING_PLAYER_STATS = {
     innings:      { abbr: 'IP' },
@@ -54,29 +53,29 @@ class Sport < ActiveHash::Base
     runs:         { abbr: 'R' },
     earned_runs:  { abbr: 'ER' },
     walks:        { abbr: 'BB' },
-    strikeouts:   { abbr: 'SO' },
-  }
+    strikeouts:   { abbr: 'SO' }
+  }.freeze
 
   BASEBALL_SUMMARY_STATS = {
     final:           { abbr: 'R' },
     hits:            { abbr: 'H' },
-    errors:          { abbr: 'E' },
-  }
+    errors:          { abbr: 'E' }
+  }.freeze
 
   BASEBALL_GAME_STATS = {
     hits:     { abbr: 'H' },
     errors:   { abbr: 'E' }
-  }
+  }.freeze
 
   BASEBALL_PLAYER_STAT_GROUPS = [
     PlayerStatGroup.new(id: 'batting', name: 'Batting', player_stats: BASEBALL_BATTING_PLAYER_STATS),
     PlayerStatGroup.new(id: 'pitching', name: 'Pitching', player_stats: BASEBALL_PITCHING_PLAYER_STATS)
-  ]
+  ].freeze
 
   SPORT_TYPES = {
     'basketball' => {
-      periods:       %w{1 2 3 4},
-      overtime_periods: %w{OT1 OT2 OT3},
+      periods:       %w(1 2 3 4),
+      overtime_periods: %w(OT1 OT2 OT3),
       player_stats:  BASKETBALL_PLAYER_STATS,
       summary_stats: BASKETBALL_SUMMARY_STATS
     },
@@ -88,13 +87,13 @@ class Sport < ActiveHash::Base
       summary_stats:      BASEBALL_SUMMARY_STATS,
       player_stat_groups: BASEBALL_PLAYER_STAT_GROUPS
     }
-  }
+  }.freeze
 
   self.data = [
-    { id: 'boys-basketball', sport_type: 'basketball', name: "Boys Basketball", gender: 'boys'},
-    { id: 'girls-basketball', sport_type: 'basketball', name: "Girls Basketball", gender: 'girls'},
-    { id: 'girls-softball', sport_type: 'baseball', name: "Girls Softball", gender: 'girls'},
-    { id: 'boys-baseball', sport_type: 'baseball', name: "Boys Baseball", gender: 'boys'}
+    { id: 'boys-basketball', sport_type: 'basketball', name: 'Boys Basketball', gender: 'boys' },
+    { id: 'girls-basketball', sport_type: 'basketball', name: 'Girls Basketball', gender: 'girls' },
+    { id: 'girls-softball', sport_type: 'baseball', name: 'Girls Softball', gender: 'girls' },
+    { id: 'boys-baseball', sport_type: 'baseball', name: 'Boys Baseball', gender: 'boys' }
   ]
 
   def sport_type_options
@@ -109,17 +108,11 @@ class Sport < ActiveHash::Base
     sport_type_options.score_abbr || 'Final'
   end
 
-  def periods
-    sport_type_options.periods
-  end
+  delegate :periods, to: :sport_type_options
 
-  def overtime_periods
-    sport_type_options.overtime_periods
-  end
+  delegate :overtime_periods, to: :sport_type_options
 
-  def summary_stats
-    sport_type_options.summary_stats
-  end
+  delegate :summary_stats, to: :sport_type_options
 
   def game_stats
     sport_type_options.game_stats || {}

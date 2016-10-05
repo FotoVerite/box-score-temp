@@ -34,7 +34,7 @@ class Filter
     if assn.present?
       assn.leagues
     else
-      League.scoped
+      League
     end.ordered
   end
 
@@ -49,12 +49,12 @@ class Filter
   end
 
   def games
-    filtered_teams = teams
+    filtered_teams = teams.pluck(:id)
 
     scope = Game.published.latest.includes(
-        { team: :school },
-        { opponent: :school }
-      )
+      { team: :school },
+      opponent: :school
+    )
 
     scope = scope.where('team_id in (:teams) or opponent_id in (:teams)', teams: filtered_teams)
     scope = scope.where('date between :earliest and :latest', earliest: earliest_date, latest: latest_date) if earliest_date.present? && latest_date.present?
@@ -94,13 +94,13 @@ class Filter
 
   def teams
     scope = if team.present?
-        Team.where(id: team_id)
-      elsif league.present?
-        league.teams
-      elsif assn.present?
-        assn.teams
-      else
-        Team.scoped
+              Team.where(id: team_id)
+            elsif league.present?
+              league.teams
+            elsif assn.present?
+              assn.teams
+            else
+              Team
       end
 
     scope = scope.where(sport_id: @sport_id) if @sport_id.present?

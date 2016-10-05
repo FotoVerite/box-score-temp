@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
-  before_filter :marquee_games
+  before_action :marquee_games
   protect_from_forgery
 
-  rescue_from CanCan::AccessDenied do |exception|
-    render text: 'Unauthorized', status: :unauthorized
+  rescue_from CanCan::AccessDenied do |_exception|
+    render plain: 'Unauthorized', status: :unauthorized
   end
 
   def marquee_games
@@ -29,9 +29,7 @@ class ApplicationController < ActionController::Base
         end
       elsif admin_signed_in?
         current_admin.school
-      else
-        nil
-      end
+            end
     end
   end
   helper_method :current_school
@@ -46,7 +44,7 @@ class ApplicationController < ActionController::Base
   end
 
   def superadmin_signed_in?
-    admin_signed_in? && current_admin.superadmin?
+    current_admin.try(:superadmin?)
   end
   helper_method :superadmin_signed_in?
 

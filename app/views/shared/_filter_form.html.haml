@@ -2,7 +2,7 @@
   %h2 Search Scores
   .row
     = simple_form_for filter, method: :get,
-      url: url_for(params.slice(:controller, :action)) do |f|
+      url: url_for(params.permit!.slice(:controller, :action)) do |f|
 
       .mobile-twelve.columns
         = f.input :assn_id, as: :select, collection: filter.assn_options,

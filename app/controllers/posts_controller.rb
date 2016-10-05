@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
-  before_filter :authenticate_superadmin!, except: [:index, :show]
+  before_action :authenticate_superadmin!, except: [:index, :show]
 
   def index
     if Post.any?
       @first_post = Post.last
       @posts = Post.where('id != ?', @first_post.id)
-        .order('created_at desc').page params[:page]
+                   .order('created_at desc').page params[:page]
     end
   end
 
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new params[:post]
+    @post = Post.new post_params
     if @post.save
       redirect_to @post
     else
@@ -31,7 +31,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    if post.update_attributes(params[:post])
+    if post.update_attributes(post_params)
       redirect_to post
     else
       render 'edit'
@@ -50,5 +50,18 @@ class PostsController < ApplicationController
 
   def post
     @post ||= Post.find(params[:id])
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(
+      :body,
+      :email,
+      :excerpt,
+      :header_image,
+      :game_id,
+      :title
+    )
   end
 end

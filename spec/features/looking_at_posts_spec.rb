@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature 'Looking at posts' do
   scenario 'Looking at the posts index' do
@@ -24,7 +24,7 @@ feature 'Looking at posts' do
 
     visit post_path(@post)
 
-    expect(page).to have_content "Share on Facebook"
-    expect(page).to have_content "Share on Twitter"
+    expect(page).to have_content 'Share on Facebook'
+    expect(page).to have_content 'Share on Twitter'
   end
 end

@@ -3,14 +3,14 @@ class EmailGateway
   attr_accessor :errors
 
   def initialize
-    @mailer = Mailchimp::API.new(ENV["MAILCHIMP_API_KEY"])
+    @mailer = Mailchimp::API.new(ENV['MAILCHIMP_API_KEY'])
     @errors = []
   end
 
   def subscribe(email, list_id: newsletter_list_id)
     mailer.lists.subscribe(
       list_id,
-      email: email,
+      email: email
     )
   rescue => e
     errors << e.message
@@ -28,7 +28,7 @@ class EmailGateway
 
   def newsletter_list
     @_newsletter_list ||= mailer.lists.list['data'].find do |list|
-      list['name'] = "Newsletter"
+      list['name'] = 'Newsletter'
     end
   end
 end

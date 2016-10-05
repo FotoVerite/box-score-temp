@@ -1,4 +1,22 @@
-require 'spec_helper'
+# == Schema Information
+#
+# Table name: schools
+#
+#  id                      :integer          not null, primary key
+#  name                    :string(255)
+#  mascot                  :string(255)
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  assn_id                 :integer
+#  address_1               :string(255)
+#  address_2               :string(255)
+#  athletic_director_name  :string(255)
+#  athletic_director_email :string(255)
+#  athletic_director_phone :string(255)
+#  short_name              :string(255)
+#
+
+require 'rails_helper'
 
 describe School do
   it { should validate_presence_of :name }
@@ -7,7 +25,7 @@ describe School do
   it { should have_many :players }
   it { should have_many :admins }
 
-  it "has a valid fixture" do
+  it 'has a valid fixture' do
     build(:school)
   end
 

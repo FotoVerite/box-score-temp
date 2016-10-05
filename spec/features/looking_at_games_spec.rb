@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature 'seeing games' do
   scenario 'while on the homepage, I should see the latest box scores' do

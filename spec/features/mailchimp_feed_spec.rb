@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature 'rss feed for mailchimp' do
   scenario 'getting the feed' do
@@ -17,7 +17,7 @@ feature 'rss feed for mailchimp' do
   scenario 'selecting a post for a feed' do
     admin = create(:admin, :superadmin)
     post_1 = create(:post)
-    post_2 = create(:post, title: "this shouldnt be here")
+    post_2 = create(:post, title: 'this shouldnt be here')
     login_as admin
 
     visit edit_post_path(post_1)

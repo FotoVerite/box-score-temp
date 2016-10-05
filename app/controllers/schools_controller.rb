@@ -1,5 +1,5 @@
 class SchoolsController < ApplicationController
-  before_filter :authenticate_admin!
+  before_action :authenticate_admin!
 
   respond_to :html
 
@@ -11,7 +11,7 @@ class SchoolsController < ApplicationController
     @school = School.find(params[:id])
     authorize! :show, @school
 
-    @unpublished_games = @school.games.unpublished
+    @unpublished_games = @school.games
     @games = @school.games.latest.published.limit(6)
   end
 
@@ -22,10 +22,26 @@ class SchoolsController < ApplicationController
 
   def update
     @school = School.find(params[:id])
-    if @school.update_attributes(params[:school])
+    if @school.update_attributes(school_params)
       render action: 'show'
     else
       render action: 'edit'
     end
+  end
+
+  private
+
+  def school_params
+    params.require(:school).permit(
+      :address_1,
+      :address_2,
+      :assn_id,
+      :athletic_director_email,
+      :athletic_director_name,
+      :athletic_director_phone,
+      :mascot,
+      :name,
+      :short_name
+    )
   end
 end

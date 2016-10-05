@@ -1,9 +1,9 @@
-require 'factory_girl_rails' #so it can run in development
+require 'factory_girl_rails' # so it can run in development
 
 SCHOOL_NAMES = ['Trinity', 'Southville', 'Lexington', 'Eastern Catholic', 'Westminster',
-               'Northern', 'Lakeland', 'Bishop Kelly', 'Rexburg', 'Southern', 'Eastminster', 'Western Catholic']
-ASSOCIATION_NAMES = ['PSAL', 'CHSAA', 'NYSAISAA']
-LEAGUE_NAMES = ['Brooklyn AA', 'Queens AA', 'Long Island AA', 'Brooklyn AAA', 'Queens AAA', 'Long Island AAA']
+                'Northern', 'Lakeland', 'Bishop Kelly', 'Rexburg', 'Southern', 'Eastminster', 'Western Catholic'].freeze
+ASSOCIATION_NAMES = %w(PSAL CHSAA NYSAISAA).freeze
+LEAGUE_NAMES = ['Brooklyn AA', 'Queens AA', 'Long Island AA', 'Brooklyn AAA', 'Queens AAA', 'Long Island AAA'].freeze
 
 def create_admin(school, name)
   first_name = name
@@ -28,11 +28,11 @@ def create_league(name, assn_id)
 end
 
 (1..3).each do |n|
-  name = ASSOCIATION_NAMES[n-1]
+  name = ASSOCIATION_NAMES[n - 1]
   create_assn name
 end
 
-#LEAGUES
+# LEAGUES
 ['Brooklyn AA', 'Queens AA'].each do |name|
   assn_id = Assn.all.to_a[0].id
   create_league name, assn_id
@@ -48,7 +48,7 @@ end
   create_league name, assn_id
 end
 
-#SCHOOLS
+# SCHOOLS
 ['Trinity', 'Southville', 'Lexington', 'Eastern Catholic'].each do |name|
   assn_id = Assn.all.to_a[0].id
   school = create_school name, assn_id
@@ -90,23 +90,23 @@ def random_game_stats(team, opponent)
   when 'basketball'
     {
       team.id.to_s => {
-        "periods" => Hash[(1..4).map { |p| [p.to_s, rand(25).to_s] }],
+        'periods' => Hash[(1..4).map { |p| [p.to_s, rand(25).to_s] }]
       },
       opponent.id.to_s => {
-        "periods" => Hash[(1..4).map { |p| [p.to_s, rand(25).to_s] }],
+        'periods' => Hash[(1..4).map { |p| [p.to_s, rand(25).to_s] }]
       }
     }
   when 'baseball'
     {
       team.id.to_s => {
-        "periods" => Hash[(1..7).map { |p| [p.to_s, rand(4).to_s] }],
-        "hits" => rand(20).to_s,
-        "errors" => rand(5).to_s
+        'periods' => Hash[(1..7).map { |p| [p.to_s, rand(4).to_s] }],
+        'hits' => rand(20).to_s,
+        'errors' => rand(5).to_s
       },
       opponent.id.to_s => {
-        "periods" => Hash[(1..7).map { |p| [p.to_s, rand(4).to_s] }],
-        "hits" => rand(20).to_s,
-        "errors" => rand(5).to_s
+        'periods' => Hash[(1..7).map { |p| [p.to_s, rand(4).to_s] }],
+        'hits' => rand(20).to_s,
+        'errors' => rand(5).to_s
       }
     }
   end
@@ -117,15 +117,15 @@ Team.all.each do |team|
     random_date = team.season.start_date + rand(100)
 
     Game.create!(date: random_date, home_away: 'home', team_id: team.id,
-      opponent_id: opponent.id, game_stats: random_game_stats(team, opponent),
-      published_at: Time.now)
+                 opponent_id: opponent.id, game_stats: random_game_stats(team, opponent),
+                 published_at: Time.now)
   end
 end
 
 ('A'..'Z').each do |first_letter|
   ('A'..'Z').each do |second_letter|
     player = Player.create! first_name: "#{first_letter}rmathy",
-      last_name: "#{second_letter}mith", middle_initial: ('A'..'Z').to_a.sample
+                            last_name: "#{second_letter}mith", middle_initial: ('A'..'Z').to_a.sample
   end
 end
 
@@ -133,4 +133,5 @@ end
   FactoryGirl.create(:post)
 end
 
-FactoryGirl.create(:admin, :superadmin, email: "user@wizarddevelopment.com", password: "password")
+FactoryGirl.create(:admin, :superadmin, email: 'user@wizarddevelopment.com', password: 'password')
+Admin.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

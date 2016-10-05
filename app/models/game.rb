@@ -1,12 +1,26 @@
+# == Schema Information
+#
+# Table name: games
+#
+#  id           :integer          not null, primary key
+#  date         :date
+#  opponent_id  :integer
+#  home_away    :string(255)
+#  team_id      :integer
+#  season_id    :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  game_stats   :text
+#  published_at :datetime
+#  neutral_site :boolean          default(FALSE)
+#  admin_id     :integer
+#
+
 class Game < ActiveRecord::Base
   HOME_AWAY = [
-    HOME = 'home',
-    AWAY = 'away'
-  ]
-
-  attr_accessible :home_away, :team_id, :opponent_id, :date, :game_stats,
-    :player_game_stats_attributes, :season_id, :publish, :published_at,
-    :neutral_site
+    HOME = 'home'.freeze,
+    AWAY = 'away'.freeze
+  ].freeze
 
   delegate :sport, :sport_type, to: :team
 
@@ -24,25 +38,25 @@ class Game < ActiveRecord::Base
   has_many :posts
 
   accepts_nested_attributes_for :player_game_stats,
-      reject_if: proc { |s| s[:player_id].blank? },
-      allow_destroy: true
+                                reject_if: proc { |s| s[:player_id].blank? },
+                                allow_destroy: true
 
   serialize :game_stats
 
-  scope :latest, order('date DESC')
-  scope :published, where('published_at is not null')
-  scope :unpublished, where('published_at is null')
+  scope :latest, -> { order('date DESC') }
+  scope :published, -> { where('published_at is not null') }
+  scope :unpublished, -> { where('published_at is null') }
 
-  def self.with_team(team)
-    where('team_id in (:teams) or opponent_id in (:teams)', teams: team)
+  def self.with_team(teams)
+    where('team_id in (?) or opponent_id in (?)', teams, teams)
   end
 
   def published?
     published_at?
   end
 
-  def publish=(x)
-    @publishing = true if self.published_at.nil?
+  def publish=(_x)
+    @publishing = true if published_at.nil?
 
     self.published_at = Time.now.utc
   end
@@ -56,7 +70,7 @@ class Game < ActiveRecord::Base
   end
 
   def summary_stats
-    sport.summary_stats.select { |stat, attrs| stats.team_stats(winner).send(stat).present? }
+    sport.summary_stats.select { |stat, _attrs| stats.team_stats(winner).send(stat).present? }
   end
 
   def player_stats_by_key(team, key)
@@ -87,9 +101,7 @@ class Game < ActiveRecord::Base
       team
     elsif opponent_score > team_score
       opponent
-    else
-      nil
-    end
+        end
   end
 
   def to_param

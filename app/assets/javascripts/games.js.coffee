@@ -76,9 +76,8 @@ class Games
   removeGameStatsForm: =>
     @form.find('#sport_fields').empty()
 
-
   loadGameStatsForm: (teamId, opponentId, callback) =>
-    $.ajax "/game_stats/new"
+    $.ajax "/game_stats/new",
       data:
         team_id: teamId
         opponent_id: opponentId

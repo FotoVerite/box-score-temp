@@ -4,7 +4,7 @@ class TeamStats
   end
 
   def periods
-    @hash['periods'].select { |k,v| v.present? }.keys
+    @hash['periods'].select { |_k, v| v.present? }.keys
   end
 
   def points(period)
@@ -27,7 +27,7 @@ class TeamStats
   def method_missing(name, *args)
     case name
     when /^period_(\S+)_points$/
-      points($1)
+      points(Regexp.last_match(1))
     else
       super(name, *args)
     end

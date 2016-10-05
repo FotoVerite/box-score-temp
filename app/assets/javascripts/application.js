@@ -1,6 +1,6 @@
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.datepicker
+//= require jquery-ui/datepicker
 //= require foundation
 //= require chosen-jquery
 //= require global
@@ -12,3 +12,4 @@
 //= require mixpanel
 //= require ckeditor/init
 //= require_tree .
+$(function(){ $(document).foundation(); });

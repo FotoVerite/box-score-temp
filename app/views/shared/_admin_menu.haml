@@ -8,8 +8,9 @@
     %ul
       %li= link_to 'Add Box Score', new_game_path, class: 'button'
 
-      - if current_school.unpublished_games.any?
+      - if current_school && current_school.unpublished_games.any?
         %li= link_to 'Drafts', drafts_games_path, class: 'button'
 
-      %li= link_to 'My School Profile', school_path(current_school), class: 'secondary button'
+      - if current_school
+        %li= link_to 'My School Profile', school_path(current_school), class: 'secondary button'
       %li= link_to 'My Teams', teams_path, class: 'secondary button'

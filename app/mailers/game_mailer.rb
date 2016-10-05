@@ -5,15 +5,15 @@ class GameMailer < ActionMailer::Base
     @game = game
 
     mail to: 'info@hsboxscoresnyc.com',
-      bcc: league_emails(game),
-      subject: "A final box score has been posted for #{game.team.display_name} vs #{game.opponent.display_name}"
+         bcc: league_emails(game),
+         subject: "A final box score has been posted for #{game.team.display_name} vs #{game.opponent.display_name}"
   end
 
   private
 
   def league_emails(game)
     [game.team.league, game.opponent.league].uniq.map do |league|
-      league.teams(true).map(&:school).map(&:admins).flatten.map(&:email)
+      league.teams.reload.map(&:school).map(&:admins).flatten.map(&:email)
     end.flatten.uniq
   end
 end

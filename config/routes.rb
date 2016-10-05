@@ -1,21 +1,21 @@
-BoxScore::Application.routes.draw do
+Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
-  devise_for :admins
+  devise_for :admins, ActiveAdmin::Devise.config
 
   root to: 'posts#index'
 
   ActiveAdmin.routes(self)
 
-  match '/about-us', to: 'pages#about'
-  match '/terms-of-service', to: 'pages#terms_of_service'
-  match '/privacy-policy', to: 'pages#privacy_policy'
-  match '/contact-us', to: 'pages#contact'
-  match '/faq', to: 'pages#faq'
-  match '/mailchimp/feed', to: 'mailchimp#feed'
+  get '/about-us', to: 'pages#about'
+  get '/terms-of-service', to: 'pages#terms_of_service'
+  get '/privacy-policy', to: 'pages#privacy_policy'
+  get '/contact-us', to: 'pages#contact'
+  get '/faq', to: 'pages#faq'
+  get '/mailchimp/feed', to: 'mailchimp#feed'
 
   Sport.all.each do |sport|
-    match "/#{sport.id}", to: 'games#index', sport_id: sport.id, as: sport.id.underscore.to_sym
+    get "/#{sport.id}", to: 'games#index', sport_id: sport.id, as: sport.id.underscore.to_sym
   end
 
   resource :account, only: [:edit, :update]

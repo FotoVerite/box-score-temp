@@ -1,4 +1,15 @@
-require 'spec_helper'
+# == Schema Information
+#
+# Table name: team_players
+#
+#  id         :integer          not null, primary key
+#  team_id    :integer
+#  player_id  :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+require 'rails_helper'
 
 describe TeamPlayer do
   it { should belong_to :team }

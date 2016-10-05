@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe TeamsController do
   context 'Unauthenticated' do
@@ -21,10 +21,10 @@ describe TeamsController do
     before { sign_in admin }
 
     describe "GET 'index'" do
-      before { get :index, school_id: school.id }
+      before { get :index, params: { school_id: school.id } }
 
       it "returns the teams that belong to the current admin's school" do
-          assigns(:teams).should =~ [team_01, team_02]
+        assigns(:teams).should =~ [team_01, team_02]
       end
     end
 
@@ -38,7 +38,7 @@ describe TeamsController do
     describe "POST 'create'" do
       context 'with invalid data' do
         before do
-          post :create, team: {}
+          post :create, params: { team: {name: nil} }
         end
 
         it 'renders new template' do
@@ -52,23 +52,25 @@ describe TeamsController do
         let(:player_01) { create :player }
         let(:player_02) { create :player }
         before do
-          post :create, team: {
-                league_id: league.id,
-                school_id: school.id,
-                season_id: season.id,
-                sport_id: 'boys-basketball'
-              }
+          post :create, params: {
+            team: {
+              league_id: league.id,
+              school_id: school.id,
+              season_id: season.id,
+              sport_id: 'boys-basketball'
+            }
+          }
         end
 
         it "creates a team for the admin's school" do
           assigns(:team).school_id.should == admin.school_id
         end
 
-        it "creates a team for the provided season" do
+        it 'creates a team for the provided season' do
           assigns(:team).season_id.should == season.id
         end
 
-        it "redirects to the team edit page" do
+        it 'redirects to the team edit page' do
           response.should redirect_to edit_team_path(assigns(:team))
         end
       end

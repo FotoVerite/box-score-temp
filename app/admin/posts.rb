@@ -5,7 +5,7 @@ ActiveAdmin.register Post do
     column :excerpt
     column :body
     column :created_at
-    default_actions
+    actions
   end
 
   controller do

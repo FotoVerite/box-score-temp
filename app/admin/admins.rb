@@ -8,7 +8,7 @@ ActiveAdmin.register Admin do
       admin.school.try(:name)
     end
     column :last_sign_in_at
-    default_actions
+    actions
   end
 
   form do |f|

@@ -17,7 +17,7 @@
         \-
       NYC High School Box Scores
 
-    = stylesheet_link_tag 'application'
+    = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag 'application'
     = csrf_meta_tags
     = render 'shared/mixpanel'
@@ -75,7 +75,7 @@
                 = link_to 'Sign Out', destroy_admin_session_path, method: :delete, id: 'logout'
             - else
               %li
-                = link_to "Sign In", new_admin_session_path
+                = link_to("Sign In", new_admin_session_path, id: 'main-sign-in')
 
     .row
       -if admin_signed_in?

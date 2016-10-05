@@ -1,5 +1,5 @@
 class GameStatsController < ApplicationController
-  before_filter :authenticate_admin!
+  before_action :authenticate_admin!
 
   def new
     respond_to do |format|
@@ -8,7 +8,7 @@ class GameStatsController < ApplicationController
         opponent = team.potential_opponents.find(params[:opponent_id])
         game     = team.games.build(opponent_id: opponent.id)
 
-        render partial: "games/form", locals: { game: game }
+        render partial: 'games/form', locals: { game: game }
       end
     end
   end

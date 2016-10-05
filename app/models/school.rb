@@ -1,7 +1,23 @@
+# == Schema Information
+#
+# Table name: schools
+#
+#  id                      :integer          not null, primary key
+#  name                    :string(255)
+#  mascot                  :string(255)
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  assn_id                 :integer
+#  address_1               :string(255)
+#  address_2               :string(255)
+#  athletic_director_name  :string(255)
+#  athletic_director_email :string(255)
+#  athletic_director_phone :string(255)
+#  short_name              :string(255)
+#
+
 class School < ActiveRecord::Base
-  attr_accessible :mascot, :name, :athletic_director_name,
-    :athletic_director_email, :athletic_director_phone, :address_1,
-    :address_2, :assn_id, :short_name
+
 
   validates :name, presence: true, uniqueness: true
 
@@ -10,10 +26,10 @@ class School < ActiveRecord::Base
   has_many :players
   has_many :admins
 
-  scope :ordered, order('name ASC')
+  scope :ordered, -> { order('name ASC') }
 
   def games
-    Game.with_team(self.teams)
+    Game.with_team(team_ids)
   end
 
   def unpublished_games
@@ -22,11 +38,11 @@ class School < ActiveRecord::Base
   end
 
   def to_param
-    "#{self.id}-#{self.name.parameterize}"
+    "#{id}-#{name.parameterize}"
   end
 
   def short_name
-    if (short = read_attribute(:short_name)).present?
+    if (short = self[:short_name]).present?
       short
     else
       name

@@ -3,6 +3,13 @@ ActiveAdmin.register League do
     column :id
     column :name
     column :classification
-    default_actions
+    actions
   end
+
+  controller do
+    def permitted_params
+      params.permit(league: [:assn_id, :classification, :name])
+    end
+  end
+
 end

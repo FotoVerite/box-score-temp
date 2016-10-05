@@ -2,9 +2,7 @@ class AdminAbility
   include CanCan::Ability
 
   def initialize(admin)
-    if admin.superadmin?
-      can :manage, Post
-    end
+    can :manage, Post if admin.superadmin?
 
     if admin.present?
       can :manage, School, id: admin.school_id

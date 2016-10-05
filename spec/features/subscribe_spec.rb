@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature 'subscribing to the post email list' do
   scenario 'subscribing' do

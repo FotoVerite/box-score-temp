@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_filter :authenticate_admin!, except: [:index, :show]
+  before_action :authenticate_admin!, except: [:index, :show]
 
   def index
     respond_to do |format|
@@ -15,7 +15,7 @@ class TeamsController < ApplicationController
         end
 
         teams = teams.where(sport_id: params[:filter][:sport]) if params[:filter].present? &&
-          params[:filter][:sport].present?
+                                                                  params[:filter][:sport].present?
 
         render json: teams
       end
@@ -28,7 +28,6 @@ class TeamsController < ApplicationController
 
         if admin_signed_in?
           @teams = current_school.teams
-          render html: @teams
         else
           redirect_to new_admin_session_path
         end
@@ -41,7 +40,7 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = current_school.teams.build params[:team]
+    @team = current_school.teams.build team_params
     if @team.save
       redirect_to [:edit, @team]
     else
@@ -55,7 +54,7 @@ class TeamsController < ApplicationController
 
   def update
     @team = current_school.teams.find params[:id]
-    if @team.update_attributes params[:team]
+    if @team.update_attributes team_params
       redirect_to [:edit, @team]
     else
       render action: 'edit'
@@ -66,5 +65,21 @@ class TeamsController < ApplicationController
     @team = current_school.teams.find params[:id]
     @team.destroy if @team
     redirect_to teams_path
+  end
+
+  private
+
+  def team_params
+    params.require(:team).permit(
+      :coach_email,
+      :competitive_class,
+      :coach_name,
+      :coach_phone,
+      :league_id,
+      :player_ids,
+      :season_id,
+      :school_id,
+      :sport_id
+    )
   end
 end

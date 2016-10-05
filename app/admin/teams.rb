@@ -5,7 +5,7 @@ ActiveAdmin.register Team do
     column :coach_name
     column :coach_email
     column :coach_phone
-    default_actions
+    actions
   end
 
   form do |f|
@@ -20,4 +20,21 @@ ActiveAdmin.register Team do
     end
     f.buttons
   end
+
+  controller do
+    def permitted_params
+      params.permit(team: [
+          :coach_email,
+          :coach_name,
+          :coach_phone,
+          :competitive_class,
+          :name,
+          :leage_id,
+          :school_id,
+          :season_id
+        ]
+      )
+    end
+  end
+
 end

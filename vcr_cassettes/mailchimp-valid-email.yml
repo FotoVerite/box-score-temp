@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: post
-    uri: https://us11.api.mailchimp.com/2.0/lists/list.json
+    uri: https://us14.api.mailchimp.com/2.0/lists/list.json
     body:
       encoding: UTF-8
-      string: '{"filters":[],"start":0,"limit":25,"sort_field":"created","sort_dir":"DESC","apikey":"d07979bc5bebb0afba1332975c934764-us11"}'
+      string: '{"filters":[],"start":0,"limit":25,"sort_field":"created","sort_dir":"DESC","apikey":"4ea39f6ae8e917c3a956b7b81e9856ee-us14"}'
     headers:
       User-Agent:
-      - excon/0.45.3
+      - excon/0.52.0
       Content-Type:
       - application/json
   response:
@@ -21,58 +21,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '2731'
+      - '33'
       Vary:
       - Accept-Encoding
       Date:
-      - Tue, 23 Jun 2015 17:25:30 GMT
+      - Sun, 25 Sep 2016 05:50:11 GMT
       Connection:
       - keep-alive
       Set-Cookie:
       - _AVESTA_ENVIRONMENT=prod; path=/
     body:
-      encoding: UTF-8
-      string: '{"total":3,"data":[{"id":"fe9083e47c","web_id":127277,"name":"Newsletter","date_created":"2015-06-23
-        13:46:25","email_type_option":false,"use_awesomebar":true,"default_from_name":"Elijah
-        Kim","default_from_email":"elijah@wizarddevelopment.com","default_subject":"","default_language":"en","list_rating":0,"subscribe_url_short":"http:\/\/eepurl.com\/bret21","subscribe_url_long":"http:\/\/wizarddevelopment.us11.list-manage1.com\/subscribe?u=5b4b3fb12e9eeabcac2340800&id=fe9083e47c","beamer_address":"us11-60198ed513-e9cec8cd71@inbound.mailchimp.com","visibility":"pub","stats":{"member_count":0,"unsubscribe_count":0,"cleaned_count":0,"member_count_since_send":0,"unsubscribe_count_since_send":0,"cleaned_count_since_send":0,"campaign_count":0,"grouping_count":0,"group_count":0,"merge_var_count":2,"avg_sub_rate":0,"avg_unsub_rate":0,"target_sub_rate":0,"open_rate":0,"click_rate":0,"date_last_campaign":null},"modules":[]},{"id":"58368d1795","web_id":127181,"name":"Me","date_created":"2015-06-23
-        12:47:12","email_type_option":false,"use_awesomebar":true,"default_from_name":"Elijah
-        Kim","default_from_email":"elijah@wizarddevelopment.com","default_subject":"","default_language":"en","list_rating":0,"subscribe_url_short":"http:\/\/eepurl.com\/breg1P","subscribe_url_long":"http:\/\/wizarddevelopment.us11.list-manage.com\/subscribe?u=5b4b3fb12e9eeabcac2340800&id=58368d1795","beamer_address":"us11-60198ed513-b4f7005e3f@inbound.mailchimp.com","visibility":"pub","stats":{"member_count":0,"unsubscribe_count":0,"cleaned_count":0,"member_count_since_send":0,"unsubscribe_count_since_send":0,"cleaned_count_since_send":0,"campaign_count":0,"grouping_count":0,"group_count":0,"merge_var_count":2,"avg_sub_rate":0,"avg_unsub_rate":0,"target_sub_rate":0,"open_rate":0,"click_rate":0,"date_last_campaign":null},"modules":[]},{"id":"9f7aab2d99","web_id":127165,"name":"Team","date_created":"2015-06-23
-        12:29:34","email_type_option":false,"use_awesomebar":true,"default_from_name":"Elijah","default_from_email":"elijah@wizarddevelopment.com","default_subject":"","default_language":"en","list_rating":0,"subscribe_url_short":"http:\/\/eepurl.com\/brdV4L","subscribe_url_long":"http:\/\/wizarddevelopment.us11.list-manage.com\/subscribe?u=5b4b3fb12e9eeabcac2340800&id=9f7aab2d99","beamer_address":"us11-60198ed513-66fe1d211a@inbound.mailchimp.com","visibility":"pub","stats":{"member_count":4,"unsubscribe_count":0,"cleaned_count":0,"member_count_since_send":1,"unsubscribe_count_since_send":0,"cleaned_count_since_send":0,"campaign_count":1,"grouping_count":0,"group_count":0,"merge_var_count":2,"avg_sub_rate":30,"avg_unsub_rate":0,"target_sub_rate":0,"open_rate":0,"click_rate":0,"date_last_campaign":null},"modules":[]}],"errors":[]}'
+      encoding: ASCII-8BIT
+      string: '{"total":0,"data":[],"errors":[]}'
     http_version: 
-  recorded_at: Tue, 23 Jun 2015 17:25:30 GMT
-- request:
-    method: post
-    uri: https://us11.api.mailchimp.com/2.0/lists/subscribe.json
-    body:
-      encoding: UTF-8
-      string: '{"id":"fe9083e47c","email":{"email":"validemail@email.com"},"merge_vars":null,"email_type":"html","double_optin":true,"update_existing":false,"replace_interests":true,"send_welcome":false,"apikey":"d07979bc5bebb0afba1332975c934764-us11"}'
-    headers:
-      User-Agent:
-      - excon/0.45.3
-      Content-Type:
-      - application/json
-  response:
-    status:
-      code: 200
-      message: ''
-    headers:
-      Server:
-      - nginx
-      Content-Type:
-      - application/json; charset=utf-8
-      Content-Length:
-      - '70'
-      Vary:
-      - Accept-Encoding
-      Date:
-      - Tue, 23 Jun 2015 17:25:31 GMT
-      Connection:
-      - keep-alive
-      Set-Cookie:
-      - _AVESTA_ENVIRONMENT=prod; path=/
-    body:
-      encoding: UTF-8
-      string: '{"email":"validemail@email.com","euid":"fa16be80e8","leid":"53516837"}'
-    http_version: 
-  recorded_at: Tue, 23 Jun 2015 17:25:31 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Sun, 25 Sep 2016 05:50:11 GMT
+recorded_with: VCR 3.0.3

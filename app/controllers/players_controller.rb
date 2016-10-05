@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-  before_filter :authenticate_admin!
+  before_action :authenticate_admin!
 
   def index
     @players = Player.matching(params[:name])

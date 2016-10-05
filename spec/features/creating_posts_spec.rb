@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature 'creating a post' do
   scenario 'attempting to create a post without logging in' do
@@ -36,7 +36,7 @@ feature 'creating a post' do
     end
   end
 
-  describe "editing and deleting a post as an admin" do
+  describe 'editing and deleting a post as an admin' do
     let(:admin) { create(:admin, :superadmin) }
     let(:post_1) { create(:post) }
 

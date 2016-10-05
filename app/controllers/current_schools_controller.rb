@@ -1,5 +1,5 @@
 class CurrentSchoolsController < ApplicationController
-  before_filter :authenticate_superadmin!
+  before_action :authenticate_superadmin!
 
   def edit
     @schools = School.ordered

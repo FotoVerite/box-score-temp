@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_filter :authenticate_admin!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_admin!, only: [:new, :create, :edit, :update]
 
   def index
     @filter = filter
@@ -21,8 +21,8 @@ class GamesController < ApplicationController
 
   def create
     # Make sure team_id is allowed for current_admin
-    teams.find params[:game][:team_id] if params[:game][:team_id].present?
-    @game = Game.new(params[:game])
+    teams.find game_params[:team_id] if game_params[:team_id].present?
+    @game = Game.new(game_params)
     if @game.save
       track_event('Created Game', school: current_school.try(:name))
       redirect_to game_path(@game)
@@ -38,7 +38,7 @@ class GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
 
-    if @game.update_attributes(params[:game])
+    if @game.update_attributes(game_params)
       redirect_to game_path(@game)
     else
       render action: 'edit'
@@ -78,5 +78,20 @@ class GamesController < ApplicationController
     else
       Date.current
     end
+  end
+
+  def game_params
+    params.require(:game).permit(
+      :date,
+      :game_stats,
+      :home_away,
+      :opponent_id,
+      :neutral_site,
+      :player_game_stats_attributes,
+      :publish,
+      :published_at,
+      :season_id,
+      :team_id
+    )
   end
 end

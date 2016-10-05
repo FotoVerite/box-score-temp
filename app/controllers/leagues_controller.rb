@@ -13,4 +13,3 @@ class LeaguesController < ApplicationController
     end
   end
 end
-

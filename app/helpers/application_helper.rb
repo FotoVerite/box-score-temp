@@ -31,22 +31,22 @@ module ApplicationHelper
   end
 
   def facebook_page_url
-    ENV["FACEBOOK"]
+    ENV['FACEBOOK']
   end
 
   def instagram_page_url
-    ENV["INSTAGRAM"]
+    ENV['INSTAGRAM']
   end
 
   def twitter_page_url
-    ENV["TWITTER"]
+    ENV['TWITTER']
   end
 
   def youtube_page_url
-    ENV["YOUTUBE"]
+    ENV['YOUTUBE']
   end
 
   def mixpanel_key
-    ENV["MIXPANEL_KEY"].to_json.html_safe
+    ENV['MIXPANEL_KEY'].to_json.html_safe
   end
 end

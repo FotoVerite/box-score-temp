@@ -61,7 +61,7 @@
           = link_to 'sign in', new_admin_session_path
           to view coach and contact information for this school.
 
-  - if can?(:manage, @school) && @unpublished_games.present?
+  - if can?(:manage, @school) && @unpublished_games
     .twelve.columns
       %h2 Unpublished Scores
       %ol

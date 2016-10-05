@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature 'creating and editing a team' do
   let(:admin) { create(:admin) }

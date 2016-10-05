@@ -1,14 +1,14 @@
 class AccountsController < ApplicationController
-  before_filter :authenticate_admin!
+  before_action :authenticate_admin!
 
   def edit
-    @admin = Admin.find(current_admin)
+    @admin = Admin.find(current_admin.id)
   end
 
   def update
     if params[:admin][:password].blank? && params[:admin][:password_confirmation].blank?
-      params[:admin].delete("password")
-      params[:admin].delete("password_confirmation")
+      params[:admin].delete('password')
+      params[:admin].delete('password_confirmation')
     end
 
     @admin = Admin.find(current_admin)

@@ -7,6 +7,6 @@ class AccountRequestsMailer < ActionMailer::Base
     email = account_request.spam? ? 'info+spam@hsboxscoresnyc.com' : 'info@hsboxscoresnyc.com'
 
     mail to: email,
-    subject: 'Account Request from HSBoxScoresNYC.com'
+         subject: 'Account Request from HSBoxScoresNYC.com'
   end
 end

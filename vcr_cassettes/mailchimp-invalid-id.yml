@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: post
-    uri: https://us11.api.mailchimp.com/2.0/lists/subscribe.json
+    uri: https://us14.api.mailchimp.com/2.0/lists/subscribe.json
     body:
       encoding: UTF-8
-      string: '{"id":"12345","email":{"email":"validemail@email.com"},"merge_vars":null,"email_type":"html","double_optin":true,"update_existing":false,"replace_interests":true,"send_welcome":false,"apikey":"d07979bc5bebb0afba1332975c934764-us11"}'
+      string: '{"id":"12345","email":{"email":"validemail@email.com"},"merge_vars":null,"email_type":"html","double_optin":true,"update_existing":false,"replace_interests":true,"send_welcome":false,"apikey":"4ea39f6ae8e917c3a956b7b81e9856ee-us14"}'
     headers:
       User-Agent:
-      - excon/0.45.3
+      - excon/0.52.0
       Content-Type:
       - application/json
   response:
@@ -25,15 +25,15 @@ http_interactions:
       X-Mailchimp-Api-Error-Code:
       - '200'
       Date:
-      - Tue, 23 Jun 2015 17:28:23 GMT
+      - Sun, 25 Sep 2016 05:50:12 GMT
       Connection:
       - close
       Set-Cookie:
       - _AVESTA_ENVIRONMENT=prod; path=/
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"status":"error","code":200,"name":"List_DoesNotExist","error":"Invalid
         MailChimp List ID: 12345"}'
     http_version: 
-  recorded_at: Tue, 23 Jun 2015 17:28:23 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Sun, 25 Sep 2016 05:50:12 GMT
+recorded_with: VCR 3.0.3

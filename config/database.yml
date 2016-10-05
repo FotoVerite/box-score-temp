@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: box_score_development
+  database: box_score_development_prod
   pool: 5
 
 test:
