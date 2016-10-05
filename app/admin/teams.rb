@@ -18,7 +18,7 @@ ActiveAdmin.register Team do
       f.input :coach_phone
       f.input :competitive_class, label: 'Class'
     end
-    f.buttons
+    f.actions
   end
 
   controller do

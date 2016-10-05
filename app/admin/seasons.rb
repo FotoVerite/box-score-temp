@@ -15,7 +15,7 @@ ActiveAdmin.register Season do
       f.input :start_date
       f.input :current
     end
-    f.buttons
+    f.actions
   end
 
   controller do

@@ -46,7 +46,7 @@
             - unless admin_signed_in?
               = link_to 'Add Your Team', '#', class: 'account-request'
             - if admin_signed_in? && current_admin.superadmin?
-              = link_to 'SuperAdmin Dashboard', '/superadmin'
+              = link_to 'SuperAdmin Dashboard', '/admin'
             - if admin_signed_in?
               = link_to 'Account', edit_account_path, class: 'edit-account'
               = link_to 'Sign Out', destroy_admin_session_path, method: :delete, id: 'logout'
@@ -67,7 +67,7 @@
                 = link_to 'Add Your Team', '#', class: 'account-request'
             - if admin_signed_in? && current_admin.superadmin?
               %li
-                = link_to 'SuperAdmin Dashboard', '/superadmin'
+                = link_to 'SuperAdmin Dashboard', '/admin'
             - if admin_signed_in?
               %li
                 = link_to 'Account', edit_account_path, class: 'edit-account'

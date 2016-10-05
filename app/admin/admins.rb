@@ -24,6 +24,20 @@ ActiveAdmin.register Admin do
         f.input :password_confirmation
       end
     end
-    f.buttons
+    f.actions
   end
+
+  controller do
+    def permitted_params
+      params.permit(admin: [
+        :school,
+        :email,
+        :first_name,
+        :last_name,
+        :password,
+        :password_confirmation
+      ])
+    end
+  end
+
 end
