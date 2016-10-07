@@ -12,7 +12,7 @@ CKEDITOR.editorConfig = function( config )
   config.fontSize_defaultLabel = '18px';
   config.autoGrow_maxHeight = 400;
   config.height = '30em';
-  config.extraPlugins = 'youtube';
+  config.extraPlugins = '';
 
   config.toolbar = [
     { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source'] },
@@ -21,7 +21,8 @@ CKEDITOR.editorConfig = function( config )
     { name: 'colors', items: [ 'TextColor' ] },
     { name: 'paragraph', groups: [ 'mode', 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ] },
     { name: 'links', items: [ 'Link', 'Unlink' ] },
-    { name: 'insert', items: ['Youtube'] }
+    { name: 'insert', items: ['Image'] }
+
   ];
 
   /* Filebrowser routes */
