@@ -11,5 +11,4 @@
 //= require totals
 //= require mixpanel
 //= require ckeditor/init
-//= require_tree .
 $(function(){ $(document).foundation(); });
