@@ -20,7 +20,6 @@
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag 'application'
     = csrf_meta_tags
-    = render 'shared/mixpanel'
 
   %body{ body_attributes }
     = render 'shared/flash_messages' if flash.any?

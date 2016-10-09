@@ -9,6 +9,5 @@
 //= require games
 //= require mobile-nav
 //= require totals
-//= require mixpanel
 //= require ckeditor/init
 $(function(){ $(document).foundation(); });

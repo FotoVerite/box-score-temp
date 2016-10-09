@@ -57,7 +57,7 @@ class Games
         teamOptions = ("<option value=\"#{team.id}\">#{team.display_name}</option>" for team in teams).join('')
         opponentSelect
           .html("<option value=\"\"></options>" + teamOptions)
-          .trigger('liszt:updated')
+          .trigger('chosen:updated')
 
   updateGameStats: (e) =>
     input = $(e.currentTarget)

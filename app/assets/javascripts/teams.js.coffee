@@ -40,7 +40,7 @@ class Teams
         season_options = ("<option value=\"#{season.id}\">#{season.year}</option>" for season in seasons).join('')
         season_select
           .html(season_options)
-          .trigger('liszt:updated')
+          .trigger('chosen:updated')
 
 
 @BoxScore ||= {}

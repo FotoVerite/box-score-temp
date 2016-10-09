@@ -43,7 +43,7 @@ class Filters
       success: (html) =>
         element
           .html($(html).find('select').html())
-          .trigger('liszt:updated')
+          .trigger('chosen:updated')
 
 
 @BoxScore ||= {}
