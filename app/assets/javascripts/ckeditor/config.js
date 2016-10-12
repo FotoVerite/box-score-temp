@@ -13,6 +13,7 @@ CKEDITOR.editorConfig = function( config )
   config.autoGrow_maxHeight = 400;
   config.height = '30em';
   config.extraPlugins = 'youtube';
+  config.allowedContent = true;
 
   config.toolbar = [
     { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source'] },
