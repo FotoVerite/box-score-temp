@@ -81,17 +81,22 @@ class GamesController < ApplicationController
   end
 
   def game_params
-    params.require(:game).permit(
-      :date,
-      :game_stats,
-      :home_away,
-      :opponent_id,
-      :neutral_site,
-      :player_game_stats_attributes,
-      :publish,
-      :published_at,
-      :season_id,
-      :team_id
-    )
+    params.require(:game).permit!
   end
+
+  #TODO figure out if it's easily douable to allow serialized data as a strong parameter
+  # def game_params
+  #   params.require(:game).permit(
+  #     :date,
+  #     {:game_stats => {:text => {period: {text: :text}}}},
+  #     :home_away,
+  #     :opponent_id,
+  #     :neutral_site,
+  #     {:player_game_stats_attributes => []},
+  #     :publish,
+  #     :published_at,
+  #     :season_id,
+  #     :team_id
+  #   )
+  # end
 end

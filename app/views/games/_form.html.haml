@@ -29,4 +29,3 @@
     %h2= team.display_name
     - team.sport.player_stat_groups.each do |player_stat_group|
       = render 'games/form/player_stat_group', game: game, team: team, player_stat_group: player_stat_group
-
