@@ -9,6 +9,6 @@ if ENV['S3_SECRET_ACCESS_KEY']
 
     }
   Paperclip::Attachment.default_options[:s3_protocol] = :https
-  Paperclip::Attachment.default_options[:url] = ':s3_domain_url'
+  Paperclip::Attachment.default_options[:url] = 's3-us-west-2.amazonaws.com/hsboxscoresnyc-staging'
   Paperclip::Attachment.default_options[:path] = '/:class/:attachment/:id_partition/:style/:filename'
 end
