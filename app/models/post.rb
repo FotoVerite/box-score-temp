@@ -19,6 +19,7 @@
 
 class Post < ActiveRecord::Base
   belongs_to :game
+  belongs_to :admin
   validates :body, presence: true
   validates :title, presence: true
   has_attached_file :header_image,

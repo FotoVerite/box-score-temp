@@ -28,6 +28,7 @@ class Admin < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :school
+  has_many :posts
 
   def name
     "#{first_name} #{last_name}" if first_name && last_name

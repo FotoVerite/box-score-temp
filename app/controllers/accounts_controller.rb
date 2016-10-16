@@ -12,11 +12,26 @@ class AccountsController < ApplicationController
     end
 
     @admin = Admin.find(current_admin)
-    if @admin.update_attributes params[:admin]
+    if @admin.update_attributes admin_params
       sign_in @admin, bypass: true
       redirect_to root_path
     else
       render action: :edit
     end
   end
+
+  private
+
+  def admin_params
+    params.require(:admin).permit(
+      :email,
+      :fist_name,
+      :last_name,
+      :password,
+      :password_confirmation
+    )
+  end
+
 end
+
+

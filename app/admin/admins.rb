@@ -17,6 +17,9 @@ ActiveAdmin.register Admin do
       f.input :email
       f.input :first_name
       f.input :last_name
+      if current_admin.superadmin?
+        f.input :sub_editor, label: "Sub Editor"
+      end
     end
     if f.object.new_record?
       f.inputs do
@@ -35,7 +38,8 @@ ActiveAdmin.register Admin do
         :first_name,
         :last_name,
         :password,
-        :password_confirmation
+        :password_confirmation,
+        :sub_editor
       ])
     end
   end

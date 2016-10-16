@@ -23,7 +23,6 @@
 
   %body{ body_attributes }
     = render 'shared/flash_messages' if flash.any?
-
     %header
       %marquee.games.marquee.show-for-large-up
         = render partial: 'games/game_summary', collection: @marquee_games, as: :game

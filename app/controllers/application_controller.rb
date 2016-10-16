@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
   helper_method :superadmin_signed_in?
 
   def authenticate_superadmin!
-    redirect_to '/' unless superadmin_signed_in?
+    redirect_to '/' unless superadmin_signed_in? || current_admin.try(:sub_editor?)
   end
 
   def events_to_track
