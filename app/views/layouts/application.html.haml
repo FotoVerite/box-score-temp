@@ -80,6 +80,8 @@
         = render 'shared/admin_menu'
       .mobile-twelve.nine.columns
         = yield
+      .mobile-twelve.three.columns
+        %ins{:class => "adsbygoogle", style: "display:block;width:270px;height:270px;margin-top:14px;", 'data-ad-client': "ca-pub-7880794362125914", 'data-ad-slot': "5427152983"}
       .mobile-twelve.three.columns.twitter-feed.hide-for-small
         %a.twitter-timeline{"data-widget-id" => "386209842722914304",
           "data-chrome" => "transparent",
@@ -119,8 +121,10 @@
   = render 'shared/coming_soon_message'
 
   %script{ src: "https://apis.google.com/js/platform.js", async: true, defer: true }
+  %script{ src: "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", async: true, defer: true }
 
   :javascript
+    (adsbygoogle = window.adsbygoogle || []).push({});
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
   = render 'shared/google_analytics'
