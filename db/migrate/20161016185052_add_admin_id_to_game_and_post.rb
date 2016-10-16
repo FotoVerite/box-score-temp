@@ -1,6 +1,6 @@
 class AddAdminIdToGameAndPost < ActiveRecord::Migration[5.0]
   def up
-    if column_exists?(:games, :admin_id)
+    unless column_exists?(:games, :admin_id)
       add_column :games, :admin_id, :integer
       add_column :posts, :admin_id, :integer
       add_index :games, :admin_id
