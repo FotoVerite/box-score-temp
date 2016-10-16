@@ -34,6 +34,7 @@ ActiveAdmin.register Admin do
     def permitted_params
       params.permit(admin: [
         :school,
+        :school_id,
         :email,
         :first_name,
         :last_name,
