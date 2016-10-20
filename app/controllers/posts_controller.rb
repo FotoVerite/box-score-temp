@@ -1,3 +1,4 @@
+
 class PostsController < ApplicationController
   before_action :authenticate_superadmin!, except: [:index, :show]
 
@@ -11,6 +12,8 @@ class PostsController < ApplicationController
 
   def show
     post
+    @meta_description = ActionController::Base.helpers.strip_tags(@post.body)
+.truncate(160)
   end
 
   def new
