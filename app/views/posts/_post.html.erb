@@ -11,6 +11,10 @@
         <%= post.excerpt %>
         <%= link_to "Read more", post, class: "read-more" %>
       <p>
+        <% if post.game.present? %>
+          <%= render 'games/game_summary', game: post.game %>
+          <%= link_to 'Box Score', game_path(post.game), class: 'box-score' %>
+        <% end %>
     </div>
     <%= render 'admin_actions', post: post %>
   </div>

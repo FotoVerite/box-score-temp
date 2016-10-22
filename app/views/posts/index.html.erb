@@ -11,6 +11,10 @@
             <div class="post-body">
               <%= truncate_html(@first_post.body, length: 500, omission: " " + link_to("Read more", @first_post, class: "read-more")) %>
             </div>
+            <% if @first_post.game.present? %>
+              <%= render 'games/game_summary', game: @first_post.game %>
+              <%= link_to 'Box Score', game_path(@first_post.game), class: 'box-score' %>
+            <% end %>
           </div>
           <%= render 'admin_actions', post: @first_post %>
         </div>
