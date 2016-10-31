@@ -120,7 +120,7 @@ body {
     border: 0;
     text-indent: 200%;
     overflow: hidden;
-    background: rgba(255,255,255,.8) url('hamburger.png') center no-repeat;
+    background: rgba(255,255,255,.8) image-url('hamburger.png') center no-repeat;
     border: 1px solid #ddd;
     border-radius: 3px;
     background-size: 80%;
@@ -183,6 +183,15 @@ body {
     @media only screen and (max-width: 767px) {
       margin-right: 1em;
     }
+  }
+}
+ul.social-nav {
+  list-style-type: none;
+  padding-top: .45em;
+  li {
+    padding: 1em;
+    display: inline;
+    width:40px;
   }
 }
 

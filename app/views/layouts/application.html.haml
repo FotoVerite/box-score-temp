@@ -37,7 +37,7 @@
         .show-for-small.mobile.mobile-twelve
           %button.toggle
             toggle
-          %div
+          %div{style:"overflow:hidden;"}
             = link_to 'Posts', posts_path
             = link_to 'Games', games_path
             = link_to 'About Us', '/about-us'
@@ -130,6 +130,7 @@
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
   :javascript
-    window.cookieconsent_options = {"message":"This website uses cookies to personalize content and ads, to provide social media features and to analyze our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information you’ve provided to them or they’ve collected from your use of their services.","theme":"dark-top"};
+    var message = "This website uses cookies to analyze our visitor traffic and to personalize content and ads, <a href=/privacy-policy>Learn More</a>."
+    window.cookieconsent_options = {"message": message, "theme":"dark-top"};
 
   = render 'shared/google_analytics'
