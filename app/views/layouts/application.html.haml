@@ -130,7 +130,8 @@
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
   :javascript
-    var message = "This website uses cookies to analyze our visitor traffic and to personalize content and ads, <a href=/privacy-policy>Learn More</a>."
-    window.cookieconsent_options = {"message": message, "theme":"dark-top"};
+    var message = "This website uses cookies to analyze our visitor traffic and to personalize content and ads."
+    window.cookieconsent_options = {"message": message, "theme":"dark-top", "link":"/privacy-policy","theme":"dark-top"};
 
   = render 'shared/google_analytics'
+
