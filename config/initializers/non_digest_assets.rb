@@ -1,1 +1,1 @@
-#NonStupidDigestAssets.whitelist += [/ckeditor\/.*/]
+NonStupidDigestAssets.whitelist += [/ckeditor\/.*/]
