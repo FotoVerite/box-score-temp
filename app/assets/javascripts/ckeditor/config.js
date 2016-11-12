@@ -10,7 +10,7 @@ CKEDITOR.editorConfig = function( config )
   // config.uiColor = '#AADC6E';
 
   config.fontSize_defaultLabel = '18px';
-  config.autoGrow_maxHeight = 400;
+  config.autoGrow_maxHeight = 401;
   config.height = '30em';
   config.extraPlugins = 'youtube,embed'
   config.allowedContent = true;
