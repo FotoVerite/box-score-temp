@@ -55,6 +55,7 @@ gem 'maruku'
 gem 'httparty', require: false
 gem 'netrc', require: false
 gem 'rendezvous', require: false
+gem "non-stupid-digest-assets"
 
 group :staging, :production do
   gem 'rails_12factor'
@@ -65,7 +66,6 @@ group :staging, :production do
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'rspec-rails'
   gem 'pry'
-  gem "non-stupid-digest-assets"
 end
 
 group :development, :test do
