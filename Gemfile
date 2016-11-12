@@ -65,6 +65,7 @@ group :staging, :production do
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'rspec-rails'
   gem 'pry'
+  gem "non-stupid-digest-assets"
 end
 
 group :development, :test do
