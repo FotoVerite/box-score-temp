@@ -21,15 +21,10 @@ ActiveAdmin.register Season do
   controller do
     def permitted_params
       params.permit(season: [
-        :address_1,
-        :address_2,
-        :athletic_director_email,
-        :athletic_director_name,
-        :athletic_director_phone,
-        :assn_id,
-        :mascot,
-        :name,
-        :short_name
+        :year,
+        :sport_id,
+        :start_date,
+        :current
       ])
     end
   end
