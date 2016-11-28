@@ -9,6 +9,7 @@ class Teams
 
   removeRow: ->
     $(this).closest('tr').remove()
+    return false
 
   movePlayerToRoster: ->
     event.preventDefault()

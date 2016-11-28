@@ -51,6 +51,8 @@
             = f.input :middle_initial, label: 'Initial'
           .five.columns
             = f.input :last_name
+            = f.hidden_field :school_id, value: @team.school_id
+            = hidden_field_tag "player[team_ids][]", @team.id
         .row
           .twelve.columns
             = f.button :submit, 'Create and Add to Roster', class: 'tiny add-player'

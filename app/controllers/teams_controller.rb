@@ -79,7 +79,8 @@ class TeamsController < ApplicationController
       :player_ids,
       :season_id,
       :school_id,
-      :sport_id
+      :sport_id,
+     { :player_ids => []}
     )
   end
 end
