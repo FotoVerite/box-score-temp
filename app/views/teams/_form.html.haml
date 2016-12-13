@@ -29,9 +29,6 @@
         = f.input :coach_phone, label: 'Phone number'
 
       = f.button :submit, disable_with: 'Updating...', id: 'update-team'
-      - unless @team.new_record?
-        = link_to 'Delete Team', @team, method: :delete, class: 'tiny alert button delete-team',
-          confirm: 'Permanently delete this team?'
 
   .six.columns
     = form_tag players_path, method: :get, remote: true do |f|

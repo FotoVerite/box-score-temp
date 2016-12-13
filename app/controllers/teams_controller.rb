@@ -61,12 +61,6 @@ class TeamsController < ApplicationController
     end
   end
 
-  def destroy
-    @team = current_school.teams.find params[:id]
-    @team.destroy if @team
-    redirect_to teams_path
-  end
-
   private
 
   def team_params

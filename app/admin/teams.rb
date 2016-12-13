@@ -1,4 +1,6 @@
 ActiveAdmin.register Team do
+  actions :all, except: [:destroy]
+
   index do
     column :id
     column :display_name
