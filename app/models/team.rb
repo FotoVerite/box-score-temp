@@ -34,7 +34,7 @@ class Team < ActiveRecord::Base
   has_many :games, dependent: :destroy
   has_many :team_players
 
-  has_many :players, -> { order 'players.last_name, players.first_name' }, through: :team_players
+  has_many :players, -> { order 'players.last_name, players.first_name' }, through: :team_players, dependent: :destroy
 
   scope :ordered, -> { joins(:school).order('schools.name') }
 
@@ -59,7 +59,9 @@ class Team < ActiveRecord::Base
   end
 
   def player_game_stats(game, player_stat_group)
-    game.player_game_stats.select { |s| s.player.team_ids.include?(id) && s.player_stat_group == player_stat_group.id }
+    game.player_game_stats.select { |s| s.player.team_players.
+      with_deleted.map(&:team_id).include?(id) &&
+      s.player_stat_group == player_stat_group.id }
   end
 
   def as_json(options = nil)

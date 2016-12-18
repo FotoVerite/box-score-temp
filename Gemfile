@@ -50,6 +50,7 @@ gem 'jquery-ui-rails'
 gem 'compass-rails'
 gem 'foundation-rails'
 gem 'maruku'
+gem 'paranoia'
 
 # deployment
 gem 'httparty', require: false

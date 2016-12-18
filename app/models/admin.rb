@@ -30,7 +30,7 @@ class Admin < ActiveRecord::Base
   belongs_to :school
   has_many :posts
 
-  validates :school_id, :presence => true
+  validates :school, :presence => true
 
   def name
     "#{first_name} #{last_name}" if first_name && last_name

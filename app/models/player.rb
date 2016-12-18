@@ -12,6 +12,7 @@
 #
 
 class Player < ActiveRecord::Base
+
   # attr_accessor :first_name, :last_name, :middle_initial
 
   validates_presence_of :first_name, :last_name

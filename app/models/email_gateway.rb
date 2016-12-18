@@ -27,7 +27,7 @@ class EmailGateway
   end
 
   def newsletter_list
-    @_newsletter_list ||= mailer.lists.list['data'].find do |list|
+    @_newsletter_list ||= @mailer.lists.list['data'].find do |list|
       list['name'] = 'Newsletter'
     end
   end

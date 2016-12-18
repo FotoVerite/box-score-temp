@@ -18,7 +18,7 @@
 
 FactoryGirl.define do
   factory :school do
-    sequence(:name) { |n| "school-#{n}" }
+    sequence(:name) { |n| "school2-#{n}" }
     sequence(:mascot) { |n| "mascot-#{n}" }
 
     after(:build) do |school, _evaluator|
