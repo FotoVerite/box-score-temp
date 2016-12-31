@@ -55,19 +55,6 @@ body.box-score.games {
   }
 }
 
-.games.marquee {
-  border: 0;
-  table {
-    margin-bottom: 0;
-    display: inline-block;
-  }
-
-  h1 {
-    display: inline-block;
-    color: $blue;
-  }
-}
-
 body.box-score.games.new,
 body.box-score.games.edit {
   fieldset {

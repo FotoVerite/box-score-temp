@@ -1,13 +1,8 @@
 class ApplicationController < ActionController::Base
-  before_action :marquee_games
   protect_from_forgery
 
   rescue_from CanCan::AccessDenied do |_exception|
     render plain: 'Unauthorized', status: :unauthorized
-  end
-
-  def marquee_games
-    @marquee_games = Game.last(10)
   end
 
   def after_sign_in_path_for(admin)

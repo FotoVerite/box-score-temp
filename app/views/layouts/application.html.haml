@@ -25,8 +25,6 @@
   %body{ body_attributes }
     = render 'shared/flash_messages' if flash.any?
     %header
-      %marquee.games.marquee.show-for-large-up
-        = render partial: 'games/game_summary', collection: @marquee_games, as: :game
       %nav.twelve.columns.top-nav
         .left.mobile-twelve.left-nav.hide-for-small
           = link_to image_tag('hsboxscore-logo-small.png'), root_path
