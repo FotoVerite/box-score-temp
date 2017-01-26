@@ -77,9 +77,9 @@
     .row
       -if admin_signed_in?
         = render 'shared/admin_menu'
-      .six.columns
+      .mobile-twelve.nine.columns
         .social
-          - if facebook_page_url.present?
+          - if !facebook_page_url.present?
             = link_to image_tag("facebook.png"), facebook_page_url, target: '_blank', class: 'facebook-js'
           - if instagram_page_url.present?
             = link_to image_tag("instagram.png"), instagram_page_url, target: '_blank', class: 'instagram-js'
@@ -87,10 +87,13 @@
             = link_to image_tag("twitter.png"), twitter_page_url, target: '_blank', class: 'twitter-js'
           - if youtube_page_url.present?
             = link_to image_tag("youtube.png"), youtube_page_url, target: '_blank', class: 'youtube-js'
+
+      .mobile-twelve.three.columns.twitter-feed.hide-for-small
+        = link_to 'Subscribe to HSBox Scores?', '#subscribe', class: 'button hide-for-small subscribe-button'
+      .six.columns
+        = link_to 'Subscribe to HSBox Scores?', '#subscribe', class: 'button show-for-small'
       .mobile-twelve.nine.columns
         = yield
-      .mobile-twelve.three.columns
-        %ins{:class => "adsbygoogle", style: "display:inline-block;width:270px;height:270px", 'data-ad-client':"ca-pub-7880794362125914", 'data-ad-slot': "5287552182"}
       .mobile-twelve.three.columns.twitter-feed.hide-for-small
         %a.twitter-timeline{"data-widget-id" => "386209842722914304",
           "data-chrome" => "transparent",
@@ -102,7 +105,7 @@
       %footer.global.twelve.columns
         .row
           .six.columns
-            %p
+            %p#subscribe
               Subscribe to our newsletter
             = form_tag subscriptions_path, method: 'post' do
               = text_field_tag :email, nil, placeholder: "email"
