@@ -79,7 +79,7 @@
         = render 'shared/admin_menu'
       .mobile-twelve.nine.columns
         .social
-          - if !facebook_page_url.present?
+          - if facebook_page_url.present?
             = link_to image_tag("facebook.png"), facebook_page_url, target: '_blank', class: 'facebook-js'
           - if instagram_page_url.present?
             = link_to image_tag("instagram.png"), instagram_page_url, target: '_blank', class: 'instagram-js'
@@ -89,9 +89,9 @@
             = link_to image_tag("youtube.png"), youtube_page_url, target: '_blank', class: 'youtube-js'
 
       .mobile-twelve.three.columns.twitter-feed.hide-for-small
-        = link_to 'Subscribe to HSBox Scores?', '#subscribe', class: 'button hide-for-small subscribe-button'
+        = link_to 'Subscribe to our newsletter', '#subscribe', class: 'button hide-for-small subscribe-button'
       .six.columns
-        = link_to 'Subscribe to HSBox Scores?', '#subscribe', class: 'button show-for-small'
+        = link_to 'Subscribe to our newsletter', '#subscribe', class: 'button show-for-small'
       .mobile-twelve.nine.columns
         = yield
       .mobile-twelve.three.columns.twitter-feed.hide-for-small
