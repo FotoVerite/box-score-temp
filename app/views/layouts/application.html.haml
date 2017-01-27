@@ -106,7 +106,8 @@
         .row
           .six.columns
             %p#subscribe
-              Subscribe to our newsletter
+              %b
+               Subscribe to our newsletter
             = form_tag subscriptions_path, method: 'post' do
               = text_field_tag :email, nil, placeholder: "email"
               = submit_tag "Subscribe", class: 'button'
