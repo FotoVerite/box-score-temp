@@ -55,7 +55,7 @@ RSpec.configure do |config|
     Warden.test_reset!
   end
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.include ::Rails::Controller::Testing::TestProcess, type: :controller
   config.include ::Rails::Controller::Testing::Integration, type: :controller
   # If you're not using ActiveRecord, or you'd prefer not to run each of your

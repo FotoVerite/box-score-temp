@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :sport do
     id { 'test-sport' }
     sport_type { 'testsport' }

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :game_stats do
     q1_points { rand(20).to_s }
     q2_points { rand(20).to_s }

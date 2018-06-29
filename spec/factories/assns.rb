@@ -8,7 +8,7 @@
 #  updated_at :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :assn do
     sequence(:name) { |n| "Association-#{n}" }
   end

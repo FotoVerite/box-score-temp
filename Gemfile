@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby "2.3.0"
+ruby "2.5.1"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
+gem 'rails', '~> 5.2.0'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
@@ -38,7 +38,7 @@ gem 'mailchimp-api', require: 'mailchimp'
 gem 'ransack'
 gem 'modernizr-rails'
 gem 'newrelic_rpm'
-gem 'paperclip', '4.3'
+gem 'paperclip'
 gem 'pg'
 gem 'redcarpet'
 gem 'simple_form'
@@ -65,7 +65,6 @@ group :staging, :production do
   gem 'launchy'
   # gem 'quiet_assets'
   gem 'rb-fsevent', '~> 0.9.1'
-  gem 'rspec-rails'
   gem 'pry'
 end
 
@@ -73,12 +72,14 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'faker'
+  gem 'dotenv-rails'
+  gem 'rspec-rails'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'
-  gem 'listen', '~> 3.0.5'
+  gem 'listen'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -87,7 +88,7 @@ end
 group :test do
   gem 'rails-controller-testing'
   gem 'database_cleaner'
-  gem 'factory_girl_rails', '~> 4.0'
+  gem 'factory_bot_rails'
   gem 'poltergeist'
   gem 'shoulda-matchers'
   gem 'turnip'

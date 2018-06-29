@@ -11,7 +11,7 @@
 #  position   :integer
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :player_game_stat do
     player
     game

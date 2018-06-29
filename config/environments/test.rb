@@ -42,4 +42,3 @@ Rails.application.configure do
 end
 
 Rails.application.routes.default_url_options[:host] = 'test.com'
-ENV['MAILCHIMP_API_KEY'] = '4ea39f6ae8e917c3a956b7b81e9856ee-us14'

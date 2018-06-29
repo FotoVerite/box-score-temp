@@ -6,7 +6,7 @@ describe AccountRequestsController do
       ActionMailer::Base.delivery_method = :test
       AccountRequest.any_instance.should_receive(:spam?).twice { true }
 
-      post :create, params: { account_request: (FactoryGirl.attributes_for :account_request) }
+      post :create, params: { account_request: (FactoryBot.attributes_for :account_request) }
 
       email = ActionMailer::Base.deliveries.last
       expect(email.to).to eq ['info+spam@hsboxscoresnyc.com']
@@ -18,7 +18,7 @@ describe AccountRequestsController do
     ActionMailer::Base.delivery_method = :test
     AccountRequest.any_instance.should_receive(:spam?).twice { false }
 
-    post :create, params: { account_request: (FactoryGirl.attributes_for :account_request) }
+    post :create, params: { account_request: (FactoryBot.attributes_for :account_request) }
 
     email = ActionMailer::Base.deliveries.last
     expect(email.to).to eq ['info@hsboxscoresnyc.com']

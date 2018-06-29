@@ -16,6 +16,7 @@ rerun.txt
 pickle-email-*.html
 .rbenv-vars
 .envrc
+.env
 
 
 # Ignore application configuration

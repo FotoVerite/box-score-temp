@@ -2,22 +2,22 @@
 http_interactions:
 - request:
     method: post
-    uri: https://us14.api.mailchimp.com/2.0/lists/subscribe.json
+    uri: https://us2.api.mailchimp.com/2.0/lists/subscribe.json
     body:
       encoding: UTF-8
-      string: '{"id":"12345","email":{"email":"validemail@email.com"},"merge_vars":null,"email_type":"html","double_optin":true,"update_existing":false,"replace_interests":true,"send_welcome":false,"apikey":"4ea39f6ae8e917c3a956b7b81e9856ee-us14"}'
+      string: '{"id":"12345","email":{"email":"validemail@email.com"},"merge_vars":null,"email_type":"html","double_optin":true,"update_existing":false,"replace_interests":true,"send_welcome":false,"apikey":"753c14ec887cdebbb8afcb578b695684-us2"}'
     headers:
       User-Agent:
-      - excon/0.52.0
+      - excon/0.62.0
       Content-Type:
       - application/json
   response:
     status:
       code: 500
-      message: ''
+      message: Internal Server Error
     headers:
       Server:
-      - nginx
+      - openresty
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -25,15 +25,16 @@ http_interactions:
       X-Mailchimp-Api-Error-Code:
       - '200'
       Date:
-      - Sun, 25 Sep 2016 05:50:12 GMT
+      - Fri, 29 Jun 2018 16:34:44 GMT
       Connection:
       - close
       Set-Cookie:
-      - _AVESTA_ENVIRONMENT=prod; path=/
+      - _AVESTA_ENVIRONMENT=prod; path=/, _mcid=1.937bd7463834acd62efef9126ccd5607;
+        expires=Sat, 29-Jun-2019 16:34:44 GMT; Max-Age=31536000; path=/; domain=.mailchimp.com
     body:
       encoding: ASCII-8BIT
       string: '{"status":"error","code":200,"name":"List_DoesNotExist","error":"Invalid
         MailChimp List ID: 12345"}'
     http_version: 
-  recorded_at: Sun, 25 Sep 2016 05:50:12 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Fri, 29 Jun 2018 16:34:44 GMT
+recorded_with: VCR 4.0.0

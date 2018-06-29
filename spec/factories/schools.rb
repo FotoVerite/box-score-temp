@@ -16,14 +16,14 @@
 #  short_name              :string(255)
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :school do
     sequence(:name) { |n| "school2-#{n}" }
     sequence(:mascot) { |n| "mascot-#{n}" }
 
     after(:build) do |school, _evaluator|
       unless school.admins.any?
-        school.admins << FactoryGirl.build(:admin, school: school)
+        school.admins << FactoryBot.build(:admin, school: school)
       end
     end
   end

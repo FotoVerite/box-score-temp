@@ -16,7 +16,7 @@
 #  message            :text
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :account_request do
     school_name { 'New Applicant School' }
     applicant_name { 'John Doe' }

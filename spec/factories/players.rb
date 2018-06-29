@@ -11,7 +11,7 @@
 #  middle_initial :string(255)
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :player do
     sequence(:first_name) { |n| "first-name-#{n}" }
     sequence(:last_name) { |n| "last-name-#{n}" }

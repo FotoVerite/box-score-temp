@@ -11,7 +11,7 @@
 #  current    :boolean          default(FALSE)
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :season do
     start_date { '2012-09-01' }
     year { '2012-2013' }

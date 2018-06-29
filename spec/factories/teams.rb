@@ -15,7 +15,7 @@
 #  competitive_class :string(255)
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :team do
     league
     school

@@ -16,16 +16,16 @@
 #  admin_id     :integer
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :game do
     team
-    opponent { |g| FactoryGirl.create(:team, league: g.team.league) }
+    opponent { |g| FactoryBot.create(:team, league: g.team.league) }
     date { Date.today }
     home_away { 'home' }
     season
 
     trait :published do
-      published_at Time.now
+      published_at Time.now - 1.hour
     end
   end
 end

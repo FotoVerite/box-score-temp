@@ -19,7 +19,7 @@ describe EmailGateway do
       end
 
       expect(mailer.success?).to eq false
-      expect(mailer.errors).to include 'This email address looks fake or invalid. Please enter a real email address'
+      expect(mailer.errors).to include 'This email address looks fake or invalid. Please enter a real email address.'
     end
 
     it 'adds errors on an invalid list id' do

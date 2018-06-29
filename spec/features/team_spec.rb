@@ -21,7 +21,6 @@ feature 'creating and editing a team' do
     page.select 'Boys Basketball', from: 'Sport'
     page.select '2012-2013', from: 'Season'
     click_on('Create Team')
-
     expect(page).to have_css('a.delete-team')
   end
 end

@@ -2,37 +2,78 @@
 http_interactions:
 - request:
     method: post
-    uri: https://us14.api.mailchimp.com/2.0/lists/list.json
+    uri: https://us2.api.mailchimp.com/2.0/lists/list.json
     body:
       encoding: UTF-8
-      string: '{"filters":[],"start":0,"limit":25,"sort_field":"created","sort_dir":"DESC","apikey":"4ea39f6ae8e917c3a956b7b81e9856ee-us14"}'
+      string: '{"filters":[],"start":0,"limit":25,"sort_field":"created","sort_dir":"DESC","apikey":"753c14ec887cdebbb8afcb578b695684-us2"}'
     headers:
       User-Agent:
-      - excon/0.52.0
+      - excon/0.62.0
       Content-Type:
       - application/json
   response:
     status:
       code: 200
-      message: ''
+      message: OK
     headers:
       Server:
-      - nginx
+      - openresty
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '33'
+      - '1832'
       Vary:
       - Accept-Encoding
       Date:
-      - Sun, 25 Sep 2016 05:50:11 GMT
+      - Fri, 29 Jun 2018 16:34:44 GMT
       Connection:
       - keep-alive
       Set-Cookie:
-      - _AVESTA_ENVIRONMENT=prod; path=/
+      - _AVESTA_ENVIRONMENT=prod; path=/, _mcid=1.cd748e86390b1f0475d2ab5491412add;
+        expires=Sat, 29-Jun-2019 16:34:44 GMT; Max-Age=31536000; path=/; domain=.mailchimp.com
     body:
       encoding: ASCII-8BIT
-      string: '{"total":0,"data":[],"errors":[]}'
+      string: '{"total":2,"data":[{"id":"3529ffcc98","web_id":792893,"name":"Newslist","date_created":"2018-06-29
+        16:33:15","email_type_option":false,"use_awesomebar":true,"default_from_name":"Newslist","default_from_email":"mzbphoto@gmail.com","default_subject":"","default_language":"en","list_rating":0,"subscribe_url_short":"http:\/\/eepurl.com\/dzFKaz","subscribe_url_long":"https:\/\/hackadactyl.us2.list-manage.com\/subscribe?u=d3bc8799bbc53fc459843f077&id=3529ffcc98","beamer_address":"us2-22f620a93d-a621e7cf66@inbound.mailchimp.com","visibility":"pub","stats":{"member_count":0,"unsubscribe_count":0,"cleaned_count":0,"member_count_since_send":0,"unsubscribe_count_since_send":0,"cleaned_count_since_send":0,"campaign_count":0,"grouping_count":0,"group_count":0,"merge_var_count":4,"avg_sub_rate":0,"avg_unsub_rate":0,"target_sub_rate":0,"open_rate":0,"click_rate":0,"date_last_campaign":null},"modules":[]},{"id":"12adf2590c","web_id":396389,"name":"Client
+        Leads","date_created":"2011-01-01 00:34:32","email_type_option":false,"use_awesomebar":false,"default_from_name":"Hackadactyl","default_from_email":"info@hackadactyl.com","default_subject":"Welcome
+        to Hackadactyl","default_language":"en","list_rating":0,"subscribe_url_short":"http:\/\/eepurl.com\/dzFKaD","subscribe_url_long":"https:\/\/hackadactyl.us2.list-manage.com\/subscribe?u=d3bc8799bbc53fc459843f077&id=12adf2590c","beamer_address":"us2-22f620a93d-326db2df0c@inbound.mailchimp.com","visibility":"pub","stats":{"member_count":0,"unsubscribe_count":0,"cleaned_count":0,"member_count_since_send":0,"unsubscribe_count_since_send":0,"cleaned_count_since_send":0,"campaign_count":0,"grouping_count":0,"group_count":0,"merge_var_count":2,"avg_sub_rate":0,"avg_unsub_rate":0,"target_sub_rate":0,"open_rate":0,"click_rate":0,"date_last_campaign":null},"modules":[]}],"errors":[]}'
     http_version: 
-  recorded_at: Sun, 25 Sep 2016 05:50:11 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Fri, 29 Jun 2018 16:34:44 GMT
+- request:
+    method: post
+    uri: https://us2.api.mailchimp.com/2.0/lists/subscribe.json
+    body:
+      encoding: UTF-8
+      string: '{"id":"3529ffcc98","email":{"email":"user@example.com"},"merge_vars":null,"email_type":"html","double_optin":true,"update_existing":false,"replace_interests":true,"send_welcome":false,"apikey":"753c14ec887cdebbb8afcb578b695684-us2"}'
+    headers:
+      User-Agent:
+      - excon/0.62.0
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Server:
+      - openresty
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '142'
+      X-Mailchimp-Api-Error-Code:
+      - "-100"
+      Date:
+      - Fri, 29 Jun 2018 16:34:44 GMT
+      Connection:
+      - close
+      Set-Cookie:
+      - _AVESTA_ENVIRONMENT=prod; path=/, _mcid=1.31ad3113df7a9abec9d73e8a022457df;
+        expires=Sat, 29-Jun-2019 16:34:44 GMT; Max-Age=31536000; path=/; domain=.mailchimp.com
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"error","code":-100,"name":"ValidationError","error":"This
+        email address looks fake or invalid. Please enter a real email address."}'
+    http_version: 
+  recorded_at: Fri, 29 Jun 2018 16:34:44 GMT
+recorded_with: VCR 4.0.0

@@ -21,12 +21,12 @@
 #  sub_admin              :boolean          default(TRUE)
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :admin do
     school
-    email { FactoryGirl.generate(:email) }
-    first_name { FactoryGirl.generate(:first_name) }
-    last_name { FactoryGirl.generate(:last_name) }
+    email { FactoryBot.generate(:email) }
+    first_name { FactoryBot.generate(:first_name) }
+    last_name { FactoryBot.generate(:last_name) }
     password 'password'
 
     trait :superadmin do

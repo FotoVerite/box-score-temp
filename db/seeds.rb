@@ -130,8 +130,8 @@ end
 end
 
 100.times do
-  FactoryGirl.create(:post)
+  FactoryBot.create(:post)
 end
 
-FactoryGirl.create(:admin, :superadmin, email: 'user@wizarddevelopment.com', password: 'password')
+FactoryBot.create(:admin, :superadmin, email: 'user@wizarddevelopment.com', password: 'password')
 Admin.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
