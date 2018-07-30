@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def index
     if Post.any?
       @first_post = Post.last
-      @posts = Post.where('id != ?', @first_post.id)
+      @posts = Post.all
                    .order('created_at desc').page params[:page]
     end
   end
