@@ -1,10 +1,8 @@
-<div class="row post-container">
-  <div class="mobile-twelve twelve columns post-image">
+
+  <div class="mobile-twelve four columns">
     <% if post.header_image.exists? %>
       <%= link_to image_tag(post.header_image.url), post_path(post) %>
     <% end %>
-  </div>
-  <div class="mobile-twelve twelve columns">
     <h1 class="post-title"><%= link_to post.title, post %></h1>
     <div class="post-body">
       <p>
@@ -18,4 +16,3 @@
     </div>
     <%= render 'admin_actions', post: post %>
   </div>
-</div>
