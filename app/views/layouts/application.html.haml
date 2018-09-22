@@ -73,10 +73,12 @@
             - else
               %li
                 = link_to("Sign In", new_admin_session_path, id: 'main-sign-in')
-
+        -if admin_signed_in?
+          = render 'shared/admin_menu'
+    .fluid
+      = yield :fluid
     .row
-      -if admin_signed_in?
-        = render 'shared/admin_menu'
+     
       .mobile-twelve.nine.columns
         .social
           - if facebook_page_url.present?
@@ -87,37 +89,30 @@
             = link_to image_tag("twitter.png"), twitter_page_url, target: '_blank', class: 'twitter-js'
           - if youtube_page_url.present?
             = link_to image_tag("youtube.png"), youtube_page_url, target: '_blank', class: 'youtube-js'
-
-      .mobile-twelve.three.columns.twitter-feed.hide-for-small
-        = link_to 'Subscribe to our newsletter', '#subscribe', class: 'button hide-for-small subscribe-button'
-      .six.columns
-        = link_to 'Subscribe to our newsletter', '#subscribe', class: 'button show-for-small'
-      .mobile-twelve.nine.columns
+      .mobile-twelve.twelve.columns
         = yield
-      .mobile-twelve.three.columns.twitter-feed.hide-for-small
-        %a.twitter-timeline{"data-widget-id" => "386209842722914304",
-          "data-chrome" => "transparent",
-          "data-theme" => "light",
-          href: "https://twitter.com/hsboxscoresnyc",
-          height: "1400"} Tweets by @hsboxscoresnyc
+      / .mobile-twelve.three.columns.twitter-feed.hide-for-small
+      /   %a.twitter-timeline{"data-widget-id" => "386209842722914304",
+      /     "data-chrome" => "transparent",
+      /     "data-theme" => "light",
+      /     href: "https://twitter.com/hsboxscoresnyc",
+      /     height: "1400"} Tweets by @hsboxscoresnyc
 
-    .row
-      %footer.global.twelve.columns
-        .row
-          .six.columns
-            %p#subscribe
-              %b
-                Subscribe to our newsletter
-            = form_tag subscriptions_path, method: 'post' do
-              = text_field_tag :email, nil, placeholder: "email"
-              = submit_tag "Subscribe", class: 'button'
+    %footer.global.twelve.columns
+      .six.columns
+        %p#subscribe
+          %b
+            Subscribe to our newsletter
+        = form_tag subscriptions_path, method: 'post' do
+          = text_field_tag :email, nil, placeholder: "email"
+          = submit_tag "Subscribe", class: 'button'
 
-            %nav
-              %ul
-                %li= link_to 'Contact Us', '/contact-us'
-                %li= link_to 'Terms of Service', '/terms-of-service'
-                %li= link_to 'Privacy Policy', '/privacy-policy'
-            %p.copyright Copyright &copy; #{Date.current.stamp '1999'} HS Box Scores NYC, LLC. All rights reserved.
+        %nav
+          %ul
+            %li= link_to 'Contact Us', '/contact-us'
+            %li= link_to 'Terms of Service', '/terms-of-service'
+            %li= link_to 'Privacy Policy', '/privacy-policy'
+        %p.copyright Copyright &copy; #{Date.current.stamp '1999'} HS Box Scores NYC, LLC. All rights reserved.
 
   = render 'shared/request_form'
   = render 'shared/coming_soon_message'

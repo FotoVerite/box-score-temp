@@ -42,6 +42,10 @@ class Team < ActiveRecord::Base
     [school.try(:name) || '??? Missing School ???', sport.name].join(' ')
   end
 
+  def display_name_with_season
+    [school.try(:name) || '??? Missing School ???', sport.name, season].join(' ')
+  end
+
   def display_name_no_gender
     display_name.sub('Boys', '').sub('Girls', '')
   end
@@ -66,7 +70,7 @@ class Team < ActiveRecord::Base
 
   def as_json(options = nil)
     options ||= {}
-    options = options.merge(methods: [:school_name, :display_name])
+    options = options.merge(methods: [:school_name, :display_name, :display_name_with_season])
     super(options)
   end
 

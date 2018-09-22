@@ -18,7 +18,7 @@
 #  first_name             :string(255)
 #  last_name              :string(255)
 #  school_id              :integer
-#  sub_admin              :boolean          default(TRUE)
+#  sub_editor             :boolean          default(FALSE)
 #
 
 FactoryBot.define do

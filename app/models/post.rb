@@ -15,9 +15,13 @@
 #  header_image_updated_at   :datetime
 #  email                     :boolean          default(FALSE), not null
 #  admin_id                  :integer
+#  slug                      :string
 #
 
 class Post < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   belongs_to :game
   belongs_to :admin
   validates :body, presence: true
@@ -27,6 +31,8 @@ class Post < ActiveRecord::Base
   validates_attachment_content_type :header_image, content_type: /\Aimage\/.*\Z/
 
   paginates_per 12
+
+  scope :published?, -> {where("published_at < ?", Time.zone.now )}
 
   def excerpt
     !super.blank? ? super : stripped_body.try(:truncate, 200)

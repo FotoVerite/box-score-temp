@@ -3,6 +3,7 @@ FactoryBot.define do
     title Faker::Lorem.sentence
     body Faker::Lorem.paragraphs(2)
     excerpt Faker::Lorem.paragraph
+    published_at { Time.zone.now - 1.day}
     email false
 
     trait :with_image do

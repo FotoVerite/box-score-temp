@@ -1,11 +1,12 @@
-if ENV['S3_SECRET_ACCESS_KEY']
+credentials = Rails.application.credentials[Rails.env.to_sym]
+if credentials[:s3_access_key_id]
   Paperclip::Attachment.default_options[:storage] = :s3
-  Paperclip::Attachment.default_options[:s3_host_name] = ENV['S3_HOST_NAME']
+  Paperclip::Attachment.default_options[:s3_host_name] = credentials[:s3_host_name]
   Paperclip::Attachment.default_options[:s3_credentials] = {
-      bucket: ENV['S3_BUCKET'],
-      access_key_id: ENV['S3_ACCESS_KEY_ID'],
-      secret_access_key: ENV['S3_SECRET_ACCESS_KEY'],
-      s3_region: ENV['S3_REGION']
+      bucket: credentials[:s3_bucket],
+      access_key_id: credentials[:s3_access_key_id],
+      secret_access_key: credentials[:s3_secret_access_key],
+      s3_region: credentials[:s3_region]
     }
   Paperclip::Attachment.default_options[:s3_protocol] = :https
   Paperclip::Attachment.default_options[:url] = ':s3_domain_url'

@@ -12,6 +12,9 @@
       <%= f.label :title %>
       <%= f.text_field :title %>
 
+      <%= f.label :published_at %>
+      <%= f.date_field :published_at %>
+
       <%= f.label :game %>
       <%= f.collection_select :game_id, Game.all, :id, :title, { include_blank: true } %>
 

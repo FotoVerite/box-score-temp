@@ -15,6 +15,7 @@
 #  header_image_updated_at   :datetime
 #  email                     :boolean          default(FALSE), not null
 #  admin_id                  :integer
+#  slug                      :string
 #
 
 require 'rails_helper'

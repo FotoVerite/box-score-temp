@@ -54,7 +54,7 @@ class Games
 
     if teamId.length
       $.getJSON "/teams/#{teamId}/opponents", (teams) =>
-        teamOptions = ("<option value=\"#{team.id}\">#{team.display_name}</option>" for team in teams).join('')
+        teamOptions = ("<option value=\"#{team.id}\">#{team.display_name_with_season}</option>" for team in teams).join('')
         opponentSelect
           .html("<option value=\"\"></options>" + teamOptions)
           .trigger('chosen:updated')

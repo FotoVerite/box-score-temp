@@ -4,6 +4,7 @@ ActiveAdmin.register Post do
     column :title
     column :excerpt
     column :body
+    column :published_at
     column :created_at
     actions
   end

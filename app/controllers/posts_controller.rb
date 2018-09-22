@@ -3,17 +3,13 @@ class PostsController < ApplicationController
   before_action :authenticate_superadmin!, except: [:index, :show]
 
   def index
-    if Post.any?
-      @first_post = Post.last
-      @posts = Post.all
-                   .order('created_at desc').page params[:page]
-    end
+    @posts = Post.published?.order('created_at desc').paginate(page: params[:page], per_page: 16)
   end
 
   def show
     post
     @meta_description = ActionController::Base.helpers.strip_tags(@post.body)
-.truncate(160)
+.truncate(160) if @post
   end
 
   def new
@@ -53,7 +49,14 @@ class PostsController < ApplicationController
   private
 
   def post
-    @post ||= Post.find(params[:id])
+    if superadmin_signed_in?
+      @post = Post.friendly.find(params[:id])
+    elsif current_admin 
+      @post = Post.friendly.find(params[:id])
+      return render_404 unless post.admin_id === current_admin.try(:id)
+    else
+      @post ||= Post.published?.friendly.find(params[:id])
+    end
   end
 
   private

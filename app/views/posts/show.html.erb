@@ -12,6 +12,8 @@
           <%= image_tag @post.header_image.url %>
         <% end %>
         <h1 class="post-title"><%= @post.title %></h1>
+        <p class='datestamp'> <%= @post.published_at.strftime("%B %-1d, %Y") %> </p>
+        <hr />
         <% if @post.game.present? %>
           <%= render 'games/game_summary', game: @post.game %>
           <%= link_to 'Box Score', game_path(@post.game), class: 'box-score' %>

@@ -1,18 +1,34 @@
 
-  <div class="mobile-twelve four columns">
-    <% if post.header_image.exists? %>
-      <%= link_to image_tag(post.header_image.url), post_path(post) %>
-    <% end %>
-    <h1 class="post-title"><%= link_to post.title, post %></h1>
-    <div class="post-body">
-      <p>
-        <%= post.excerpt %><br />
-        <%= link_to "Read more", post, class: "read-more" %>
-      <p>
-        <% if post.game.present? %>
-          <%= render 'games/game_summary', game: post.game %>
-          <%= link_to 'Box Score', game_path(post.game), class: 'box-score' %>
+  <div class="three columns hide-for-mobile hide-for-small hide-for-medium">
+    <div class='post-div'>
+      <% if post.header_image.exists? %>
+          <%= link_to image_tag(post.header_image.url, class: 'post-header-image'), post_path(post) %>
         <% end %>
+        <h1 class="post-title"><%= link_to post.title, post %></h1>
+        <p class='datestamp'> <%= post.published_at.strftime("%B %-1d, %Y") %> </p>
+        <div class="post-body">
+          <p>
+            <%= post.excerpt %><br />
+            <%= link_to "Read more", post, class: "read-more" %>
+          <p>
+        </div>
+        <%= render 'admin_actions', post: post %>
     </div>
-    <%= render 'admin_actions', post: post %>
+  </div>
+
+  <div class="post-fix twelve columns hide-for-large">
+    <div class='post-div'>
+      <% if post.header_image.exists? %>
+          <%= link_to image_tag(post.header_image.url, class: 'post-header-image'), post_path(post) %>
+        <% end %>
+        <h1 class="post-title"><%= link_to post.title, post %></h1>
+        <p class='datestamp'> <%= post.published_at.strftime("%B %-1d, %Y") %> </p>
+        <div class="post-body">
+          <p>
+            <%= post.excerpt %><br />
+            <%= link_to "Read more", post, class: "read-more" %>
+          <p>
+        </div>
+        <%= render 'admin_actions', post: post %>
+    </div>
   </div>

@@ -34,7 +34,7 @@ gem 'chosen-rails'
 gem 'ckeditor', :git => 'https://github.com/galetahub/ckeditor'
 gem 'devise'
 gem 'haml-rails'
-gem 'kaminari'
+gem 'will_paginate'
 gem 'mailchimp-api', require: 'mailchimp'
 gem 'ransack'
 gem 'modernizr-rails'
@@ -52,6 +52,7 @@ gem 'compass-rails'
 gem 'foundation-rails'
 gem 'maruku'
 gem 'paranoia'
+gem 'friendly_id'
 
 # deployment
 gem 'httparty', require: false

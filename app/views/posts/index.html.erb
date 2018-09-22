@@ -1,14 +1,17 @@
-<div id="main" class="twelve columns">
-    <div class="posts-container">
-    <% @posts.in_groups_of(3, false).each do |posts| %>
-    	<div class="row post-container">
-	    	<% posts.each do |post| %>
-	      		<%= render partial: "post", locals: {post: post} %>
-	      	<% end %>
-	    </div>
-     <% end %>
-      <div class="pagination">
-        <%= paginate @posts %>
+<%= content_for :fluid do %>
+  <div id="" class="twelve columns">
+      <div class="posts">
+      <% @posts.in_groups_of(4, false).each do |posts| %>
+      	<div class="post-container">
+  	    	<% posts.each do |post| %>
+  	      		<%= render partial: "post", locals: {post: post} %>
+  	      	<% end %>
+            <div class="clearfix"></div>
+  	    </div>
+       <% end %>
+        <div class="pagination">
+          <%= will_paginate @posts, page_links: false %>
+        </div>
       </div>
-    </div>
-</div>
+  </div>
+<% end %>

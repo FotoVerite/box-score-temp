@@ -3,7 +3,7 @@ class EmailGateway
   attr_accessor :errors
 
   def initialize
-    @mailer = Mailchimp::API.new(ENV['MAILCHIMP_API_KEY'])
+    @mailer = Mailchimp::API.new(Rails.application.credentials[Rails.env.to_sym][:mailchimp_api_key])
     @errors = []
   end
 
