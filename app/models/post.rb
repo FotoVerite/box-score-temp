@@ -30,8 +30,6 @@ class Post < ActiveRecord::Base
                     styles: { medium: '300x300>', thumb: '100x100>' }
   validates_attachment_content_type :header_image, content_type: /\Aimage\/.*\Z/
 
-  paginates_per 12
-
   scope :published?, -> {where("published_at < ?", Time.zone.now )}
 
   def excerpt
