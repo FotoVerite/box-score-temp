@@ -53,6 +53,7 @@ gem 'foundation-rails'
 gem 'maruku'
 gem 'paranoia'
 gem 'friendly_id'
+gem 'kaminari'
 
 # deployment
 gem 'httparty', require: false

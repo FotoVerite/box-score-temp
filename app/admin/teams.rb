@@ -31,7 +31,7 @@ ActiveAdmin.register Team do
           :coach_phone,
           :competitive_class,
           :name,
-          :leage_id,
+          :league_id,
           :school_id,
           :season_id
         ]

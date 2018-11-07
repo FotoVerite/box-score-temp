@@ -7,7 +7,7 @@ class Filter
 
   def initialize(hash)
     if hash
-      hash = hash.symbolize_keys
+      hash = hash.permit!.to_h  if hash.respond_to?(:permit!)
       @params = hash
       @sport_id = hash[:sport_id]
       @assn_id = hash[:assn_id]
