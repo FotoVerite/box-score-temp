@@ -1,14 +1,41 @@
 <%= content_for :fluid do %>
   <div id="" class="twelve columns">
       <div class="posts">
-      <% @posts.in_groups_of(4, false).each do |posts| %>
-      	<div class="post-container">
-  	    	<% posts.each do |post| %>
-  	      		<%= render partial: "post", locals: {post: post} %>
-  	      	<% end %>
-            <div class="clearfix"></div>
-  	    </div>
-       <% end %>
+        <div class="hide-for-medium hide-for-mobile hide-for-small hide-for-medium">
+          <% @posts.in_groups_of(4, false).each do |posts| %>
+          	<div class="post-container">
+      	    	<% posts.each do |post| %>
+      	      		<%= render partial: "post", locals: {post: post, columns: 'three'} %>
+      	      	<% end %>
+                <div class="clearfix"></div>
+      	    </div>
+         <% end %>
+        </div>
+
+        <div class="hide-for-mobile hide-for-small hide-for-large hide-for-xlarge">
+          <% @posts.in_groups_of(3, false).each do |posts| %>
+            <div class="post-container">
+              <% posts.each do |post| %>
+                  <%= render partial: "post", locals: {post: post, columns: 'four'} %>
+                <% end %>
+                <div class="clearfix"></div>
+            </div>
+         <% end %>
+        </div>
+
+
+        <div class="hide-for-medium hide-for-large hide-for-xlarge">
+          <% @posts.in_groups_of(3, false).each do |posts| %>
+            <div class="post-container">
+              <% posts.each do |post| %>
+                  <%= render partial: "post", locals: {post: post, columns: 'twelve'} %>
+                <% end %>
+                <div class="clearfix"></div>
+            </div>
+         <% end %>
+        </div>
+
+
         <div class="pagination">
           <%= will_paginate @posts, page_links: false %>
         </div>

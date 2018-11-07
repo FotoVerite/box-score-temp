@@ -13,11 +13,6 @@
         <% end %>
         <h1 class="post-title"><%= @post.title %></h1>
         <p class='datestamp'> <%= @post.published_at.strftime("%B %-1d, %Y") %> </p>
-        <hr />
-        <% if @post.game.present? %>
-          <%= render 'games/game_summary', game: @post.game %>
-          <%= link_to 'Box Score', game_path(@post.game), class: 'box-score' %>
-        <% end %>
         <div class="sharing">
           <span>
             <%= link_to 'Share on Facebook', facebook_share_url(post_url(@post)),
@@ -30,6 +25,11 @@
             %>
           </span>
         </div>
+        <hr />
+        <% if @post.game.present? %>
+          <%= render 'games/game_summary', game: @post.game %>
+          <%= link_to 'Box Score', game_path(@post.game), class: 'box-score' %>
+        <% end %>
         <div class="post-body"><%= @post.body.html_safe %></div>
       </div>
     </div>
