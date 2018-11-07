@@ -11,7 +11,7 @@
           </ul>
         <% end %>
         <%= field_set_tag 'Game Information' do %>
-          <%= f.input :team_id, collection: teams, label_method: :display_name,
+          <%= f.input :team_id, collection: current_school.teams.reject {|team| !team.season.current?}, label_method: :display_name,
             include_blank: true, required: false, input_html: { class: 'chzn-select' } %>
           <%= f.input :opponent_id, collection: @game.team.try(:potential_opponents) || [], label_method: :display_name, required: false, input_html: { class: 'chzn-select' }  %>
           <div class="date">

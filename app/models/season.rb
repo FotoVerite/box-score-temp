@@ -20,6 +20,7 @@ class Season < ActiveRecord::Base
   has_many :games
 
   scope :ordered, -> { order('year DESC') }
+  scope :current, -> {where(current: true)}
 
   before_save :check_for_other_current_sessions
 
@@ -41,5 +42,5 @@ class Season < ActiveRecord::Base
     return unless current
     Season.where(current: true, sport_id: self.sport_id).update_all(current: false)
   end
-  
+
 end

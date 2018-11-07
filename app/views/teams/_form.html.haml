@@ -5,7 +5,7 @@
         = f.input :sport_id, collection: Sport.all, include_blank: false,
           input_html: { class: 'chzn-select' }
 
-        = f.input :season_id, collection: Season.all,
+        = f.input :season_id, collection: Season.all.current,
           label_method: :year, include_blank: false, input_html: { class: 'chzn-select' }
 
         = f.input :league_id, collection: League.names_with_assns_for_select,
