@@ -1,9 +1,7 @@
 
   <div class="<%= columns %> columns">
     <div class='post-div' style='margin:auto;'>
-      <% if post.header_image.exists? %>
-          <%= link_to image_tag(post.header_image.url, class: 'post-header-image'), post_path(post) %>
-        <% end %>
+        <%= link_to image_tag(post.header_image.url, class: 'post-header-image', style: styles), post_path(post.id) %>
         <h1 class="post-title"><%= link_to post.title, post %></h1>
         <p class='datestamp'> <%= post.published_at.strftime("%B %-1d, %Y") %> </p>
         <div class="post-body">

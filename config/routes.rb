@@ -35,7 +35,11 @@ Rails.application.routes.draw do
     resources :teams, only: [:index]
   end
   resources :players
-  resources :posts
+  resources :posts do
+    collection do
+      get :unpublished
+    end
+  end
   resources :schools, only: [:index, :show, :edit, :update]
   resources :sports do
     resources :seasons, only: [:index]

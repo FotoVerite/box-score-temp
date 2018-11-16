@@ -6,6 +6,7 @@
 
   %ul
     %li= link_to 'Add Box Score', new_game_path, class: 'button'
+    %li= link_to 'Unpublished posts', unpublished_posts_path, class: 'secondary button'
 
     - if current_school && current_school.unpublished_games.any?
       %li= link_to 'Drafts', drafts_games_path, class: 'button'

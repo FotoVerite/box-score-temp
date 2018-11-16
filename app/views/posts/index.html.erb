@@ -5,7 +5,7 @@
           <% @posts.in_groups_of(4, false).each do |posts| %>
           	<div class="post-container">
       	    	<% posts.each do |post| %>
-      	      		<%= render partial: "post", locals: {post: post, columns: 'three'} %>
+      	      		<%= render partial: "post", locals: {post: post, columns: 'three', styles: ''} %>
       	      	<% end %>
                 <div class="clearfix"></div>
       	    </div>
@@ -16,7 +16,7 @@
           <% @posts.in_groups_of(3, false).each do |posts| %>
             <div class="post-container">
               <% posts.each do |post| %>
-                  <%= render partial: "post", locals: {post: post, columns: 'four'} %>
+                  <%= render partial: "post", locals: {post: post, columns: 'four', styles: 'object-fit: contain;width:300px;'} %>
                 <% end %>
                 <div class="clearfix"></div>
             </div>
@@ -28,7 +28,7 @@
           <% @posts.in_groups_of(3, false).each do |posts| %>
             <div class="post-container">
               <% posts.each do |post| %>
-                  <%= render partial: "post", locals: {post: post, columns: 'twelve'} %>
+                  <%= render partial: "post", locals: {post: post, columns: 'twelve', styles: 'width:100%;height:100%;'} %>
                 <% end %>
                 <div class="clearfix"></div>
             </div>

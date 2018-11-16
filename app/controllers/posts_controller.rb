@@ -46,6 +46,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def unpublished
+    return 404 unless superadmin_signed_in?
+    @posts = Post.unpublished
+  end
+
   private
 
   def post

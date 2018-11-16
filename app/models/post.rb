@@ -31,6 +31,7 @@ class Post < ActiveRecord::Base
   validates_attachment_content_type :header_image, content_type: /\Aimage\/.*\Z/
 
   scope :published?, -> {where("published_at < ?", Time.zone.now )}
+  scope :unpublished, -> {where("published_at IS NULL")}
 
   def excerpt
     !super.blank? ? super : stripped_body.try(:truncate, 200)

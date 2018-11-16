@@ -1,0 +1,6 @@
+<h1>Unpublished Posts</h1>
+<ul style="list-style: none;">
+  <% @posts.each do |post| %>
+   <li><%= link_to post.title, edit_post_path(post) %></li>
+  <% end %>
+</ul>

@@ -12,7 +12,11 @@
           <%= image_tag @post.header_image.url %>
         <% end %>
         <h1 class="post-title"><%= @post.title %></h1>
-        <p class='datestamp'> <%= @post.published_at.strftime("%B %-1d, %Y") %> </p>
+        <% if @post.published_at %>
+          <p class='datestamp'> <%= @post.published_at.strftime("%B %-1d, %Y") %> </p>
+          <% else %>
+          <p>Unpublished</p>
+        <% end %>
         <div class="sharing">
           <span>
             <%= link_to 'Share on Facebook', facebook_share_url(post_url(@post)),

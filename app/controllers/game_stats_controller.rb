@@ -7,7 +7,6 @@ class GameStatsController < ApplicationController
         team     = teams.find(params[:team_id])
         opponent = team.potential_opponents.find(params[:opponent_id])
         game     = team.games.build(opponent_id: opponent.id)
-
         render partial: 'games/form', locals: { game: game }
       end
     end
