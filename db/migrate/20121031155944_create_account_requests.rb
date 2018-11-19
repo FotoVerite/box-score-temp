@@ -1,4 +1,4 @@
-class CreateAccountRequests < ActiveRecord::Migration
+class CreateAccountRequests < ActiveRecord::Migration[5.2]
   def change
     create_table :account_requests do |t|
       t.string :school_name

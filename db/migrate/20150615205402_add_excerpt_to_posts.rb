@@ -1,4 +1,4 @@
-class AddExcerptToPosts < ActiveRecord::Migration
+class AddExcerptToPosts < ActiveRecord::Migration[5.2]
   def change
     add_column :posts, :excerpt, :text
   end

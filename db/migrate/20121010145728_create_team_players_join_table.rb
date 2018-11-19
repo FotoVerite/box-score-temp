@@ -1,4 +1,4 @@
-class CreateTeamPlayersJoinTable < ActiveRecord::Migration
+class CreateTeamPlayersJoinTable < ActiveRecord::Migration[5.2]
   def change
     create_table :team_players, id: false do |t|
       t.integer :team_id

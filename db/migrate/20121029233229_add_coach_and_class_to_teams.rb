@@ -1,4 +1,4 @@
-class AddCoachAndClassToTeams < ActiveRecord::Migration
+class AddCoachAndClassToTeams < ActiveRecord::Migration[5.2]
   def change
     add_column :teams, :coach_name, :string
     add_column :teams, :coach_email, :string

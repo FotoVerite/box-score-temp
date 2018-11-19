@@ -1,4 +1,4 @@
-class AddMessageToAccountRequests < ActiveRecord::Migration
+class AddMessageToAccountRequests < ActiveRecord::Migration[5.2]
   def change
     add_column :account_requests, :message, :text
   end
