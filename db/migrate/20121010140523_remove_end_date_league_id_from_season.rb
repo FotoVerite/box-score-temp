@@ -1,4 +1,4 @@
-class RemoveEndDateLeagueIdFromSeason < ActiveRecord::Migration
+class RemoveEndDateLeagueIdFromSeason <  ActiveRecord::Migration[5.2]
   def up
     remove_column :seasons, :end_date
     remove_column :seasons, :league_id

@@ -1,4 +1,4 @@
-class RemoveSiteFromGames < ActiveRecord::Migration
+class RemoveSiteFromGames <  ActiveRecord::Migration[5.2]
   def up
     remove_column :games, :site
   end

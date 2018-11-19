@@ -1,4 +1,4 @@
-class RemoveCityFromSchools < ActiveRecord::Migration
+class RemoveCityFromSchools <  ActiveRecord::Migration[5.2]
   def up
     remove_column :schools, :city
   end

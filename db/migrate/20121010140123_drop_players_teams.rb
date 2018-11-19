@@ -1,4 +1,4 @@
-class DropPlayersTeams < ActiveRecord::Migration
+class DropPlayersTeams <  ActiveRecord::Migration[5.2]
   def up
     drop_table :players_teams
   end

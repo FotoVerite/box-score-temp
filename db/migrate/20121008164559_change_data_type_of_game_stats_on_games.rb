@@ -1,4 +1,4 @@
-class ChangeDataTypeOfGameStatsOnGames < ActiveRecord::Migration
+class ChangeDataTypeOfGameStatsOnGames <  ActiveRecord::Migration[5.2]
   def up
     change_column :games, :game_stats, :text
   end

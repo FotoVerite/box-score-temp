@@ -1,4 +1,4 @@
-class RenameTitleColumnOnSchools < ActiveRecord::Migration
+class RenameTitleColumnOnSchools <  ActiveRecord::Migration[5.2]
   def up
     rename_column :schools, :type, :organization_type
   end

@@ -1,4 +1,4 @@
-class RemoveSportFromGames < ActiveRecord::Migration
+class RemoveSportFromGames <  ActiveRecord::Migration[5.2]
   def up
     remove_column :games, :sport
   end

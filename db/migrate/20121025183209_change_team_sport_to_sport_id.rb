@@ -1,4 +1,4 @@
-class ChangeTeamSportToSportId < ActiveRecord::Migration
+class ChangeTeamSportToSportId <  ActiveRecord::Migration[5.2]
   def up
     add_column :teams, :sport_id, :string
     add_index :teams, :sport_id

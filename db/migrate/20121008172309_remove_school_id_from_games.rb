@@ -1,4 +1,4 @@
-class RemoveSchoolIdFromGames < ActiveRecord::Migration
+class RemoveSchoolIdFromGames <  ActiveRecord::Migration[5.2]
   def up
     remove_column :games, :school_id
   end

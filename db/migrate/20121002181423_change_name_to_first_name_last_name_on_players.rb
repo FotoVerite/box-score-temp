@@ -1,4 +1,4 @@
-class ChangeNameToFirstNameLastNameOnPlayers < ActiveRecord::Migration
+class ChangeNameToFirstNameLastNameOnPlayers <  ActiveRecord::Migration[5.2]
   def up
     change_table :players do |t|
       t.rename :name, :first_name
