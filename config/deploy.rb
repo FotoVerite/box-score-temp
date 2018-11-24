@@ -23,15 +23,4 @@ set :bundle_binstubs, nil
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 set :keep_releases, 5
 
-namespace :app do
-  desc "Restart Puma"
-  task :restart do
-    on roles(:web) do |_host|
-      within release_path do
-        execute :sudo, :systemctl, :restart, "puma.service"
-      end
-    end
-  end
-end
-
 after "deploy:restart", "app:restart"

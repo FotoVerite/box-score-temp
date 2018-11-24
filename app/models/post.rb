@@ -27,6 +27,7 @@ class Post < ActiveRecord::Base
   validates :body, presence: true
   validates :title, presence: true
   has_attached_file :header_image,
+                    default_url: "missing_post_header.png",
                     styles: { medium: '300x300>', thumb: '100x100>' }
   validates_attachment_content_type :header_image, content_type: /\Aimage\/.*\Z/
 
