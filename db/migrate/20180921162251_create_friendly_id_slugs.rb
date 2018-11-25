@@ -6,7 +6,8 @@ migration_class =
   end
 
 class CreateFriendlyIdSlugs < migration_class
-  def change
+  def up
+    return if ActiveRecord::Base.connection.data_source_exists? 'friendly_id_slugs'
     create_table :friendly_id_slugs do |t|
       t.string   :slug,           :null => false
       t.integer  :sluggable_id,   :null => false
@@ -19,4 +20,13 @@ class CreateFriendlyIdSlugs < migration_class
     add_index :friendly_id_slugs, [:slug, :sluggable_type, :scope], length: { slug: 70, sluggable_type: 50, scope: 70 }, unique: true
     add_index :friendly_id_slugs, :sluggable_type
   end
+
+  def down
+    remove_table :friendly_id_slugs 
+    remove_index :friendly_id_slugs, :sluggable_id
+    remove_index :friendly_id_slugs, [:slug, :sluggable_type], length: { slug: 140, sluggable_type: 50 }
+    remove_index :friendly_id_slugs, [:slug, :sluggable_type, :scope], length: { slug: 70, sluggable_type: 50, scope: 70 }, unique: true
+    remove_index :friendly_id_slugs, :sluggable_type
+  end
+
 end
