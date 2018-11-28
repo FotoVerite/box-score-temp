@@ -14,3 +14,21 @@
     - if current_school
       %li= link_to 'My School Profile', school_path(current_school), class: 'secondary button'
     %li= link_to 'My Teams', teams_path, class: 'secondary button'
+
+%nav.small-only
+
+  .clearfix
+    
+  %ul.no-style
+    - if superadmin_signed_in?
+      %li= link_to "Current School: #{current_school.name}", edit_current_school_path, class: 'button'
+
+    %li= link_to 'Add Box Score', new_game_path, class: 'secondary button'
+    %li= link_to 'Unpublished posts', unpublished_posts_path, class: 'secondary button'
+
+    - if current_school && current_school.unpublished_games.any?
+      %li= link_to 'Drafts', drafts_games_path, class: 'button'
+
+    - if current_school
+      %li= link_to 'My School Profile', school_path(current_school), class: 'secondary button'
+    %li= link_to 'My Teams', teams_path, class: 'secondary button'
