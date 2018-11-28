@@ -1,5 +1,11 @@
 @import "base/colors";
 
+.hide-for-1280-up {
+  @media only screen and (min-width: 1280px) {
+    display: none !important;
+  }
+}
+
 .post-body {
 
   p {

@@ -12,7 +12,7 @@
          <% end %>
         </div>
 
-        <div class="hide-for-mobile hide-for-small hide-for-large hide-for-xlarge">
+        <div class="hide-for-mobile hide-for-small hide-for-large hide-for-xlarge hide-for-1280-up">
           <% @posts.in_groups_of(3, false).each do |posts| %>
             <div class="post-container">
               <% posts.each do |post| %>
@@ -24,7 +24,7 @@
         </div>
 
 
-        <div class="hide-for-medium hide-for-large hide-for-xlarge">
+        <div class="hide-for-medium hide-for-large hide-for-xlarge hide-for-1280-up">
           <% @posts.in_groups_of(3, false).each do |posts| %>
             <div class="post-container">
               <% posts.each do |post| %>
