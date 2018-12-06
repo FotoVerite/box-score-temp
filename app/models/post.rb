@@ -16,6 +16,7 @@
 #  email                     :boolean          default(FALSE), not null
 #  admin_id                  :integer
 #  slug                      :string
+#  published_at              :datetime
 #
 
 class Post < ActiveRecord::Base

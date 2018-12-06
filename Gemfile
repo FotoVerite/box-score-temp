@@ -90,6 +90,7 @@ group :development do
   gem "capistrano-rails", require: false
   gem "capistrano-resque", "~> 0.2.2", require: false
   gem "capistrano3-puma", '3.1.0', require: false
+  gem "annotate"
 end
 
 group :test do

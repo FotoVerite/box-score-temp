@@ -47,7 +47,7 @@ class PostsController < ApplicationController
   end
 
   def unpublished
-    return 404 unless superadmin_signed_in?
+    return render_404 unless superadmin_signed_in?
     @posts = Post.unpublished
   end
 
@@ -73,6 +73,7 @@ class PostsController < ApplicationController
       :excerpt,
       :header_image,
       :game_id,
+      :published_at,
       :title
     )
   end
