@@ -65,7 +65,7 @@ class Team < ActiveRecord::Base
   def player_game_stats(game, player_stat_group)
     game.player_game_stats.select { |s| s.player.team_players.
       with_deleted.map(&:team_id).include?(id) &&
-      s.player_stat_group == player_stat_group.id }
+      s.player_stat_group == player_stat_group.id }.sort_by {|p| [p.starter, p.points.to_i]}.reverse
   end
 
   def as_json(options = nil)
