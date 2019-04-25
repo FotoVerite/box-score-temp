@@ -16,8 +16,8 @@ class Sport < ActiveHash::Base
   BASKETBALL_PLAYER_STATS = {
     starter:      { abbr: 'Starter', type: :checkbox, total: false },
     points:       { abbr: 'Pts', input_html: { maxlength: 3 } },
-    fg:           { abbr: 'FG', input_html: { maxlength: 2 } },
-    fga:          { abbr: 'FGA', input_html: { maxlength: 2 } },
+    fg:           { abbr: '2PT FG', input_html: { maxlength: 2 } },
+    fga:          { abbr: '2PT FGA', input_html: { maxlength: 2 } },
     three_pt_fg:  { abbr: '3pt FG', input_html: { maxlength: 2 } },
     three_pt_fga: { abbr: '3pt FGA', input_html: { maxlength: 2 } },
     ft:           { abbr: 'FT', input_html: { maxlength: 2 } },
