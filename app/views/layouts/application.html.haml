@@ -40,8 +40,6 @@
             = link_to 'Games', games_path
             = link_to 'About Us', '/about-us'
             = link_to 'FAQ', '/faq'
-            - unless admin_signed_in?
-              = link_to 'Add Your Team', '#', class: 'account-request'
             - if admin_signed_in? && current_admin.superadmin?
               = link_to 'SuperAdmin Dashboard', '/admin'
             - if admin_signed_in?
@@ -59,9 +57,6 @@
               = link_to 'About Us', '/about-us'
             %li
               = link_to 'FAQ', '/faq'
-            - unless admin_signed_in?
-              %li
-                = link_to 'Add Your Team', '#', class: 'account-request'
             - if admin_signed_in? && current_admin.superadmin?
               %li
                 = link_to 'SuperAdmin Dashboard', '/admin'
