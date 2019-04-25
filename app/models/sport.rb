@@ -23,7 +23,9 @@ class Sport < ActiveHash::Base
     ft:           { abbr: 'FT', input_html: { maxlength: 2 } },
     fta:          { abbr: 'FTA', input_html: { maxlength: 2 } },
     rebounds:     { abbr: 'Reb', input_html: { maxlength: 2 } },
-    assists:      { abbr: 'A', input_html: { maxlength: 2 } }
+    assists:      { abbr: 'A', input_html: { maxlength: 2 } },
+    turnovers:    { abbr: 'TO', input_html: { maxlength: 2 } }
+
   }.freeze
 
   BASKETBALL_SUMMARY_STATS = {
