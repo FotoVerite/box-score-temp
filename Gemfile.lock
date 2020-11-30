@@ -359,7 +359,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (4.0.3)
-    puma (3.12.2)
+    puma (3.12.6)
     raabro (1.1.6)
     rack (2.2.3)
     rack-protection (2.0.8.1)
@@ -591,7 +591,7 @@ DEPENDENCIES
   pg
   poltergeist
   pry
-  puma (~> 3.0)
+  puma (~> 3.12)
   rails (~> 5.2.0)
   rails-controller-testing
   rakismet
